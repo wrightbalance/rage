@@ -53,11 +53,13 @@ class Main extends CI_Controller
 			$this->load->model('accounts_db');
 			$this->load->model('streams_db');
 			
+			$details = $this->accounts_db->getAccountM(array('_id'=>(int)$this->accountid));
 			$data['streams'] = $this->streams_db->getStream();
 			$details = $this->accounts_db->getAccountM(array('_id'=>$this->accountid));
 			$data['details'] = $details[0];
 			$this->load->view('stream/widget/w_stream',$data);
 		}
+
 	}
 	
 

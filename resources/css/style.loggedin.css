@@ -255,3 +255,8 @@ form
 	display: block;
 	margin-bottom: 3px;
 }
+
+.wait
+{
+	cursor: wait;
+}

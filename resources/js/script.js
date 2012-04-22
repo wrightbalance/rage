@@ -16,8 +16,11 @@ $(document).ready(function(){
 		
 		if(typeof history.pushState != "undefined")
 		{
+			$('*').addClass('wait');
 			window.history.pushState(uri,uri,uri);
-			$('#loadcontent').load(uri);
+			$('#loadcontent').load(uri,function(){
+				$('*').removeClass('wait');
+			});
 		}
 	})
 	
