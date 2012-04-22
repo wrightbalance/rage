@@ -47,6 +47,9 @@
 $active_group = 'default';
 $active_record = TRUE;
 
+if(strpos(config_item('base_url'),'jingcleovil.com'))
+	$active_group = 'live';
+
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
 $db['default']['password'] = '1234';
@@ -63,6 +66,21 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
+$db['live']['hostname'] = 'localhost';
+$db['live']['username'] = 'jingcleo_web';
+$db['live']['password'] = 'pancit1983';
+$db['live']['database'] = 'jingcleo_ragnagear';
+$db['live']['dbdriver'] = 'mysql';
+$db['live']['dbprefix'] = '';
+$db['live']['pconnect'] = FALSE;
+$db['live']['db_debug'] = TRUE;
+$db['live']['cache_on'] = FALSE;
+$db['live']['cachedir'] = '';
+$db['live']['char_set'] = 'utf8';
+$db['live']['dbcollat'] = 'utf8_general_ci';
+$db['live']['swap_pre'] = '';
+$db['live']['autoinit'] = TRUE;
+$db['live']['stricton'] = FALSE;
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */
