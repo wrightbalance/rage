@@ -1,0 +1,257 @@
+body
+{
+	background: #FFF;
+}
+
+.content
+{
+	box-shadow: none;
+	border: none;
+	padding: 0;
+}
+
+.leftcol
+{
+	width: 179px;
+	min-height: 500px;
+	float: left;
+}
+
+.maincol
+{
+	width: 543px;
+	min-height: 500px;
+	float: left;
+	padding: 15px;
+	border: 1px solid #ddd;
+	border-top: 0;
+}
+
+.rightcol
+{
+	width: 209px;
+	min-height: 500px;
+	float: right;
+	padding: 15px 0;
+}
+
+.menu
+{
+	display: none;
+}
+
+.topBar
+{
+	height: 40px;
+	background: #bc2f00;
+}
+
+.logo
+{
+	font-size: 18px;
+	height: 40px;
+	line-height: 40px;
+	text-shadow: 1px 1px 1px #dd4814;
+}
+
+.profileAvatar
+{
+	padding: 20px 0;
+}
+
+.photo
+{
+	width: 40px;
+	height: 40px;
+	border: 1px solid #ddd;
+	float: left;
+}
+
+.name
+{
+	width: 126px;
+	height: 40px;
+	line-height: 40px;
+	margin-left: 10px;
+	float: left;
+}
+
+.name a
+{
+	font-size: 13px;
+}
+
+.bodycontent
+{
+	width: 784px;
+	min-height: 400px;
+	float: left;
+}
+
+.padding15
+{
+	width: 754px;
+	padding: 15px;
+}
+
+.maincol h3
+{
+	font-size: 13px;
+	font-weight: normal;
+	margin-bottom: 15px;
+}
+
+.tpane
+{
+	height: auto;
+	min-height: 200px;
+	display: none;
+}
+
+.pactive
+{
+	display: block;
+}
+
+.widget h4
+{
+	font-size: 13px;
+	font-weight: normal;
+	text-indent: 15px;
+	margin-bottom: 5px;
+}
+
+hr
+{
+	margin: 10px 0 !important;
+}
+
+.srow
+{
+	padding: 15px 0;
+}
+
+.srow .avatar50
+{
+	width: 50px;
+	height: 50px;
+	border: 1px solid #ddd;
+	float: left;
+}
+
+.srow_details,
+.srow_actions,
+.srow_comments
+{
+	width: 478px;
+	float: right;
+}
+
+.srow_details a
+{
+	color: #3B5998;
+}
+
+.srow_details
+{
+	font-size: 13px;
+}
+
+.srow_actions
+{
+	margin-top: 2px;
+	color: #333;
+	font-size: 11px;
+}
+
+.comment_box
+{
+	background: #EDEFF4;
+	padding: 4px;
+	display: none;
+}
+
+.srow_comments
+{
+	margin-top: 4px;
+}
+
+.comments
+{
+	padding: 4px;
+	background: #EDEFF4;
+	border-bottom:1px solid #D2D9E7;
+	margin-bottom: 1px;
+}
+
+.comments .avatar32
+{
+	width: 32px;
+	height: 32px;
+	float: left;
+	background: #fff;
+	margin-right: 5px;
+}
+
+.stream_box textarea
+{
+	font-family: 'Open Sans', sans-serif;
+	height: 20px;
+	font-size: 12px;
+
+}
+
+.stream_box
+{
+	border: 1px solid #ddd;
+	margin-bottom: 10px;
+}
+
+.stream_box textarea
+{
+	border: 0;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	-webkit-transition: none;
+	-moz-transition: none;
+	-ms-transition: 0;
+	-o-transition: 0;
+	transition: 0;
+	resize: none;
+	width: 533px;
+	margin-bottom: 0;
+}
+
+.stream_box_action
+{
+	background: whiteSmoke;
+	padding: 4px;
+	border-top: 1px solid #ddd;
+	display: none;
+}
+
+input.reset
+{
+	margin-bottom: 0;
+	padding: 2px;
+	width: 465px;
+}
+
+.comments_details
+{
+	width: 431px;
+	float: right;
+	font-size: 11px;
+}
+
+form
+{
+	margin-bottom: 0;
+}
+
+.srow_details a
+{
+	display: block;
+	margin-bottom: 3px;
+}

@@ -1,0 +1,363 @@
+@media screen {
+	@font-face {
+	  font-family: 'Open Sans';
+	  font-style: normal;
+	  font-weight: 400;
+	  src: local('Open Sans'), local('OpenSans'), url('opensans.woff') format('woff');
+	}
+}
+
+html,
+body
+{
+	margin: 0;
+	width: 100%;
+	height: 100%;
+}
+
+body
+{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12px;
+	font-size: 12px;
+	color: #fff;
+	background: url(../images/bg_dotted.png);
+}
+
+
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+
+html[xmlns] .clearfix {
+	display: block;
+}
+ 
+* html .clearfix {
+	height: 1%;
+}
+
+a,
+a:hover
+{
+	text-decoration: none;
+}
+
+.menu
+{
+	width: 500px;
+	height: 50px;
+	float: left;
+}
+
+.topBar
+{
+	height: 50px;
+	background: #dd4814; /* Old browsers */
+	background: -moz-linear-gradient(top, #dd4814 0%, #b83a10 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dd4814), color-stop(100%,#b83a10)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #dd4814 0%,#b83a10 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #dd4814 0%,#b83a10 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #dd4814 0%,#b83a10 100%); /* IE10+ */
+	background: linear-gradient(top, #dd4814 0%,#b83a10 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dd4814', endColorstr='#b83a10',GradientType=0 ); /* IE6-9 */
+
+}
+
+.logo
+{
+	font-size: 22px;
+	font-weight: bolder;
+	height: 50px;
+	line-height: 50px;
+	float: left;
+}
+
+.tileCenter
+{
+	margin: 0 auto;
+	width: 964px;
+}
+
+.menu
+{
+	margin-left: 50px;
+}
+
+.menu a
+{
+	display: inline-block;
+	height: 50px;
+	padding: 0 10px;
+	line-height: 50px;
+	font-size: 14px;
+	color: #fff;
+	text-shadow: 1px 1px 1px #222;
+}
+
+.menu a:hover
+{
+	background: #000;
+	opacity: 0.5;
+}
+
+.content
+{
+	background: #fff;
+	height: auto;
+	padding: 40px 15px;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	color: #000;
+	box-shadow: 1px 2px 4px #ddd;
+}
+
+.col1,
+.col2
+{
+	float: left;
+}
+
+
+.col1
+{
+	width: 600px;
+	height: auto;
+}
+
+.col2
+{
+	width: 300px;
+	height: auto;
+	min-height: 200px;
+	margin-left: 30px;
+}
+
+.newsbox h3
+{
+	display: inline-block;
+	width: 100%;
+	padding-bottom: 10px;
+	margin-bottom: 15px;
+}
+
+.content h3
+{
+	margin: 0;
+	padding: 0;
+	font-size: 18px;
+	font-weight: normal;
+}
+
+.regform
+{
+	border: 1px solid #ddd;
+	padding: 10px 10px 0 10px;
+}
+
+.regform form
+{
+	margin-bottom: 0;
+}
+
+.frow_btn
+{
+	margin: 15px 0;
+	height: 28px;
+}
+
+.regform legend
+{
+	font-size: 14px;
+	margin-bottom: 20px;
+	display: inline-block;
+}
+
+.frow
+{
+	padding: 5px 0;
+	position: relative;
+}
+
+.frow .error_message
+{
+	position: absolute;
+	width: 270px;
+	height: 12px;
+	line-height: 12px;
+	background: #FFEBE8;
+	top: 56px;
+	left: 2px;
+	font-size: 9px;
+	text-indent: 5px;
+	color: #DD3C10;
+	
+	display: none;
+}
+
+.regform .frow input
+{
+	width: 265px;
+}
+
+.regform .frow select
+{
+	width: 272px;
+}
+
+.graybtn
+{
+	background: whiteSmoke;
+	text-align: center;
+	padding: 10px;
+	border-top: 1px solid #ddd;
+	margin-left: -10px;
+	width: 278px;
+	margin-top: 10px;
+}
+
+.nrow
+{
+	margin: 10px 0;
+}
+
+.avatar
+{
+	width: 100px;
+	height: 100px;
+	border: 1px solid #ddd;
+	background: whiteSmoke;
+	float: left;
+	margin-right: 15px;
+}
+
+.ncontent
+{
+	width: 456px;
+	float: left;
+}
+
+.ncontent h4
+{
+	font-weight: normal;
+	font-size: 15px;
+	color: #222;
+}
+
+.ncontent span
+{
+	font-size: 11px;
+	color: #333;
+	margin-bottom: 20px;
+	display: block;
+}
+
+.ncontent span.author
+{
+	font-size: 12px;
+	color: #b83a10;
+	float: right;
+}
+
+.ncontent p
+{
+	text-align: justify;
+	color: #333;
+}
+
+.newsbox
+{
+	
+	padding: 10px;
+	height: 250px;
+}
+
+.shadow
+{
+	border: 1px solid #ddd;
+	box-shadow: 1px 1px 4px #ddd;
+}
+
+.paginate
+{
+	float: right;
+	margin-top: 15px;
+}
+
+.colsub
+{
+	width: 273px;
+	height: 150px;
+	float: left;
+	margin-top: 10px;
+	padding: 10px;
+}
+
+.colsub h4
+{
+	font-weight: normal;
+	font-size: 13px;
+	margin-bottom: 5px;
+}
+
+.marginRight10
+{
+	margin-right: 10px
+}
+
+.table-ranking tr th,
+.table-ranking tr td
+{
+	padding: 3px;
+}
+
+.error input,
+.error select
+{
+	border: 1px solid red;
+}
+.error label
+{
+	color: red;
+}
+
+.loaders
+{
+	height: 24px;
+	line-height: 24px;
+	background: url(../images/preloader.gif) no-repeat;
+	text-indent: 30px;
+	float: left;
+	margin-left: 5px;
+	display: none;
+}
+
+.footer
+{
+	color: #000;
+	padding: 20px 0;
+	text-shadow: 1px 1px 4px #ddd;
+	font-size: 11px;
+}
+
+.floatleft
+{
+	float: left;
+}
+
+.response .alert
+{
+	margin: 10px 0;
+}
+
+.floatright
+{
+	float:right;
+}
