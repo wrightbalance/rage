@@ -230,7 +230,7 @@ a:hover
 	height: 12px;
 	line-height: 12px;
 	background: #FFEBE8;
-	top: 56px;
+	top: 49px;
 	left: 2px;
 	font-size: 9px;
 	text-indent: 5px;
@@ -255,6 +255,7 @@ a:hover
 {
 	width: 272px;
 	padding: 2px;
+	height: 27px;
 }
 
 .graybtn
