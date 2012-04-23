@@ -21,7 +21,29 @@ body
 	font-size: 12px;
 	font-size: 12px;
 	color: #fff;
-	background: url(../images/bg_dotted.png);
+	/*background: url(../images/bg_dotted.png);*/
+	
+	background: #ED6801;
+	background: -moz-radial-gradient(center, ellipse cover, #ED6801 39%, #ED6801 45%, #CD3301 99%);
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(39%,#ED6801), color-stop(45%,#ED6801), color-stop(99%,#CD3301));
+	background: -webkit-radial-gradient(center, ellipse cover, #ED6801 39%,#ED6801 45%,#CD3301 99%);
+	background: -o-radial-gradient(center, ellipse cover, #ED6801 39%,#ED6801 45%,#CD3301 99%);
+	background: -ms-radial-gradient(center, ellipse cover, #ED6801 39%,#ED6801 45%,#CD3301 99%);
+	background: radial-gradient(center, ellipse cover, #ED6801 39%,#ED6801 45%,#CD3301 99%);
+
+}
+
+.body
+{
+		background: #272526;
+	background: -moz-linear-gradient(top, #272526 0%, black 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#272526), color-stop(100%,black));
+	background: -webkit-linear-gradient(top, #272526 0%,black 100%);
+	background: -o-linear-gradient(top, #272526 0%,black 100%);
+	background: -ms-linear-gradient(top, #272526 0%,black 100%);
+	background: linear-gradient(top, #272526 0%,black 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#272526', endColorstr='#000000',GradientType=0 );
+
 }
 
 
@@ -58,24 +80,31 @@ a:hover
 
 .topBar
 {
-	height: 50px;
-	background: #dd4814; /* Old browsers */
-	background: -moz-linear-gradient(top, #dd4814 0%, #b83a10 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dd4814), color-stop(100%,#b83a10)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, #dd4814 0%,#b83a10 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, #dd4814 0%,#b83a10 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top, #dd4814 0%,#b83a10 100%); /* IE10+ */
-	background: linear-gradient(top, #dd4814 0%,#b83a10 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dd4814', endColorstr='#b83a10',GradientType=0 ); /* IE6-9 */
+	height: 75px;
+	/*
+	background: #dd4814; 
+	background: -moz-linear-gradient(top, #dd4814 0%, #b83a10 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dd4814), color-stop(100%,#b83a10));
+	background: -webkit-linear-gradient(top, #dd4814 0%,#b83a10 100%); 
+	background: -o-linear-gradient(top, #dd4814 0%,#b83a10 100%); 
+	background: -ms-linear-gradient(top, #dd4814 0%,#b83a10 100%); 
+	background: linear-gradient(top, #dd4814 0%,#b83a10 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dd4814', endColorstr='#b83a10',GradientType=0 );  */
 
+}
+
+.intro h1
+{
+	font-weight: normal;
+	font-size: 25px;
 }
 
 .logo
 {
-	font-size: 22px;
+	font-size: 40px;
 	font-weight: bolder;
-	height: 50px;
-	line-height: 50px;
+	height: 75px;
+	line-height: 75px;
 	float: left;
 }
 
@@ -87,7 +116,10 @@ a:hover
 
 .menu
 {
-	margin-left: 50px;
+	margin-right: 10px;
+	float: right;
+	text-align: right;
+	margin-top: 20px;
 }
 
 .menu a
@@ -103,20 +135,13 @@ a:hover
 
 .menu a:hover
 {
-	background: #000;
-	opacity: 0.5;
+	color: #ddd;
 }
 
 .content
 {
-	background: #fff;
 	height: auto;
-	padding: 40px 15px;
-	border-left: 1px solid #ddd;
-	border-right: 1px solid #ddd;
-	border-bottom: 1px solid #ddd;
-	color: #000;
-	box-shadow: 1px 2px 4px #ddd;
+	padding: 15px;
 }
 
 .col1,
@@ -129,6 +154,7 @@ a:hover
 .col1
 {
 	width: 600px;
+	min-height: 400px;
 	height: auto;
 }
 
@@ -137,7 +163,7 @@ a:hover
 	width: 300px;
 	height: auto;
 	min-height: 200px;
-	margin-left: 30px;
+	margin-left: 34px;
 }
 
 .newsbox h3
@@ -158,8 +184,9 @@ a:hover
 
 .regform
 {
-	border: 1px solid #ddd;
+	border: 4px solid #454545;
 	padding: 10px 10px 0 10px;
+	background: #fff;
 }
 
 .regform form
@@ -186,6 +213,16 @@ a:hover
 	position: relative;
 }
 
+.frow label
+{
+	margin-bottom: 2px;
+}
+
+.wsmall
+{
+	width: 88px !Important;
+}
+
 .frow .error_message
 {
 	position: absolute;
@@ -202,14 +239,22 @@ a:hover
 	display: none;
 }
 
+.regform h3
+{
+	color: #000;
+}
+
 .regform .frow input
 {
 	width: 265px;
+	padding: 2px;
 }
+
 
 .regform .frow select
 {
 	width: 272px;
+	padding: 2px;
 }
 
 .graybtn
@@ -219,7 +264,7 @@ a:hover
 	padding: 10px;
 	border-top: 1px solid #ddd;
 	margin-left: -10px;
-	width: 278px;
+	width: 272px;
 	margin-top: 10px;
 }
 
@@ -341,9 +386,8 @@ a:hover
 
 .footer
 {
-	color: #000;
+	color: #fff;
 	padding: 20px 0;
-	text-shadow: 1px 1px 4px #ddd;
 	font-size: 11px;
 }
 
@@ -360,4 +404,86 @@ a:hover
 .floatright
 {
 	float:right;
+}
+
+
+.icontent
+{
+	margin-top: 40px;
+}
+
+.icontent h4
+{
+	font-size: 15px;
+	font-weight: normal;
+	margin: 0;
+	padding-bottom: 5px;
+}
+.icontent hr
+{
+	height: 1px;
+	border-top: 1px solid #5E5E5E;
+	border-bottom: none;
+	margin: 5px 0 15px 0;
+}
+
+.rimage
+{
+	width: 124px;
+	height: 140px;
+	background-image: url(../images/chibi_spr.png);
+	background-repeat: no-repeat;
+	float: left;
+}
+
+.features
+{
+	margin: 5px 0;
+}
+
+.lotofgears
+{
+	background-position: -214px -248px;
+}
+
+.thirdclass
+{
+	background-position: -214px -51px;
+}
+
+.downloadnow
+{
+	background-position: -53px -407px;
+	height: 152px;
+	width: 131px;
+}
+
+.features_details
+{
+	width: 460px;
+	float: left;
+	margin: 5px 0;
+}
+
+.features_details button
+{
+	margin-top: 10px;
+}
+
+.features_details h5
+{
+	font-weight: normal;
+	font-size: 14px;
+	color: #ddd;
+	margin-bottom: 5px;
+}
+
+.features_details p
+{
+	font-size: 11px;
+}
+
+.align-right
+{
+	text-align: right;
 }

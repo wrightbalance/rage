@@ -30,7 +30,7 @@
 	
 	<div class="frow month day year">
 		<label>Birthdate</label>
-		<select name="month" style="width:89px">
+		<select name="month" class="wsmall">
 			<option value="">Month</option>
 			<option value="1">Jan</option>
 			<option value="2">Feb</option>
@@ -45,13 +45,13 @@
 			<option value="11">Nov</option>
 			<option value="12">Dec</option>
 		</select>
-		<select name="day" style="width:89px">
+		<select name="day" class="wsmall">
 			<option value="">Day</option>
 			<?php for($x=1;$x<=31; $x++){?>
 			<option value="<?=$x?>"><?=$x?></option>
 			<? } ?>
 		</select>
-		<select name="year" style="width:89px">
+		<select name="year" class="wsmall">
 			<option value="">Year</option>
 			<?php for($x=date('Y')-10;$x>=1975; $x--){?>
 			<option value="<?=$x?>"><?=$x?></option>

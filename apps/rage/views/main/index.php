@@ -1,4 +1,47 @@
 <div class="col1 clearfix">
+	
+	<div class="intro">
+		<h1>Introducting RagnaGears&trade;</h1>
+		
+		<div class="icontent">
+			<h4>Create an account now to enjoy game features</h4>
+			<hr>
+			
+			<div class="features clearfix">
+				
+				<div class="features_details">
+					<h5>Lot of Custom Gears!!!</h5>
+					<p>We have a lot of customize gears. Balanced attributes. <br/>  <button class="btn btn-mini btn-primary">Details</button></p>
+				</div>
+			</div>
+			
+			<div class="features clearfix">
+				<div class="features_details ">
+					<h5>3rd Class Job</h5>
+					<p>We have 12 3rd classe jobs with fully implemented skills. <br/> <button class="btn btn-mini btn-primary">Details</button></p>
+				</div>
+			</div>
+			
+			<div class="features clearfix">
+				<div class="features_details ">
+					<h5>Cool Website</h5>
+					<p>Your account will be managed easily. We have facebook like feature. <br/> <button class="btn btn-mini btn-primary">Details</button></p>
+				</div>
+			</div>
+			
+			<hr>
+			
+			<div class="features clearfix">
+		
+				<div class="features_details">
+					<button class="btn btn-primary">DOWNLOAD NOW (v1.0-Lion)</button>
+				</div>
+			</div>
+			
+		</div>
+		
+	</div>
+	<!--
 	<div class="newsbox shadow clearfix">
 		<h3>Latest News</h3>
 		
@@ -18,6 +61,7 @@
 				</p>
 			</div>
 		</div>
+		
 		
 		<div class="paginate">
 			<div class="btn-toolbar">
@@ -63,10 +107,11 @@
 	</div>
 	<div class="colsub shadow"></div>
 	
+	-->
 </div>
 <div class="col2">
 	
-	<div class="regform shadow">
+	<div class="regform">
 		<h3><?=$formtitle?></h3>
 		<?php $this->load->view("account/{$form}")?>
 		

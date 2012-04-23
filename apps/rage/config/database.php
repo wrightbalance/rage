@@ -51,8 +51,8 @@ if(strpos(config_item('base_url'),'jingcleovil.com'))
 	$active_group = 'live';
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = '1234';
+$db['default']['username'] = 'ragnagears';
+$db['default']['password'] = 'ragnagears';
 $db['default']['database'] = 'ragnagears';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
