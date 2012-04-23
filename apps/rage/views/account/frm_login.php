@@ -11,7 +11,7 @@
 	</div>
 	
 	<div class="frow_btn">
-		<button class="btn btn-primary">Login</button>
+		<button class="btn btn-primary">Login</button><div class="loaders"></div>
 	</div>
 	
 	<div class="frow graybtn">

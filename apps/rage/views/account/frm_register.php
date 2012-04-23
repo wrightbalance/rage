@@ -67,7 +67,7 @@
 	</div>
 	
 	<div class="frow_btn preloader clearfix">
-		<button class="btn btn-primary floatleft">Create Account</button><div class="loaders">Processing, please wait</div>
+		<button class="btn btn-primary floatleft">Create Account</button><div class="loaders"></div>
 	</div>
 	
 	<div class="frow graybtn">

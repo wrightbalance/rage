@@ -377,6 +377,7 @@ a:hover
 .loaders
 {
 	height: 24px;
+	width: 24px;
 	line-height: 24px;
 	background: url(../images/preloader.gif) no-repeat;
 	text-indent: 30px;
