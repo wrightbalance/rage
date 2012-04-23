@@ -3,8 +3,9 @@
 <div class="topBar">
 	<div class="tileCenter clearfix">
 		<div class="logo">RagnaGears</div>
-		<div class="menu">
-			<?php $this->load->view('menu/nav')?>
+		<div class="quicklogin">
+			<?php //$this->load->view('menu/nav')?>
+			<?php $this->load->view('widget/quicklogin')?>
 		</div>
 		
 	</div>

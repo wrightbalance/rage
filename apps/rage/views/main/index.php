@@ -34,7 +34,7 @@
 			<div class="features clearfix">
 		
 				<div class="features_details">
-					<button class="btn btn-primary">DOWNLOAD NOW (v1.0-Lion)</button>
+					<button class="btn btn-large">DOWNLOAD NOW (v1.0-Lion)</button>
 				</div>
 			</div>
 			

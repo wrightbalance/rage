@@ -141,7 +141,7 @@ a:hover
 .content
 {
 	height: auto;
-	padding: 15px;
+	padding: 15px 0;
 }
 
 .col1,
@@ -411,6 +411,7 @@ a:hover
 .icontent
 {
 	margin-top: 40px;
+	background: url(../images/kapra_pic.png) no-repeat 402px 84px;
 }
 
 .icontent h4
@@ -463,7 +464,7 @@ a:hover
 {
 	width: 460px;
 	float: left;
-	margin: 5px 0;
+	margin: 5px 0 5px 10px;
 }
 
 .features_details button
@@ -487,4 +488,19 @@ a:hover
 .align-right
 {
 	text-align: right;
+}
+
+.quicklogin
+{
+	width: 302px;
+	float: right;
+	margin-top: 22px;
+}
+
+.quicklogin a
+{
+	color: #fff;
+	display: block;
+	margin-top: 3px;
+	font-size: 10px;
 }
