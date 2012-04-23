@@ -2,7 +2,7 @@
 <body>
 <div class="topBar">
 	<div class="tileCenter clearfix">
-		<div class="logo">RagnaGears</div>
+		<div class="logo">RagnaGears&trade;</div>
 		<div class="quicklogin">
 			<?php //$this->load->view('menu/nav')?>
 			<?php $this->load->view('widget/quicklogin')?>

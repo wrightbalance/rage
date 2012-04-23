@@ -1,7 +1,7 @@
 <div class="col1 clearfix">
 	
 	<div class="intro">
-		<h1>Introducting RagnaGears&trade;</h1>
+		<h1>Introducting RagnaGears</h1>
 		
 		<div class="icontent">
 			<h4>Create an account now to enjoy game features</h4>
