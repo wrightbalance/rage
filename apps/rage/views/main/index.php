@@ -34,7 +34,7 @@
 			<div class="features clearfix">
 		
 				<div class="features_details">
-					<button class="btn btn-large">DOWNLOAD NOW (v1.0-Lion)</button>
+					<a href="http://www.mediafire.com/download.php?zqm5lmw4qevkm4r" target="_blank" class="btn btn-large">Download (v1.0-Lion)</a>
 				</div>
 			</div>
 			
