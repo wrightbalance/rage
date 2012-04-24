@@ -15,6 +15,11 @@ class Main extends CI_Controller
 	
 	public function index()
 	{
+		$data['showlogin'] = true;
+		
+		if($this->acccountid)
+			$data['showlogin'] = false;
+		
 		if(!$this->input->is_ajax_request())
 		{
 			$this->benchmark->mark('code_start');
