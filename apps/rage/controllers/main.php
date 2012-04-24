@@ -17,7 +17,7 @@ class Main extends CI_Controller
 	{
 		$data['showlogin'] = true;
 		
-		if($this->acccountid)
+		if($this->accountid)
 			$data['showlogin'] = false;
 		
 		if(!$this->input->is_ajax_request())
