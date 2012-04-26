@@ -3,6 +3,11 @@ body
 	background: #FFF;
 }
 
+.body
+{
+	background: #fff;
+}
+
 .content
 {
 	box-shadow: none;
