@@ -23,13 +23,13 @@ body
 	color: #fff;
 	/*background: url(../images/bg_dotted.png);*/
 	
-	background: #ED6801;
-	background: -moz-radial-gradient(center, ellipse cover, #ED6801 39%, #ED6801 45%, #CD3301 99%);
-	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(39%,#ED6801), color-stop(45%,#ED6801), color-stop(99%,#CD3301));
-	background: -webkit-radial-gradient(center, ellipse cover, #ED6801 39%,#ED6801 45%,#CD3301 99%);
-	background: -o-radial-gradient(center, ellipse cover, #ED6801 39%,#ED6801 45%,#CD3301 99%);
-	background: -ms-radial-gradient(center, ellipse cover, #ED6801 39%,#ED6801 45%,#CD3301 99%);
-	background: radial-gradient(center, ellipse cover, #ED6801 39%,#ED6801 45%,#CD3301 99%);
+	background: #1E5799;
+	background: -moz-linear-gradient(left, #1E5799 0%, #4DD6E2 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#1E5799), color-stop(100%,#4DD6E2));
+	background: -webkit-linear-gradient(left, #1E5799 0%,#4DD6E2 100%);
+	background: -o-linear-gradient(left, #1E5799 0%,#4DD6E2 100%);
+	background: -ms-linear-gradient(left, #1E5799 0%,#4DD6E2 100%);
+	background: linear-gradient(left, #1E5799 0%,#4DD6E2 100%);
 
 }
 
