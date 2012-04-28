@@ -1,5 +1,6 @@
 function getOnline()
 {
+	/*
 	$.get(root +'characters/getOnline',function(e){
 		var db = e.db;
 		var html = "";
@@ -11,8 +12,6 @@ function getOnline()
 			html += "<li><a href=\"#\"><i class=\"icon-ok\"></i> "+n.name+"</a></li>";
 			$('.onlinechars').prepend(html);
 		})
-		
-		
-		console.log(db);
-	},'json');
+
+	},'json');*/
 }

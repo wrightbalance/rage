@@ -20,6 +20,10 @@ class Main extends CI_Controller
 		if($this->accountid)
 			$data['showlogin'] = false;
 		
+		$this->load->model('char_db');
+		$online = $this->char_db->getOnline();
+		$data['onlines'] = $online;
+		
 		if(!$this->input->is_ajax_request())
 		{
 			$this->benchmark->mark('code_start');
