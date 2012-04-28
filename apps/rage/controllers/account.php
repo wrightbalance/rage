@@ -196,7 +196,7 @@ class Account extends CI_Controller
         {
 			checkSession();
 			
-			$data = array();
+			$this->load->vars($data);
 			$this->load->view('account/widget/w_settings',$data);
 		}
 		$this->minify->html();

@@ -42,7 +42,7 @@ class Characters extends CI_Controller
         {
 			checkSession();
 			
-			$data = array();
+			$this->load->vars($data);
 			$this->load->view('character/widget/w_character',$data);
 		}
 		$this->minify->html();
@@ -79,7 +79,7 @@ class Characters extends CI_Controller
         {
 			checkSession();
 			
-			$data = array();
+			$this->load->vars($data);
 			$this->load->view('character/widget/w_storage',$data);
 		}
 		$this->minify->html();
