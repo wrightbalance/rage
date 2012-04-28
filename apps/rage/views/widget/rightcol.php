@@ -6,12 +6,8 @@
 	<hr>
 	<div class="widget">
 		<h4>Online Players</h4>
-		<ul class="nav nav-list">
-			<li><a href="#"><i class="icon-ok"></i> Sheldon</a></li>
-			<li><a href="#"><i class="icon-ok"></i> Testing</a></li>
-			<li><a href="#"><i class="icon-ok"></i> Testing</a></li>
-			<li><a href="#"><i class="icon-ok"></i> Testing</a></li>
-			<li><a href="#"><i class="icon-ok"></i> Testing</a></li>
+		<ul class="nav nav-list onlinechars">
+
 		</ul>
 	</div>
 	<hr>

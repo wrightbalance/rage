@@ -81,7 +81,7 @@ class Characters extends CI_Controller
 	{
 		$this->load->model('char_db');
 		$online = $this->char_db->getOnline();
-		$data['online'] = $online;
+		$data['db'] = $online;
 		$data['json'] = $data;
 		$this->load->view('ajax/json',$data);
 
