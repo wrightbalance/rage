@@ -21,7 +21,7 @@
 				<td>Sura</td>
 				<td>150</td>
 				<td>
-					<select>
+					<select style="width: 75px">
 						<option value="">-Reset</option>
 						<option value="1">Map</option>
 						<option value="2">Look</option>
