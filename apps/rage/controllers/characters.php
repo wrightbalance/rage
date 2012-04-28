@@ -31,6 +31,8 @@ class Characters extends CI_Controller
 		$data['onlines'] = $online;
 		$data['pvptop'] = $pvptop;
 		
+		$data['characters'] = $this->char_db->getChar(array('account_id'=>$this->accountid));
+	
 		if(!$this->input->is_ajax_request())
 		{
 			if(!$this->accountid) redirect();

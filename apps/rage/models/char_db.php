@@ -20,6 +20,15 @@ class Char_db extends CI_Model
 		return $result;
 	}
 	
+	function getChar($cond)
+	{
+		$query = $this->db->where($cond)->get('char');
+		
+		$result = $query->result_array();
+		
+		return $result;
+	}
+	
 	function topPlayer($limit=100)
 	{
 		$this->db->order_by('kills','desc');

@@ -8,22 +8,30 @@
 			<th>Character Name</th>
 			<th>Job</th>
 			<th>Level</th>
+			<th></th>
 		  </tr>
 		</thead>
 		<tbody>
-		  <tr>
-			<td>1</td>
-			<td>Jinggo</td>
-			<td>Sura</td>
-			<td>150</td>
-		  </tr>
-		  <tr>
-			<td>1</td>
-			<td>Jinggo</td>
-			<td>Sura</td>
-			<td>150</td>
-		  </tr>
-	   
+		
+		<?php if(isset($characters) && $characters){ ?> 	
+		  <?php foreach($characters as $char){ ?>
+			  <tr>
+				<td><?=$char['char_num']?></td>
+				<td><?=$char['name']?></td>
+				<td>Sura</td>
+				<td>150</td>
+				<td>
+					<select>
+						<option value="">-Reset</option>
+						<option value="1">Map</option>
+						<option value="2">Look</option>
+						<option value="3">Hair</option>
+					</select>
+				</td>
+			  </tr>
+		  <? } ?>
+		<? } ?> 
+
 		</tbody>
 	</table>
 	
