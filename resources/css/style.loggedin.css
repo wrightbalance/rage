@@ -1,6 +1,5 @@
 body
 {
-	background: #FFF;
 	color: #000;
 }
 
@@ -49,7 +48,6 @@ body
 .topBar
 {
 	height: 40px;
-	background: #bc2f00;
 }
 
 .logo
@@ -57,7 +55,8 @@ body
 	font-size: 18px;
 	height: 40px;
 	line-height: 40px;
-	text-shadow: 1px 1px 1px #dd4814;
+	text-shadow: 1px 1px 1px #222;
+	color: #fff;
 }
 
 .profileAvatar
