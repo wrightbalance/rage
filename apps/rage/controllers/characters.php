@@ -26,7 +26,10 @@ class Characters extends CI_Controller
 		
 		$this->load->model('char_db');
 		$online = $this->char_db->getOnline();
+		$pvptop = $this->char_db->topPlayer();
+		
 		$data['onlines'] = $online;
+		$data['pvptop'] = $pvptop;
 		
 		if(!$this->input->is_ajax_request())
 		{
@@ -62,7 +65,10 @@ class Characters extends CI_Controller
 		
 		$this->load->model('char_db');
 		$online = $this->char_db->getOnline();
+		$pvptop = $this->char_db->topPlayer();
+		
 		$data['onlines'] = $online;
+		$data['pvptop'] = $pvptop;
 		
 		if(!$this->input->is_ajax_request())
 		{
