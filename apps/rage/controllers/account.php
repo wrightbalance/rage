@@ -18,6 +18,8 @@ class Account extends CI_Controller
 		{
 			$username = trim($this->input->post('username'));
 			$password = trim($this->input->post('password'));
+			$action = $this->input->post('action');
+			$marginright = "";
 			
 			$account = $this->accounts_db->getAccount(array('userid'=>$username,'user_pass'=>md5($password)),true);
 			
@@ -31,10 +33,16 @@ class Account extends CI_Controller
 			}
 			else
 			{
+				$button = "<a class=\"close\" data-dismiss=\"alert\">×</a>";
+				if($action == "quicklogin") 
+				{
+					$marginright = "style='margin-right: 36px; margin-top: -4px'";
+					$button = "<button class=\"btn btn-mini showform\" style=\"float: right\">Retry</button>";
+				}
 				$data['message'] = "";
-				$data['message'] .= "<div class=\"alert alert-error\">";
-				$data['message'] .=	"<a class=\"close\" data-dismiss=\"alert\">×</a>";
-				$data['message'] .=	"<strong>Oh snap!</strong> login failed. Please try again.";
+				$data['message'] .= "<div class=\"alert alert-error\" {$marginright}>";
+				$data['message'] .=	"{$button}";
+				$data['message'] .=	"Login failed. Please try again.";
 				$data['message'] .=	"</div>";
 				$data['action'] = "error2";
 			}
@@ -52,7 +60,11 @@ class Account extends CI_Controller
 		$data = array();
 		$data['form'] = "frm_login";
 		$data['formtitle'] = "Login to your Account";
+		
+		$data['margindown'] = " style='margin-top: 128px'";
+		
 		$data['content'] = $this->load->view("main/index",$data,true);
+		
 		$data['elapse'] = $this->benchmark->elapsed_time('code_start', 'code_end');
 		
 		$this->load->vars($data);

@@ -111,7 +111,7 @@
 </div>
 <div class="col2">
 	
-	<div class="regform">
+	<div class="regform" <?=isset($margindown) ? $margindown : ''?>>
 		<h3><?=$formtitle?></h3>
 		<?php $this->load->view("account/{$form}")?>
 		

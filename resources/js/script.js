@@ -68,7 +68,7 @@ $('.form').live('submit',function(e){
 	
 	$('.loaders',form).fadeIn('fast');
 	$('button',form).attr('disabled','disabled');
-
+	
 	$.ajax({
 		url: root + action,
 		data: dt,
