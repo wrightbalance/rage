@@ -7,6 +7,7 @@ function getOnline()
 		$('.onlinechars').html('<li>Loading...</li>');
 		
 		$.each(db,function(i,n){
+			html  = "";
 			html += "<li><a href=\"#\"><i class=\"icon-ok\"></i> "+n.name+"</a></li>";
 			$('.onlinechars').prepend(html);
 		})
