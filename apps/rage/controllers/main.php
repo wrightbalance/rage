@@ -50,7 +50,7 @@ class Main extends CI_Controller
 			$data['elapse'] = $this->benchmark->elapsed_time('code_start', 'code_end');
 			$this->load->vars($data);
 			$this->load->view('default',$data);
-			$this->minify->html();
+		
         }
         else
         {
@@ -60,10 +60,12 @@ class Main extends CI_Controller
 			
 			$details = $this->accounts_db->getAccountM(array('_id'=>(int)$this->accountid));
 			$data['streams'] = $this->streams_db->getStream();
-			$details = $this->accounts_db->getAccountM(array('_id'=>$this->accountid));
 			$data['details'] = $details[0];
 			$this->load->view('stream/widget/w_stream',$data);
 		}
+		
+		$this->minify->html();
+		
 
 	}
 	

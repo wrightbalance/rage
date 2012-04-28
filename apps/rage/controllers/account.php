@@ -2,14 +2,14 @@
 
 class Account extends CI_Controller
 {
-	private $account;
+	private $accountid;
 	
 	function __construct()
 	{
 		parent::__construct();
 		$this->load->model('accounts_db');
 		
-		$this->account = $this->session->userdata('accountid');
+		$this->accountid = $this->session->userdata('accountid');
 	}
 	
 	function auth()
@@ -174,16 +174,19 @@ class Account extends CI_Controller
 		$data['jsgroup'] = "loggedin";
 		$data['page'] 	= 'settings';
 		
+		$details = $this->accounts_db->getAccountM(array('_id'=>(int)$this->accountid));
+		$data['details'] = $details[0];
+		
 		if(!$this->input->is_ajax_request())
 		{
-			if(!$this->account) redirect();
+			if(!$this->accountid) redirect();
 		
 			$data['content'] = $this->load->view('account/settings',$data,true);
 			
 			$data['elapse'] = $this->benchmark->elapsed_time('code_start', 'code_end');
 			$this->load->vars($data);
 			$this->load->view('default',$data);
-			$this->minify->html();
+			
         }
         else
         {
@@ -192,6 +195,7 @@ class Account extends CI_Controller
 			$data = array();
 			$this->load->view('account/widget/w_settings',$data);
 		}
+		$this->minify->html();
 	}
 	
 	function signout()

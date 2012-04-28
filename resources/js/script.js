@@ -16,10 +16,13 @@ $(document).ready(function(){
 		
 		if(typeof history.pushState != "undefined")
 		{
+			if(location.pathname === uri) return false;
 			$('*').addClass('wait');
 			window.history.pushState(uri,uri,uri);
 			$('#loadcontent').load(uri,function(){
 				$('*').removeClass('wait');
+				
+				getOnline();
 			});
 		}
 	})
