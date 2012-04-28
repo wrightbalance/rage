@@ -108,10 +108,17 @@ a:hover
 	float: left;
 }
 
+.logo a{color: #fff; font-size: 33px}
+
 .tileCenter
 {
 	margin: 0 auto;
 	width: 964px;
+}
+
+.modal
+{
+	display: none;
 }
 
 .menu
