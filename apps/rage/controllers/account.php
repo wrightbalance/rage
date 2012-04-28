@@ -177,6 +177,10 @@ class Account extends CI_Controller
 		$details = $this->accounts_db->getAccountM(array('_id'=>(int)$this->accountid));
 		$data['details'] = $details[0];
 		
+		$this->load->model('char_db');
+		$online = $this->char_db->getOnline();
+		$data['onlines'] = $online;
+		
 		if(!$this->input->is_ajax_request())
 		{
 			if(!$this->accountid) redirect();
