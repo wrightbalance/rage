@@ -4,7 +4,7 @@
 		<li><a href="#"><i class=" icon-calendar"></i> Create Event</a></li>
 	</ul>
 	<hr>
-	<?php if(isset($onlines) && $online){ ?>
+	<?php if(isset($onlines) && $onlines){ ?>
 	<div class="widget">
 		<h4>Online Players</h4>
 		<ul class="nav nav-list onlinechars">
