@@ -77,5 +77,45 @@ class Main extends CI_Controller
 
 	}
 	
+	function help()
+	{
+		$this->benchmark->mark('code_start');
+		$this->load->model('accounts_db');
+
+		$data['cssgroup'] = "loggedin";
+		$data['jsgroup'] = "loggedin";
+		$data['page'] 	= 'help-guide';
+		
+		$details = $this->accounts_db->getAccountM(array('_id'=>(int)$this->accountid));
+		$data['details'] = $details[0];
+		
+		$this->load->model('char_db');
+		$online = $this->char_db->getOnline();
+		$pvptop = $this->char_db->topPlayer();
+		
+		$data['onlines'] = $online;
+		$data['pvptop'] = $pvptop;
+		
+		if(!$this->input->is_ajax_request())
+		{
+			if(!$this->accountid) redirect();
+		
+			$data['content'] = $this->load->view('main/help',$data,true);
+			
+			$data['elapse'] = $this->benchmark->elapsed_time('code_start', 'code_end');
+			$this->load->vars($data);
+			$this->load->view('default',$data);
+			
+        }
+        else
+        {
+			checkSession();
+			
+			$this->load->vars($data);
+			$this->load->view('main/widget/w_help',$data);
+		}
+		$this->minify->html();
+	}
+	
 
 }

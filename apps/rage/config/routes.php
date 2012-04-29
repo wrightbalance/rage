@@ -48,6 +48,7 @@ $route['demo'] = "main/demo";
 $route['demo/(.+)'] = "main/demo/$1";
 $route['login']	= "main/login";
 $route['register']	= "main";
+$route['help-guide'] = "main/help";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

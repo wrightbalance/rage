@@ -17,8 +17,8 @@
 			<li class="divider"></li>
 			
 			<li class="nav-header">Support</li>
-			<li><a href="#"><i class="icon-question-sign"></i> Help Guide</a></li>
-			<li><a href="#"><i class="icon-file"></i> File a Ticket</a></li>
+			<li class="<?=$page == "help-guide" ? 'active' : ''?>"><a href="/help-guide"><i class="<?=$page == "help-guide" ? 'icon-white' : ''?> icon-question-sign"></i> Help Guide</a></li>
+			<li><a href="/ticket/file"><i class="icon-file"></i> File a Ticket</a></li>
 			
 			<li class="divider"></li>
 			<li><a href="/account/signout"><i class="icon-off"></i> Logout</a></li>
