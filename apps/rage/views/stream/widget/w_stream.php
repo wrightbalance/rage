@@ -29,7 +29,7 @@
 					<?=nl2br($val['message'])?>
 				</div>
 				<div class="srow_actions">
-					<a href="#" id="docomment" data-id="<?=(string)$val['_id']?>">Comment</a> - <span>30 minutes ago</span>
+					<a href="#" id="docomment" data-id="<?=(string)$val['_id']?>">Comment</a> - <span><?=ago($val['created'])?></span>
 				</div>
 				<div class="srow_comments" id="c2-<?=(string)$val['_id']?>">
 					<div class="loadcomment">

@@ -14,6 +14,7 @@
 		<table class="table table-bordered table-striped">
 		  <thead>
 			  <tr>
+				<th>Char ID</th>
 				<th>Slot</th>
 				<th>Name</th>
 				<th>Job</th>
@@ -57,6 +58,5 @@
   </div>
   <div class="modal-footer">
     <a href="#" class="btn" onclick="$('#view').modal('hide');">Close</a>
-    <a href="#" class="btn btn-primary">Save changes</a>
   </div>
 </div>

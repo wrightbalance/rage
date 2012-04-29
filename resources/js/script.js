@@ -85,6 +85,7 @@ $(document).ready(function(){
 						$.each(data.db,function(i,n){
 							html = "";
 							html += "<tr>";
+							html += "	<td><a href=''>"+n.char_id+"</a></td>";
 							html += "	<td>"+n.char_num+"</td>";
 							html += "	<td>"+n.name+"</td>";
 							html += "	<td>"+n.job+"</td>";

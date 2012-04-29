@@ -18,6 +18,7 @@ class Stream extends CI_Controller
 		$db['account_id'] = $this->input->post('account_id');
 		$db['nickname'] = $this->input->post('nickname');
 		$db['gender'] = $this->input->post('gender');
+		$db['created'] = date('Y-m-d H:i:s');
 		$db['comments'] = array();
 		
 		$sid = $this->streams_db->save($db);

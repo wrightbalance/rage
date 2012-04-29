@@ -164,7 +164,8 @@ class Characters extends CI_Controller
 				foreach($characters as $char)
 				{
 					$db[] = array(
-							 'char_num'=>$char['char_num']
+							 'char_id'=>$char['char_id']
+							,'char_num'=>$char['char_num']
 							,'name'	=> $char['name']
 							,'job'	=> jobClass($char['class'])
 							,'level' => $char['base_level'].'/'.$char['job_level']
