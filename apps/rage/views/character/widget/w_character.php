@@ -8,7 +8,7 @@
 			<th width="200">Character Name</th>
 			<th width="200">Job</th>
 			<th width="25">Level</th>
-			<th></th>
+			<th>Reset</th>
 		  </tr>
 		</thead>
 		<tbody>
@@ -21,7 +21,7 @@
 				<td>Sura</td>
 				<td>150</td>
 				<td>
-					<select style="width: 75px" name="reset" data-charid="<?=$char['char_id']?>">
+					<select class="reset" name="reset" data-charid="<?=$char['char_id']?>">
 						<option value="">-Reset</option>
 						<option value="1">Map</option>
 						<option value="2">Equipment</option>

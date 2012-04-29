@@ -3,7 +3,7 @@
 	<h3>Help Guide</h3>
 	<div class="btn-group">
 		<button class="btn">Commands</button>
-		<button class="btn">NPCs</button>
+		<button class="btn">Featured NPCs</button>
 		<button class="btn">FAQs</button>
 	</div>
 	

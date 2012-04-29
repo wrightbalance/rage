@@ -274,3 +274,10 @@ form
 	margin-top: 20px;	
 	list-style-type: none;
 }
+
+select.reset
+{
+	width: 75px;
+	padding: 1px;
+	margin-bottom: 0;
+}
