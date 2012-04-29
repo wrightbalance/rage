@@ -278,8 +278,8 @@ class Account extends CI_Controller
 			$data 			= $this->accounts_db->getList();
 			$data['elapsed'] = $this->benchmark->elapsed_time('code_start', 'code_end');
 			$this->load->view('account/table/accounts',$data);
-			
-
 		}
 	}
+	
+	
 }

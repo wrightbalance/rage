@@ -179,4 +179,18 @@ class Characters extends CI_Controller
 		$data['json'] = $data;
 		$this->load->view('ajax/json',$data);
 	}
+	
+	function getStorage()
+	{
+		$this->benchmark->mark('code_start');
+		
+		if($this->accountid)
+		{
+			$this->load->model('char_db');
+	
+			$data 			= $this->char_db->getStorage($this->accountid);
+			$data['elapsed'] = $this->benchmark->elapsed_time('code_start', 'code_end');
+			$this->load->view('account/table/storage',$data);
+		}
+	}
 }

@@ -102,4 +102,53 @@ class Char_db extends CI_Model
 		
 		return $pvpquery->result_array();
 	}
+	
+	function getStorage($accountid=false)
+    {
+		$user = $this->session->userdata('user');
+		
+        $item = $this->input->post('item');
+		$page = $this->input->post('page');
+		$rp = $this->input->post('rp');
+		
+		$sortname = $this->input->post('sortname');
+		$sortorder = $this->input->post('sortorder');
+		
+		$query = $this->input->post('query');
+		$qtype = $this->input->post('qtype');
+
+		if (!$sortname) $sortname = 'account_id';
+		if (!$sortorder) $sortorder = 'DESC';
+		
+		if (!$page) $page = 1;
+		if (!$rp) $rp = 10;        
+				
+		$start = (($page-1) * $rp);  
+		       
+		$this->db->like($qtype,$query,'both');
+		if($accountid) $this->db->where('account_id',$accountid);
+		$this->db->from('storage');
+		$num = $this->db->count_all_results();
+		
+		if ($start>$num) 	
+			{
+			$start = 0; 
+			$page = 1;
+			}    
+		
+
+		$this->db->limit($rp,$start);
+		$this->db->like($qtype,$query,'both');
+		$this->db->order_by($sortname,$sortorder);
+		if($accountid) $this->db->where('account_id',$accountid);
+		$query = $this->db->get('storage');		
+		$results = $query->result_array();
+
+			
+		$data['db'] = $results;    
+		$data['page'] = $page;
+		$data['total'] = $num;
+		$data['rp'] = $rp;
+		return $data;
+	}
 }
