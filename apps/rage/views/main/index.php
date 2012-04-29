@@ -1,20 +1,46 @@
 <div class="col1 clearfix">
 	
 	<div class="intro">
-		<h1>Introducting RagnaGears</h1>
+		<h1>News and Updates</h1>
 		
 		<div class="icontent">
-			<h4>Create an account now to enjoy game features</h4>
 			<hr>
 			
-			<div class="features clearfix">
+			<div class="news features clearfix">
 				
 				<div class="features_details">
-					<h5>Lot of Custom Gears!!!</h5>
-					<p>We have a lot of customize gears. Balanced attributes. <br/>  <button class="btn btn-mini btn-primary">Details</button></p>
+					<h5>RagnaGears now officially released.</h5>
+					<span class="date">April 29, 2012</span>
+					<p><b>Features-</b></p>
+					<ul>
+						<li>3rd Job Classes Enabled</li>
+						<li>Lot of custom gears.</li>
+						<li>Easy to Manage Your Account</li>
+					</ul>
+					<p><b>Drop Rate-</b></p>
+					<ul>
+						<li>Normal Monster Item: 100%</li>
+						<li>Normal Monster Card: 75%</li>
+						<li>MVP and Mini Boss Item: 100%</li>
+						<li>MVP and Mini Boss Card: 10%</li>
+					</ul>
+					<p><b>Monsters-</b></p>
+					<ul>
+						<li>Baphomet Jr mob count in Prt_Maze03 is now 4x (100)</li>
+						<li>Grand Peco mob count in yuno_fild08 is now 2x (160)</li>
+						<li>Dokebi mob count in pay_dun04 is now 4x (160)</li>
+						
+					</ul>
+					<p><b>Items-</b></p>
+					<ul>
+						<li>Yggdrasill Berry Drop rate is 75%</li>
+						<li>Gold Dro rate is 100%</li>
+					</ul>
 				</div>
+				
 			</div>
-			
+			<hr>
+			<!--
 			<div class="features clearfix">
 				<div class="features_details ">
 					<h5>3rd Class Job</h5>
@@ -28,8 +54,8 @@
 					<p>Your account will be managed easily. We have facebook like feature. <br/> <button class="btn btn-mini btn-primary">Details</button></p>
 				</div>
 			</div>
+			-->
 			
-			<hr>
 			
 			<div class="features clearfix">
 		

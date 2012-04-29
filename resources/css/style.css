@@ -96,7 +96,7 @@ a:hover
 .intro h1
 {
 	font-weight: normal;
-	font-size: 25px;
+	font-size: 20px;
 }
 
 .logo
@@ -418,7 +418,7 @@ a:hover
 
 .icontent
 {
-	margin-top: 40px;
+	height: 380px;
 	background: url(../images/kapra_pic.png) no-repeat 402px 84px;
 }
 
@@ -449,6 +449,15 @@ a:hover
 .features
 {
 	margin: 5px 0;
+}
+
+
+.news .date
+{
+	font-size: 10px;
+	margin-bottom: 20px;
+	display: block;
+	color: #ddd;
 }
 
 .lotofgears
