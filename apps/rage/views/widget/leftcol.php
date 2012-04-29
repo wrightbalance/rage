@@ -22,7 +22,7 @@
 			
 			<li class="divider"></li>
 			
-			<?php if(isset($isAdmin)) { ?> 
+			<?php if(isset($isAdmin) && $isAdmin) { ?> 
 			<li class="nav-header">Admin</li>
 			<li class="<?=$page == "account" ? 'active' : ''?>"><a href="/account"><i class="<?=$page == "account" ? 'icon-white' : ''?> icon-question-sign"></i> Accounts</a></li>
 			<? } ?>
