@@ -81,9 +81,9 @@ $(document).ready(function(){
 	
 	$('.showform').live('click',function(e){
 		e.preventDefault();
-		
-		
-		
+
 	})
+	
+
 	
 })

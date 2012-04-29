@@ -139,4 +139,43 @@ class Characters extends CI_Controller
 		$this->load->view('ajax/json',$data);
 		
 	}
+	
+	function getAccountCharacter()
+	{
+		if(!$this->input->is_ajax_request()) exit();
+		$this->load->model('char_db');
+		$this->load->helper('jobclass');
+		
+		checkSession();
+		$data = array();
+		
+		if($this->accountid)
+		{
+			$user = $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
+			$isAdmin = $user['group_id'] >= 90 ? true : false;
+			
+			$account_id = $this->input->post('account_id');
+			
+			if($isAdmin)
+			{
+				$characters = $this->char_db->getChar(array('account_id'=>$account_id));
+				$db = array();
+				
+				foreach($characters as $char)
+				{
+					$db[] = array(
+							 'char_num'=>$char['char_num']
+							,'name'	=> $char['name']
+							,'job'	=> jobClass($char['class'])
+							,'level' => $char['base_level'].'/'.$char['job_level']
+							,'zeny'	=> $char['zeny']
+							);
+				}
+				$data['db'] = $db;
+			}
+		}
+		
+		$data['json'] = $data;
+		$this->load->view('ajax/json',$data);
+	}
 }

@@ -53,6 +53,57 @@ $(document).ready(function(){
 		}
 	})
 	
+	$('.view').live('click',function(e){
+		e.preventDefault();
+		
+		var account_id = $(this).data('aid');
+		
+		$("#view").modal({
+			show: true,
+			backdrop: true
+		})
+		
+		
+		$('*').addClass('wait');
+		
+		$(".mtitle").empty().html(account_id + ' View account details');
+		
+		$.ajax({
+			url: root + 'characters/getAccountCharacter',
+			dataType: 'json',
+			data: {account_id:account_id},
+			type: 'POST',
+			success: function(data)
+			{
+				try
+				{
+					if(data)
+					{
+						var html = "";
+						$('.loadchar').html('');
+						
+						$.each(data.db,function(i,n){
+							html = "";
+							html += "<tr>";
+							html += "	<td>"+n.char_num+"</td>";
+							html += "	<td>"+n.name+"</td>";
+							html += "	<td>"+n.job+"</td>";
+							html += "	<td>"+n.level+"</td>";
+							html += "</tr>";
+						   
+							$('.loadchar').prepend(html);
+						})
+						
+						$('*').removeClass('wait');
+					}
+				}
+				catch(e)
+				{}
+			}
+		})
+		
+	});
+	
 })
 
 var jsonPROC = {
