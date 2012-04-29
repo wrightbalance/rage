@@ -15,6 +15,8 @@ class Characters extends CI_Controller
 	function index()
 	{
 		$this->benchmark->mark('code_start');
+		$this->load->helper('array');
+		$this->load->helper('jobclass');
 	
 		$data['title'] = "Characters | ".config_item('site_title');
 		$data['cssgroup'] = "loggedin";

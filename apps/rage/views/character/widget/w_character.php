@@ -18,7 +18,7 @@
 			  <tr>
 				<td align="center"><?=$char['char_num']?></td>
 				<td><?=$char['name']?></td>
-				<td>Sura</td>
+				<td><?=jobClass($char['class'])?></td>
 				<td>150</td>
 				<td>
 					<select class="reset" name="reset" data-charid="<?=$char['char_id']?>">
