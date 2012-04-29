@@ -47,7 +47,7 @@ function accoungFlex()
         rp: 15,
         useRp: true,        
 		timeout: 20,
-		height: 370,
+		height: 390,
 		onTimeout: function()
 		{
 			
