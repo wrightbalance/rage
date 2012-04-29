@@ -25,8 +25,9 @@
 			<?php if(isset($isAdmin) && $isAdmin) { ?> 
 			<li class="nav-header">Admin</li>
 			<li class="<?=$page == "account" ? 'active' : ''?>"><a href="/account"><i class="<?=$page == "account" ? 'icon-white' : ''?> icon-question-sign"></i> Accounts</a></li>
-			<? } ?>
 			<li class="divider"></li>
+			<? } ?>
+			
 			
 			<li><a href="/account/signout"><i class="icon-off"></i> Logout</a></li>
         </ul>
