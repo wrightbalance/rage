@@ -15,6 +15,7 @@ $config['css']['default'] = array(
  
 $config['css']['loggedin'] = array(
      array('path'=>'css/','file'=>'bootstrap.css')
+    ,array('path'=>'css/flexigrid/','file'=>'flexigrid.css')
     ,array('path'=>'css/','file'=>'style.css')
     ,array('path'=>'css/','file'=>'style.loggedin.css')
     );
@@ -28,6 +29,9 @@ $config['js']['default'] = array(
 $config['js']['loggedin'] = array(
      array('path'=>'js/','file'=>'jquery-1.7.2.min.js')
     ,array('path'=>'js/','file'=>'bootstrap.min.js')
+    ,array('path'=>'js/','file'=>'jquery.livequery.js')
+    ,array('path'=>'js/','file'=>'flexigrid.js')
+    ,array('path'=>'js/','file'=>'flex.js')
     ,array('path'=>'js/','file'=>'char.js')
     ,array('path'=>'js/','file'=>'script.js')
     ,array('path'=>'js/','file'=>'stream.js')

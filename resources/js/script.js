@@ -24,6 +24,8 @@ $(document).ready(function(){
 				
 				getOnline();
 			});
+			
+			accoungFlex();
 		}
 	})
 	

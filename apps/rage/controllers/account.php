@@ -264,4 +264,22 @@ class Account extends CI_Controller
 		
 		redirect();
 	}
+	
+	function getList()
+	{
+		$this->benchmark->mark('code_start');
+		
+		if($this->accountid)
+		{
+			$user = $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
+			$isAdmin = $user['group_id'] >= 90 ? true : false;
+			if($isAdmin === false) exit();
+			
+			$data 			= $this->accounts_db->getList();
+			$data['elapsed'] = $this->benchmark->elapsed_time('code_start', 'code_end');
+			$this->load->view('account/table/accounts',$data);
+			
+
+		}
+	}
 }
