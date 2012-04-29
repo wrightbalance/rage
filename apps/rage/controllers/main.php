@@ -18,8 +18,13 @@ class Main extends CI_Controller
 		$data['showlogin'] = true;
 		
 		if($this->accountid)
+		{
+			$this->load->model('accounts_db');
 			$data['showlogin'] = false;
-		
+			$user = $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
+			$data['isAdmin'] = $user['group_id'] >= 90 ? true : false;
+			
+		}
 		$this->load->model('char_db');
 		$online = $this->char_db->getOnline();
 		$pvptop = $this->char_db->topPlayer();
@@ -49,6 +54,7 @@ class Main extends CI_Controller
 				$data['jsgroup'] = "loggedin";
 				$data['page'] = 'stream';
 				$data['details'] = $details[0];
+				
 				$data['streams'] = $this->streams_db->getStream();
 				
 				$data['content'] = $this->load->view('stream/index',$data,true);
@@ -73,8 +79,6 @@ class Main extends CI_Controller
 		}
 		
 		$this->minify->html();
-		
-
 	}
 	
 	function help()

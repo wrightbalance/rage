@@ -21,6 +21,13 @@
 			<li><a href="/ticket/file"><i class="icon-file"></i> File a Ticket</a></li>
 			
 			<li class="divider"></li>
+			
+			<?php if(isset($isAdmin)) { ?> 
+			<li class="nav-header">Admin</li>
+			<li class="<?=$page == "account" ? 'active' : ''?>"><a href="/account"><i class="<?=$page == "account" ? 'icon-white' : ''?> icon-question-sign"></i> Accounts</a></li>
+			<? } ?>
+			<li class="divider"></li>
+			
 			<li><a href="/account/signout"><i class="icon-off"></i> Logout</a></li>
         </ul>
 	</div>

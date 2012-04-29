@@ -204,6 +204,59 @@ class Account extends CI_Controller
 		}
 		$this->minify->html();
 	}
+
+	function index()
+	{
+		$this->benchmark->mark('code_start');
+		$this->load->model('accounts_db');
+		$this->load->model('char_db');
+		
+		$data['cssgroup'] = "loggedin";
+		$data['jsgroup'] = "loggedin";
+		$data['page'] 	= 'account';
+		
+		$details = $this->accounts_db->getAccountM(array('_id'=>(int)$this->accountid));
+		$data['details'] = $details[0];
+		
+		
+		$online = $this->char_db->getOnline();
+		$pvptop = $this->char_db->topPlayer();
+		
+		$data['onlines'] = $online;
+		$data['pvptop'] = $pvptop;
+		
+		$data['accounts'] = $this->accounts_db->getAccounts();
+		
+		
+		if($this->accountid)
+		{
+			
+			$data['showlogin'] = false;
+			$user = $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
+			$data['isAdmin'] = $user['group_id'] >= 90 ? true : false;
+			if($data['isAdmin'] === false) redirect();
+		}
+		
+		if(!$this->input->is_ajax_request())
+		{
+			if(!$this->accountid) redirect();
+		
+			$data['content'] = $this->load->view('account/index',$data,true);
+			
+			$data['elapse'] = $this->benchmark->elapsed_time('code_start', 'code_end');
+			$this->load->vars($data);
+			$this->load->view('default',$data);
+			
+        }
+        else
+        {
+			checkSession();
+			
+			$this->load->vars($data);
+			$this->load->view('account/widget/w_index',$data);
+		}
+		$this->minify->html();
+	}
 	
 	function signout()
 	{

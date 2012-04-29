@@ -25,6 +25,14 @@ body
 .maincol
 {
 	width: 543px;
+}
+.wide
+{
+	width: 753px;
+}
+.maincol
+{
+	
 	min-height: 500px;
 	float: left;
 	padding: 15px;

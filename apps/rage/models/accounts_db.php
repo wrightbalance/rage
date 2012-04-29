@@ -49,5 +49,16 @@ class Accounts_db extends CI_Model
 		return $query;
 	}
 	
+	function getAccounts()
+	{
+		$this->db->where('account_id > ',1);
+		$this->db->order_by('account_id','asc');
+		$query = $this->db->get('login');
+		
+		$result = $query->result_array();
+		
+		return $result;
+	}
+	
 
 }
