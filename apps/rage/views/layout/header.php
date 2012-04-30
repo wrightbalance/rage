@@ -5,7 +5,7 @@
 		<div class="logo"><a href="<?=site_url()?>">
 		<?php if(isset($details['_id'])) {?>
 		<img src="<?=resource_url('images/logo2.png')?>" alt=""/>
-		<? { else } ?>
+		<? } else { ?>
 		<img src="<?=resource_url('images/logo.png')?>" alt=""/>
 		<? } ?>
 		</a></div>
