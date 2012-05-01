@@ -320,18 +320,25 @@ function cropResizeImage($file_type, $max_width, $max_height, $blob, $quality) {
 		
 		$user = $CI->session->userdata('accountid');
 		
-		if(!$user)
+		if($CI->input->is_ajax_request())
 		{
-			$data['session'] = "false";
-			$json = $data;
-			
-			header("Expires: Mon, 26 Jul 1997 05:00:00 GMT" ); 
-			header("Last-Modified: " . gmdate( "D, d M Y H:i:s" ) . "GMT" ); 
-			header("Cache-Control: no-cache, must-revalidate" ); 
-			header("Pragma: no-cache" );
-			header("Content-type: text/x-json");
-			if (isset($json)) echo json_encode($json);
-			exit;
+			if(!$user)
+			{
+				$data['session'] = "false";
+				$json = $data;
+				
+				header("Expires: Mon, 26 Jul 1997 05:00:00 GMT" ); 
+				header("Last-Modified: " . gmdate( "D, d M Y H:i:s" ) . "GMT" ); 
+				header("Cache-Control: no-cache, must-revalidate" ); 
+				header("Pragma: no-cache" );
+				header("Content-type: text/x-json");
+				if (isset($json)) echo json_encode($json);
+				exit;
+			}
+		}
+		else
+		{
+			redirect();
 		}
 	}
 	

@@ -27,6 +27,7 @@ class Account extends CI_Controller
 			{
 				$account2 = $this->accounts_db->getAccount(array('userid'=>$username,'user_pass'=>md5($password)));
 				$this->session->set_userdata('accountid',$account2['account_id']);
+				$this->session->set_userdata('groupid',$account2['group_id']);
 				
 				$data['message'] = "Redirecting...";
 				$data['action'] = "forward";
@@ -206,15 +207,7 @@ class Account extends CI_Controller
 		$data['pvptop'] = $pvptop;
 		
 		if($settings) $data['settings'] = $settings;
-		
-		if($this->accountid)
-		{
-			$this->load->model('accounts_db');
-			$data['showlogin'] = false;
-			$user = $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
-			$data['isAdmin'] = $user['group_id'] >= 90 ? true : false;
-		}
-		
+
 		if(!$this->input->is_ajax_request())
 		{
 			if(!$this->accountid) redirect();
@@ -257,16 +250,6 @@ class Account extends CI_Controller
 		$data['pvptop'] = $pvptop;
 		
 		$data['accounts'] = $this->accounts_db->getAccounts();
-		
-		
-		if($this->accountid)
-		{
-			
-			$data['showlogin'] = false;
-			$user = $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
-			$data['isAdmin'] = $user['group_id'] >= 90 ? true : false;
-			if($data['isAdmin'] === false) redirect();
-		}
 		
 		if(!$this->input->is_ajax_request())
 		{

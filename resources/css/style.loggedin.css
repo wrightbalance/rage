@@ -3,6 +3,7 @@ body
 	color: #000;
 	position: relative;
 	padding-top: 48px;
+	background: #fff;
 }
 
 .body
@@ -313,4 +314,11 @@ select.reset
 .top-action
 {
 	float: right;
+}
+
+.footer
+{
+	color: #000;
+	border-top: 1px solid #ddd;
+	margin-top: 15px;
 }

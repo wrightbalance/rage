@@ -29,7 +29,7 @@ var jsonPROC = {
 		
 		setTimeout(function(){
 			location.href=data.url;	
-		},1500)
+		},500)
 		
 	}	
 	

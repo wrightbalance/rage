@@ -26,6 +26,7 @@ function accountFlex()
 			colModel : [ 
 						{display: 'Account ID', name : 'account_id', width : 70, sortable: true}
 						,{display: 'Username', name : 'userid', width : 160, sortable: true}
+						,{display: 'Email', name : 'email', width : 160, sortable: true}
 						,{display: 'Group ID', name : 'group_id', width : 50, sortable: true, align: 'center'}
 						,{display: 'IP', name : 'last_ip', width : 150, sortable: true}
 						,{display: 'Last Login', name : 'age', width : 150, sortable: false}

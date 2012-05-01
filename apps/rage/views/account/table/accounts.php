@@ -15,6 +15,7 @@
                 "cell" => array(
                 	 "<a href=\"#\" class=\"view\" data-aid=\"".$row['account_id']."\">".$row['account_id']."</a>"
                 	,$row['userid']
+                	,$row['email']
                 	,$row['group_id']
                 	,$row['last_ip']
                 	,$row['lastlogin'] != "0000-00-00 00:00:00" ? date('M d, Y',strtotime($row['lastlogin'])) : 'Never'
