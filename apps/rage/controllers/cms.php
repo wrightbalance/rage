@@ -80,7 +80,7 @@ class Cms extends CI_Controller
 		}
 		else
 		{
-			$newsid 			= $this->input->post('news_id');
+			$newsid 			= (string)$this->input->post('_id');
 			$db['news_title'] 	= trim($this->input->post('news_title'));
 			$db['news_body'] 	= trim($this->input->post('news_body'));
 			$db['publish'] 		= $this->input->post('publish');
@@ -108,11 +108,21 @@ class Cms extends CI_Controller
 	{
 		$this->benchmark->mark('code_start');
 		
-		if($this->accountid)
-		{
-			$data 			= $this->cms_db->getListNews();
-			$data['elapsed'] = $this->benchmark->elapsed_time('code_start', 'code_end');
-			$this->load->view('cms/table/news',$data);
-		}
+		$data 			= $this->cms_db->getListNews();
+		$data['elapsed'] = $this->benchmark->elapsed_time('code_start', 'code_end');
+		$this->load->view('cms/table/news',$data);
+	}
+	
+	function getNews()
+	{
+		$this->benchmark->mark('code_start');
+		
+		$cond = array('_id'=>$this->mongo_db->mongoID($this->input->post('newsid')));
+		
+		$data['db'] 			= $this->cms_db->getNews($cond);
+		$data['db']['_id']		= (string)$data['db']['_id'];
+		$data['elapsed'] = $this->benchmark->elapsed_time('code_start', 'code_end');
+		$data['json'] = $data;
+		$this->load->view('ajax/json',$data);
 	}
 }

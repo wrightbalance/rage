@@ -19,8 +19,18 @@ $(document).ready(function(){
 		
 	})
 	
-	
-	
+	$('a.viewnews').live('click',function(e){
+		e.preventDefault();
+		var uri = $(this).attr('href');
+		var newsid = $(this).data('aid');
+		
+		editState('create');
+		window.history.pushState(uri,uri,uri);
+		
+		viewnews(newsid)	
+	})
+
+
 	$('textarea.edit').livequery(function(){
 	$(this).tinymce({
 			// Location of TinyMCE script
@@ -46,11 +56,65 @@ $(document).ready(function(){
 	})
 })
 
+$('.cancel').live('click',function()
+{
+	$('.create_news').html('<i class="icon-pencil"></i> Create News');
+	$('.epane').show();
+	$('.vpane').hide();
+})
 
-	$('.cancel').live('click',function()
+function editState(state)
+{
+	if(state == "view")
 	{
 		$('.create_news').html('<i class="icon-pencil"></i> Create News');
 		$('.epane').show();
 		$('.vpane').hide();
+		$('.create_news').data('btnstate','create');
+	}
+	else
+	{
+		$('.create_news').html('<i class="icon-repeat"></i> Go Back');
+		$('.epane').show();
+		$('.vpane').hide();
+		$('.create_news').data('btnstate','edit');
+	}
+}
 
+function viewnews(newsid)
+{
+	$('.formnews').trigger('reset');
+	
+	$.ajax({
+		url: root + 'cms/getNews',
+		dataType: 'json',
+		type: 'post',
+		data: {newsid:newsid},
+		success: function(data)
+		{
+			try
+			{
+				var db = data.db;
+				
+				$.each(db,function(i,n){
+					$('input[name='+i+']').val(n);
+					$('select[name='+i+']').val(n);
+					$('textarea[name='+i+']').val(n);
+					
+					if(db.publish == 1)
+					{
+						$('input[name='+i+']').attr('checked','checked');
+					}
+					else
+					{
+						$('input[name='+i+']').removeAttr('checked');
+					}
+				})
+			}
+			catch(e)
+			{
+				
+			}
+		}
 	})
+}

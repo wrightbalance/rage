@@ -1,4 +1,5 @@
-<form class="form-horizontal form" method="post" action="<?=site_url('cms/post')?>">
+<form class="form-horizontal form formnews" method="post" action="<?=site_url('cms/post')?>">
+<input type="text" style="display:none" name="_id" value=""/>
 		<div class="response"></div>
         <fieldset class="fields">
           <div class="control-group">

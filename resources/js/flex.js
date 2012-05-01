@@ -135,13 +135,14 @@ function newsFlex()
 			url: root + 'cms/getListNews',
 			dataType: 'json',
 			colModel : [ 
-						 {display: 'News Title', name : 'nameid', width : 160, sortable: true}
-						,{display: 'Posted', name : 'amount', width : 150, sortable: false}
-						,{display: 'Author', name : 'card0', width : 150, sortable: false}		
-						,{display: '', name : 'card0', width : 150, sortable: false}		
+						 {display: 'News Title', name : '_id', width : 160, sortable: true}
+						,{display: 'Posted', name : 'created', width : 150, sortable: false}
+						,{display: 'Author', name : 'author', width : 150, sortable: false}		
+						,{display: 'Edit', name : '', width : 40, sortable: false}		
+						,{display: 'Delete', name : '', width : 50, sortable: false}		
 					],
-			sortname: "account_id",
-			sortorder: "asc",
+			sortname: "_id",
+			sortorder: "desc",
 			showToggleBtn: true, 
 			searchitems : [
 						{display: 'Name', name : 'nameid'},

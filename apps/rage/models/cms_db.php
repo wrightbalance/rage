@@ -68,7 +68,7 @@ class Cms_db extends CI_Model
 			}    
 		
 
-				
+		$this->mongo_db->order_by(array($sortname=>$sortorder));		
 		$results = $this->mongo_db->get('gcp_news');
 
 			
@@ -77,5 +77,19 @@ class Cms_db extends CI_Model
 		$data['total'] = $num;
 		$data['rp'] = $rp;
 		return $data;
+	}
+	
+	function getNews($cond)
+	{
+		$news = $this->mongo_db->where($cond)->get('gcp_news');
+		
+		if(count($news) > 0)
+		{
+			return $news[0];
+		}
+		else
+		{
+			return array();
+		}
 	}
 }

@@ -148,6 +148,9 @@ var jsonPROC = {
 		$('.epane').hide();
 		$('.vpane').show();
 		$('.fields',form).show();
+		$('.newsFlex').livequery(function(){
+			$(this).flexReload();
+		})
 	}
 }
 
