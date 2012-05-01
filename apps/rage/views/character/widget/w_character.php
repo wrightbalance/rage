@@ -1,6 +1,6 @@
 <div class="maincol">
 	<h3>Characters</h3>
-	
+
 	<table class="table table-bordered table-striped">
 	  <thead>
 		  <tr>

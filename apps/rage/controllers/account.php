@@ -187,6 +187,14 @@ class Account extends CI_Controller
 		$data['onlines'] = $online;
 		$data['pvptop'] = $pvptop;
 		
+		if($this->accountid)
+		{
+			$this->load->model('accounts_db');
+			$data['showlogin'] = false;
+			$user = $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
+			$data['isAdmin'] = $user['group_id'] >= 90 ? true : false;
+		}
+		
 		if(!$this->input->is_ajax_request())
 		{
 			if(!$this->accountid) redirect();
