@@ -36,7 +36,7 @@
 					<li><a href="/account/settings/changepass" class="ps">Change Password</a></li>
 					<li><a href="/account/settings/changeemail">Change E-mail</a></li>
 					<li class="divider"></li>
-					<li><a href="<?=site_url('logout')?>">Logout</a></li>
+					<li><a href="<?=site_url('account/signout')?>">Logout</a></li>
 				  </ul>
 				</div>
 				
