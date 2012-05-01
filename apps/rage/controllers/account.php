@@ -88,15 +88,18 @@ class Account extends CI_Controller
 		
 		if($this->form_validation->run() === FALSE)
 		{
+			$this->form_validation->set_error_delimiters('<li>','</li>');
+			
+			$data['message']  = "";
+			$data['message'] .= "<div class=\"res_message res_alert\">";
+			$data['message'] .= "<ul>".validation_errors()."</ul>";
+			$data['message'] .="</div>";
+			$data['message'] .= "<button class=\"btn retryform\" type=\"button\">Retry</button>";
 			$data['action'] = "retry";
-			$data['error'] = $this->form_validation->_error_array;
 			
 		}
 		else
 		{
-			$data['action'] = "forward";
-			$data['url'] = site_url();
-			
 			$db['userid'] 		= trim($this->input->post('username'));
 			$db['user_pass'] 	= trim(md5($this->input->post('password')));
 			$db['email'] 		= trim($this->input->post('email'));
@@ -115,6 +118,10 @@ class Account extends CI_Controller
 			$this->accounts_db->saveM($db);
 			
 			$this->session->set_userdata('accountid',$accountid);
+			
+			$data['action'] = "forward";
+			$data['url'] = site_url();
+			$data['message'] = "Redirecting...";
 		}
 		
 		$data['json'] = $data;

@@ -4,7 +4,7 @@
 		<li class="active"><a href="#"><i class="icon-comment"></i> Stream Feed</a></li>
 		<li><a href="#"><i class="icon-list-alt"></i> Latest News</a></li>
 		<li><a href="#"><i class="icon-calendar"></i> Events</a></li>
-		<li><a href="#"><i class="icon-tags"></i> Change Log</li>
+		<li><a href="#"><i class="icon-tags"></i> Change Log</li></a></li>
 
 	</ul>
 	

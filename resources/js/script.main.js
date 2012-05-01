@@ -2,6 +2,8 @@ var jsonPROC = {
 	retry : function(data,form)
 	{
 	
+		$('.response',form).html(data.message);
+		/*
 		$('.frow').removeClass('error');
 		$('.error_message').slideUp('fast');
 		
@@ -13,6 +15,7 @@ var jsonPROC = {
 				$('.'+i+' .error_message').slideDown('fast').html(n);
 			}
 		})
+		*/
 	},
 	error2 : function(data,form)
 	{
@@ -22,7 +25,12 @@ var jsonPROC = {
 	forward : function(data,form)
 	{
 		$(form).trigger('reset');
-		location.href=data.url;
+		$('.response',form).html('<div class="res_message">'+data.message+'</div>');
+		
+		setTimeout(function(){
+			location.href=data.url;	
+		},2000)
+		
 	}	
 	
 }
@@ -36,16 +44,19 @@ $(document).ready(function(){
 		var dt = $(form).serializeArray();
 		var action = $(form).attr('action');
 		
+		/*
 		
 		$('.loaders',form).fadeIn('fast');
 		$('button',form).attr('disabled','disabled');
 
 		if($('.fields',form).length)
 		{
-			
 			$('.fields',form).hide();
 			$('.response',form).html('<div style="margin-top: 10px; margin-left: 15px;">Processing, please wait...</div>');
 		}
+		*/
+		$('.response',form).html('<div class="res_message loader">Loading...</div>');
+		$('.fields',form).hide();
 		
 		
 		$.ajax({
@@ -82,9 +93,17 @@ $(document).ready(function(){
 	
 	$('.showform').live('click',function(e){
 		e.preventDefault();
+		$('.response').empty();
+		$('.fields').show();
 
 	})
 	
 
 	
 })
+
+$('.retryform').live('click',function(){
+	$('.fields').show();
+	$('.response').empty();
+})
+

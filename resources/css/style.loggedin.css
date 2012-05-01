@@ -1,6 +1,8 @@
 body
 {
 	color: #000;
+	position: relative;
+	padding-top: 48px;
 }
 
 .body
@@ -56,7 +58,17 @@ body
 .topBar
 {
 	height: 48px;
-	box-shadow: 1px 1px 1px #000;
+	box-shadow: 1px 1px 3px #ddd;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	background: #1E5799;
+	background: -moz-linear-gradient(left, #1E5799 0%, #4DD6E2 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#1E5799), color-stop(100%,#4DD6E2));
+	background: -webkit-linear-gradient(left, #1E5799 0%,#4DD6E2 100%);
+	background: -o-linear-gradient(left, #1E5799 0%,#4DD6E2 100%);
+	background: -ms-linear-gradient(left, #1E5799 0%,#4DD6E2 100%);
+	background: linear-gradient(left, #1E5799 0%,#4DD6E2 100%);
 }
 
 .logo
@@ -291,43 +303,7 @@ select.reset
 	margin-bottom: 0;
 }
 
-.res_message
-{
-	box-shadow: inset 0 0 3px #a8adaf;
-	padding: 8px;
-	background-color: #D7E8FD;
-	color: #719ED6;
-	text-shadow: 1px 1px 1px #fff;
-	margin-bottom: 5px;
-	font-size: 11px;
-}
 
-.loader
-{
-	background-image: url(../images/preloader_b.gif);
-	background-repeat: no-repeat;
-	background-position: 8px 6px;
-	text-indent: 24px;
-}
-
-.res_message ul
-{
-	margin: 0 !important;
-}
-
-
-.res_message ul li,
-.res_message p
-{
-	font-size: 11px;
-}
-
-.res_alert
-{
-	background: #FFEBE8;
-	color: #DD3C10;
-	box-shadow: inset 0 0 3px #DD3C10;
-}
 
 .nomargin
 {

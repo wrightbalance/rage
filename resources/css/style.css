@@ -526,3 +526,52 @@ a:hover
 	margin-top: 3px;
 	font-size: 10px;
 }
+
+.res_message
+{
+	box-shadow: inset 0 0 3px #a8adaf;
+	padding: 8px;
+	background-color: #D7E8FD;
+	color: #719ED6;
+	text-shadow: 1px 1px 1px #fff;
+	margin-bottom: 5px;
+	font-size: 11px;
+}
+
+.loader
+{
+	background-image: url(../images/preloader_b.gif);
+	background-repeat: no-repeat;
+	background-position: 8px 6px;
+	text-indent: 24px;
+}
+
+.res_message ul
+{
+	margin: 0 !important;
+	list-style-type: none;
+}
+
+
+.res_message ul li,
+.res_message p
+{
+	font-size: 11px;
+}
+
+.res_alert
+{
+	background: #FFEBE8;
+	color: #DD3C10;
+	box-shadow: inset 0 0 3px #DD3C10;
+}
+
+.mainreg
+{
+	height: 437px;
+}
+
+.mainreg .res_message
+{
+	margin-top: 15px;
+}
