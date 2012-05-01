@@ -49,4 +49,4 @@
 	
 </div>
 <?php $this->load->view('widget/rightcol')?>
-<?php $this->load->view('modal/reset')?>
+<?php $this->load->view('character/modal/reset')?>
