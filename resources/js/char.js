@@ -56,7 +56,7 @@ $(document).ready(function(e){
 			backdrop: true
 		})
 		
-		$('.message').html('You are about to reset your character. Please be sure that your character is currenty <span class="label label-warning">OFFLINE</span> <br/> Would you like to proceed?');
+		$('.message').html('You are about to reset your character. <br/>Please be sure that your character is currenty <span class="label label-warning">OFFLINE</span> <br/><br/> Would you like to proceed?');
 		
 		$('.close_nevermind').show();
 		$('.close_reset').hide();
