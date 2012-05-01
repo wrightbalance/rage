@@ -56,6 +56,7 @@ body
 .topBar
 {
 	height: 48px;
+	box-shadow: 1px 1px 1px #000;
 }
 
 .logo
@@ -326,4 +327,14 @@ select.reset
 	background: #FFEBE8;
 	color: #DD3C10;
 	box-shadow: inset 0 0 3px #DD3C10;
+}
+
+.nomargin
+{
+	margin-bottom: 0;
+}
+
+.top-action
+{
+	float: right;
 }

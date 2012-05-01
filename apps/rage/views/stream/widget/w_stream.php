@@ -1,10 +1,13 @@
 <div class="maincol">
-	<div class="btn-group">
-	  <button class="btn"><i class="icon-comment"></i> Stream Feed</button>
-	  <button class="btn"><i class="icon-list-alt"></i> News and Updates</button>
-	  <button class="btn"><i class="icon-calendar"></i> Events</button>
-	  <button class="btn"><i class="icon-tags"></i> Change Log</button>
-	</div>
+
+	<ul class="tab nav nav-tabs nomargin">
+		<li class="active"><a href="#"><i class="icon-comment"></i> Stream Feed</a></li>
+		<li><a href="#"><i class="icon-list-alt"></i> Latest News</a></li>
+		<li><a href="#"><i class="icon-calendar"></i> Events</a></li>
+		<li><a href="#"><i class="icon-tags"></i> Change Log</li>
+
+	</ul>
+	
 	<br/>
 	<div class="stream_box">
 		<form class="sform" method="post" action="<?=site_url('stream/post')?>">

@@ -21,11 +21,27 @@ $(document).ready(function(){
 			window.history.pushState(uri,uri,uri);
 			$('#loadcontent').load(uri,function(){
 				$('*').removeClass('wait');
-				
-				getOnline();
 			});
 			
 			accountFlex();
+		}
+	})
+	
+	$('a.ps').live('click',function(){
+		if(typeof history.pushState != "undefined")
+		{
+			var uri = $(this).attr('href');
+			
+			window.history.pushState(uri,uri,uri);
+			
+			$('#loadcontent').load(uri,function(){
+				$('*').removeClass('wait');
+			});
+			return false;
+		}
+		else
+		{
+			return true;
 		}
 	})
 	

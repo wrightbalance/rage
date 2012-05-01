@@ -31,8 +31,9 @@
 			<li class="divider"></li>
 			<? } ?>
 			
-			
+			<!--
 			<li><a href="/account/signout"><i class="icon-off"></i> Logout</a></li>
+			-->
         </ul>
 	</div>
 </div>
