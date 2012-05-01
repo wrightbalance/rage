@@ -66,8 +66,7 @@ class Cms_db extends CI_Model
 			$start = 0; 
 			$page = 1;
 			}    
-		
-
+			
 		$this->mongo_db->order_by(array($sortname=>$sortorder));		
 		$results = $this->mongo_db->get('gcp_news');
 
@@ -92,4 +91,10 @@ class Cms_db extends CI_Model
 			return array();
 		}
 	}
+	
+	function deleteNews($cond)
+	{
+		$this->mongo_db->where($cond)->delete('gcp_news');
+	}
+	
 }

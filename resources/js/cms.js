@@ -25,7 +25,7 @@ $(document).ready(function(){
 		var newsid = $(this).data('aid');
 		
 		editState('create');
-		window.history.pushState(uri,uri,uri);
+		//window.history.pushState(uri,uri,uri);
 		
 		viewnews(newsid)	
 	})
@@ -53,6 +53,24 @@ $(document).ready(function(){
 
 		});
 
+	})
+	
+	$('a.deletenews').live('click',function(e){
+		e.preventDefault();
+		
+		var newsid = $(this).data('aid');
+		
+		var ans = confirm('Are you sure to delete this item?');
+		
+		if(ans)
+		{
+			$.post(root+'cms/newsdelete',{newsid:newsid},function(){
+				$('.newsFlex').livequery(function(){
+					$(this).flexReload();
+				})
+			},'json')
+		}
+		
 	})
 })
 

@@ -125,4 +125,15 @@ class Cms extends CI_Controller
 		$data['json'] = $data;
 		$this->load->view('ajax/json',$data);
 	}
+	
+	function newsdelete()
+	{
+		$cond = array('_id'=>$this->mongo_db->mongoID($this->input->post('newsid')));
+		$this->cms_db->deleteNews($cond);
+		
+		$data['msg'] = "deleted";
+		$data['json'] = $data;
+		$this->load->view('ajax/json',$data);
+		
+	}
 }
