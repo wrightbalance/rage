@@ -1,8 +1,11 @@
 <div class="maincol">
-	<h3>News Stream</h3>
-	
-	
-	
+	<div class="btn-group">
+	  <button class="btn"><i class="icon-comment"></i> Stream Feed</button>
+	  <button class="btn"><i class="icon-list-alt"></i> News and Updates</button>
+	  <button class="btn"><i class="icon-calendar"></i> Events</button>
+	  <button class="btn"><i class="icon-tags"></i> Change Log</button>
+	</div>
+	<br/>
 	<div class="stream_box">
 		<form class="sform" method="post" action="<?=site_url('stream/post')?>">
 		<input type="hidden" value="<?=$details['_id']?>" name="account_id"/>
@@ -14,6 +17,7 @@
 		</div>
 		</form>
 	</div>
+	<hr/>
 	
 	<div class="streams">
 		
