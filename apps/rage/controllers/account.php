@@ -28,6 +28,7 @@ class Account extends CI_Controller
 				$account2 = $this->accounts_db->getAccount(array('userid'=>$username,'user_pass'=>md5($password)));
 				$this->session->set_userdata('accountid',$account2['account_id']);
 				
+				$data['message'] = "Redirecting...";
 				$data['action'] = "forward";
 				$data['url'] = site_url();
 			}
@@ -39,12 +40,22 @@ class Account extends CI_Controller
 					$marginright = "style='margin-right: 36px; margin-top: -4px'";
 					$button = "<button class=\"btn btn-mini showform\" style=\"float: right\">Retry</button>";
 				}
+				/*
 				$data['message'] = "";
 				$data['message'] .= "<div class=\"alert alert-error\" {$marginright}>";
 				$data['message'] .=	"{$button}";
 				$data['message'] .=	"Login failed. Please try again.";
 				$data['message'] .=	"</div>";
 				$data['action'] = "error2";
+				*/
+				
+				$data['message']  = "";
+				$data['message'] .= "<div class=\"res_message res_alert clearfix\">";
+				$data['message'] .= "Your username or password.";
+				$data['message'] .= "<button class=\"btn retryform\" style=\"float:right\" type=\"button\">Retry</button>";
+				$data['message'] .="</div>";
+				
+				$data['action'] = "retry";
 			}
 			
 			$data['json'] = $data;

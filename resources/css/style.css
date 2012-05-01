@@ -513,9 +513,10 @@ a:hover
 
 .quicklogin
 {
-	width: 320px;
+	width: 270px;
 	float: right;
 	margin-top: 22px;
+	margin-right: 50px;
 }
 
 
@@ -571,7 +572,13 @@ a:hover
 	height: 437px;
 }
 
-.mainreg .res_message
+.mainreg .res_message,
+.mainlogin .res_message
 {
 	margin-top: 15px;
+}
+
+.mainlogin
+{
+	height: 215px;
 }
