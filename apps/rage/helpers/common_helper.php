@@ -338,7 +338,7 @@ function cropResizeImage($file_type, $max_width, $max_height, $blob, $quality) {
 		}
 		else
 		{
-			redirect();
+			if(!$user) redirect();
 		}
 	}
 	

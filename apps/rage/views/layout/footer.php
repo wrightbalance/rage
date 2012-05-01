@@ -3,7 +3,7 @@
 </div>
 <div class="footer">
 	<div class="tileCenter">
-		RagnaGears &copy; 2012
+		RagnaGears &copy; 2012 ~ Brought to you by <a href="">jingcleovil</a>
 	</div>
 </div>
 

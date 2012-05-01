@@ -135,6 +135,20 @@ var jsonPROC = {
 		$('.response',form).html(data.message);
 		$(form).trigger('reset');
 	}
+	,retry2: function(data,form)
+	{
+		$('.response',form).html(data.message);
+	}
+	,reset: function(data,form)
+	{
+		$('.response',form).empty();
+		$(form).trigger('reset');
+		$('.create_news').html('<i class="icon-pencil"></i> Create News');
+		$('.create_news').data('btnstate','create');
+		$('.epane').hide();
+		$('.vpane').show();
+		$('.fields',form).show();
+	}
 }
 
 $('.form').live('submit',function(e){

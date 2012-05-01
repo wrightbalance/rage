@@ -241,14 +241,7 @@ class Account extends CI_Controller
 		
 		$details = $this->accounts_db->getAccountM(array('_id'=>(int)$this->accountid));
 		$data['details'] = $details[0];
-		
-		
-		$online = $this->char_db->getOnline();
-		$pvptop = $this->char_db->topPlayer();
-		
-		$data['onlines'] = $online;
-		$data['pvptop'] = $pvptop;
-		
+
 		$data['accounts'] = $this->accounts_db->getAccounts();
 		
 		if(!$this->input->is_ajax_request())
