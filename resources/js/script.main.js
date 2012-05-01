@@ -36,16 +36,17 @@ $(document).ready(function(){
 		var dt = $(form).serializeArray();
 		var action = $(form).attr('action');
 		
+		
 		$('.loaders',form).fadeIn('fast');
 		$('button',form).attr('disabled','disabled');
-		
+
 		if($('.fields',form).length)
 		{
 			
 			$('.fields',form).hide();
 			$('.response',form).html('<div style="margin-top: 10px; margin-left: 15px;">Processing, please wait...</div>');
-			
 		}
+		
 		
 		$.ajax({
 			url: root + action,

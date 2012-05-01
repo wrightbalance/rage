@@ -80,7 +80,7 @@ a:hover
 
 .topBar
 {
-	height: 75px;
+	height: auto;
 	/*
 	background: #dd4814; 
 	background: -moz-linear-gradient(top, #dd4814 0%, #b83a10 100%);
@@ -93,6 +93,11 @@ a:hover
 
 }
 
+.topBar form
+{
+	margin-bottom: 0;
+}
+
 .intro h1
 {
 	font-weight: normal;
@@ -101,10 +106,9 @@ a:hover
 
 .logo
 {
-	font-size: 40px;
 	font-weight: bolder;
-	height: 75px;
-	line-height: 75px;
+	height: 80px;
+	line-height: 80px;
 	float: left;
 }
 

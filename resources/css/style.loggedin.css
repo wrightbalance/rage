@@ -61,8 +61,8 @@ body
 .logo
 {
 	font-size: 15px;
-	height: 31px;
-	line-height: 31px;
+	height: 48px;
+	line-height: 48px;
 	text-shadow: 1px 1px 1px #222;
 	color: #fff;
 }
@@ -288,4 +288,20 @@ select.reset
 	width: 75px;
 	padding: 1px;
 	margin-bottom: 0;
+}
+
+.res_message
+{
+	box-shadow: inset 0 0 3px #a8adaf;
+	padding: 8px;
+	background-color: #D7E8FD;
+	color: #719ED6;
+	text-shadow: 1px 1px 1px #fff;
+	margin-bottom: 5px;
+}
+.loader
+{
+	background-image: url(../images/preloader_b.gif);
+	background-repeat: no-repeat;
+	background-position: 8px 6px;
 }

@@ -119,12 +119,16 @@ var jsonPROC = {
 $('.form').live('submit',function(e){
 	e.preventDefault();
 	
-	var form = this;
-	var dt = $(form).serializeArray();
-	var action = $(form).attr('action');
+	var form 	= this;
+	var dt 		= $(form).serializeArray();
+	var action 	= $(form).attr('action');
+	var act 	= $('input[name=action]').val();
 	
 	$('.loaders',form).fadeIn('fast');
 	$('button',form).attr('disabled','disabled');
+	
+	$('.response',form).html('<div class="res_message loader">Loading...</div>');
+	$('.fields',form).hide();
 	
 	$.ajax({
 		url: root + action,
@@ -138,13 +142,13 @@ $('.form').live('submit',function(e){
 				if(typeof data.action != "undefined") 
 				{
 					jsonPROC[data.action](data,form);
-					$('.loaders').fadeOut('fast');
+					$('.loaders',form).fadeOut('fast');
 					$('button',form).removeAttr('disabled');
 					
 				}	
 			}
 			catch(e){
-				$('.response').html('Ops cant connecto to the server. Please try again');
+				$('.response').html('<div class="res_message">Cannot update right now. Please try again after few hours.</div> <button class="btn retryform" type="button">Retry</button>');
 				$('button',form).removeAttr('disabled');
 			};
 		}
@@ -156,4 +160,9 @@ $('.form').live('submit',function(e){
 			}catch(e){};
 		}
 	})
+})
+
+$('.retryform').live('click',function(){
+	$('.fields').show();
+	$('.response').empty();
 })

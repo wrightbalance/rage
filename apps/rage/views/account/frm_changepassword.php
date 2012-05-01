@@ -1,5 +1,7 @@
-<form class="form-horizontal">
-	<fieldset>
+<form class="form-horizontal form" method="post" action="<?=site_url('account/update')?>">
+	<input type="hidden" name="action" value="update_settings"/>
+	<div class="response"></div>
+	<fieldset class="fields">
 		<div class="control-group">
 			<label class="control-label" for="old_password">Old Password</label>
 			<div class="controls">
