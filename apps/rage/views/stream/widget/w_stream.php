@@ -9,6 +9,7 @@
 	</ul>
 	
 	<br/>
+	<div class="tpane pactive">
 	<div class="stream_box">
 		<form class="sform" method="post" action="<?=site_url('stream/post')?>">
 		<input type="hidden" value="<?=$details['_id']?>" name="account_id"/>
@@ -21,6 +22,7 @@
 		</form>
 	</div>
 	<hr/>
+	
 	
 	<div class="streams">
 		
@@ -66,7 +68,11 @@
 		
 		
 	</div>
+	</div>
 	
+	<div class="tpane">Latest News</div>
+	<div class="tpane">Events</div>
+	<div class="tpane">Change Log</div>
 
 </div>
 
