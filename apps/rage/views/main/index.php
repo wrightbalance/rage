@@ -37,6 +37,7 @@
 						<li>Gold Dro rate is 100%</li>
 					</ul>
 				</div>
+				<div class="news-cuttin"></div>
 				
 			</div>
 			<hr>

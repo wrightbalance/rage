@@ -423,7 +423,6 @@ a:hover
 .icontent
 {
 	height: 380px;
-	background: url(../images/kapra_pic.png) no-repeat 402px 84px;
 }
 
 .icontent h4
@@ -581,4 +580,19 @@ a:hover
 .mainlogin
 {
 	height: 215px;
+}
+
+.news
+{
+	position: relative;
+}
+
+.news-cuttin
+{
+	width: 202px;
+	height: 246px;
+	position: absolute;
+	background: url(../images/kapra_pic.png) no-repeat;
+	bottom: -3px;
+	right: 0;
 }
