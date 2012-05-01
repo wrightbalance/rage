@@ -284,6 +284,54 @@ class Account extends CI_Controller
 	function update()
 	{
 		
+		checkSession();
+		if(!$this->input->is_ajax_request()) exit();
+		
+		if($this->form_validation->run() == FALSE)
+		{
+			$data['error'] = $this->form_validation->_error_array;
+			$this->form_validation->set_error_delimiters('<li>','</li>');
+			
+			$data['message']  = "";
+			$data['message'] .= "<div class=\"res_message res_alert\">";
+			$data['message'] .= "<ul>".validation_errors()."</ul>";
+			$data['message'] .="</div>";
+			$data['message'] .= "<button class=\"btn retryform\" type=\"button\">Retry</button>";
+			$data['action'] = "retry";
+			
+		}
+		else
+		{
+			$db['user_pass'] = trim(md5($this->input->post('new_password')));
+			$this->accounts_db->save($db,$this->accountid);
+			
+			$data['message']  = "";
+			$data['message'] .= "<div class=\"res_message\">";
+			$data['message'] .= "Password successfully updated.";
+			$data['message'] .="</div>";
+			$data['message'] .= "<button class=\"btn retryform\" type=\"button\">Okay</button>";
+			$data['action'] = "retry";
+		}
+		
+		$data['json'] = $data;
+		$this->load->view('ajax/json',$data);
+	}
+	
+	function _check_password($password)
+	{
+		$user = $this->accounts_db->getAccount(array('user_pass'=>$password,'account_id'=>$this->accountid));
+		
+		if(count($user) == 0)
+		{
+			$this->form_validation->set_message('_check_password','The password you have entered is wrong.');
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+		
+		
 	}
 	
 }

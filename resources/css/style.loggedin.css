@@ -298,10 +298,32 @@ select.reset
 	color: #719ED6;
 	text-shadow: 1px 1px 1px #fff;
 	margin-bottom: 5px;
+	font-size: 11px;
 }
+
 .loader
 {
 	background-image: url(../images/preloader_b.gif);
 	background-repeat: no-repeat;
 	background-position: 8px 6px;
+	text-indent: 24px;
+}
+
+.res_message ul
+{
+	margin: 0 !important;
+}
+
+
+.res_message ul li,
+.res_message p
+{
+	font-size: 11px;
+}
+
+.res_alert
+{
+	background: #FFEBE8;
+	color: #DD3C10;
+	box-shadow: inset 0 0 3px #DD3C10;
 }

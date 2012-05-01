@@ -112,7 +112,8 @@ $(document).ready(function(){
 var jsonPROC = {
 	retry : function(data,form)
 	{
-	
+		$('.response',form).html(data.message);
+		$(form).trigger('reset');
 	}
 }
 
@@ -129,6 +130,7 @@ $('.form').live('submit',function(e){
 	
 	$('.response',form).html('<div class="res_message loader">Loading...</div>');
 	$('.fields',form).hide();
+	
 	
 	$.ajax({
 		url: root + action,
