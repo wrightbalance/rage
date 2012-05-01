@@ -132,12 +132,13 @@ function newsFlex()
 			{
 				return data;
 			},
-			url: root + 'characters/getStorage',
+			url: root + 'cms/getListNews',
 			dataType: 'json',
 			colModel : [ 
 						 {display: 'News Title', name : 'nameid', width : 160, sortable: true}
-						,{display: 'Posted', name : 'amount', width : 50, sortable: false}
-						,{display: 'Author', name : 'card0', width : 50, sortable: false}		
+						,{display: 'Posted', name : 'amount', width : 150, sortable: false}
+						,{display: 'Author', name : 'card0', width : 150, sortable: false}		
+						,{display: '', name : 'card0', width : 150, sortable: false}		
 					],
 			sortname: "account_id",
 			sortorder: "asc",

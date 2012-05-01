@@ -85,7 +85,10 @@ class Cms extends CI_Controller
 			$db['news_body'] 	= trim($this->input->post('news_body'));
 			$db['publish'] 		= $this->input->post('publish');
 			$db['category'] 	= $this->input->post('category');
+			$db['friendly_url'] = url_friendly($db['news_title']);
 			$db['created']		= date('Y-m-d H:i:s');
+			$db['modified']		= "0000-00-00 00:00:00";
+			$db['author']		= $this->accountid;
 			
 			if($newsid)
 				$db['modified'] = date('Y-m-d H:i:s');
@@ -99,5 +102,17 @@ class Cms extends CI_Controller
 		
 		$data['json'] = $data;
 		$this->load->view('ajax/json',$data);
+	}
+	
+	function getListNews()
+	{
+		$this->benchmark->mark('code_start');
+		
+		if($this->accountid)
+		{
+			$data 			= $this->cms_db->getListNews();
+			$data['elapsed'] = $this->benchmark->elapsed_time('code_start', 'code_end');
+			$this->load->view('cms/table/news',$data);
+		}
 	}
 }
