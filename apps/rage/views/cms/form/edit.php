@@ -30,7 +30,7 @@
             <label class="control-label" for="publish">Publish?</label>
             <div class="controls">
               <label class="checkbox">
-                <input type="checkbox" id="publish" name="publish" value="1">
+                <input type="checkbox" id="publish" name="publish" value="1" checked="checked">
                 Check if you want to publish this post.
               </label>
             </div>
