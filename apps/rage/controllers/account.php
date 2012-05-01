@@ -177,6 +177,9 @@ class Account extends CI_Controller
 		$details = $this->accounts_db->getAccountM(array('_id'=>(int)$this->accountid));
 		$data['details'] = $details[0];
 		
+		$account = $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
+		$data['account'] = $account;
+		
 		$this->load->model('char_db');
 		$online = $this->char_db->getOnline();
 		$pvptop = $this->char_db->topPlayer();

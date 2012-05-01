@@ -6,7 +6,7 @@
 		<button class="btn">Featured NPCs</button>
 		<button class="btn">FAQs</button>
 	</div>
-	
+	<hr/>
 	<div class="tpane pactive">
 		<ul>
 			<li>@autoloot</li>

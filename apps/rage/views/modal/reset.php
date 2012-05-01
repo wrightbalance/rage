@@ -1,4 +1,4 @@
-<div class="modal" id="reset">
+<div class="modal" id="reset" style="margin-top: -20%">
   <div class="modal-header">
     <a class="close" data-dismiss="modal">×</a>
     <h3>Reset Character</h3>
