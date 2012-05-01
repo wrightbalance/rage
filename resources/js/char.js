@@ -56,7 +56,7 @@ $(document).ready(function(e){
 			backdrop: true
 		})
 		
-		$('.message').html('You are about to reset your character. Please be sure that your character is currenty <b>offline.</b>');
+		$('.message').html('You are about to reset your character. Please be sure that your character is currenty <span class="label label-warning">OFFLINE</span> <br/> Would you like to proceed?');
 		
 		$('.close_nevermind').show();
 		$('.close_reset').hide();
@@ -72,6 +72,8 @@ $(document).ready(function(e){
 		var char_id = $('input[name=char_id]').val();
 		var action = $('input[name=action]').val();
 		
+		$('.message').html('<div class="res_message loader">Processing. please wait...</div>');
+		
 		$.ajax({
 			url: root + 'characters/reset',
 			dataType: 'json',
@@ -82,7 +84,7 @@ $(document).ready(function(e){
 				try
 				{
 					//$('#reset').modal('hide');
-					$('.message').html('').html(data.message);
+					$('.message').html('').html('<div class="res_message">'+data.message+'</div>');
 					$('.close_nevermind').hide();
 					$('.close_reset').show();
 					$('.close_confirm').hide();
