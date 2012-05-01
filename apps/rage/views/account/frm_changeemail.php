@@ -1,9 +1,11 @@
-<form class="form-horizontal">
-	<fieldset>
+<form class="form-horizontal form" action="<?=site_url('account/update')?>">
+<input type="hidden" value="changeemail" name="action"/>
+<div class="response"></div>
+	<fieldset class="fields">
 		<div class="control-group">
 			<label class="control-label" for="password">Password</label>
 			<div class="controls">
-			  <input type="text" class="input-xlarge" id="password" name="password">
+			  <input type="password" class="input-xlarge" id="password" name="password">
 			</div>
 		</div>
 		

@@ -302,14 +302,31 @@ class Account extends CI_Controller
 		}
 		else
 		{
-			$db['user_pass'] = trim(md5($this->input->post('new_password')));
-			$this->accounts_db->save($db,$this->accountid);
+			$action = $this->input->post('action');
 			
-			$data['message']  = "";
-			$data['message'] .= "<div class=\"res_message\">";
-			$data['message'] .= "Password successfully updated.";
-			$data['message'] .="</div>";
-			$data['message'] .= "<button class=\"btn retryform\" type=\"button\">Okay</button>";
+			switch($action)
+			{
+				case 'changepass':
+					$db['user_pass'] = trim(md5($this->input->post('new_password')));
+					$this->accounts_db->save($db,$this->accountid);
+					
+					$data['message']  = "";
+					$data['message'] .= "<div class=\"res_message\">";
+					$data['message'] .= "Password successfully updated.";
+					$data['message'] .="</div>";
+					$data['message'] .= "<button class=\"btn retryform\" type=\"button\">Okay</button>";
+					break;
+				case 'changeemail':
+					$db['email'] = trim($this->input->post('new_email'));
+					$this->accounts_db->save($db,$this->accountid);
+					
+					$data['message']  = "";
+					$data['message'] .= "<div class=\"res_message\">";
+					$data['message'] .= "E-mail Address successfully updated.";
+					$data['message'] .="</div>";
+					$data['message'] .= "<button class=\"btn retryform\" type=\"button\">Okay</button>";
+					break;
+			}
 			$data['action'] = "retry";
 		}
 		
@@ -332,6 +349,35 @@ class Account extends CI_Controller
 		}
 		
 		
+	}
+	
+	function _check_email($email)
+	{
+		$user = $this->accounts_db->getAccount(array('email'=>$email,'account_id'=>$this->accountid));
+		
+		if(count($user) == 0)
+		{
+			$this->form_validation->set_message('_check_email','The email you have entered is wrong.');
+			return false;
+		}
+		else
+		{
+			return true;
+		}	
+	}
+	function _check_email_exists($email)
+	{
+		$user = $this->accounts_db->getAccount(array('email'=>$email));
+		
+		if(count($user) > 0)
+		{
+			$this->form_validation->set_message('_check_email_exists','%s already taken.');
+			return false;
+		}
+		else
+		{
+			return true;
+		}	
 	}
 	
 }
