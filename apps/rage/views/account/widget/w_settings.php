@@ -1,11 +1,17 @@
+<?php if(!isset($settings)) { 
+	$settings = "";	
+}?>
+
 <div class="maincol">
 	<h3>Account Settings</h3>
 	<ul class="tab nav nav-tabs">
-		<li class="active"><a href="#">Account Info</a></li>
-		<li><a href="#">Change Password</a></li>
-		<li><a href="#">Change Email</a></li>
+		<li class="<?=empty($settings) ? 'active' : ''?>"><a href="/account/settings" data-setup="plane" class="ps">Account Info</a></li>
+		<li class="<?=$settings == "changepass" ? 'active' : ''?>"><a href="/account/settings/changepass" data-setup="plane" class="ps">Change Password</a></li>
+		<li class="<?=$settings == "changeemail" ? 'active' : ''?>"><a href="/account/settings/changeemail" data-setup="plane" class="ps">Change Email</a></li>
 		<li style="display: none"><a href="#">Lock Account</a></li>
 	</ul>
+	
+
 	<div class="tpane pactive">
 			<table class="table table-bordered table-striped">
 				<tbody>

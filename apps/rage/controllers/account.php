@@ -166,7 +166,7 @@ class Account extends CI_Controller
 		}
 	}
 	
-	function settings()
+	function settings($settings=false)
 	{
 		$this->benchmark->mark('code_start');
 
@@ -186,6 +186,8 @@ class Account extends CI_Controller
 		
 		$data['onlines'] = $online;
 		$data['pvptop'] = $pvptop;
+		
+		if($settings) $data['settings'] = $settings;
 		
 		if($this->accountid)
 		{
