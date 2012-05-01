@@ -188,3 +188,11 @@ $('.retryform').live('click',function(){
 	$('.fields').show();
 	$('.response').empty();
 })
+
+$(window).bind("popstate", function(evt) {
+	var state = evt.originalEvent.state;
+	if(state)
+	{
+		location.href=state;
+	}
+});
