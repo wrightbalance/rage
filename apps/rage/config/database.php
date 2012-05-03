@@ -47,7 +47,7 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-if(strpos(config_item('base_url'),'jingcleovil.com'))
+if(strpos(config_item('base_url'),'ragnagears.com'))
 	$active_group = 'live';
 
 $db['default']['hostname'] = 'localhost';
@@ -67,8 +67,8 @@ $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
 $db['live']['hostname'] = 'localhost';
-$db['live']['username'] = 'jingcleo_web';
-$db['live']['password'] = 'pancit1983';
+$db['live']['username'] = 'rage_ro';
+$db['live']['password'] = 'N$47-$DgJo[T';
 $db['live']['database'] = 'jingcleo_ragnagear';
 $db['live']['dbdriver'] = 'mysql';
 $db['live']['dbprefix'] = '';

@@ -1,0 +1,20 @@
++===================================+
+| New Account Info                  |
++===================================+
+| Domain: ragnagears.com
+| Ip: 173.224.215.180 (n)
+| HasCgi: y
+| UserName: rage
+| PassWord: pancit1983
+| CpanelMod: x3
+| HomeRoot: /home
+| Quota: 0 Meg
+| NameServer1: ns3.sportsformulas.com
+| NameServer2: ns4.sportsformulas.com
+| NameServer3: 
+| NameServer4: 
+| Contact Email: admin@ragnagears.com, 
+| Package: default
+| Feature List: default
+| Language: en
++===================================+
