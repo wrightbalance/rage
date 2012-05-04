@@ -1,6 +1,10 @@
 		</div>
 	</div>
 </div>
+
+
+<?php $this->load->view('modal/loader')?>
+
 <div class="footer">
 	<div class="tileCenter">
 		RagnaGears &copy; 2012 ~ Brought to you by <a href="">jingcleovil</a>

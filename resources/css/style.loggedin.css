@@ -352,3 +352,31 @@ select.reset
 {
 	position: relative;
 }
+
+.char_image
+{
+	width: 92px;
+	height: 120px;
+	background: whiteSmoke;
+	border: 1px solid #ddd;
+	float: left;
+	overflow: hidden;
+}
+
+.char_image img
+{
+	margin: -65px -76px;
+}
+
+.char_stats
+{
+	width: 200px;
+	float: left;
+	margin-left: 10px;
+}
+
+#modal_loader
+{
+	margin-top: -30%;
+}
+

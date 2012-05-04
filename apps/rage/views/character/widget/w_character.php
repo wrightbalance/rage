@@ -17,19 +17,10 @@
 		  <?php foreach($characters as $char){ ?>
 			  <tr>
 				<td style="text-align: center"><?=$char['char_num']?></td>
-				<td><?=$char['name']?></td>
+				<td><a href="#" class="view_char" data-char_id="<?=$char['char_id']?>"><?=$char['name']?></a></td>
 				<td><?=jobClass($char['class'])?></td>
 				<td>150</td>
 				<td>
-					<!--
-					<select class="reset" name="reset" data-charid="<?=$char['char_id']?>">
-						<option value="">-Reset</option>
-						<option value="1">Map</option>
-						<option value="2">Equipment</option>
-						<option value="3">Hair</option>
-						<option value="4">All</option>
-					</select>
-					-->
 					<div class="btn-group">
 					  <button class="btn dropdown-toggle" data-toggle="dropdown">Reset <span class="caret"></span></button>
 					  <ul class="dropdown-menu char_reset">

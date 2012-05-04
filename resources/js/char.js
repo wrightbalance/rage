@@ -1,47 +1,5 @@
-function getOnline()
-{
-	/*
-	$.get(root +'characters/getOnline',function(e){
-		var db = e.db;
-		var html = "";
-		
-		$('.onlinechars').html('<li>Loading...</li>');
-		
-		$.each(db,function(i,n){
-			html  = "";
-			html += "<li><a href=\"#\"><i class=\"icon-ok\"></i> "+n.name+"</a></li>";
-			$('.onlinechars').prepend(html);
-		})
-
-	},'json');*/
-}
-
 $(document).ready(function(e){
-	/*
-	$('select[name=reset]').live('change',function(){
-		var action = $(this).val();
-		var char_id = $(this).data('charid');
-		
-		if(action == "") return false;
-		
-		$('input[name=char_id]').val('');
-		$('input[name=action]').val('');
-		
-		$('#reset').modal({
-			show: true,
-			backdrop: true
-		})
-		
-		$('.message').html('You are about to reset your character. Please be sure that your character is currenty <b>offline.</b>');
-		
-		$('.close_nevermind').show();
-		$('.close_reset').hide();
-		$('.close_confirm').show();
-		
-		$('input[name=char_id]').val(char_id);
-		$('input[name=action]').val(action);
-	})
-	*/
+
 	
 	$('.char_reset a').live('click',function(e){
 		e.preventDefault();
@@ -96,5 +54,45 @@ $(document).ready(function(e){
 				}
 			}
 		})
+	})
+	
+	$('a.view_char').live('click',function(e){
+		e.preventDefault();
+		var char_id = $(this).data('char_id');
+		
+		
+		
+		$('#modal_loader').modal({
+			show: true,
+			backdrop: true
+		});
+		
+		$('#modal_loader').html('<div class="modal_body"><div class="res_message loader">Loading character...</div></div>').css('addPadding10');
+		
+		$.post(root+'characters/view_char',{char_id:char_id},function(data){
+			$('#modal_loader').html(data);
+		},'html');
+		
+		$('.delete_char').data('delstate','showform');
+		$('.char_delete_confirm').hide();
+		$('.char_stats,.char_image').show();
+	})
+	
+	$('.delete_char').live('click',function(e){
+		e.preventDefault();
+
+		$('.char_delete_confirm').fadeIn('fast',function(){
+			$('.delete_char').data('delstate','delete');
+		});
+		$('.char_stats,.char_image').hide();
+		
+		$(this).text('Yes delete it now');
+		
+		
+		if($(this).data('delstate') == "delete")
+		{
+			$('.deletechar').submit();
+		}
+		
 	})
 })

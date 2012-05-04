@@ -10,6 +10,9 @@ class Characters extends CI_Controller
 		
 		$this->accountid = $this->session->userdata('accountid');
 		$this->load->model('accounts_db');
+		$this->load->model('char_db');
+		
+		checkSession();
 	}
 	
 	function index()
@@ -26,7 +29,6 @@ class Characters extends CI_Controller
 		$details = $this->accounts_db->getAccountM(array('_id'=>(int)$this->accountid));
 		$data['details'] = $details[0];
 		
-		$this->load->model('char_db');
 		$online = $this->char_db->getOnline();
 		$pvptop = $this->char_db->topPlayer();
 		
@@ -192,5 +194,46 @@ class Characters extends CI_Controller
 			$data['elapsed'] = $this->benchmark->elapsed_time('code_start', 'code_end');
 			$this->load->view('account/table/storage',$data);
 		}
+	}
+	
+	function view_char()
+	{
+		$char_id = $this->input->post('char_id');
+		
+		$data['char'] = $this->char_db->getChar(array('char_id'=>$char_id,'account_id'=>$this->accountid),true);
+		
+		$data['user'] = $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
+		
+		$this->load->view('character/modal/view_s',$data);
+		$this->minify->html();
+	}
+	
+	function delete()
+	{
+		$password = trim(md5($this->input->post('user_pass')));
+		
+		$check_password = $this->accounts_db->getAccount(array('account_id'=>$this->accountid,'user_pass'=>$password));
+		
+		if(!$check_password)
+		{
+			$data['message']  = "";
+			$data['message'] .= "<div class=\"res_message res_alert clearfix\">";
+			$data['message'] .= "Cannot delete character. Password is incorrect.";
+			$data['message'] .= "<button class=\"btn retryform\" style=\"float:right\" type=\"button\">Retry</button>";
+			$data['message'] .="</div>";
+			$data['action'] = "retry";
+		}
+		else
+		{
+			$data['message']  = "";
+			$data['message'] .= "<div class=\"res_message clearfix\">";
+			$data['message'] .= "Your Character has been deleted.";
+			$data['message'] .="</div>";
+			
+			$data['action'] = "retry";
+		}
+		
+		$data['json'] = $data;
+		$this->load->view('ajax/json',$data);
 	}
 }

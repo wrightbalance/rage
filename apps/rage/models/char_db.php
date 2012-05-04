@@ -20,11 +20,14 @@ class Char_db extends CI_Model
 		return $result;
 	}
 	
-	function getChar($cond)
+	function getChar($cond,$single=false)
 	{
 		$query = $this->db->where($cond)->get('char');
 		
-		$result = $query->result_array();
+		if($single)
+			$result = $query->row_array();
+		else
+			$result = $query->result_array();
 		
 		return $result;
 	}

@@ -127,6 +127,8 @@ $(document).ready(function(){
 		
 	});
 	
+	
+	
 })
 
 var jsonPROC = {
@@ -199,8 +201,13 @@ $('.form').live('submit',function(e){
 			}catch(e){};
 		}
 	})
+	
+	
+
 })
 
+
+	
 $('.retryform').live('click',function(){
 	$('.fields').show();
 	$('.response').empty();
