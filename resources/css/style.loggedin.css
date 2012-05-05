@@ -380,3 +380,32 @@ select.reset
 	margin-top: -30%;
 }
 
+.nrow
+{
+	height: 22px;
+	line-height: 15px;
+	padding-bottom: 5px;
+	border-bottom: 1px dotted #ddd;
+}
+
+.nrow .label
+{
+	line-height: 0;
+	margin-right: 8px;
+}
+
+.nrow a
+{
+	display: inline-block;
+	height: 18px;
+	line-height: 18px;
+}
+
+.nrow span.ndate
+{
+	float: right;
+	font-size: 10px;
+	height: 22px;
+	line-height: 22px;
+	color: #222;
+}

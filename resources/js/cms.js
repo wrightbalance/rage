@@ -72,6 +72,44 @@ $(document).ready(function(){
 		}
 		
 	})
+	
+	$('.get_news').live('click',function(e){
+		e.preventDefault();
+		
+		$('#news_loader').html('');
+		
+		$.ajax({
+			url: root + 'cms/getNewsList',
+			dataType: 'json',
+			type: 'get',
+			success: function(data)
+			{
+				try
+				{
+					var html = "";
+					var db = data.news;
+					
+					$.each(db,function(i,n){
+						html  = "";
+						html += "<div class=\"nrow\">";
+						html +=		"<span class=\"label label-info\">"+n.category+"</span>"; 
+						html +=		"		<a href=\"\">"+n.news_title+"</a>"; 
+						html +=		"		<span class=\"ndate\">"+n.created+"</span>";
+						html +=		"	</div>";
+						
+						$('#news_loader').prepend(html);
+					})
+					
+				}
+				catch(e)
+				{
+					console.log(e);
+				}
+			}
+		})
+	})
+	
+	
 })
 
 $('.cancel').live('click',function()

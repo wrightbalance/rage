@@ -139,4 +139,14 @@ class Cms extends CI_Controller
 		$this->load->view('ajax/json',$data);
 		
 	}
+	
+	function getNewsList()
+	{
+		$news = $this->cms_db->getNewsList();
+		
+		$data['news'] = $news;
+		
+		$data['json'] = $data;
+		$this->load->view('ajax/json',$data);
+	}
 }

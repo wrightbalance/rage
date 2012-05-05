@@ -92,6 +92,20 @@ class Cms_db extends CI_Model
 		}
 	}
 	
+	function getNewsList()
+	{
+		$news = $this->mongo_db->get('gcp_news');
+		
+		if(count($news) > 0)
+		{
+			return $news;
+		}
+		else
+		{
+			return array();
+		}
+	}
+	
 	function getPatcher($cond)
 	{
 		$news = $this->mongo_db->where($cond)->get('gcp_news');
