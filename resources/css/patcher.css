@@ -6,7 +6,7 @@ body {
 	color: #ffffff;
 	margin: 0px;
 	border: 0px;
-	background: transparent url(bg.jpg) no-repeat;
+	background: transparent url(../images/bg.jpg) no-repeat;
 	background-attachment: fixed;
 }
 
