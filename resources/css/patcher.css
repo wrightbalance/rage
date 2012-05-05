@@ -28,7 +28,7 @@ body
 
 .body
 {
-	width: 290px;
+	width: 280px;
 }
 
 .body h2
@@ -64,7 +64,7 @@ body
 
 .nbody .author
 {
-	width: 100%;
+	width: 280px;
 	text-align: right;
 	display: block;
 	margin-top: 10px;
