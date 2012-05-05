@@ -1,23 +1,13 @@
-@media screen {
-	@font-face {
-	  font-family: 'Open Sans';
-	  font-style: normal;
-	  font-weight: 400;
-	  src: local('Open Sans'), local('OpenSans'), url('opensans.woff') format('woff');
-	}
-}
 
-body
-{
-	font-family: 'Open Sans', sans-serif;
-	font-size: 12px;
-	background-image: url(../images/bg.jpg);
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	color: #fff;
-	padding: 5px;
+body {
+	font-size: 11px;
+	font-family: Tahoma, Arial;
+	padding: 10px;
+	color: #ffffff;
 	margin: 0px;
 	border: 0px;
+	background: transparent url(bg.jpg) no-repeat;
+	background-attachment: fixed;
 }
 
 .body h2
@@ -48,7 +38,7 @@ body
 
 .nbody
 {
-	padding: 15px 0;
+	margin: 10px;
 }
 
 .nbody .author
