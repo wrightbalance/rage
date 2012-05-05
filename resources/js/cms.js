@@ -77,6 +77,7 @@ $(document).ready(function(){
 		e.preventDefault();
 		
 		$('#news_loader').html('');
+		$('*').addClass('wait');
 		
 		$.ajax({
 			url: root + 'cms/getNewsList',
@@ -99,6 +100,8 @@ $(document).ready(function(){
 						
 						$('#news_loader').prepend(html);
 					})
+					
+					$('*').removeClass('wait');
 					
 				}
 				catch(e)
