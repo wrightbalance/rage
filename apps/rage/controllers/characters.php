@@ -225,14 +225,33 @@ class Characters extends CI_Controller
 		}
 		else
 		{
-			$data['message']  = "";
-			$data['message'] .= "<div class=\"res_message clearfix\">";
-			$data['message'] .= "Your Character has been deleted.";
-			$data['message'] .="</div>";
+			$check_online = $this->char_db->getChar(array('account_id'=>$this->accountid,'char_id'=>$char_id),true);
 			
-			$this->char_db->delete(array('account_id'=>$this->accountid,'char_id'=>$char_id));
+			if($check_online['online'] > 0)
+			{
+				$data['message']  = "";
+				$data['message'] .= "<div class=\"res_message clearfix res_alert\">";
+				$data['message'] .= "Can't delete ".$check_online['name']." .Character is currently online. Please logout before doing so.";
+				$data['message'] .= "<button class=\"btn retryform\" style=\"float:right\" type=\"button\">Retry</button>";
+				$data['message'] .="</div>";
+				$data['action'] = "retry";
+			} 
+			else 
+			{
+				
+				$data['message']  = "";
+				$data['message'] .= "<div class=\"res_message clearfix\">";
+				$data['message'] .= "Your Character has been deleted.";
+				$data['message'] .="</div>";
+				$data['action'] = "done";
+				
+				$this->char_db->delete(array('account_id'=>$this->accountid,'char_id'=>$char_id));
+				
+				$data['char_id'] = $char_id;
+				
+			}  
 			
-			$data['char_id'] = $char_id;
+			
 		}
 		
 		$data['json'] = $data;

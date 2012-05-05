@@ -90,10 +90,11 @@ $(document).ready(function(e){
 		$('.char_stats,.char_image').hide();
 		
 		$(this).text('Yes delete it now');
-		
+	
 
 		if($(this).data('delstate') == "delete")
 		{
+				$('.fields',form).hide();
 			$('.response',form).html('<div class="res_message loader">Loading...</div>');
 			
 			$.ajax({
@@ -106,11 +107,19 @@ $(document).ready(function(e){
 					try
 					{
 						$('.response',form).html(data.message);
-	
-						if($('#charid'+data.char_id).length)
+						
+						if(data.action == "done")
 						{
-							$('#charid'+data.char_id).remove();
-							$('#modal_loader').modal('hide');
+							if($('#charid'+data.char_id).length)
+							{
+								$('#charid'+data.char_id).remove();
+								$('#modal_loader').modal('hide');
+							}
+						}
+						else
+						{
+							$('.response',form).html(data.message);
+				
 						}
 					}
 					catch(e)
