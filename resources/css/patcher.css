@@ -24,6 +24,8 @@ body
 	background-attachment: fixed;
 	color: #fff;
 	padding: 5px;
+	margin: 0px;
+	border: 0px;
 }
 
 .body h2
