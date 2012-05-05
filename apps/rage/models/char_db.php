@@ -154,4 +154,11 @@ class Char_db extends CI_Model
 		$data['rp'] = $rp;
 		return $data;
 	}
+	
+	function delete($cond)
+	{
+		$this->db->where($cond)->delete('char');
+		$this->db->where('char_id',$cond['char_id'])->delete('inventory');
+		$this->db->where('char_id',$cond['char_id'])->delete('cart_inventory');
+	}
 }

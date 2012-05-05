@@ -80,6 +80,9 @@ $(document).ready(function(e){
 	
 	$('.delete_char').live('click',function(e){
 		e.preventDefault();
+		var form = $('.deletechar');
+		var action = $(form).attr('action');
+		var dt = $(form).serializeArray();
 
 		$('.char_delete_confirm').fadeIn('fast',function(){
 			$('.delete_char').data('delstate','delete');
@@ -88,10 +91,40 @@ $(document).ready(function(e){
 		
 		$(this).text('Yes delete it now');
 		
-		
+
 		if($(this).data('delstate') == "delete")
 		{
-			$('.deletechar').submit();
+			$('.response',form).html('<div class="res_message loader">Loading...</div>');
+			
+			$.ajax({
+				url: action,
+				dataType: 'json',
+				type: 'POST',
+				data: dt,
+				success: function(data)
+				{
+					try
+					{
+						$('.response',form).html(data.message);
+	
+						if($('#charid'+data.char_id).length)
+						{
+							$('#charid'+data.char_id).remove();
+							$('#modal_loader').modal('hide');
+						}
+					}
+					catch(e)
+					{
+						$('.response').html('<div class="res_message">Cannot update right now. Please try again after few hours.</div> <button class="btn retryform" type="button">Retry</button>');
+						console.log(e);
+					}
+				}
+				,error: function(xhr)
+				{
+					$('.response').html('<div class="res_message">Cannot update right now. Please try again after few hours.</div> <button class="btn retryform" type="button">Retry</button>');
+					console.log(xhr);
+				}
+			})
 		}
 		
 	})

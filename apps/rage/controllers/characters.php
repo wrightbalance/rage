@@ -211,6 +211,7 @@ class Characters extends CI_Controller
 	function delete()
 	{
 		$password = trim(md5($this->input->post('user_pass')));
+		$char_id = $this->input->post('char_id');
 		
 		$check_password = $this->accounts_db->getAccount(array('account_id'=>$this->accountid,'user_pass'=>$password));
 		
@@ -221,7 +222,6 @@ class Characters extends CI_Controller
 			$data['message'] .= "Cannot delete character. Password is incorrect.";
 			$data['message'] .= "<button class=\"btn retryform\" style=\"float:right\" type=\"button\">Retry</button>";
 			$data['message'] .="</div>";
-			$data['action'] = "retry";
 		}
 		else
 		{
@@ -230,7 +230,9 @@ class Characters extends CI_Controller
 			$data['message'] .= "Your Character has been deleted.";
 			$data['message'] .="</div>";
 			
-			$data['action'] = "retry";
+			$this->char_db->delete(array('account_id'=>$this->accountid,'char_id'=>$char_id));
+			
+			$data['char_id'] = $char_id;
 		}
 		
 		$data['json'] = $data;

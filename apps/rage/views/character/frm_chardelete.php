@@ -2,7 +2,7 @@
 
 
 <form class="form-horizontal form deletechar" method="post" action="<?=site_url('characters/delete')?>">
-	<input type="hidden" name="action" value="changepass"/>
+	<input type="hidden" name="char_id" value="<?=$char['char_id']?>"/>
 	<div class="response"></div>
 	<fieldset class="fields">
 		<p><span class="label label-warning">Warning</span> Once the character has been deleted you will no longer recover it.</p>	

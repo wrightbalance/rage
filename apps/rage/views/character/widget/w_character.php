@@ -15,7 +15,7 @@
 		
 		<?php if(isset($characters) && $characters){ ?> 	
 		  <?php foreach($characters as $char){ ?>
-			  <tr>
+			  <tr id="charid<?=$char['char_id']?>">
 				<td style="text-align: center"><?=$char['char_num']?></td>
 				<td><a href="#" class="view_char" data-char_id="<?=$char['char_id']?>"><?=$char['name']?></a></td>
 				<td><?=jobClass($char['class'])?></td>
