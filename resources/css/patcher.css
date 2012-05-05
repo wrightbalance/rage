@@ -56,3 +56,16 @@ body
 	margin: 0;
 	display: block;
 }
+
+.nbody
+{
+	padding: 15px 0;
+}
+
+.nbody .author
+{
+	width: 100%;
+	text-align: right;
+	display: block;
+	margin-top: 10px;
+}

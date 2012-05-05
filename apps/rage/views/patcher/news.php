@@ -8,10 +8,12 @@
 		<div class="newsrow">
 			<h2><?=$n['news_title']?></h2>
 			<span class="news_date"><?=date('M d, Y',strtotime($n['created']))?></span>
+			<div class="nbody">
 			<?=$n['news_body']?>
 			<span class="author">
-				<?=$n['author']?>
+				~ <?=$n['author']?>
 			</span>
+			</div>
 		</div>
 		<? }  ?>
 	<? } else {?>
