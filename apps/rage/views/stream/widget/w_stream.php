@@ -74,8 +74,12 @@
 		
 	
 	</div>
-	<div class="tpane">Events</div>
-	<div class="tpane">Change Log</div>
+	<div class="tpane">
+		No Event
+	</div>
+	<div class="tpane">
+		No Change Log
+	</div>
 
 </div>
 

@@ -79,6 +79,8 @@ $(document).ready(function(){
 		$('#news_loader').html('');
 		$('*').addClass('wait');
 		
+		//if($(this).parent().hasClass('active')) return false;
+		
 		$.ajax({
 			url: root + 'cms/getNewsList',
 			dataType: 'json',
