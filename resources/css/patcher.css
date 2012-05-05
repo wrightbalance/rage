@@ -50,3 +50,8 @@ body
 	margin-bottom: 10px;
 	border-bottom: 1px dotted #ddd;
 }
+
+.newsrow p
+{
+	margin: 0;
+}
