@@ -60,7 +60,7 @@ $(document).ready(function(){
 		
 		
 		$.ajax({
-			url: root + action,
+			url: action,
 			data: dt,
 			type: 'POST',
 			dataType: 'json',

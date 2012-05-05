@@ -189,7 +189,7 @@ $('.form').live('submit',function(e){
 				}	
 			}
 			catch(e){
-				$('.response').html('<div class="res_message">Cannot update right now. Please try again after few hours.</div> <button class="btn retryform" type="button">Retry</button>');
+				$('.response').html('<div class="res_message">Oops! Something went wrong. Please try again.</div> <button class="btn retryform" type="button">Retry</button>');
 				$('button',form).removeAttr('disabled');
 				console.log(e);
 			};
