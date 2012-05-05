@@ -1,0 +1,52 @@
+@media screen {
+	@font-face {
+	  font-family: 'Open Sans';
+	  font-style: normal;
+	  font-weight: 400;
+	  src: local('Open Sans'), local('OpenSans'), url('opensans.woff') format('woff');
+	}
+}
+
+html,
+body
+{
+	margin: 0;
+	width: 100%;
+	height: 100%;
+}
+
+body
+{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12px;
+	background-image: url(../images/bg.jpg);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	color: #fff;
+	padding: 5px;
+}
+
+.body
+{
+	width: 290px;
+}
+
+.body h2
+{
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
+}
+
+.body span.news_date
+{
+	margin-bottom: 10px;
+	font-size: 10px;
+}
+
+.newsrow
+{
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+	border-bottom: 1px dotted #ddd;
+}

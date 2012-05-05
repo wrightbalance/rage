@@ -83,12 +83,13 @@ class Cms extends CI_Controller
 			$newsid 			= (string)$this->input->post('_id');
 			$db['news_title'] 	= trim($this->input->post('news_title'));
 			$db['news_body'] 	= trim($this->input->post('news_body'));
-			$db['publish'] 		= $this->input->post('publish');
+			$db['publish'] 		= (int)$this->input->post('publish');
 			$db['category'] 	= $this->input->post('category');
 			$db['friendly_url'] = url_friendly($db['news_title']);
 			$db['created']		= date('Y-m-d H:i:s');
 			$db['modified']		= "0000-00-00 00:00:00";
 			$db['author']		= $this->accountid;
+			$db['patcher']		= (int)$this->input->post('patcher');
 			
 			if($newsid)
 				$db['modified'] = date('Y-m-d H:i:s');
@@ -119,7 +120,9 @@ class Cms extends CI_Controller
 		
 		$cond = array('_id'=>$this->mongo_db->mongoID($this->input->post('newsid')));
 		
-		$data['db'] 			= $this->cms_db->getNews($cond);
+		$news = $this->cms_db->getNews($cond);
+		
+		$data['db'] 			= $news[0];
 		$data['db']['_id']		= (string)$data['db']['_id'];
 		$data['elapsed'] = $this->benchmark->elapsed_time('code_start', 'code_end');
 		$data['json'] = $data;

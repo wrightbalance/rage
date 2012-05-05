@@ -84,7 +84,7 @@ class Cms_db extends CI_Model
 		
 		if(count($news) > 0)
 		{
-			return $news[0];
+			return $news;
 		}
 		else
 		{

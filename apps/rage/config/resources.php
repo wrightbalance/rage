@@ -12,6 +12,10 @@ $config['css']['default'] = array(
      array('path'=>'css/','file'=>'bootstrap.css')
     ,array('path'=>'css/','file'=>'style.css')
     );
+    
+$config['css']['patcher'] = array(
+    array('path'=>'css/','file'=>'patcher.css')
+    );
  
 $config['css']['loggedin'] = array(
      array('path'=>'css/','file'=>'bootstrap.css')
@@ -25,6 +29,7 @@ $config['js']['default'] = array(
     ,array('path'=>'js/','file'=>'bootstrap.min.js')
     ,array('path'=>'js/','file'=>'script.main.js')
     );
+ 
     
 $config['js']['loggedin'] = array(
      array('path'=>'js/','file'=>'jquery-1.7.2.min.js')

@@ -26,12 +26,21 @@
               <textarea class="input-xlarge edit" id="news_body" name="news_body" rows="3"></textarea>
             </div>
           </div>
-             <div class="control-group">
+          <div class="control-group">
             <label class="control-label" for="publish">Publish?</label>
             <div class="controls">
               <label class="checkbox">
                 <input type="checkbox" id="publish" name="publish" value="1" checked="checked">
                 Check if you want to publish this post.
+              </label>
+            </div>
+          </div>
+           <div class="control-group">
+            <label class="control-label" for="publish">Show to Patcher</label>
+            <div class="controls">
+              <label class="checkbox">
+                <input type="checkbox" id="patcher" name="patcher" value="1" checked="checked">
+                This will be shown in patcher news
               </label>
             </div>
           </div>
