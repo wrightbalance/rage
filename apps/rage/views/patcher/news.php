@@ -1,6 +1,7 @@
 <?php $this->load->view('layout/head_default')?>
 
 <body>
+	
 <div class="body">
 	<?php if($news){?> 
 		<?php foreach($news as $n){?>
@@ -8,6 +9,9 @@
 			<h2><?=$n['news_title']?></h2>
 			<span class="news_date"><?=date('M d, Y',strtotime($n['created']))?></span>
 			<?=$n['news_body']?>
+			<span class="author">
+				<?=$n['author']?>
+			</span>
 		</div>
 		<? }  ?>
 	<? } else {?>

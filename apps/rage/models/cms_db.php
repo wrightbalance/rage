@@ -92,6 +92,32 @@ class Cms_db extends CI_Model
 		}
 	}
 	
+	function getPatcher($cond)
+	{
+		$news = $this->mongo_db->where($cond)->get('gcp_news');
+		$n = array();
+		
+		foreach($news as $new)
+		{
+			$n[] = array(
+				'news_title' 	=> $new['news_title'],
+				'created'		=> $new['created'],
+				'news_body' 	=> $new['news_body'],
+				'author'		=> $this->author($new['author'])
+				);
+		}
+		
+		return $n;
+	}
+	
+	function author($accountid)
+	{
+		$author = $this->mongo_db->where(array('_id'=>(int)$accountid))->get('login');
+		$author = $author[0];
+		
+		return $author['nickname'];
+	}
+	
 	function deleteNews($cond)
 	{
 		$this->mongo_db->where($cond)->delete('gcp_news');

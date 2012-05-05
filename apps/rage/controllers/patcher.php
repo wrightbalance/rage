@@ -18,7 +18,8 @@ class Patcher extends CI_Controller
 		
 		$data['cssgroup'] = "patcher";
 		
-		$data['news'] = $this->cms_db->getNews($cond);
+		$data['news'] = $this->cms_db->getPatcher($cond);
 		$this->load->view('patcher/news',$data);
+
 	}
 }
