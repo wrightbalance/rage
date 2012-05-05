@@ -54,4 +54,5 @@ body
 .newsrow p
 {
 	margin: 0;
+	display: block;
 }
