@@ -49,7 +49,7 @@ class Characters extends CI_Controller
 			checkSession();
 			
 			$this->load->vars($data);
-			$this->load->view('account/widget/w_index',$data);
+			$this->load->view('characters/widget/w_index',$data);
 		}
 		$this->minify->html();
 	}
