@@ -71,13 +71,13 @@
 	</div>
 	
 	<div class="tpane news_loader">
-		No News
+		
 	</div>
 	<div class="tpane news_loader">
-		No Event
+	
 	</div>
 	<div class="tpane news_loader">
-		No Change Log
+		
 	</div>
 
 </div>
