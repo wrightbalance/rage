@@ -34,7 +34,7 @@
 					<img src="<?=resource_url('images/photo_'.strtolower($val['gender']).'.jpg')?>" />
 				</div>
 				<div class="srow_details">
-					<a href=""><?=$val['nickname']?></a>
+					<a href="#"><?=ucwords($val['nickname'])?></a>
 					<?=nl2br($val['message'])?>
 				</div>
 				<div class="srow_actions">
