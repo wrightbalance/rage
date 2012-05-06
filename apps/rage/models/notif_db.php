@@ -17,7 +17,8 @@ class Notif_db extends CI_Model
 	
 	function saveNotif($db)
 	{
-		$notifExists = $this->mongo_db->where(array('kind'=>$db['kind'],'source_id'=>$db['source_id']))->count('notifications');
+		$accountid = $this->session->userdata('accountid');
+		$notifExists = $this->mongo_db->where(array('kind'=>$db['kind'],'source_id'=>$db['source_id'],'account_id'=>$accountid))->count('notifications');
 		
 		if($notifExists === 0)
 		{
@@ -34,7 +35,7 @@ class Notif_db extends CI_Model
 		$accountid = $this->session->userdata('accountid');
 		$newscount = $this->mongo_db->where($cond)->count('gcp_news');
 		
-		$mynews = $this->mongo_db->where(array('kind'=>$cond['category']))->count('notifications');
+		$mynews = $this->mongo_db->where(array('kind'=>$cond['category'],'account_id'=>$accountid))->count('notifications');
 		
 		$total_news = $newscount - $mynews;
 		
