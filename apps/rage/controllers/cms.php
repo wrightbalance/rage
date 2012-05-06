@@ -104,7 +104,7 @@ class Cms extends CI_Controller
 		if($admin < config_item('group_level')) exit();
 		
 		$this->benchmark->mark('code_start');
-		
+		$cond = array();
 		$data 			= $this->cms_db->getListNews($cond);
 		$data['elapsed'] = $this->benchmark->elapsed_time('code_start', 'code_end');
 		$this->load->view('cms/table/news',$data);
