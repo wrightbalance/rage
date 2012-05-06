@@ -1,4 +1,4 @@
-<form class="form form-inline form" method="post" action="<?=site_url('account/auth')?>">
+<form class="form form-inline form" method="post" action="<?=site_url('accounts/auth')?>">
 	<input type="hidden" name="action" value="quicklogin"/>
 	<div class="response"></div>
 	<div class="fields">
