@@ -160,7 +160,7 @@ hr
 	position: relative;
 }
 
-.srow a.close
+.srow a.close_extend
 {
 	position: absolute;
 	top: -4px;
@@ -168,7 +168,7 @@ hr
 	display: none;
 }
 
-.srow:hover a.close
+.srow:hover a.close_extend
 {
 	display: block;
 }

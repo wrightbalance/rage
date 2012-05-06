@@ -33,7 +33,7 @@
 			<div class="stream_row" id="streamholder-<?=(string)$val['_id']?>">
 			<div class="srow clearfix">
 				<?php if(isset($isAdmin) && $isAdmin){ ?>
-					<a href="#" data-id="<?=(string)$val['_id']?>" class="close deleteStream" data-kind="stream">×</a>
+					<a href="#" data-id="<?=(string)$val['_id']?>" class="close deleteStream close_extend" data-kind="stream">×</a>
 				<? } ?>
 				<div class="avatar50">
 					<img src="<?=resource_url('images/photo_'.strtolower($val['gender']).'.jpg')?>" />
