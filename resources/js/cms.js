@@ -78,19 +78,23 @@ $(document).ready(function(){
 		
 		$('#news_loader').html('');
 		$('*').addClass('wait');
+		var kind = $(this).data('kind');
 		
-		//if($(this).parent().hasClass('active')) return false;
+		var dt = {kind:kind};
 		
 		$.ajax({
 			url: root + 'cms/getNewsList',
 			dataType: 'json',
-			type: 'get',
+			type: 'post',
+			data: dt,
 			success: function(data)
 			{
 				try
 				{
 					var html = "";
 					var db = data.news;
+					
+					$('.news_loader').html('');
 					
 					$.each(db,function(i,n){
 						html  = "";
@@ -101,7 +105,7 @@ $(document).ready(function(){
 						html +=	"</div>";
 						html +=	"<div style=\"display:none; padding: 10px 0;\" id=\"news_details-"+n._id+"\"></div>";
 						
-						$('#news_loader').prepend(html);
+						$('.news_loader').prepend(html);
 					})
 					
 					$('*').removeClass('wait');

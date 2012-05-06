@@ -105,7 +105,7 @@ class Cms extends CI_Controller
 		
 		$this->benchmark->mark('code_start');
 		
-		$data 			= $this->cms_db->getListNews();
+		$data 			= $this->cms_db->getListNews($cond);
 		$data['elapsed'] = $this->benchmark->elapsed_time('code_start', 'code_end');
 		$this->load->view('cms/table/news',$data);
 	}
@@ -141,7 +141,9 @@ class Cms extends CI_Controller
 	
 	function getNewsList()
 	{
-		$news = $this->cms_db->getNewsList();
+		$cond = array('category'=>$this->input->post('kind'));
+		
+		$news = $this->cms_db->getNewsList($cond);
 		
 		$y = array();
 		

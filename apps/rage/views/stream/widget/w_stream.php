@@ -2,9 +2,9 @@
 
 	<ul class="tab nav nav-tabs nomargin">
 		<li class="active"><a href="#"><i class="icon-comment"></i> Stream Feed</a></li>
-		<li><a href="#" class="get_news"><i class="icon-list-alt"></i> Latest News <!--<span class="nbadge">12</span></a>--></li>
-		<li><a href="#"><i class="icon-calendar"></i> Events</a></li>
-		<li><a href="#"><i class="icon-tags"></i> Change Log</li></a></li>
+		<li><a href="#" class="get_news" data-kind="news"><i class="icon-list-alt"></i> Latest News <!--<span class="nbadge">12</span></a>--></li>
+		<li><a href="#" class="get_news" data-kind="events"><i class="icon-calendar"></i> Events</a></li>
+		<li><a href="#" class="get_news" data-kind="changelog"><i class="icon-tags"></i> Change Log</li></a></li>
 
 	</ul>
 	
@@ -70,14 +70,13 @@
 	</div>
 	</div>
 	
-	<div class="tpane" id="news_loader">
-		
-	
+	<div class="tpane news_loader">
+		No News
 	</div>
-	<div class="tpane">
+	<div class="tpane news_loader">
 		No Event
 	</div>
-	<div class="tpane">
+	<div class="tpane news_loader">
 		No Change Log
 	</div>
 
