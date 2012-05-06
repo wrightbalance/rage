@@ -9,10 +9,13 @@ class Streams_db extends CI_Model
 		$this->load->library('mongo_db');
 	}
 	
-	function save($db)
+	function save($db,$sid=false)
 	{
-		$sid = $this->mongo_db->insert('streams',$db);
-		
+		if(!$sid)
+			$sid = $this->mongo_db->insert('streams',$db);
+		else
+			$this->mongo_db->where(array('_id'=>$this->mongo_db->mongoID($sid)))->set(array('updated'=>date('Y-m-d H:i:s')))->update('streams');
+			
 		return $sid;
 	}
 	
@@ -25,7 +28,7 @@ class Streams_db extends CI_Model
 	
 	function getStream()
 	{
-		$stream = $this->mongo_db->where(array('status'=>1))->order_by(array('_id'=>'desc'))->get('streams');
+		$stream = $this->mongo_db->where(array('status'=>1))->order_by(array('updated'=>'desc'))->get('streams');
 		
 		return $stream;
 	}
