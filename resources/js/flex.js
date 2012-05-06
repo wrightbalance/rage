@@ -4,6 +4,7 @@ $(document).ready(function(){
 	accountFlex();
 	storageFlex();
 	newsFlex();
+	characterFlex();
 
 })
 
@@ -21,7 +22,7 @@ function accountFlex()
 			{
 				return data;
 			},
-			url: root + 'account/getList',
+			url: root + 'accounts/getList',
 			dataType: 'json',
 			colModel : [ 
 						{display: 'Account ID', name : 'account_id', width : 70, sortable: true}
@@ -146,6 +147,63 @@ function newsFlex()
 			showToggleBtn: true, 
 			searchitems : [
 						{display: 'Name', name : 'nameid'},
+						],
+			params: [{name:'item',value: 1}],
+			usepager: true,
+			rpOptions: [15, 30, 60, 90],
+			rp: 15,
+			useRp: true,        
+			timeout: 20,
+			height: 390,
+			onTimeout: function()
+			{
+				
+			},
+			onSuccess: function()
+			{
+			
+			},
+			showTableToggleBtn: true,
+			
+		   }
+		);
+		
+	})
+}
+
+
+function characterFlex()
+{
+	$('.characters').livequery(function(){
+		$(this).flexigrid
+		(
+			{
+			autoload: true,
+			blockOpacity: 0,
+			singleSelect: true,
+			height: 'auto',
+			preProcess: function(data)
+			{
+				return data;
+			},
+			url: root + 'characters/getList',
+			dataType: 'json',
+			colModel : [ 
+						 {display: 'Account ID', name : 'account_id', width : 60, sortable: true}
+						,{display: 'Char ID', name : 'char_id', width : 50, sortable: true}
+						,{display: 'Owner', name : 'owner', width : 100, sortable: false}
+						,{display: 'Name', name : 'name', width : 110, sortable: true}
+						,{display: 'Job', name : 'class', width : 110, sortable: true}
+						,{display: 'Base Level', name : 'base_level', width : 60, sortable: true, align: 'center'}
+						,{display: 'Job Level', name : 'job_level', width : 60, sortable: true}
+						,{display: 'Zeny', name : 'zeny', width : 150, sortable: false}
+						
+					],
+			sortname: "account_id",
+			sortorder: "asc",
+			showToggleBtn: true, 
+			searchitems : [
+						{display: 'Character Name', name : 'name'},
 						],
 			params: [{name:'item',value: 1}],
 			usepager: true,

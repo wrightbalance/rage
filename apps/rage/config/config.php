@@ -26,6 +26,7 @@ $config['base_url']	= '';
 $config['site_title'] = 'RagnaGears &reg;';
 $config['chatPort'] = 8888;
 
+$config['group_level'] = 99;
 
 /*
 |--------------------------------------------------------------------------

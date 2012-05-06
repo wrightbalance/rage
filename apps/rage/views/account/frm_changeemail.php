@@ -1,4 +1,4 @@
-<form class="form-horizontal form" action="<?=site_url('account/update')?>">
+<form class="form-horizontal form" action="<?=site_url('accounts/update')?>">
 <input type="hidden" value="changeemail" name="action"/>
 <div class="response"></div>
 	<fieldset class="fields">

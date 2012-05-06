@@ -18,13 +18,60 @@ class Characters extends CI_Controller
 	function index()
 	{
 		$this->benchmark->mark('code_start');
+		$this->load->model('accounts_db');
+		$this->load->model('char_db');
+		
+		$data['cssgroup'] = "loggedin";
+		$data['jsgroup'] = "loggedin";
+		$data['page'] = "";
+
+		$details = $this->accounts_db->getAccountM(array('_id'=>(int)$this->accountid));
+		$data['details'] = $details[0];
+
+		$data['accounts'] = $this->accounts_db->getAccounts();
+		
+		$groupid = $this->session->userdata('groupid');
+		if($groupid < config_item('group_level')) show_404();
+		
+		if(!$this->input->is_ajax_request())
+		{
+			if(!$this->accountid) redirect();
+		
+			$data['content'] = $this->load->view('characters/all_char',$data,true);
+			
+			$data['elapse'] = $this->benchmark->elapsed_time('code_start', 'code_end');
+			$this->load->vars($data);
+			$this->load->view('default',$data);
+			
+        }
+        else
+        {
+			checkSession();
+			
+			$this->load->vars($data);
+			$this->load->view('account/widget/w_index',$data);
+		}
+		$this->minify->html();
+	}
+	
+	function signout()
+	{
+		$this->session->sess_destroy();
+		
+		redirect();
+	}
+	
+	
+	function charlist()
+	{
+		$this->benchmark->mark('code_start');
 		$this->load->helper('array');
 		$this->load->helper('jobclass');
 	
 		$data['title'] = "Characters | ".config_item('site_title');
 		$data['cssgroup'] = "loggedin";
 		$data['jsgroup'] = "loggedin";
-		$data['page'] 	= 'storage';
+		$data['page'] 	= 'characters';
 		
 		$details = $this->accounts_db->getAccountM(array('_id'=>(int)$this->accountid));
 		$data['details'] = $details[0];
@@ -41,7 +88,7 @@ class Characters extends CI_Controller
 		{
 			if(!$this->accountid) redirect();
 		
-			$data['content'] = $this->load->view('character/index',$data,true);
+			$data['content'] = $this->load->view('characters/index',$data,true);
 			
 			$data['elapse'] = $this->benchmark->elapsed_time('code_start', 'code_end');
 			$this->load->vars($data);
@@ -52,7 +99,7 @@ class Characters extends CI_Controller
 			checkSession();
 			
 			$this->load->vars($data);
-			$this->load->view('character/widget/w_character',$data);
+			$this->load->view('characters/widget/w_character',$data);
 		}
 		$this->minify->html();
 	}
@@ -80,7 +127,7 @@ class Characters extends CI_Controller
 		{
 			if(!$this->accountid) redirect();
 		
-			$data['content'] = $this->load->view('character/storage',$data,true);
+			$data['content'] = $this->load->view('characters/storage',$data,true);
 			
 			$data['elapse'] = $this->benchmark->elapsed_time('code_start', 'code_end');
 			$this->load->vars($data);
@@ -92,7 +139,7 @@ class Characters extends CI_Controller
 			checkSession();
 			
 			$this->load->vars($data);
-			$this->load->view('character/widget/w_storage',$data);
+			$this->load->view('characters/widget/w_storage',$data);
 		}
 		$this->minify->html();
 	}
@@ -192,7 +239,7 @@ class Characters extends CI_Controller
 	
 			$data 			= $this->char_db->getStorage($this->accountid);
 			$data['elapsed'] = $this->benchmark->elapsed_time('code_start', 'code_end');
-			$this->load->view('account/table/storage',$data);
+			$this->load->view('accounts/table/storage',$data);
 		}
 	}
 	
@@ -204,7 +251,7 @@ class Characters extends CI_Controller
 		
 		$data['user'] = $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
 		
-		$this->load->view('character/modal/view_s',$data);
+		$this->load->view('characters/modal/view_s',$data);
 		$this->minify->html();
 	}
 	
@@ -256,5 +303,21 @@ class Characters extends CI_Controller
 		
 		$data['json'] = $data;
 		$this->load->view('ajax/json',$data);
+	}
+	
+	function getList()
+	{
+		$this->benchmark->mark('code_start');
+		
+		if($this->accountid)
+		{
+			$groupid = $this->session->userdata('groupid');
+			if($groupid >= config_item('group_level'))
+			{
+				$data 			= $this->char_db->getList();
+				$data['elapsed'] = $this->benchmark->elapsed_time('code_start', 'code_end');
+				$this->load->view('characters/table/characters',$data);
+			}
+		}
 	}
 }

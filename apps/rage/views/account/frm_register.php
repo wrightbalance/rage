@@ -1,4 +1,4 @@
-<form class="form form-horizontal mainreg" method="post" action="<?=site_url('account/post')?>">
+<form class="form form-horizontal mainreg" method="post" action="<?=site_url('accounts/post')?>">
 	<div class="response"></div>
 	<div class="fields">
 		<div class="frow username">

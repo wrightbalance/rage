@@ -1,4 +1,4 @@
-<form class="form-horizontal form mainlogin" method="post" action="<?=site_url('account/auth')?>">
+<form class="form-horizontal form mainlogin" method="post" action="<?=site_url('accounts/auth')?>">
 	<div class="response"></div>
 	<div class="fields">
 		<div class="frow">

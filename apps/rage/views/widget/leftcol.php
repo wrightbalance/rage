@@ -10,11 +10,11 @@
 		<ul class="main-nav nav nav-list">
 			<li class="nav-header">Account</li>
 			<li class="<?=$page == "stream" ? 'active' : ''?>"><a href="/"><i class="<?=$page == "stream" ? 'icon-white' : ''?> icon-comment"></i> Stream</a></li>
-			<li class="<?=$page == "character" ? 'active' : ''?>"><a href="/characters"><i class="<?=$page == "character" ? 'icon-white' : ''?> icon-user"></i> Characters</a></li>
+			<li class="<?=$page == "characters" ? 'active' : ''?>"><a href="/characters/charlist"><i class="<?=$page == "characters" ? 'icon-white' : ''?> icon-user"></i> Characters</a></li>
 			<!--
 			<li class="<?=$page == "storage" ? 'active' : ''?>"><a href="/characters/storage"><i class="<?=$page == "storage" ? 'icon-white' : ''?> icon-inbox"></i> Storage</a></li>
 			-->
-			<li class="<?=$page == "settings" ? 'active' : ''?>"><a href="/account/settings"><i class="<?=$page == "settings" ? 'icon-white' : ''?> icon-cog"></i> Settings</a></li>
+			<li class="<?=$page == "settings" ? 'active' : ''?>"><a href="/accounts/settings"><i class="<?=$page == "settings" ? 'icon-white' : ''?> icon-cog"></i> Settings</a></li>
 			<li class="divider"></li>
 			
 			<li class="nav-header">Support</li>

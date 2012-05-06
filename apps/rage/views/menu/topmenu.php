@@ -13,7 +13,8 @@
 		  <button class="btn" onclick="location.href='<?=site_url()?>'"><i class="icon-book"></i> Admin Dashboard</button>
 		  <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
 		  <ul class="dropdown-menu">
-			<li><a href="/account"  class="ps">Account</a></li>
+			<li><a href="/accounts"  class="ps">Account</a></li>
+			<li><a href="/characters"  class="ps">Characters</a></li>
 			<li><a href="/cms/pages" class="ps">Pages</a></li>
 			<li><a href="/cms/news"  class="ps">News</a></li>
 

@@ -1,4 +1,4 @@
-<form class="form-horizontal form" method="post" action="<?=site_url('account/update')?>">
+<form class="form-horizontal form" method="post" action="<?=site_url('accounts/update')?>">
 	<input type="hidden" name="action" value="changepass"/>
 	<div class="response"></div>
 	<fieldset class="fields">

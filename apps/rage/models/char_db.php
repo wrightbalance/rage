@@ -161,4 +161,84 @@ class Char_db extends CI_Model
 		$this->db->where('char_id',$cond['char_id'])->delete('inventory');
 		$this->db->where('char_id',$cond['char_id'])->delete('cart_inventory');
 	}
+	
+	function getList()
+    {
+		$user = $this->session->userdata('user');
+		
+        $item = $this->input->post('item');
+		$page = $this->input->post('page');
+		$rp = $this->input->post('rp');
+		
+		$sortname = $this->input->post('sortname');
+		$sortorder = $this->input->post('sortorder');
+		
+		$query = $this->input->post('query');
+		$qtype = $this->input->post('qtype');
+
+		if (!$sortname) $sortname = 'char_id';
+		if (!$sortorder) $sortorder = 'DESC';
+		
+		if (!$page) $page = 1;
+		if (!$rp) $rp = 10;        
+				
+		$start = (($page-1) * $rp);  
+
+		$this->db->like($qtype,$query,'both');
+		$this->db->from('char');
+		$num = $this->db->count_all_results();
+		
+		if ($start>$num) 	
+			{
+			$start = 0; 
+			$page = 1;
+			}    
+		
+
+		$this->db->limit($rp,$start);
+		$this->db->like($qtype,$query,'both');
+
+		$this->db->order_by($sortname,$sortorder);
+		$query = $this->db->get('char');		
+		$results = $query->result_array();
+		
+		$db = array();
+		
+		foreach($results as $result)
+		{
+			$db[] = array(
+				 'account_id'	=>	$result['account_id']
+				,'char_id'		=>	$result['char_id']
+				,'owner'		=>	$this->getAccountM($result['account_id'])
+				,'name'			=>	$result['name']
+				,'class'		=>  jobClass($result['class'])
+				,'base_level'	=>  $result['base_level']
+				,'job_level'	=>  $result['job_level']
+				,'zeny'			=>  $result['zeny']
+				);
+		}
+
+			
+		$data['db'] = $db;    
+		$data['page'] = $page;
+		$data['total'] = $num;
+		$data['rp'] = $rp;
+		return $data;
+	}
+	
+	function getAccountM($account_id)
+	{
+		$query = $this->mongo_db->where(array('account_id'=>$account_id))->get('login');
+		
+		if(count($query) > 0)
+		{
+			$name = $query[0]['nickname'];
+		}
+		else
+		{
+			$name = "";
+		}
+		
+		return $name;
+	}
 }
