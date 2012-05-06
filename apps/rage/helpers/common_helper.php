@@ -362,4 +362,11 @@ function cropResizeImage($file_type, $max_width, $max_height, $blob, $quality) {
 		
 		return $mongoid;
 	}
+	
+	function parseurl($string)
+	{
+		$url = preg_replace("/http:\/\/([^\/]+)[^\s]*/", "<a href='$0' target='_blank'>$0</a>", $string);
+		 
+		return $url;
+	}
 

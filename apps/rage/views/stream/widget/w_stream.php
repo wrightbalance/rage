@@ -40,7 +40,7 @@
 				</div>
 				<div class="srow_details">
 					<a href="#"><?=ucwords($val['nickname'])?></a>
-					<?=nl2br($val['message'])?>
+					<?=parseurl(nl2br($val['message']))?>
 				</div>
 				<div class="srow_actions">
 					<a href="#" id="docomment" data-id="<?=(string)$val['_id']?>">Comment</a> - <span><?=ago($val['created'])?></span>

@@ -26,18 +26,19 @@ class Stream extends CI_Controller
 		$sid = $this->streams_db->save($db);
 		
 		$db['sid'] = (string)$sid;
-		$db['message'] = nl2br($db['message']);
+		$db['message'] = parseurl(nl2br($db['message']));
 		
 		$data['db'] = $db;
 		$data['json'] = $data;
 		$this->load->view('ajax/json',$data);
+
 	}
 	
 	function comment()
 	{
 		$sid = $this->input->post('sid');
 		
-		$db['comment'] 		= trim($this->input->post('comment'));
+		$db['comment'] 		= parseurl(trim($this->input->post('comment')));
 		$db['account_id'] 	= $this->input->post('account_id');
 		$db['nickname'] 	= $this->input->post('nickname');
 		$db['gender']		= $this->input->post('gender');
