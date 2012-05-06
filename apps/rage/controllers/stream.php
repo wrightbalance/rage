@@ -53,7 +53,6 @@ class Stream extends CI_Controller
 		$data['db'] = $db;
 		$data['json'] = $data;
 		$this->load->view('ajax/json',$data);
-		exit();
 	}
 	
 	function delete()
