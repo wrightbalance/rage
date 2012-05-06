@@ -14,9 +14,7 @@
                 "id" => $row['char_id'],
                 "cell" => array(
 					 "<a href=\"#\" class=\"view\" data-aid=\"".$row['account_id']."\">".$row['account_id']."</a>"
-                	,"<a href=\"#\" class=\"view\" data-aid=\"".$row['char_id']."\">".$row['char_id']."</a>"
-                	,$row['owner']
-                	,$row['name']
+                	,"<a href=\"#\" class=\"view_char\" data-char_id=\"".$row['char_id']."\">".$row['name']."</a>"
                 	,$row['class']
                 	,$row['base_level']
                 	,$row['job_level']

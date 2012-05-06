@@ -3,7 +3,7 @@
 		<div class="photo">
 			<img src="<?=resource_url('images/photo_'.strtolower($details['sex']).'.jpg')?>" width="40" height="40"/>
 		</div>
-		<div class="name"><a href=""><?=$details['nickname']?></a></div>
+		<div class="name"><a href="<?=site_url()?>"><?=$details['nickname']?></a></div>
 	</div>
 	<div class="profileMenu">
 	

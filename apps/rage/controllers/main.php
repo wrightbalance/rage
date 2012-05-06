@@ -19,10 +19,14 @@ class Main extends CI_Controller
 		
 		if($this->accountid)
 		{
-			$this->load->model('accounts_db');
+			$data['isAdmin'] =false;
+			
+			$groupid = $this->session->userdata('groupid');
+			if($groupid >= config_item('group_level')) 
+			{
+				$data['isAdmin'] = true;
+			}
 			$data['showlogin'] = false;
-			$user = $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
-			$data['isAdmin'] = $user['group_id'] >= 90 ? true : false;
 			
 		}
 		$this->load->model('char_db');

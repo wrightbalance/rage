@@ -190,8 +190,6 @@ function characterFlex()
 			dataType: 'json',
 			colModel : [ 
 						 {display: 'Account ID', name : 'account_id', width : 60, sortable: true}
-						,{display: 'Char ID', name : 'char_id', width : 50, sortable: true}
-						,{display: 'Owner', name : 'owner', width : 100, sortable: false}
 						,{display: 'Name', name : 'name', width : 110, sortable: true}
 						,{display: 'Job', name : 'class', width : 110, sortable: true}
 						,{display: 'Base Level', name : 'base_level', width : 60, sortable: true, align: 'center'}

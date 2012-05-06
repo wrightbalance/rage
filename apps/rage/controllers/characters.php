@@ -247,8 +247,17 @@ class Characters extends CI_Controller
 	{
 		$char_id = $this->input->post('char_id');
 		
-		$data['char'] = $this->char_db->getChar(array('char_id'=>$char_id,'account_id'=>$this->accountid),true);
+		$groupid = $this->session->userdata('groupid');
+		if($groupid >= config_item('group_level'))
+		{
+			$cond = array('char_id'=>$char_id);
+		}
+		else
+		{
+			$cond = array('char_id'=>$char_id,'account_id'=>$this->accountid);	
+		}
 		
+		$data['char'] = $this->char_db->getChar($cond,true);
 		$data['user'] = $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
 		
 		$this->load->view('characters/modal/view_s',$data);
