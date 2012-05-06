@@ -115,5 +115,75 @@ $(document).ready(function(){
 		}
 	})
 
+	$('.deletecomment').live('click',function(e){
+		e.preventDefault();
+		
+		var id = $(this).data('id');
+		var comment_id = $(this).data('comment_id');
+		var ans = confirm('Are you sure you want to delete?');
+		
+		if(ans)
+		{
+			var dt = {comment_id:comment_id};
+			
+			$.ajax({
+				url: root + 'stream/delete_comment',
+				dataType: 'json',
+				type: 'post',
+				data: dt,
+				success: function(data)
+				{
+					try
+					{
+						$('#commentHolder-'+comment_id).slideUp('fast');
+					}
+					catch(e)
+					{
+						console.log(e);
+					}
+				}
+			})
+		}
+	})
 	
+	$('.deleteStream').live('click',function(e){
+		e.preventDefault();
+		
+		var id 			= $(this).data('id');
+		var ans 		= confirm('Are you sure you want to delete?');
+		var kind 		= $(this).data('kind');
+		var comment_id 	= $(this).data('comment_id');
+		
+		if(ans)
+		{
+			var dt = {id:id,comment_id:comment_id,kind:kind};
+			
+			$.ajax({
+				url: root + 'stream/delete',
+				dataType: 'json',
+				type: 'post',
+				data: dt,
+				success: function(data)
+				{
+					try
+					{
+						console.log(data);
+						
+						if(data.kind == "comment")
+						{
+							$('#commentHolder-'+comment_id).slideUp('fast');
+						}
+						else if(data.kind == "stream")
+						{
+							$('#streamholder-'+id).slideUp('fast');
+						}
+					}
+					catch(e)
+					{
+						console.log(e);
+					}
+				}
+			})
+		}
+	})
 })

@@ -157,6 +157,14 @@ hr
 .srow
 {
 	padding: 15px 0;
+	position: relative;
+}
+
+.srow a.close
+{
+	position: absolute;
+	top: -4px;
+	right: 4px;
 }
 
 .srow .avatar50
@@ -409,4 +417,22 @@ select.reset
 	height: 22px;
 	line-height: 22px;
 	color: #222;
+}
+
+.comments
+{
+	position: relative;
+}
+
+.comments a.close
+{
+	display: none;
+	position: absolute;
+	top: 2px;
+	right: 7px;
+}
+
+.comments:hover a.close
+{
+	display: block;
 }

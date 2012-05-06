@@ -26,14 +26,13 @@
 		</form>
 	</div>
 	<hr/>
-	
-	
+
 	<div class="streams">
-		
 		<?php if(isset($streams) && $streams){ ?>
 			<?php foreach($streams as $key=>$val){?>
-
-			<div class="srow clearfix" id="<?=(string)$val['_id']?>">
+			<div class="stream_row" id="streamholder-<?=(string)$val['_id']?>">
+			<div class="srow clearfix">
+			<a href="#" data-id="<?=(string)$val['_id']?>" class="close deleteStream" data-kind="stream">×</a>
 				<div class="avatar50">
 					<img src="<?=resource_url('images/photo_'.strtolower($val['gender']).'.jpg')?>" />
 				</div>
@@ -47,23 +46,34 @@
 				<div class="srow_comments" id="c2-<?=(string)$val['_id']?>">
 					<div class="loadcomment">
 						<?php foreach($val['comments'] as $k=>$v){?>
-						<div class="comments clearfix">
+						<div class="comments clearfix" id="commentHolder-<?=$v['comment_id']?>">
 							<div class="avatar32">
 								<img src="<?=resource_url('images/photo_'.strtolower($v['gender']).'.jpg')?>" width="32" height="32"/>
 							</div>
 							<div class="comments_details">
 								<a href=""><?=$v['nickname']?></a> <?=$v['comment']?>
 							</div>
+							<?php if(isset($isAdmin) && $isAdmin){ ?>
+							<a href="#" data-id="<?=(string)$val['_id']?>" data-comment_id="<?=$v['comment_id']?>" class="close deleteStream" data-kind="comment">×</a>
+							<? } ?>
 						</div>
 						<? } ?>
 					</div>
-					<div class="comment_box">
+					<?php 
+		
+						$comment_text = "";
+						
+						if(count($val['comments']) > 0)
+							$comment_text = "style=\"display:block\"";
+					?>
+					<div class="comment_box" <?=$comment_text?>>
 						<input type="text" name="comment" data-id="<?=(string)$val['_id']?>" id="postcomment-<?=(string)$val['_id']?>" class="reset" placeholder="Write a comment..."/>
 					</div>
 					
 				</div>
 			</div>
 			<hr>
+			</div>
 			<? } ?>
 		<? } ?>
 		

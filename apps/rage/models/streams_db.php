@@ -25,9 +25,21 @@ class Streams_db extends CI_Model
 	
 	function getStream()
 	{
-		$stream = $this->mongo_db->order_by(array('_id'=>'desc'))->get('streams');
+		$stream = $this->mongo_db->where(array('status'=>1))->order_by(array('_id'=>'desc'))->get('streams');
 		
 		return $stream;
+	}
+	
+	function delete($cond,$kind)
+	{
+		if($kind == "comment")
+		{
+			$this->mongo_db->pull('comments',$cond)->update('streams');
+		}
+		else
+		{
+			$this->mongo_db->where($cond)->set(array('status'=>0))->update('streams');
+		}
 	}
 	
 }
