@@ -100,7 +100,7 @@ $(document).ready(function(){
 						html  = "";
 						html += "<div class=\"nrow\">";
 						html +=		"<span class=\"label label-info\">"+n.category+"</span>"; 
-						html +=		"		<a href=\"\" class=\"getnews\" data-newsid=\""+n._id+"\">"+n.news_title+"</a>"; 
+						html +=		"		<a href=\"\" class=\"getnews\" data-kind=\""+n.category+"\" data-newsid=\""+n._id+"\">"+n.news_title+"</a>"; 
 						html +=		"		<span class=\"ndate\">"+n.created+"</span>";
 						html +=	"</div>";
 						html +=	"<div style=\"display:none; padding: 10px 0;\" id=\"news_details-"+n._id+"\"></div>";
@@ -121,8 +121,11 @@ $(document).ready(function(){
 	
 	$('a.getnews').live('click',function(e){
 		e.preventDefault();
+		
 		var newsid = $(this).data('newsid');
-		var dt = {newsid: newsid};
+		var kind = $(this).data('kind');
+		var dt = {newsid: newsid, kind:kind};
+		
 		$.ajax({
 			url: root + 'cms/getNews',
 			data: dt,
@@ -134,6 +137,10 @@ $(document).ready(function(){
 				{
 					var db = data.db;
 					$('#news_details-'+newsid).html('').slideDown('fast').html(db.news_body);
+					
+					console.log(data.kind);
+					
+					$('.'+data.kind).html(data.count);
 					
 				}
 				catch(e)

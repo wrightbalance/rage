@@ -137,11 +137,6 @@ class Cms_db extends CI_Model
 		$this->mongo_db->where($cond)->delete('gcp_news');
 	}
 	
-	function newsCount($cond)
-	{
-		$newscount = $this->mongo_db->where($cond)->count('gcp_news');
-		
-		return $newscount;
-	}
+	
 	
 }

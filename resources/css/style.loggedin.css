@@ -70,6 +70,7 @@ body
 	background: -o-linear-gradient(left, #1E5799 0%,#4DD6E2 100%);
 	background: -ms-linear-gradient(left, #1E5799 0%,#4DD6E2 100%);
 	background: linear-gradient(left, #1E5799 0%,#4DD6E2 100%);
+	z-index: 300;
 }
 
 .logo

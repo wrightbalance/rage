@@ -12,6 +12,8 @@ class Cms extends CI_Controller
 		
 		$this->load->model('accounts_db');
 		$this->load->model('cms_db');
+		$this->load->model('notif_db');
+		
 		$this->accountid = $this->session->userdata('accountid');
 		
 	}
@@ -33,8 +35,6 @@ class Cms extends CI_Controller
 		
 		if(!$this->input->is_ajax_request())
 		{
-			
-		
 			$data['content'] = $this->load->view('cms/news',$data,true);
 			
 			$data['elapse'] = $this->benchmark->elapsed_time('code_start', 'code_end');
@@ -114,14 +114,27 @@ class Cms extends CI_Controller
 	{
 		$this->benchmark->mark('code_start');
 		
-		$cond = array('_id'=>$this->mongo_db->mongoID($this->input->post('newsid')));
+		$newsid = $this->input->post('newsid');
+		$kind = $this->input->post('kind');
+		
+		$cond = array('_id'=>$this->mongo_db->mongoID($newsid));
 		
 		$news = $this->cms_db->getNews($cond);
 		
 		$data['db'] 			= $news[0];
 		$data['db']['_id']		= (string)$data['db']['_id'];
-		$data['elapsed'] = $this->benchmark->elapsed_time('code_start', 'code_end');
-		$data['json'] = $data;
+		
+		$sdb['source_id'] 		= (string)$newsid;
+		$sdb['kind'] 			= (string)$kind;
+		$sdb['n_created'] 		= date('Y-m-d H:i:s');
+		$sdb['account_id'] 		= $this->accountid;
+		
+		$data['count'] 	= $this->notif_db->saveNotif($sdb);
+		$data['kind'] 	= $kind;
+		
+		$data['elapsed'] 		= $this->benchmark->elapsed_time('code_start', 'code_end');
+		
+		$data['json'] 			= $data;
 		$this->load->view('ajax/json',$data);
 	}
 	
