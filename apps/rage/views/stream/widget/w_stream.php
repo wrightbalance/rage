@@ -32,7 +32,9 @@
 			<?php foreach($streams as $key=>$val){?>
 			<div class="stream_row" id="streamholder-<?=(string)$val['_id']?>">
 			<div class="srow clearfix">
-			<a href="#" data-id="<?=(string)$val['_id']?>" class="close deleteStream" data-kind="stream">×</a>
+				<?php if(isset($isAdmin) && $isAdmin){ ?>
+					<a href="#" data-id="<?=(string)$val['_id']?>" class="close deleteStream" data-kind="stream">×</a>
+				<? } ?>
 				<div class="avatar50">
 					<img src="<?=resource_url('images/photo_'.strtolower($val['gender']).'.jpg')?>" />
 				</div>

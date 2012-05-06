@@ -37,6 +37,7 @@ function accountFlex()
 			sortorder: "asc",
 			showToggleBtn: true, 
 			searchitems : [
+						{display: 'Account ID', name : 'account_id'},
 						{display: 'Username', name : 'userid'},
 						{display: 'E-mail', name : 'email'},
 						{display: 'IP', name : 'last_ip'},
@@ -202,6 +203,7 @@ function characterFlex()
 			showToggleBtn: true, 
 			searchitems : [
 						{display: 'Character Name', name : 'name'},
+						{display: 'Account ID', name : 'account_id'},
 						],
 			params: [{name:'item',value: 1}],
 			usepager: true,
