@@ -98,7 +98,8 @@ $(document).ready(function(){
 						html +=		"<span class=\"label label-info\">"+n.category+"</span>"; 
 						html +=		"		<a href=\"\">"+n.news_title+"</a>"; 
 						html +=		"		<span class=\"ndate\">"+n.created+"</span>";
-						html +=		"	</div>";
+						html +=	"</div>";
+						html +=	"<div id=\"news_details-"+n._id+"\"></div>";
 						
 						$('#news_loader').prepend(html);
 					})

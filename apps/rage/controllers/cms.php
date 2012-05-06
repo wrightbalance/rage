@@ -9,20 +9,13 @@ class Cms extends CI_Controller
 		parent::__construct();
 		
 		checkSession();
-		$admin = $this->session->userdata('groupid');
-		if($admin < 90) show_404();
 		
 		$this->load->model('accounts_db');
 		$this->load->model('cms_db');
 		$this->accountid = $this->session->userdata('accountid');
 		
 	}
-	
-	function index()
-	{
-		
-	}
-	
+
 	function news()
 	{
 		$this->benchmark->mark('code_start');
@@ -107,6 +100,9 @@ class Cms extends CI_Controller
 	
 	function getListNews()
 	{
+		$admin = $this->session->userdata('groupid');
+		if($admin < config_item('group_level')) exit();
+		
 		$this->benchmark->mark('code_start');
 		
 		$data 			= $this->cms_db->getListNews();
@@ -131,6 +127,9 @@ class Cms extends CI_Controller
 	
 	function newsdelete()
 	{
+		$admin = $this->session->userdata('groupid');
+		if($admin < config_item('group_level')) exit();
+		
 		$cond = array('_id'=>$this->mongo_db->mongoID($this->input->post('newsid')));
 		$this->cms_db->deleteNews($cond);
 		
@@ -144,7 +143,19 @@ class Cms extends CI_Controller
 	{
 		$news = $this->cms_db->getNewsList();
 		
-		$data['news'] = $news;
+		$y = array();
+		
+		foreach($news as $n)
+		{
+			$y[] = array(
+				'category'		=> $n['category']
+				,'news_title' 	=> $n['news_title']
+				,'created' 		=> date('M d, Y',strtotime($n['created']))
+				,'_id'			=> (string)$n['_id']
+				);
+		}
+		
+		$data['news'] = $y;
 		
 		$data['json'] = $data;
 		$this->load->view('ajax/json',$data);

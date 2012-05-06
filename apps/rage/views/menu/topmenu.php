@@ -32,11 +32,11 @@
 		  <button class="btn" onclick="location.href='<?=site_url()?>'"><i class="icon-home"></i> Home</button>
 		  <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
 		  <ul class="dropdown-menu">
-			<li><a href="/account/settings">Account Settings</a></li>
-			<li><a href="/account/settings/changepass" class="ps">Change Password</a></li>
-			<li><a href="/account/settings/changeemail">Change E-mail</a></li>
+			<li><a href="/accounts/settings">Account Settings</a></li>
+			<li><a href="/accounts/settings/changepass" class="ps">Change Password</a></li>
+			<li><a href="/accounts/settings/changeemail">Change E-mail</a></li>
 			<li class="divider"></li>
-			<li><a href="<?=site_url('account/signout')?>">Logout</a></li>
+			<li><a href="<?=site_url('accounts/signout')?>">Logout</a></li>
 		  </ul>
 		</div>
 		
