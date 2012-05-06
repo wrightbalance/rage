@@ -108,7 +108,7 @@ class Cms_db extends CI_Model
 	
 	function getPatcher($cond)
 	{
-		$news = $this->mongo_db->where($cond)->get('gcp_news');
+		$news = $this->mongo_db->where($cond)->order_by(array('_id'=>'desc'))->get('gcp_news');
 		$n = array();
 		
 		foreach($news as $new)
