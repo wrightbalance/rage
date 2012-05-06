@@ -4,7 +4,7 @@
 </div>
 <div class="modal-body clearfix">
 
-<?php $this->load->view('character/frm_chardelete')?>
+<?php $this->load->view('characters/frm_chardelete')?>
 
 <div class="char_image">
 	<?php if($user['sex'] == "M"){?>
