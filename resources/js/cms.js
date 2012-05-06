@@ -138,8 +138,10 @@ $(document).ready(function(){
 					var db = data.db;
 					$('#news_details-'+newsid).html('').slideDown('fast').html(db.news_body);
 					
-					console.log(data.kind);
-					
+					if(data.count == 0)
+					{
+						$('.'+data.kind).hide();
+					}
 					$('.'+data.kind).html(data.count);
 					
 				}
