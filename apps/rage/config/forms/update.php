@@ -5,7 +5,7 @@ $action = $ci->input->post('action');
 
 if($action == "changepass")
 {
-	$config['account/update'] = array(
+	$config['accounts/update'] = array(
 		array(
 				'field' => 'old_password',
 				'label' => 'Old Password',
@@ -26,7 +26,7 @@ if($action == "changepass")
 }
 else if($action == "changeemail")
 {
-	$config['account/update'] = array(
+	$config['accounts/update'] = array(
 		array(
 				'field' => 'password',
 				'label' => 'Password',
