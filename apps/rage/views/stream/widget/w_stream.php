@@ -2,7 +2,11 @@
 
 	<ul class="tab nav nav-tabs nomargin">
 		<li class="active"><a href="#"><i class="icon-comment"></i> Stream Feed</a></li>
-		<li><a href="#" class="get_news" data-kind="news"><i class="icon-list-alt"></i> Latest News <!--<span class="nbadge">12</span></a>--></li>
+		<li><a href="#" class="get_news" data-kind="news"><i class="icon-list-alt"></i> Latest News
+			<?php if(isset($news_count) && $news_count > 0) { ?> 
+				<span class="nbadge"><?=$news_count?></span></a>
+			<? } ?>
+		</li>
 		<li><a href="#" class="get_news" data-kind="events"><i class="icon-calendar"></i> Events</a></li>
 		<li><a href="#" class="get_news" data-kind="changelog"><i class="icon-tags"></i> Change Log</li></a></li>
 

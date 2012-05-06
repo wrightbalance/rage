@@ -7,7 +7,7 @@ class Cms_db extends CI_Model
 	function __construct()
 	{
 		parent::__construct();
-		
+		$this->load->library('mongo_db');
 		$this->sql = "nosql";
 	}
 	
@@ -135,6 +135,13 @@ class Cms_db extends CI_Model
 	function deleteNews($cond)
 	{
 		$this->mongo_db->where($cond)->delete('gcp_news');
+	}
+	
+	function newsCount($cond)
+	{
+		$newscount = $this->mongo_db->where($cond)->count('gcp_news');
+		
+		return $newscount;
 	}
 	
 }

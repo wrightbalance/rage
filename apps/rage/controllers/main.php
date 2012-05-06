@@ -7,10 +7,10 @@ class Main extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-		
+		$this->load->model('cms_db');
 		$this->load->driver('cache');
-		
 		$this->accountid = $this->session->userdata('accountid');
+		
 	}
 	
 	public function index()
@@ -27,6 +27,8 @@ class Main extends CI_Controller
 				$data['isAdmin'] = true;
 			}
 			$data['showlogin'] = false;
+			
+			$data['news_count'] = $this->cms_db->newsCount(array('category'=>'news'));
 			
 		}
 		$this->load->model('char_db');
