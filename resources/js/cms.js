@@ -96,10 +96,10 @@ $(document).ready(function(){
 						html  = "";
 						html += "<div class=\"nrow\">";
 						html +=		"<span class=\"label label-info\">"+n.category+"</span>"; 
-						html +=		"		<a href=\"\">"+n.news_title+"</a>"; 
+						html +=		"		<a href=\"\" class=\"getnews\" data-newsid=\""+n._id+"\">"+n.news_title+"</a>"; 
 						html +=		"		<span class=\"ndate\">"+n.created+"</span>";
 						html +=	"</div>";
-						html +=	"<div id=\"news_details-"+n._id+"\"></div>";
+						html +=	"<div style=\"display:none; padding: 10px 0;\" id=\"news_details-"+n._id+"\"></div>";
 						
 						$('#news_loader').prepend(html);
 					})
@@ -115,6 +115,30 @@ $(document).ready(function(){
 		})
 	})
 	
+	$('a.getnews').live('click',function(e){
+		e.preventDefault();
+		var newsid = $(this).data('newsid');
+		var dt = {newsid: newsid};
+		$.ajax({
+			url: root + 'cms/getNews',
+			data: dt,
+			dataType: 'json',
+			type: 'post',
+			success: function(data)
+			{
+				try
+				{
+					var db = data.db;
+					$('#news_details-'+newsid).html('').slideDown('fast').html(db.news_body);
+					
+				}
+				catch(e)
+				{
+					console.log(e);
+				}
+			}
+		})
+	})
 	
 })
 
