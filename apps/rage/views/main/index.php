@@ -61,7 +61,7 @@
 			<div class="features clearfix">
 		
 				<div class="features_details">
-					<a href="http://www.mediafire.com/download.php?h20xbbbgummmtd8" target="_blank" class="btn btn-large">Download (v1.1-Lion)</a>
+					<a href="http://www.mediafire.com/download.php?ohlxpxglegwebqb" target="_blank" class="btn btn-large">Download (v1.2-Lion)</a>
 				</div>
 			</div>
 		
