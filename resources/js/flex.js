@@ -4,6 +4,7 @@ $(document).ready(function(){
 	accountFlex();
 	storageFlex();
 	newsFlex();
+	pagesFlex();
 	characterFlex();
 
 })
@@ -171,6 +172,59 @@ function newsFlex()
 		
 	})
 }
+
+function pagesFlex()
+{
+	$('.pagesFlex').livequery(function(){
+		$(this).flexigrid
+		(
+			{
+			autoload: true,
+			blockOpacity: 0,
+			singleSelect: true,
+			height: 'auto',
+			preProcess: function(data)
+			{
+				return data;
+			},
+			url: root + 'cms/getListPages',
+			dataType: 'json',
+			colModel : [ 
+						 {display: 'Page Title', name : '_id', width : 160, sortable: true}
+						,{display: 'Created', name : 'created', width : 150, sortable: false}
+						,{display: 'Created By', name : 'author', width : 150, sortable: false}		
+						,{display: 'Edit', name : '', width : 40, sortable: false}		
+						,{display: 'Delete', name : '', width : 50, sortable: false}		
+					],
+			sortname: "_id",
+			sortorder: "desc",
+			showToggleBtn: true, 
+			searchitems : [
+						{display: 'Name', name : 'nameid'},
+						],
+			params: [{name:'item',value: 1}],
+			usepager: true,
+			rpOptions: [15, 30, 60, 90],
+			rp: 15,
+			useRp: true,        
+			timeout: 20,
+			height: 390,
+			onTimeout: function()
+			{
+				
+			},
+			onSuccess: function()
+			{
+			
+			},
+			showTableToggleBtn: true,
+			
+		   }
+		);
+		
+	})
+}
+
 
 
 function characterFlex()

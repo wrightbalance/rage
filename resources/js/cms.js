@@ -28,6 +28,17 @@ $(document).ready(function(){
 		//window.history.pushState(uri,uri,uri);
 		
 		viewnews(newsid)	
+	});
+	
+	$('a.viewpage').live('click',function(e){
+		e.preventDefault();
+		var uri = $(this).attr('href');
+		var pageid = $(this).data('aid');
+		
+		editState('create');
+		//window.history.pushState(uri,uri,uri);
+		
+		 viewpage(pageid);
 	})
 
 
@@ -217,3 +228,41 @@ function viewnews(newsid)
 		}
 	})
 }
+
+function viewpage(pageid)
+{
+	$('.formpage').trigger('reset');
+	
+	$.ajax({
+		url: root + 'cms/getPage',
+		dataType: 'json',
+		type: 'post',
+		data: {pageid:pageid},
+		success: function(data)
+		{
+			try
+			{
+				var db = data.db;
+				
+				$.each(db,function(i,n){
+					$('input[name='+i+']').val(n);
+					$('textarea[name='+i+']').val(n);
+					
+					if(db.publish == 1)
+					{
+						$('input[name='+i+']').attr('checked','checked');
+					}
+					else
+					{
+						$('input[name='+i+']').removeAttr('checked');
+					}
+				})
+			}
+			catch(e)
+			{
+				
+			}
+		}
+	})
+}
+
