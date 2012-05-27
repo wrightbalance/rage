@@ -14,7 +14,7 @@ $(document).ready(function(){
 	$(form).trigger('reset');
 
 	$.ajax({
-		url: root + action,
+		url: action,
 		data: dt,
 		type: 'POST',
 		dataType: 'json',
@@ -45,12 +45,13 @@ $(document).ready(function(){
 				html +=		'	</div>';
 				html +=		'	<hr>';
 				
+				
 				$('.streams').prepend(html);
 				$('.stream_box_action').slideUp('fast');
 				$('.srow').slideDown('fast');
 			}
 			catch(e){
-			
+				console.log(e);
 			};
 		}
 		,error: function(xhr)
