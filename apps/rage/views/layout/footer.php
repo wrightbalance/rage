@@ -20,8 +20,8 @@
 <script type="text/javascript">
 	var root = "<?=site_url()?>";
 	
-	<?php if(isset($details['_id'])) {?>
-	var accountid = <?=$details['_id']?>;
+	<?php if(isset($details['account_id'])) {?>
+	var accountid = <?=$details['account_id']?>;
 	var nickname = "<?=$details['nickname']?>";
 	var photo_path = "<?=resource_url('images/photo_'.strtolower($details['sex']).'.jpg')?>";
 	var gender = "<?=$details['sex']?>";
