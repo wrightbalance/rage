@@ -1,23 +1,28 @@
 <div class="maincol">
-
+	<div class="live_pvp">
+		<span class="plabel">LIVE PVP:</span>
+		<span class="pcomment">Triblist has pawned Stutter's head at guild_vs2</span>
+	</div>
+	
+	
 	<ul class="tab nav nav-tabs nomargin">
-		<li class="active"><a href="#"><i class="icon-comment"></i> Stream Feed</a></li>
-		<li><a href="#" class="get_news" data-kind="news"><i class="icon-list-alt"></i> Latest News
+		<li class="active"><a href="#">Stream Feed</a></li>
+		<li><a href="#" class="get_news" data-kind="news">Change Log
 			<?php if(isset($news_count) && $news_count > 0) { ?> 
-				<span class="nbadge news"><?=$news_count?></span></a>
+				<span class="nbadge news"><?=$news_count?></span>
 			<? } ?>
+			</a>
 		</li>
-		<li><a href="#" class="get_news" data-kind="events"><i class="icon-calendar"></i> Events</a></li>
-		<li><a href="#" class="get_news" data-kind="changelog"><i class="icon-tags"></i> Change Log</li></a></li>
-
 	</ul>
 	
 	<br/>
 	<div class="tpane pactive">
 	<div class="stream_box">
 		<form class="sform" method="post" action="<?=site_url('stream/post')?>">
-		<input type="hidden" value="<?=$details['_id']?>" name="account_id"/>
+		<input type="hidden" value="<?=$details['account_id']?>" name="account_id"/>
+		<?php if(isset($details['nickname'])){?>
 		<input type="hidden" value="<?=$details['nickname']?>" name="nickname"/>
+		<? } ?>
 		<input type="hidden" value="<?=$details['sex']?>" name="gender"/>
 		<textarea class="message" name="message" placeholder="What is in your mind?"></textarea>
 		<div class="stream_box_action clearfix">
@@ -25,7 +30,6 @@
 		</div>
 		</form>
 	</div>
-	<hr/>
 
 	<div class="streams">
 		<?php if(isset($streams) && $streams){ ?>
