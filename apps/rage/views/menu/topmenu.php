@@ -1,8 +1,3 @@
-<div class="topnav2">
-	<a href="" class=""><i class="curonline"></i>CURRENT ONLINE</a>
-	<a href="" class=""><i class="rankings"></i>RANKINGS</a>
-	<a href="" class=""><i class="info"></i>INFORMATION</a>
-</div>
 <?php if(isset($details['account_id'])) {?>
 
 <div class="top-action">
