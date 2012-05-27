@@ -1,4 +1,11 @@
 $(document).ready(function(){
+
+	if($('#set_nickname').length)
+	{
+		$('#set_nickname').modal({
+			show: true
+		});
+	}
 	
 	$('.main-nav li a').live('click',function(e){
 		e.preventDefault();
@@ -91,7 +98,7 @@ $(document).ready(function(){
 		$(".mtitle").empty().html(account_id + ' View account details');
 		
 		$.ajax({
-			url: root + 'characters/getAccountCharacter',
+			url: root + 'accounts/getAccount',
 			dataType: 'json',
 			data: {account_id:account_id},
 			type: 'POST',
@@ -103,8 +110,8 @@ $(document).ready(function(){
 					{
 						var html = "";
 						$('.loadchar').html('');
-						
-						$.each(data.db,function(i,n){
+				
+						$.each(data.chars,function(i,n){
 							html = "";
 							html += "<tr>";
 							html += "	<td><a href=''>"+n.char_id+"</a></td>";
@@ -115,6 +122,15 @@ $(document).ready(function(){
 							html += "</tr>";
 						   
 							$('.loadchar').prepend(html);
+						})
+						
+						$.each(data.account,function(i,n){
+							
+							if($('.'+i).length)
+							{
+								$('.'+i).val(n);
+								console.log(i);
+							}
 						})
 						
 						$('*').removeClass('wait');
@@ -153,6 +169,10 @@ var jsonPROC = {
 		$('.newsFlex').livequery(function(){
 			$(this).flexReload();
 		})
+	},
+	reload: function(data,form)
+	{
+		location.reload();
 	}
 }
 
@@ -172,7 +192,7 @@ $('.form').live('submit',function(e){
 	
 	
 	$.ajax({
-		url: root + action,
+		url: action,
 		data: dt,
 		type: 'POST',
 		dataType: 'json',
