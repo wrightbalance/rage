@@ -19,6 +19,9 @@ class Main extends CI_Controller
 		if($this->accountid)
 		{
 			$this->load->model('notif_db');
+			$this->load->model('accounts_db');
+			$this->load->model('streams_db');
+				
 			$data['isAdmin'] =false;
 			
 			$groupid = $this->session->userdata('groupid');
@@ -30,13 +33,12 @@ class Main extends CI_Controller
 			
 			$data['news_count'] = $this->notif_db->newsCount(array('category'=>'news'));
 			
+			$details = $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
+			$data['details'] = $details;
+			
 		}
 		$this->load->model('char_db');
-		$online = $this->char_db->getOnline();
-		$pvptop = $this->char_db->topPlayer();
-		
-		$data['onlines'] = $online;
-		$data['pvptop'] = $pvptop;
+
 		
 		if(!$this->input->is_ajax_request())
 		{
@@ -50,16 +52,11 @@ class Main extends CI_Controller
 			}
 			else
 			{
-				$this->load->model('accounts_db');
-				$this->load->model('streams_db');
-				
-				$details = $this->accounts_db->getAccountM(array('_id'=>(int)$this->accountid));
-	
 				$data['title'] = "Home Page | ".config_item('site_title');	
 				$data['cssgroup'] = "loggedin";
 				$data['jsgroup'] = "loggedin";
 				$data['page'] = 'stream';
-				$data['details'] = $details[0];
+				
 				
 				$data['streams'] = $this->streams_db->getStream();
 				
@@ -77,9 +74,9 @@ class Main extends CI_Controller
 			$this->load->model('accounts_db');
 			$this->load->model('streams_db');
 			
-			$details = $this->accounts_db->getAccountM(array('_id'=>(int)$this->accountid));
+			$details = $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
 			$data['streams'] = $this->streams_db->getStream();
-			$data['details'] = $details[0];
+			$data['details'] = $details;
 			$this->load->vars($data);
 			$this->load->view('stream/widget/w_stream',$data);
 		}
@@ -96,15 +93,8 @@ class Main extends CI_Controller
 		$data['jsgroup'] = "loggedin";
 		$data['page'] 	= 'help-guide';
 		
-		$details = $this->accounts_db->getAccountM(array('_id'=>(int)$this->accountid));
-		$data['details'] = $details[0];
-		
-		$this->load->model('char_db');
-		$online = $this->char_db->getOnline();
-		$pvptop = $this->char_db->topPlayer();
-		
-		$data['onlines'] = $online;
-		$data['pvptop'] = $pvptop;
+		$details = $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
+		$data['details'] = $details;
 
 		if(!$this->input->is_ajax_request())
 		{

@@ -43,7 +43,7 @@ class Stream extends CI_Controller
 		$db['nickname'] 	= $this->input->post('nickname');
 		$db['gender']		= $this->input->post('gender');
 		$db['c_created'] 	= date('Y-m-d H:i:s');
-		$db['comment_id']	= time().rand(6666,9999);
+		$db['comment_id']	= (string)time().rand(1,99);
 		 
 		$cid = $this->streams_db->saveComment($db,$sid);
 		
@@ -70,7 +70,7 @@ class Stream extends CI_Controller
 		$this->streams_db->delete($cond,$kind);
 		
 		$data['kind'] = $kind;
-		
+
 		$data['json'] = $data;
 		$this->load->view('ajax/json',$data);
 	}

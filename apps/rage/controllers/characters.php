@@ -25,11 +25,9 @@ class Characters extends CI_Controller
 		$data['jsgroup'] = "loggedin";
 		$data['page'] = "";
 
-		$details = $this->accounts_db->getAccountM(array('_id'=>(int)$this->accountid));
-		$data['details'] = $details[0];
+		$details = $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
+		$data['details'] = $details;
 
-		$data['accounts'] = $this->accounts_db->getAccounts();
-		
 		$groupid = $this->session->userdata('groupid');
 		if($groupid < config_item('group_level')) show_404();
 		
@@ -73,14 +71,9 @@ class Characters extends CI_Controller
 		$data['jsgroup'] = "loggedin";
 		$data['page'] 	= 'characters';
 		
-		$details = $this->accounts_db->getAccountM(array('_id'=>(int)$this->accountid));
-		$data['details'] = $details[0];
-		
-		$online = $this->char_db->getOnline();
-		$pvptop = $this->char_db->topPlayer();
-		
-		$data['onlines'] = $online;
-		$data['pvptop'] = $pvptop;
+		$details = $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
+		$data['details'] = $details;
+
 		
 		$data['characters'] = $this->char_db->getChar(array('account_id'=>$this->accountid));
 

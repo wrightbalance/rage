@@ -8,6 +8,7 @@ class Accounts extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('accounts_db');
+		$this->load->model('char_db');
 
 		$this->accountid = $this->session->userdata('accountid');
 	}
@@ -16,16 +17,22 @@ class Accounts extends CI_Controller
 	{
 		if($this->input->is_ajax_request())
 		{
+
 			$username = trim($this->input->post('username'));
 			$password = trim($this->input->post('password'));
 			$action = $this->input->post('action');
 			$marginright = "";
+			
+			if(config_item('md5'))
+			{
+				$password = md5($password);
+			}
 
-			$account = $this->accounts_db->getAccount(array('userid'=>$username,'user_pass'=>md5($password)),true);
+			$account = $this->accounts_db->getAccount(array('userid'=>$username,'user_pass'=>$password),true,false);
 
 			if($account > 0)
 			{
-				$account2 = $this->accounts_db->getAccount(array('userid'=>$username,'user_pass'=>md5($password)));
+				$account2 = $this->accounts_db->getAccount(array('userid'=>$username,'user_pass'=>$password),false,true);
 				$this->session->set_userdata('accountid',$account2['account_id']);
 				$this->session->set_userdata('groupid',$account2['group_id']);
 
@@ -36,22 +43,16 @@ class Accounts extends CI_Controller
 			else
 			{
 				$button = "<a class=\"close\" data-dismiss=\"alert\">×</a>";
+				$margin = "";
 				if($action == "quicklogin") 
 				{
 					$marginright = "style='margin-right: 36px; margin-top: -4px'";
 					$button = "<button class=\"btn btn-mini showform\" style=\"float: right\">Retry</button>";
+					$margin = "style='margin-top: -9px'";
 				}
-				/*
-				$data['message'] = "";
-				$data['message'] .= "<div class=\"alert alert-error\" {$marginright}>";
-				$data['message'] .=	"{$button}";
-				$data['message'] .=	"Login failed. Please try again.";
-				$data['message'] .=	"</div>";
-				$data['action'] = "error2";
-				*/
-
+	
 				$data['message']  = "";
-				$data['message'] .= "<div class=\"res_message res_alert clearfix\">";
+				$data['message'] .= "<div class=\"res_message res_alert clearfix\"  {$margin}>";
 				$data['message'] .= "Your username or password.";
 				$data['message'] .= "<button class=\"btn retryform\" style=\"float:right\" type=\"button\">Retry</button>";
 				$data['message'] .="</div>";
@@ -113,9 +114,15 @@ class Accounts extends CI_Controller
 		else
 		{
 			$db['userid'] 		= trim($this->input->post('username'));
-			$db['user_pass'] 	= trim(md5($this->input->post('password')));
+			
+			if(config_item('md5'))
+				$db['user_pass'] 	= trim(md5($this->input->post('password')));
+			else
+				$db['user_pass'] 	= trim($this->input->post('password'));
+				
 			$db['email'] 		= trim($this->input->post('email'));
 			$db['sex'] 			= $this->input->post('gender');
+			
 
 			$month 				= $this->input->post('month');
 			$day 				= $this->input->post('day');
@@ -124,11 +131,13 @@ class Accounts extends CI_Controller
 			$db['birthdate'] 	= "{$year}-{$month}-{$day}";
 
 			$accountid = $this->accounts_db->save($db);
-
-			$db['_id'] = $accountid;
-			$db['nickname'] = trim($this->input->post('nickname'));
-			$this->accounts_db->saveM($db);
-
+			
+			$db2['nickname']		= trim($this->input->post('nickname'));
+			$db2['created']			= date('Y-m-d H:i:s');
+			$db2['accountid']		= $accountid;
+			
+			$this->accounts_db->set_nickname($db2);
+			
 			$this->session->set_userdata('accountid',$accountid);
 
 			$data['action'] = "forward";
@@ -136,6 +145,40 @@ class Accounts extends CI_Controller
 			$data['message'] = "Redirecting...";
 		}
 
+		$data['json'] = $data;
+		$this->load->view('ajax/json',$data);
+	}
+	
+	function set_nickname()
+	{
+		if(!$this->input->is_ajax_request()) exit();
+		
+		$this->form_validation->set_rules('nickname','Nick Name','required|callback_checkNickname');
+
+		if($this->form_validation->run() === FALSE)
+		{
+			$this->form_validation->set_error_delimiters('<li>','</li>');
+
+			$data['message']  = "";
+			$data['message'] .= "<div class=\"res_message res_alert\">";
+			$data['message'] .= "<ul>".validation_errors()."</ul>";
+			$data['message'] .="</div>";
+			$data['message'] .= "<button class=\"btn retryform\" type=\"button\">Retry</button>";
+			$data['action'] = "retry";
+
+		}
+		else
+		{
+			$db['nickname'] = trim($this->input->post('nickname'));
+			$db['created'] = date('Y-m-d H:i:s');
+			$db['accountid'] = $this->accountid;
+			
+			$this->accounts_db->set_nickname($db);
+			
+			$data['action'] = "reload";
+
+		}
+		
 		$data['json'] = $data;
 		$this->load->view('ajax/json',$data);
 	}
@@ -172,7 +215,7 @@ class Accounts extends CI_Controller
 
 	function checkNickname($nickname)
 	{
-		$account = $this->accounts_db->getAccountM(array('nickname'=>$nickname));
+		$account = $this->accounts_db->getNickname(array('nickname'=>$nickname));
 
 		if(count($account) > 0)
 		{
@@ -193,18 +236,8 @@ class Accounts extends CI_Controller
 		$data['jsgroup'] = "loggedin";
 		$data['page'] 	= 'settings';
 
-		$details = $this->accounts_db->getAccountM(array('_id'=>(int)$this->accountid));
-		$data['details'] = $details[0];
-
-		$account = $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
-		$data['account'] = $account;
-
-		$this->load->model('char_db');
-		$online = $this->char_db->getOnline();
-		$pvptop = $this->char_db->topPlayer();
-
-		$data['onlines'] = $online;
-		$data['pvptop'] = $pvptop;
+		$details = $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
+		$data['details'] = $details;
 
 		if($settings) $data['settings'] = $settings;
 
@@ -239,10 +272,8 @@ class Accounts extends CI_Controller
 		$data['jsgroup'] = "loggedin";
 		$data['page'] 	= 'account';
 
-		$details = $this->accounts_db->getAccountM(array('_id'=>(int)$this->accountid));
-		$data['details'] = $details[0];
-
-		$data['accounts'] = $this->accounts_db->getAccounts();
+		$details = $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
+		$data['details'] = $details;
 
 		if(!$this->input->is_ajax_request())
 		{
@@ -290,7 +321,6 @@ class Accounts extends CI_Controller
 
 	function update()
 	{
-
 		checkSession();
 		if(!$this->input->is_ajax_request()) exit();
 
@@ -314,7 +344,11 @@ class Accounts extends CI_Controller
 			switch($action)
 			{
 				case 'changepass':
-					$db['user_pass'] = trim(md5($this->input->post('new_password')));
+					if(config_item('md5'))
+						$db['user_pass'] = trim(md5($this->input->post('new_password')));
+					else
+						$db['user_pass'] = trim($this->input->post('new_password'));
+						
 					$this->accounts_db->save($db,$this->accountid);
 
 					$data['message']  = "";
@@ -343,6 +377,10 @@ class Accounts extends CI_Controller
 
 	function _check_password($password)
 	{
+		if(config_item('md5'))
+		{
+			$password = md5($password);
+		}
 		$user = $this->accounts_db->getAccount(array('user_pass'=>$password,'account_id'=>$this->accountid));
 
 		if(count($user) == 0)
@@ -385,6 +423,67 @@ class Accounts extends CI_Controller
 		{
 			return true;
 		}	
+	}
+	
+	function ban()
+	{
+		// Admin Function
+		
+		checkSession();
+		if(!$this->input->is_ajax_request()) exit();
+		
+		$admin = $this->session->userdata('groupid');
+		if($admin < config_item('group_level')) exit(); // If not authorize just exit
+		
+		$db['account_id']  	= $this->input->post('account_id');
+		$db['banned_by']	= $this->accountid;	
+		$db['ban_type']		= $this->input->post('ban_type');
+		$db['ban_until']	= "";
+		$db['ban_date']		= date('Y-m-d H:i:s');
+		$db['ban_reason']	= $this->input->post('reason');
+		
+		$data['message']  = "";
+		$data['message'] .= "<div class=\"res_message\">";
+		$data['message'] .= "Account has been banned";
+		$data['message'] .="</div>";
+		$data['message'] .= "<button class=\"btn retryform\" type=\"button\">Close</button>";
+		$data['action'] = "retry";
+		
+		$data['json'] = $data;
+		$this->load->view('ajax/json',$data);
+		
+	}
+	
+	function getAccount()
+	{
+		// Admin Function
+		checkSession();
+		if(!$this->input->is_ajax_request()) exit();
+		
+		$admin = $this->session->userdata('groupid');
+		if($admin < config_item('group_level')) exit(); // If not authorize just exit
+		
+		$account_id = $this->input->post('account_id');
+		
+		$data['account'] = $this->accounts_db->getAccount(array('account_id'=>$account_id),false,true);
+		$characters = $this->char_db->getChar(array('account_id'=>$account_id));
+		$chars = array();
+		
+		foreach($characters as $char)
+		{
+			$chars[] = array(
+					 'char_id'=>$char['char_id']
+					,'char_num'=>$char['char_num']
+					,'name'	=> $char['name']
+					,'job'	=> jobClass($char['class'])
+					,'level' => $char['base_level'].'/'.$char['job_level']
+					,'zeny'	=> $char['zeny']
+					);
+		}
+		
+		$data['chars'] = $chars;
+		$data['json'] = $data;
+		$this->load->view('ajax/json',$data);
 	}
 
 }
