@@ -1,4 +1,9 @@
-<?php if(isset($details['_id'])) {?>
+<div class="topnav2">
+	<a href="" class=""><i class="curonline"></i>CURRENT ONLINE</a>
+	<a href="" class=""><i class="rankings"></i>RANKINGS</a>
+	<a href="" class=""><i class="info"></i>INFORMATION</a>
+</div>
+<?php if(isset($details['account_id'])) {?>
 
 <div class="top-action">
 	
@@ -13,10 +18,10 @@
 		  <button class="btn" onclick="location.href='<?=site_url()?>'"><i class="icon-book"></i> Admin Dashboard</button>
 		  <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
 		  <ul class="dropdown-menu">
-			<li><a href="/accounts"  class="ps">Account</a></li>
-			<li><a href="/characters"  class="ps">Characters</a></li>
-			<li><a href="/cms/pages" class="ps">Pages</a></li>
-			<li><a href="/cms/news"  class="ps">News</a></li>
+			<li><a href="<?=config_item('base_uri')?>/accounts"  class="ps">Account</a></li>
+			<li><a href="<?=config_item('base_uri')?>/characters"  class="ps">Characters</a></li>
+			<li><a href="<?=config_item('base_uri')?>/cms/pages" class="ps">Pages</a></li>
+			<li><a href="<?=config_item('base_uri')?>/cms/news"  class="ps">News</a></li>
 
 		  </ul>
 		</div>
@@ -32,9 +37,9 @@
 		  <button class="btn" onclick="location.href='<?=site_url()?>'"><i class="icon-home"></i> Home</button>
 		  <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
 		  <ul class="dropdown-menu">
-			<li><a href="/accounts/settings">Account Settings</a></li>
-			<li><a href="/accounts/settings/changepass" class="ps">Change Password</a></li>
-			<li><a href="/accounts/settings/changeemail">Change E-mail</a></li>
+			<li><a href="<?=config_item('base_uri')?>/accounts/settings">Account Settings</a></li>
+			<li><a href="<?=config_item('base_uri')?>/accounts/settings/changepass" class="ps">Change Password</a></li>
+			<li><a href="<?=config_item('base_uri')?>/accounts/settings/changeemail">Change E-mail</a></li>
 			<li class="divider"></li>
 			<li><a href="<?=site_url('accounts/signout')?>">Logout</a></li>
 		  </ul>
