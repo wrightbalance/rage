@@ -21,7 +21,7 @@ class Cms_db extends CI_Model
 			}
 			elseif ($this->sql == "mysql")
 			{
-				$this->db->where('news_id',$nid)->update('gcp_news',$db);
+				$this->db->where('id',$nid)->update('gcp_news',$db);
 			}
 		}
 		else
@@ -33,6 +33,32 @@ class Cms_db extends CI_Model
 			elseif ($this->sql == "mysql")
 			{
 				$this->db->insert('gcp_news',$db);
+			}
+		}
+	}
+	
+	function save_page($db,$pid = false)
+	{
+		if($pid)
+		{
+			if($this->sql == "nosql")
+			{
+				$this->mongo_db->where(array('_id'=>$this->mongo_db->mongoID($pid)))->set($db)->update('gcp_pages');
+			}
+			elseif ($this->sql == "mysql")
+			{
+				$this->db->where('id',$pid)->update('gcp_pages',$db);
+			}
+		}
+		else
+		{
+			if($this->sql == "nosql")
+			{
+				$this->mongo_db->insert('gcp_pages',$db);
+			}
+			elseif ($this->sql == "mysql")
+			{
+				$this->db->insert('gcp_pages',$db);
 			}
 		}
 	}
@@ -78,6 +104,47 @@ class Cms_db extends CI_Model
 		return $data;
 	}
 	
+	function getListPages()
+    {
+		$user = $this->session->userdata('user');
+		
+        $item = $this->input->post('item');
+		$page = $this->input->post('page');
+		$rp = $this->input->post('rp');
+		
+		$sortname = $this->input->post('sortname');
+		$sortorder = $this->input->post('sortorder');
+		
+		$query = $this->input->post('query');
+		$qtype = $this->input->post('qtype');
+
+		if (!$sortname) $sortname = 'account_id';
+		if (!$sortorder) $sortorder = 'DESC';
+		
+		if (!$page) $page = 1;
+		if (!$rp) $rp = 10;        
+				
+		$start = (($page-1) * $rp);  
+		       
+		$num = $this->mongo_db->count('gcp_pages');
+		
+		if ($start>$num) 	
+			{
+			$start = 0; 
+			$page = 1;
+			}    
+			
+		$this->mongo_db->order_by(array($sortname=>$sortorder));		
+		$results = $this->mongo_db->get('gcp_pages');
+
+			
+		$data['db'] = $results;    
+		$data['page'] = $page;
+		$data['total'] = $num;
+		$data['rp'] = $rp;
+		return $data;
+	}
+	
 	function getNews($cond)
 	{
 		$news = $this->mongo_db->where($cond)->get('gcp_news');
@@ -85,6 +152,20 @@ class Cms_db extends CI_Model
 		if(count($news) > 0)
 		{
 			return $news;
+		}
+		else
+		{
+			return array();
+		}
+	}
+	
+	function getPage($cond)
+	{
+		$page = $this->mongo_db->where($cond)->get('gcp_pages');
+		
+		if(count($page) > 0)
+		{
+			return $page;
 		}
 		else
 		{

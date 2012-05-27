@@ -25,14 +25,22 @@ class Accounts_db extends CI_Model
 		return $id;
 	}
 	
+	function set_nickname($db)
+	{
+		$this->db->insert('cp_login',$db);
+	}
+	
 	function saveM($db,$id = "")
 	{
 		$this->mongo_db->insert('login',$db);
 	}
 	
-	function getAccount($cond,$count=false)
+	function getAccount($cond,$count=false,$join=true)
 	{
-		$query = $this->db->where($cond)->get('login');
+
+		if($join) $this->db->join('cp_login','cp_login.accountid = login.account_id','left');
+		$this->db->where($cond);
+		$query = $this->db->get('login');
 		
 		if($count)
 			$row   = $query->num_rows();
@@ -107,6 +115,13 @@ class Accounts_db extends CI_Model
 		$data['total'] = $num;
 		$data['rp'] = $rp;
 		return $data;
+	}
+	
+	function getNickname($cond)
+	{
+		$query = $this->db->where($cond)->get('cp_login');
+		
+		return $query->row_array();
 	}
 	
 	
