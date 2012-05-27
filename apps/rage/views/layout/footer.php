@@ -5,6 +5,12 @@
 
 <?php $this->load->view('modal/loader')?>
 
+<?php if(isset($details)){?>
+<?php if(!isset($details['nickname']) && !$details['nickname']){?>
+<?php $this->load->view('modal/set_nickname')?>
+<? } ?>
+<? } ?>
+
 <div class="footer">
 	<div class="tileCenter">
 		RagnaGears &copy; 2012 ~ Brought to you by <a href="">jingcleovil</a>
