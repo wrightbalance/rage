@@ -1,10 +1,5 @@
 <div class="maincol">
-	<div class="live_pvp">
-		<span class="plabel">LIVE PVP:</span>
-		<span class="pcomment">Triblist has pawned Stutter's head at guild_vs2</span>
-	</div>
-	
-	
+
 	<ul class="tab nav nav-tabs nomargin">
 		<li class="active"><a href="#">Stream Feed</a></li>
 		<li><a href="#" class="get_news" data-kind="news">Change Log
