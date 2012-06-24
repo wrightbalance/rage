@@ -89,10 +89,18 @@ $(document).ready(function(){
 		
 		var account_id = $(this).data('aid');
 		
+		$('.characters').livequery(function(){
+			var  dt = [{name:'account_id',value: account_id}];
+			$(this).flexOptions({params: dt}).flexReload();
+		})
+		
+		
 		$("#view").modal({
 			show: true,
 			backdrop: true
 		})
+		
+	
 		
 		
 		$('*').addClass('wait');

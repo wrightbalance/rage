@@ -11,4 +11,4 @@
 
 </div>
 
-<?php $this->load->view('account/modal/view')?>
+<?php $this->load->view('characters/modal/view')?>

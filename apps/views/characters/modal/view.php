@@ -1,4 +1,4 @@
-<div class="modal" id="view_char">
+<div class="modal" id="view">
   <div class="modal-header">
     <a class="close" data-dismiss="modal">×</a>
     <h3 class="mtitle"></h3>
@@ -11,20 +11,11 @@
 	</ul>
 	<div class="tpane pactive">
 		
-		<table class="table table-bordered table-striped">
-		  <thead>
-			  <tr>
-				<th>Char ID</th>
-				<th>Slot</th>
-				<th>Name</th>
-				<th>Job</th>
-				<th>Level</th>
-			  </tr>
-			</thead>
-			<tbody class="loadchar">
-			  
-			</tbody>
-		</table>
+		<?php if($authorize){?>
+		<table class="characters"></table>
+		<? } else { ?>
+		<table class="characters2"></table>
+		<? } ?>
 		
 	</div>
 	
@@ -57,6 +48,6 @@
     
   </div>
   <div class="modal-footer">
-    <a href="#" class="btn" onclick="$('#view_char').modal('hide');">Close</a>
+    <a href="#" class="btn" onclick="$('#view').modal('hide');">Close</a>
   </div>
 </div>

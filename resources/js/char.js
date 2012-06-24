@@ -145,7 +145,6 @@ $(document).ready(function(e){
 			autoload: true,
 			blockOpacity: 0,
 			singleSelect: true,
-			height: 'auto',
 			preProcess: function(data)
 			{
 				return data;
@@ -155,10 +154,10 @@ $(document).ready(function(e){
 			colModel : [ 
 						 {display: 'Account ID', name : 'account_id', width : 60, sortable: true}
 						,{display: 'Name', name : 'name', width : 110, sortable: true}
-						,{display: 'Job', name : 'class', width : 110, sortable: true}
+						,{display: 'Job', name : 'class', width : 80, sortable: true}
 						,{display: 'Base Level', name : 'base_level', width : 60, sortable: true, align: 'center'}
 						,{display: 'Job Level', name : 'job_level', width : 60, sortable: true}
-						,{display: 'Zeny', name : 'zeny', width : 150, sortable: false}
+						,{display: 'Zeny', name : 'zeny', width : 60, sortable: false}
 						
 					],
 			sortname: "account_id",
@@ -171,10 +170,10 @@ $(document).ready(function(e){
 			params: [{name:'item',value: 1}],
 			usepager: true,
 			rpOptions: [15, 30, 60, 90],
-			rp: 15,
+			rp: 10,
 			useRp: true,        
 			timeout: 20,
-			height: 390,
+			height: 'auto',
 			onTimeout: function()
 			{
 				
@@ -206,10 +205,10 @@ $(document).ready(function(e){
 			dataType: 'json',
 			colModel : [ 
 						 {display: 'Name', name : 'name', width : 110, sortable: true}
-						,{display: 'Job', name : 'class', width : 110, sortable: true}
+						,{display: 'Job', name : 'class', width : 60, sortable: true}
 						,{display: 'Base Level', name : 'base_level', width : 60, sortable: true, align: 'center'}
 						,{display: 'Job Level', name : 'job_level', width : 60, sortable: true}
-						,{display: 'Zeny', name : 'zeny', width : 150, sortable: false}
+						,{display: 'Zeny', name : 'zeny', width : 60, sortable: false}
 						
 					],
 			sortname: "account_id",
@@ -222,10 +221,10 @@ $(document).ready(function(e){
 			params: [{name:'item',value: 1}],
 			usepager: true,
 			rpOptions: [15, 30, 60, 90],
-			rp: 15,
+			rp: 10,
 			useRp: true,        
 			timeout: 20,
-			height: 390,
+			height: 'auto',
 			onTimeout: function()
 			{
 				
