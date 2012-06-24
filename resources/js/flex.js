@@ -23,7 +23,7 @@ function accountFlex()
 			{
 				return data;
 			},
-			url: root + 'accounts/getList',
+			url: root + 'account/getList',
 			dataType: 'json',
 			colModel : [ 
 						{display: 'Account ID', name : 'account_id', width : 70, sortable: true}
@@ -144,7 +144,7 @@ function newsFlex()
 						,{display: 'Edit', name : '', width : 40, sortable: false}		
 						,{display: 'Delete', name : '', width : 50, sortable: false}		
 					],
-			sortname: "_id",
+			sortname: "id",
 			sortorder: "desc",
 			showToggleBtn: true, 
 			searchitems : [
@@ -192,11 +192,11 @@ function pagesFlex()
 			colModel : [ 
 						 {display: 'Page Title', name : '_id', width : 160, sortable: true}
 						,{display: 'Created', name : 'created', width : 150, sortable: false}
-						,{display: 'Created By', name : 'author', width : 150, sortable: false}		
+						,{display: 'Publish', name : '', width : 40, sortable: false}		
 						,{display: 'Edit', name : '', width : 40, sortable: false}		
 						,{display: 'Delete', name : '', width : 50, sortable: false}		
 					],
-			sortname: "_id",
+			sortname: "id",
 			sortorder: "desc",
 			showToggleBtn: true, 
 			searchitems : [

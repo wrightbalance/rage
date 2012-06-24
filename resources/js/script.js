@@ -3,7 +3,9 @@ $(document).ready(function(){
 	if($('#set_nickname').length)
 	{
 		$('#set_nickname').modal({
-			show: true
+			show: true,
+			backdrop: 'static',
+			keyboard: false
 		});
 	}
 	
@@ -98,7 +100,7 @@ $(document).ready(function(){
 		$(".mtitle").empty().html(account_id + ' View account details');
 		
 		$.ajax({
-			url: root + 'accounts/getAccount',
+			url: root + 'account/getAccount',
 			dataType: 'json',
 			data: {account_id:account_id},
 			type: 'POST',
@@ -166,7 +168,7 @@ var jsonPROC = {
 		$('.epane').hide();
 		$('.vpane').show();
 		$('.fields',form).show();
-		$('.newsFlex').livequery(function(){
+		$('.'+data.source+'Flex').livequery(function(){
 			$(this).flexReload();
 		})
 	},
@@ -178,7 +180,7 @@ var jsonPROC = {
 
 $('.form').live('submit',function(e){
 	e.preventDefault();
-	
+
 	var form 	= this;
 	var dt 		= $(form).serializeArray();
 	var action 	= $(form).attr('action');

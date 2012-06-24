@@ -31,7 +31,7 @@ $(document).ready(function(){
 				html +=		'<img src="'+photo_path+'"/>';
 				html +=		'		</div>';
 				html +=		'		<div class="srow_details">';
-				html +=		'			<a href="">'+nickname+'</a> ' + db.message;
+				html +=		'			<a href="">'+nickname+'</a> ' + db.content;
 				html +=		'		</div>';
 				html +=		'		<div class="srow_actions">';
 				html +=		'			<a href="#" id="docomment" data-id="'+db.sid+'">Comment</a> - <span>Just now</span>';
