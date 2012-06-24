@@ -6,7 +6,7 @@
   
 	
 	
-	<form class="form-horizontal form" method="post" action="<?=site_url('accounts/set_nickname')?>">
+	<form class="form-horizontal form" method="post" action="<?=site_url('account/set_nickname')?>">
 		<input type="hidden" name="action" value="changepass"/>
 		<div class="response"></div>
 		<fieldset class="fields">

@@ -5,8 +5,8 @@
 
 <?php $this->load->view('modal/loader')?>
 
-<?php if(isset($details)){?>
-<?php if(!isset($details['nickname']) && !$details['nickname']){?>
+<?php if(isset($user)){?>
+<?php if(!isset($user['nickname']) && !$user['nickname']){?>
 <?php $this->load->view('modal/set_nickname')?>
 <? } ?>
 <? } ?>
@@ -20,11 +20,11 @@
 <script type="text/javascript">
 	var root = "<?=site_url()?>";
 	
-	<?php if(isset($details['account_id'])) {?>
-	var accountid = <?=$details['account_id']?>;
-	var nickname = "<?=$details['nickname']?>";
-	var photo_path = "<?=resource_url('images/photo_'.strtolower($details['sex']).'.jpg')?>";
-	var gender = "<?=$details['sex']?>";
+	<?php if(isset($user['account_id'])) {?>
+	var accountid = <?=$user['account_id']?>;
+	var nickname = "<?=$user['nickname']?>";
+	var photo_path = "<?=resource_url('images/photo_'.strtolower($user['sex']).'.jpg')?>";
+	var gender = "<?=$user['sex']?>";
 	<? } ?>
 	
 </script>

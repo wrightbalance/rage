@@ -5,7 +5,7 @@
 			<img src="<?=resource_url('images/photo_'.strtolower($user['sex']).'.jpg')?>" width="40" height="40"/>
 		</div>
 		<?php if(isset($user['nickname'])){?>
-		<div class="name"><a href="<?=site_url()?>"><?=$user['nickname']?></a></div>
+		<div class="name"><a href="<?=push_url('account/settings')?>" class="ps"><?=$user['nickname']?></a></div>
 		<? } ?>
 	</div>
 	<div class="profileMenu">

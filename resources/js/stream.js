@@ -27,6 +27,7 @@ $(document).ready(function(){
 		
 				html  = '';
 				html += '<div class="srow clearfix" style="display: none" id="'+db.sid+'">';
+				html += '<a href="#" data-id="'+db.sid+'" class="close deleteStream close_extend" data-kind="stream">×</a>';
 				html +=		'<div class="avatar50">';
 				html +=		'<img src="'+photo_path+'"/>';
 				html +=		'		</div>';

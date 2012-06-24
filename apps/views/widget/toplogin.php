@@ -1,4 +1,4 @@
-<?php if(!$user){?>
+<?php if(empty($user)){?>
 <div class="quicklogin">
 <form class="form form-inline form" method="post" action="<?=site_url('account/auth')?>">
 	<input type="hidden" name="action" value="quicklogin"/>

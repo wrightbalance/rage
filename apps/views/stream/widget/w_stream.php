@@ -34,14 +34,14 @@
 			<?php //echo "<pre>"; print_r($streams)?>
 			<div class="stream_row" id="streamholder-<?=$stream['sid']?>">
 			<div class="srow clearfix">
-				<?php if(isset($isAdmin) && $isAdmin){ ?>
+				<?php if($authorize){ ?>
 					<a href="#" data-id="<?=$stream['sid']?>" class="close deleteStream close_extend" data-kind="stream">×</a>
 				<? } ?>
 				<div class="avatar50">
 					<img src="<?=resource_url('images/photo_'.strtolower($stream['sex']).'.jpg')?>" />
 				</div>
 				<div class="srow_details">
-					<a href="#"><?=ucwords($stream['nickname'])?></a>
+					<a href="#" class="<?=$stream['abadge']?>"><?=ucwords($stream['nickname'])?></a>
 					<?=parseurl(nl2br($stream['content']))?>
 				</div>
 				<div class="srow_actions">
@@ -62,7 +62,7 @@
 									<img src="<?=resource_url('images/photo_'.strtolower($comment['sex']).'.jpg')?>" width="32" height="32"/>
 								</div>
 								<div class="comments_details">
-									<a href=""><?=$comment['nickname']?></a> <?=$comment['comment']?>
+									<a href="#" class="<?=$comment['abadge']?>"><?=$comment['nickname']?></a> <?=$comment['comment']?>
 								</div>
 								<?php if(isset($isAdmin) && $isAdmin){ ?>
 								<a href="#" data-id="<?=$comment['csid']?>" data-comment_id="<?=$comment['csid']?>" class="close deleteStream" data-kind="comment">×</a>

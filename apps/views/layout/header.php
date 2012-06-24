@@ -13,6 +13,7 @@
 	
 		
 		<?php $this->load->view('menu/topmenu')?>
+		<?php $this->load->view('widget/toplogin')?>
 		
 	</div>
 </div>
