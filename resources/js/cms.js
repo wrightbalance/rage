@@ -164,6 +164,15 @@ $(document).ready(function(){
 		})
 	})
 	
+	$('input[name=status]').click(function(e){
+		$(this).val(0);
+		
+		if(this.checked)
+		{
+			$(this).val(1);
+		}
+	})
+	
 })
 
 $('.cancel').live('click',function()
@@ -211,9 +220,21 @@ function viewnews(newsid)
 					$('select[name='+i+']').val(n);
 					$('textarea[name='+i+']').val(n);
 					
-					if(db.publish == 1)
+			
+					if(db.status == 1)
 					{
 						$('input[name='+i+']').attr('checked','checked');
+						$('input[name='+i+']').val(1);
+					}
+					else
+					{
+						$('input[name='+i+']').removeAttr('checked');
+					}
+					
+					if(db.patcher == 1)
+					{
+						$('input[name='+i+']').attr('checked','checked');
+						$('input[name='+i+']').val(1);
 					}
 					else
 					{
@@ -248,7 +269,7 @@ function viewpage(pageid)
 					$('input[name='+i+']').val(n);
 					$('textarea[name='+i+']').val(n);
 					
-					if(db.publish == 1)
+					if(db.status == 1)
 					{
 						$('input[name='+i+']').attr('checked','checked');
 					}

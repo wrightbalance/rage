@@ -193,8 +193,7 @@ class Cms extends MY_Controller
 	
 	function getListNews()
 	{
-		$admin = $this->session->userdata('groupid');
-		if($admin < config_item('group_level')) exit();
+		if($this->authorize == false) exit();
 		
 		$this->benchmark->mark('code_start');
 		$cond = array();
@@ -206,8 +205,7 @@ class Cms extends MY_Controller
 	
 	function getListPages()
 	{
-		$admin = $this->session->userdata('groupid');
-		if($admin < config_item('group_level')) exit();
+		if($this->authorize == false) exit();
 		
 		$this->benchmark->mark('code_start');
 		$cond = array();

@@ -43,6 +43,7 @@ $config['js']['loggedin'] = array(
     ,array('path'=>'js/','file'=>'cms.js')
     ,array('path'=>'js/','file'=>'flex.js')
     ,array('path'=>'js/','file'=>'vote.js')
+    ,array('path'=>'js/','file'=>'rankings.js')
     );
 
 $config['css3_browsers'] = array(

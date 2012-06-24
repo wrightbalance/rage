@@ -160,4 +160,95 @@ class Ranking_db extends CI_Model
 		return $row;
 	}
 	
+	function getListPVP()
+	{
+		$page = $this->input->post('page');
+		$rp = $this->input->post('rp');
+		
+		$sortname = $this->input->post('sortname');
+		$sortorder = $this->input->post('sortorder');
+		
+		$query = $this->input->post('query');
+		$qtype = $this->input->post('qtype');
+		
+		if (!$page) $page = 1;
+		if (!$rp) $rp = 10;        
+				
+		$start = (($page-1) * $rp);  
+		       
+		$q = $this->db->get('pvpm_data');
+		
+		$num = $q->num_rows();
+		
+		if ($start>$num) 	
+			{
+			$start = 0; 
+			$page = 1;
+			}    
+			
+		$this->db->order_by($sortname,$sortorder);		
+		$results = $this->db->get('pvpm_data');
+
+			
+		$data['db'] = $results->result_array();    
+		$data['page'] = $page;
+		$data['total'] = $num;
+		$data['rp'] = $rp;
+		return $data;
+	}
+	
+	function getListGuild()
+	{
+		$page = $this->input->post('page');
+		$rp = $this->input->post('rp');
+		
+		$sortname = $this->input->post('sortname');
+		$sortorder = $this->input->post('sortorder');
+		
+		$query = $this->input->post('query');
+		$qtype = $this->input->post('qtype');
+		
+		if (!$page) $page = 1;
+		if (!$rp) $rp = 10;        
+
+				
+		$start = (($page-1) * $rp);  
+		
+		$this->db->select('guild_castle.guild_id, 
+					COUNT( guild_castle.guild_id ) AS guild_count, 
+					guild.name as gname, 
+					emblem_id, 
+					emblem_data,
+					master,castle_id');
+		$this->db->group_by('guild.guild_id');
+		$this->db->join('guild','guild.guild_id = guild_castle.guild_id');
+		$q = $this->db->get('guild_castle');
+		
+		$num = $q->num_rows();
+		
+		if ($start>$num) 	
+			{
+			$start = 0; 
+			$page = 1;
+			}    
+		
+		$this->db->select('guild_castle.guild_id, 
+					COUNT( guild_castle.guild_id ) AS guild_count, 
+					guild.name as gname, 
+					emblem_id, 
+					emblem_data,
+					master,castle_id');
+		$this->db->join('guild','guild.guild_id = guild_castle.guild_id');
+		$this->db->group_by('guild.guild_id');
+		$this->db->order_by($sortname,$sortorder);		
+		$results = $this->db->get('guild_castle');
+
+			
+		$data['db'] = $results->result_array();    
+		$data['page'] = $page;
+		$data['total'] = $num;
+		$data['rp'] = $rp;
+		return $data;
+	}
+	
 }

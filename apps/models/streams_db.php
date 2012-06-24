@@ -23,7 +23,7 @@ class Streams_db extends CI_Model
 		$this->db->where('s_status',1);
 		$this->db->join('cp_login','cp_login.accountid = cp_stream.account_id');
 		$this->db->join('login','login.account_id = cp_stream.account_id');
-		$this->db->select('sid,content,nickname,cp_stream.created as screated,sex,group_id');
+		$this->db->select('sid,content,nickname,cp_stream.created as screated,sex,group_id,login.account_id');
 		$this->db->order_by('updated','desc');
 		$squery = $this->db->get('cp_stream');
 		
@@ -36,6 +36,7 @@ class Streams_db extends CI_Model
 			$abadge = $result['group_id'] >= config_item('GroupID')  ? 'admin' : '';
 			
 			$stream[] = array(
+				'account_id' 		=> $result['account_id'],
 				'sid' 				=> $result['sid'],
 				'content' 			=> $result['content'],
 				'nickname' 			=> $result['nickname'],

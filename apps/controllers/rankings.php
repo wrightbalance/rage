@@ -1,6 +1,6 @@
 <?php
 
-class Rankings extends CI_Controller
+class Rankings extends MY_Controller
 {
 	function __construct()
 	{
@@ -8,78 +8,72 @@ class Rankings extends CI_Controller
 		$this->load->model('ranking_db');
 	}
 	
-	function char()
+	function pvp()
 	{
-		$kind = $this->input->post('kind');
+		$this->benchmark->mark('code_start');
 
-		$data['db'] = array();
-		
-		switch($kind)
+		$data['cssgroup'] 	= "loggedin";
+		$data['jsgroup'] 	= "loggedin";
+		$data['page'] 		= "rankings";
+		$data['mod'] 		= "rankings";
+
+		if(!$this->input->is_ajax_request())
 		{
-			case 'pvp':
-				$pvps = $this->ranking_db->pvp();
-				
-				$rank = 1;
-				$data['db'] = array();
-				
-				if($pvps)
-				{
-					foreach($pvps as $pvp)
-					{
-						$data['db'][] = array(
-							'rank' => $rank ++,
-							'name' => $pvp['name'],
-							'job' => jobClass($pvp['class']),
-							'kills' => $pvp['kills']
-						);
-					}
-				}
+			$data['content'] = $this->load->view('layout/content',$data,true);
 
-				break;
-			case 'zeny':
-				$zenys = $this->ranking_db->char(array(),'zeny','desc');
-				$rank = 1;
-				
-				foreach($zenys as $zeny)
-				{
-					$data['db'][] = array(
-						'rank' => $rank ++,
-						'name' => $zeny['name'],
-						'job' => jobClass($zeny['class']),
-						'zeny' => number_format($zeny['zeny'])
-					);
-				}
-				
-				break;
+			$data['elapse'] = $this->benchmark->elapsed_time('code_start', 'code_end');
+			$this->load->vars($data);
+			$this->load->view('default',$data);
+
+        }
+        else
+        {
+			$this->load->vars($data);
+			$this->load->view("{$data['mod']}/{$data['page']}",$data);
 		}
-		$data['json'] = $data;
-		$this->load->view('ajax/json',$data);
+		$this->minify->html();
 	}
 	
-	function getGuild()
+	function guild()
 	{
-		if(!$this->input->is_ajax_request()) exit();
-		
-		$server_id = $this->input->post('server_id');
-		
-		$data['db'] = $this->ranking_db->guilds(1,$server_id);
-		
-		$data['json'] = $data;
-		$this->load->view('ajax/json',$data);	
-	
+		$this->benchmark->mark('code_start');
+
+		$data['cssgroup'] 	= "loggedin";
+		$data['jsgroup'] 	= "loggedin";
+		$data['page'] 		= "rankings";
+		$data['mod']	 	= "rankings";
+
+		if(!$this->input->is_ajax_request())
+		{
+			$data['content'] = $this->load->view('layout/content',$data,true);
+
+			$data['elapse'] = $this->benchmark->elapsed_time('code_start', 'code_end');
+			$this->load->vars($data);
+			$this->load->view('default',$data);
+
+        }
+        else
+        {
+			$this->load->vars($data);
+			$this->load->view("{$data['mod']}/{$data['page']}",$data);
+		}
+		$this->minify->html();
 	}
 	
-	function getPVP()
+	function getListPVP()
 	{
-		if(!$this->input->is_ajax_request()) exit();
-		
-		$server_id = $this->input->post('server_id');
-		
-		$data['db'] = $this->ranking_db->getPvp();
-		$data['db']['class'] = jobClass($data['db']['class']);
-		
-		$data['json'] = $data;
-		$this->load->view('ajax/json',$data);
+		$this->benchmark->mark('code_start');
+		$data 			= $this->ranking_db->getListPVP();
+		$data['elapsed'] = $this->benchmark->elapsed_time('code_start', 'code_end');
+		$this->load->view('rankings/table/pvp',$data);
+	}
+	
+	function getListGuild()
+	{
+		$this->benchmark->mark('code_start');
+		$data 			= $this->ranking_db->getListGuild();
+		$data['elapsed'] = $this->benchmark->elapsed_time('code_start', 'code_end');
+		$this->load->view('rankings/table/guild',$data);
 	}
 	
 }

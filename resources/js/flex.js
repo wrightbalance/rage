@@ -6,6 +6,17 @@ $(document).ready(function(){
 	newsFlex();
 	pagesFlex();
 	characterFlex();
+	
+	$('.flexme').livequery(function(){
+		$(this).each(
+		function ()
+			{
+				var title = $(this).prev().html();
+				$(this).flexigrid({showToggleBtn: false,title: title,sortname: 'test',nowrap:false, showTableToggleBtn: true, width: 'auto'});
+					
+			}
+	);
+	})
 
 })
 

@@ -13,7 +13,7 @@ class Stream extends MY_Controller
 	
 	function post()
 	{
-		$db['account_id'] = $this->account;
+		$db['account_id'] = $this->accountid;
 		$db['content'] = trim($this->input->post('message'));
 		$db['created'] = date('Y-m-d H:i:s');
 		$db['updated'] = date('Y-m-d H:i:s');

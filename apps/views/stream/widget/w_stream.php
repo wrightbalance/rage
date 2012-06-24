@@ -34,7 +34,7 @@
 			<?php //echo "<pre>"; print_r($streams)?>
 			<div class="stream_row" id="streamholder-<?=$stream['sid']?>">
 			<div class="srow clearfix">
-				<?php if($authorize){ ?>
+				<?php if($authorize || $stream['account_id'] == $user['account_id']){ ?>
 					<a href="#" data-id="<?=$stream['sid']?>" class="close deleteStream close_extend" data-kind="stream">×</a>
 				<? } ?>
 				<div class="avatar50">
