@@ -14,9 +14,10 @@
 		{
 			$this->benchmark->mark('code_start');
 
-			$data['cssgroup'] = "loggedin";
-			$data['jsgroup'] = "loggedin";
-			$data['page'] 	= 'vote';
+			$data['cssgroup'] 	= "loggedin";
+			$data['jsgroup'] 	= "loggedin";
+			$data['page'] 		= "index";
+			$data['mod'] 		= "vote";
 
 			$details = $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
 			$data['details'] = $details;
@@ -61,9 +62,7 @@
 
 			if(!$this->input->is_ajax_request())
 			{
-				if(!$this->accountid) redirect();
-
-				$data['content'] = $this->load->view('vote/index',$data,true);
+				$data['content'] = $this->load->view('layout/content',$data,true);
 
 				$data['elapse'] = $this->benchmark->elapsed_time('code_start', 'code_end');
 				$this->load->vars($data);
@@ -72,9 +71,8 @@
 			}
 			else
 			{
-				checkSession();
 				$this->load->vars($data);
-				$this->load->view('vote/widget/w_index',$data);
+				$this->load->view("{$data['mod']}/{$data['page']}",$data);
 			}
 			$this->minify->html();
 		}

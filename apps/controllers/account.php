@@ -232,9 +232,10 @@ class Account extends MY_Controller
 	{
 		$this->benchmark->mark('code_start');
 
-		$data['cssgroup'] = "loggedin";
-		$data['jsgroup'] = "loggedin";
-		$data['page'] 	= 'settings';
+		$data['cssgroup'] 	= "loggedin";
+		$data['jsgroup'] 	= "loggedin";
+		$data['page'] 		= "settings";
+		$data['mod'] 		= "account";
 
 		if(!$this->input->is_ajax_request())
 		{
@@ -248,7 +249,7 @@ class Account extends MY_Controller
         else
         {
 			$this->load->vars($data);
-			$this->load->view('account/widget/w_settings',$data);
+			$this->load->view("{$data['mod']}/{$data['page']}",$data);
 		}
 		$this->minify->html();
 	}

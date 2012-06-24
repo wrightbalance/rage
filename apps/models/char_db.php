@@ -270,9 +270,9 @@ class Char_db extends CI_Model
 		}
 	}
 	
-	function getList()
+	function getList($authorize=true)
     {
-		$user = $this->session->userdata('user');
+		$account_id = $this->session->userdata('accountid');
 		
         $item = $this->input->post('item');
 		$page = $this->input->post('page');
@@ -291,7 +291,10 @@ class Char_db extends CI_Model
 		if (!$rp) $rp = 10;        
 				
 		$start = (($page-1) * $rp);  
-
+		
+		if($authorize == false)
+			$this->db->where('account_id',$account_id);
+		
 		$this->db->like($qtype,$query,'both');
 		$this->db->from('char');
 		$num = $this->db->count_all_results();
@@ -305,7 +308,9 @@ class Char_db extends CI_Model
 
 		$this->db->limit($rp,$start);
 		$this->db->like($qtype,$query,'both');
-
+		
+		if($authorize == false)
+			$this->db->where('account_id',$account_id);
 		$this->db->order_by($sortname,$sortorder);
 		$query = $this->db->get('char');		
 		$results = $query->result_array();

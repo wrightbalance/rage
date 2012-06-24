@@ -18,18 +18,16 @@ class Characters extends MY_Controller
 		$this->benchmark->mark('code_start');
 		$this->load->model('char_db');
 		
-		$data['cssgroup'] = "loggedin";
-		$data['jsgroup'] = "loggedin";
-		$data['page'] = "";
+		$data['cssgroup'] 	= "loggedin";
+		$data['jsgroup'] 	= "loggedin";
+		$data['page'] 		= "index";
+		$data['mod']		= "characters";
+		$data['authorize']	= $this->authorize;
 
-		$groupid = $this->session->userdata('groupid');
-		if($groupid < config_item('group_level')) show_404();
-		
 		if(!$this->input->is_ajax_request())
 		{
 		
-			$data['content'] = $this->load->view('characters/all_char',$data,true);
-			
+			$data['content'] = $this->load->view('layout/content',$data,true);	
 			$data['elapse'] = $this->benchmark->elapsed_time('code_start', 'code_end');
 			$this->load->vars($data);
 			$this->load->view('default',$data);
@@ -37,60 +35,12 @@ class Characters extends MY_Controller
         }
         else
         {
-			checkSession();
-			
 			$this->load->vars($data);
-			$this->load->view('characters/widget/w_index',$data);
+			$this->load->view("{$data['mod']}/{$data['page']}",$data);
 		}
 		$this->minify->html();
 	}
-	
-	function signout()
-	{
-		$this->session->sess_destroy();
-		
-		redirect();
-	}
-	
-	
-	function charlist()
-	{
-		$this->benchmark->mark('code_start');
-		$this->load->helper('array');
-		$this->load->helper('jobclass');
-	
-		$data['title'] = "Characters | ".config_item('site_title');
-		$data['cssgroup'] = "loggedin";
-		$data['jsgroup'] = "loggedin";
-		$data['page'] 	= 'characters';
-		$data['server_id'] = 1;
-		
-		$details = $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
-		$data['details'] = $details;
 
-		
-		$data['characters'] = $this->char_db->getChar(array('account_id'=>$this->accountid));
-
-		if(!$this->input->is_ajax_request())
-		{
-			if(!$this->accountid) redirect();
-		
-			$data['content'] = $this->load->view('characters/index',$data,true);
-			
-			$data['elapse'] = $this->benchmark->elapsed_time('code_start', 'code_end');
-			$this->load->vars($data);
-			$this->load->view('default',$data);
-        }
-        else
-        {
-			checkSession();
-			
-			$this->load->vars($data);
-			$this->load->view('characters/widget/w_character',$data);
-		}
-		$this->minify->html();
-
-	}
 	
 	function getChar()
 	{
@@ -346,16 +296,13 @@ class Characters extends MY_Controller
 	{
 		$this->benchmark->mark('code_start');
 		
-		if($this->accountid)
-		{
-			$groupid = $this->session->userdata('groupid');
-			if($groupid >= config_item('group_level'))
-			{
-				$data 			= $this->char_db->getList();
-				$data['elapsed'] = $this->benchmark->elapsed_time('code_start', 'code_end');
-				$this->load->view('characters/table/characters',$data);
-			}
-		}
+		$data['authorize'] = $this->authorize;
+		
+		$data 			= $this->char_db->getList($data['authorize']);
+		$data['elapsed'] = $this->benchmark->elapsed_time('code_start', 'code_end');
+		$this->load->view('characters/table/characters',$data);
+		
+		
 	}
 
 }

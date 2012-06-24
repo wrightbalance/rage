@@ -603,3 +603,8 @@ a:hover
 {
 	color: red;
 }
+
+.flexme
+{
+	display: none;
+}

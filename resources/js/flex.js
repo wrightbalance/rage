@@ -5,14 +5,13 @@ $(document).ready(function(){
 	storageFlex();
 	newsFlex();
 	pagesFlex();
-	characterFlex();
 	
 	$('.flexme').livequery(function(){
 		$(this).each(
 		function ()
 			{
 				var title = $(this).prev().html();
-				$(this).flexigrid({showToggleBtn: false,title: title,sortname: 'test',nowrap:false, showTableToggleBtn: true, width: 'auto'});
+				$(this).flexigrid({showToggleBtn: false,title: title, height: 'auto', sortname: 'test',nowrap:false, showTableToggleBtn: true, width: 'auto'});
 					
 			}
 	);
@@ -236,61 +235,5 @@ function pagesFlex()
 	})
 }
 
-
-
-function characterFlex()
-{
-	$('.characters').livequery(function(){
-		$(this).flexigrid
-		(
-			{
-			autoload: true,
-			blockOpacity: 0,
-			singleSelect: true,
-			height: 'auto',
-			preProcess: function(data)
-			{
-				return data;
-			},
-			url: root + 'characters/getList',
-			dataType: 'json',
-			colModel : [ 
-						 {display: 'Account ID', name : 'account_id', width : 60, sortable: true}
-						,{display: 'Name', name : 'name', width : 110, sortable: true}
-						,{display: 'Job', name : 'class', width : 110, sortable: true}
-						,{display: 'Base Level', name : 'base_level', width : 60, sortable: true, align: 'center'}
-						,{display: 'Job Level', name : 'job_level', width : 60, sortable: true}
-						,{display: 'Zeny', name : 'zeny', width : 150, sortable: false}
-						
-					],
-			sortname: "account_id",
-			sortorder: "asc",
-			showToggleBtn: true, 
-			searchitems : [
-						{display: 'Character Name', name : 'name'},
-						{display: 'Account ID', name : 'account_id'},
-						],
-			params: [{name:'item',value: 1}],
-			usepager: true,
-			rpOptions: [15, 30, 60, 90],
-			rp: 15,
-			useRp: true,        
-			timeout: 20,
-			height: 390,
-			onTimeout: function()
-			{
-				
-			},
-			onSuccess: function()
-			{
-			
-			},
-			showTableToggleBtn: true,
-			
-		   }
-		);
-		
-	})
-}
 
 

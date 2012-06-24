@@ -9,19 +9,33 @@
 	
     foreach ($db as $row)
         {
-		
-        $rows[] = array(
-                "id" => $row['char_id'],
-                "cell" => array(
-					 "<a href=\"#\" class=\"view\" data-aid=\"".$row['account_id']."\">".$row['account_id']."</a>"
-                	,"<a href=\"#\" class=\"view_char\" data-char_id=\"".$row['char_id']."\">".$row['name']."</a>"
-                	,$row['class']
-                	,$row['base_level']
-                	,$row['job_level']
-                	,$row['zeny'] !== 0 ? number_format($row['zeny']) : 0
-                	)
-                
-            );
+			
+			if($authorize){
+				$rows[] = array(
+					"id" => $row['char_id'],
+					"cell" => array(
+						 "<a href=\"#\" class=\"view\" data-aid=\"".$row['account_id']."\">".$row['account_id']."</a>"
+						,"<a href=\"#\" class=\"view_char\" data-char_id=\"".$row['char_id']."\">".$row['name']."</a>"
+						,$row['class']
+						,$row['base_level']
+						,$row['job_level']
+						,$row['zeny'] !== 0 ? number_format($row['zeny']) : 0
+						)
+					
+				);
+			} else { 
+				$rows[] = array(
+					"id" => $row['char_id'],
+					"cell" => array(
+						 "<a href=\"#\" class=\"view_char\" data-char_id=\"".$row['char_id']."\">".$row['name']."</a>"
+						,$row['class']
+						,$row['base_level']
+						,$row['job_level']
+						,$row['zeny'] !== 0 ? number_format($row['zeny']) : 0
+						)
+					
+				);   
+			}
 
         }
 

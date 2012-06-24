@@ -1,6 +1,14 @@
+<div class="maincol wide">
+	<h3>Characters</h3>
+	<hr>
+	
+	<?php if($authorize){?>
+	<table class="characters"></table>
+	<? } else { ?>
+	<table class="characters2"></table>
+	<? } ?>
 
-<div class="bodycontent clearfix" id="loadcontent">
-
-<?$this->load->view('characters/widget/w_character')?>
 
 </div>
+
+<?php $this->load->view('account/modal/view')?>
