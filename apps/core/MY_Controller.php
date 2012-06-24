@@ -5,6 +5,7 @@ class MY_Controller extends CI_Controller
 	public $page;
 	public $accountid;
 	public $groupid;
+	public $authorize;
 	
 	function __construct()
 	{
@@ -17,7 +18,7 @@ class MY_Controller extends CI_Controller
 
 		$uri				= $this->uri->ruri_string();
 		$g_user 			= $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
-		$authorize			= false;
+		$this->authorize	= false;
 		
 		// Not sessioned pages
 		$p = array('/main/index','/account/auth','/account/post');
@@ -26,7 +27,7 @@ class MY_Controller extends CI_Controller
 				
 		if($this->groupid >= config_item('GroupID'))
 		{
-			$authorize = true;
+			$this->authorize = true;
 		}
 
 		if(!in_array($uri,$p))
@@ -51,7 +52,7 @@ class MY_Controller extends CI_Controller
 			}
 		} 
 		
-		$data['authorize'] = $authorize;
+		$data['authorize'] = $this->authorize;
 		$data['user'] = $g_user;
 		$this->load->vars($data);
 	}

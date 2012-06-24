@@ -1,6 +1,6 @@
 <?php
 
-class Stream extends CI_Controller
+class Stream extends MY_Controller
 {
 	private $account;
 	
@@ -8,9 +8,7 @@ class Stream extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('streams_db');
-		$this->load->model('accounts_db');
-		
-		$this->account = $this->session->userdata('accountid');
+
 	}
 	
 	function post()
@@ -23,6 +21,11 @@ class Stream extends CI_Controller
 		$sid = $this->streams_db->save($db);
 		
 		$db['sid'] = $sid;
+		$db['abadge'] = "user";
+		
+		
+		if($this->authorize)
+			$db['abadge'] = "admin";
 		
 		$data['db'] = $db;
 		$data['json'] = $data;
@@ -35,7 +38,7 @@ class Stream extends CI_Controller
 		$db['comment'] = trim($this->input->post('comment'));
 		$db['sid'] = $this->input->post('sid');
 		$db['c_created'] = date('Y-m-d H:i:s');
-		$db['account_id'] = $this->account;
+		$db['account_id'] = $this->accountid;
 		
 		$csid = $this->streams_db->saveComment($db,'');
 		
@@ -49,6 +52,11 @@ class Stream extends CI_Controller
 		$db['csid'] = $csid;
 		$db['gender'] = $this->input->post('gender');
 		$db['nickname'] = $this->input->post('nickname');
+		
+		$db['abadge'] = "user";
+	
+		if($this->authorize)
+			$db['abadge'] = "admin";
 		
 		$data['db'] = $db;
 		$data['json'] = $data;

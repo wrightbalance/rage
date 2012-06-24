@@ -16,9 +16,7 @@ class Main extends MY_Controller
 	}
 	
 	function index()
-	{
-		$data['showlogin'] = true;
-		
+	{		
 		$data['news'] = $this->cms_db->getNews(array('category'=>'news'),false);
 
 		if(!$this->input->is_ajax_request())

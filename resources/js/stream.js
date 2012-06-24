@@ -26,13 +26,13 @@ $(document).ready(function(){
 				var db = data.db;
 		
 				html  = '';
-				html += '<div class="srow clearfix" style="display: none" id="'+db.sid+'">';
+				html += '<div class="srow clearfix" style="display: none" id="streamholder-'+db.sid+'">';
 				html += '<a href="#" data-id="'+db.sid+'" class="close deleteStream close_extend" data-kind="stream">×</a>';
 				html +=		'<div class="avatar50">';
 				html +=		'<img src="'+photo_path+'"/>';
 				html +=		'		</div>';
 				html +=		'		<div class="srow_details">';
-				html +=		'			<a href="">'+nickname+'</a> ' + db.content;
+				html +=		'			<a href="" class="'+db.abadge+'">'+nickname+'</a> ' + db.content;
 				html +=		'		</div>';
 				html +=		'		<div class="srow_actions">';
 				html +=		'			<a href="#" id="docomment" data-id="'+db.sid+'">Comment</a> - <span>Just now</span>';
@@ -100,7 +100,7 @@ $(document).ready(function(){
 						html +=		'				<img src="'+photo_path+'" width="32" height="32"/>';
 						html += 	'				</div>';
 						html +=		'				<div class="comments_details">';
-						html +=		'					<a href="">'+nickname+'</a> '+db.comment;
+						html +=		'					<a href="" class="'+db.abadge+'">'+nickname+'</a> '+db.comment;
 						html +=		'				</div>';
 						html +=		'			</div>';
 						
