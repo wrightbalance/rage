@@ -90,7 +90,7 @@ class Accounts_db extends CI_Model
 		       
 		$this->db->where('account_id > ',1);
 		$this->db->like($qtype,$query,'both');
-		$this->db->from('login');
+		$this->db->from('login_demo');
 		$num = $this->db->count_all_results();
 		
 		if ($start>$num) 	
@@ -104,7 +104,7 @@ class Accounts_db extends CI_Model
 		$this->db->like($qtype,$query,'both');
 		$this->db->where('account_id >',1);
 		$this->db->order_by($sortname,$sortorder);
-		$query = $this->db->get('login');		
+		$query = $this->db->get('login_demo');		
 		$results = $query->result_array();
 
 			
