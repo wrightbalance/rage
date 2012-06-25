@@ -30,10 +30,8 @@ $(document).ready(function(){
 			sortorder: "asc",
 			showToggleBtn: true, 
 			searchitems : [
-						{display: 'Account ID', name : 'account_id'},
-						{display: 'Username', name : 'userid'},
-						{display: 'E-mail', name : 'email'},
-						{display: 'IP', name : 'last_ip'},
+						{display: 'Item Name', name : 'name_japanese'},
+
 						],
 			params: [{name:'item',value: 1}],
 			usepager: true,
