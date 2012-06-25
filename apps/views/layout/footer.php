@@ -5,7 +5,7 @@
 
 <?php $this->load->view('modal/loader')?>
 
-<?php if(isset($user)){?>
+<?php if(isset($user) && !empty($user)){?>
 <?php if(!isset($user['nickname']) && !$user['nickname']){?>
 <?php $this->load->view('modal/set_nickname')?>
 <? } ?>
