@@ -37,19 +37,18 @@ class Cms extends MY_Controller
 	function news()
 	{
 		$this->benchmark->mark('code_start');
-		$this->load->model('accounts_db');
-		$this->load->model('char_db');
 		
-		$data['cssgroup'] = "loggedin";
-		$data['jsgroup'] = "loggedin";
-		$data['page'] 	= 'news';
+		$mod 				= $this->uri->segment(1);
+		$page 				= $this->uri->segment(2);
 		
-		$details = $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
-		$data['details'] = $details;
-
+		$data['cssgroup'] 	= "loggedin";
+		$data['jsgroup'] 	= "loggedin";
+		$data['page'] 		= $page;
+		$data['mod'] 		= $mod;
+		
 		if(!$this->input->is_ajax_request())
 		{
-			$data['content'] = $this->load->view('cms/news',$data,true);
+			$data['content'] = $this->load->view('layout/content',$data,true);
 			
 			$data['elapse'] = $this->benchmark->elapsed_time('code_start', 'code_end');
 			$this->load->vars($data);
@@ -58,10 +57,8 @@ class Cms extends MY_Controller
         }
         else
         {
-			checkSession();
-			
 			$this->load->vars($data);
-			$this->load->view('cms/widget/w_news',$data);
+			$this->load->view("{$data['mod']}/{$data['page']}",$data);
 		}
 		$this->minify->html();
 	}
@@ -69,19 +66,18 @@ class Cms extends MY_Controller
 	function pages()
 	{
 		$this->benchmark->mark('code_start');
-		$this->load->model('accounts_db');
-		$this->load->model('char_db');
 		
-		$data['cssgroup'] = "loggedin";
-		$data['jsgroup'] = "loggedin";
-		$data['page'] 	= 'news';
+		$mod 				= $this->uri->segment(1);
+		$page 				= $this->uri->segment(2);
 		
-		$details = $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
-		$data['details'] = $details;
-
+		$data['cssgroup'] 	= "loggedin";
+		$data['jsgroup'] 	= "loggedin";
+		$data['page'] 		= $page;
+		$data['mod'] 		= $mod;
+		
 		if(!$this->input->is_ajax_request())
 		{
-			$data['content'] = $this->load->view('cms/pages',$data,true);
+			$data['content'] = $this->load->view('layout/content',$data,true);
 			
 			$data['elapse'] = $this->benchmark->elapsed_time('code_start', 'code_end');
 			$this->load->vars($data);
@@ -90,10 +86,8 @@ class Cms extends MY_Controller
         }
         else
         {
-			checkSession();
-			
 			$this->load->vars($data);
-			$this->load->view('cms/widget/w_pages',$data);
+			$this->load->view("{$data['mod']}/{$data['page']}",$data);
 		}
 		$this->minify->html();
 	}

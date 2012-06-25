@@ -39,6 +39,7 @@ $config['js']['loggedin'] = array(
     ,array('path'=>'tiny_mce/','file'=>'jquery.tinymce.js')
     ,array('path'=>'js/','file'=>'flexigrid.js')
     ,array('path'=>'js/','file'=>'char.js')
+    ,array('path'=>'js/','file'=>'items.js')
     ,array('path'=>'js/','file'=>'script.js')
     ,array('path'=>'js/','file'=>'stream.js')
     ,array('path'=>'js/','file'=>'cms.js')

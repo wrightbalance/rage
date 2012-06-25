@@ -281,26 +281,28 @@ class Account extends MY_Controller
 	function index()
 	{
 		$this->benchmark->mark('code_start');
-		$this->load->model('accounts_db');
-		$this->load->model('char_db');
+		
+		$mod 				= $this->uri->rsegment(1);
+		$page 				= $this->uri->rsegment(2);
 
-		$data['cssgroup'] = "loggedin";
-		$data['jsgroup'] = "loggedin";
-		$data['page'] 	= 'account';
+		$data['cssgroup'] 	= "loggedin";
+		$data['jsgroup'] 	= "loggedin";
+		$data['page'] 		= $page;
+		$data['mod'] 		= $mod;
 		
 		if(!$this->input->is_ajax_request())
 		{
-			$data['content'] = $this->load->view('account/all_account',$data,true);
-
+			$data['content'] = $this->load->view('layout/content',$data,true);
+			
 			$data['elapse'] = $this->benchmark->elapsed_time('code_start', 'code_end');
 			$this->load->vars($data);
 			$this->load->view('default',$data);
-
+			
         }
         else
         {
 			$this->load->vars($data);
-			$this->load->view('account/widget/w_index',$data);
+			$this->load->view("{$data['mod']}/{$data['page']}",$data);
 		}
 		$this->minify->html();
 	}
@@ -318,9 +320,7 @@ class Account extends MY_Controller
 
 		if($this->accountid)
 		{
-			$user = $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
-			$isAdmin = $user['group_id'] >= 90 ? true : false;
-			if($isAdmin === false) exit();
+			if($this->authorize == false) exit();
 
 			$data 			= $this->accounts_db->getList();
 			$data['elapsed'] = $this->benchmark->elapsed_time('code_start', 'code_end');

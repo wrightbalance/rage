@@ -14,8 +14,11 @@
 		
 		<?php $this->load->view('menu/topmenu')?>
 		<?php $this->load->view('widget/toplogin')?>
+		<?php if($this->accountid == FALSE){?>
 		<div class="clear"></div>
+		
 		<?php $this->load->view('menu/nav')?>
+		<? } ?>
 	</div>
 	
 	

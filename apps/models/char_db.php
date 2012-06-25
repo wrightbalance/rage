@@ -299,7 +299,7 @@ class Char_db extends CI_Model
 		if($aid)
 			$this->db->where('account_id',$aid);
 		
-		$this->db->like($qtype,$query,'both');
+		if($query) $this->db->like($qtype,$query);
 		$this->db->from('char');
 		$num = $this->db->count_all_results();
 		
@@ -311,7 +311,7 @@ class Char_db extends CI_Model
 		
 
 		$this->db->limit($rp,$start);
-		$this->db->like($qtype,$query,'both');
+		if($query) $this->db->like($qtype,$query);
 		
 		if($authorize == false)
 			$this->db->where('account_id',$account_id);

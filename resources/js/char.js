@@ -173,7 +173,7 @@ $(document).ready(function(e){
 			rp: 10,
 			useRp: true,        
 			timeout: 20,
-			height: 'auto',
+			height: 390,
 			onTimeout: function()
 			{
 				
@@ -218,13 +218,13 @@ $(document).ready(function(e){
 						{display: 'Character Name', name : 'name'},
 						{display: 'Account ID', name : 'account_id'},
 						],
-			params: [{name:'item',value: 1}],
-			usepager: true,
+			params: [{name:'account_id',value: accountid}],
+			usepager: false,
 			rpOptions: [15, 30, 60, 90],
 			rp: 10,
 			useRp: true,        
 			timeout: 20,
-			height: 'auto',
+			height: 290,
 			onTimeout: function()
 			{
 				

@@ -39,7 +39,9 @@ class Main extends MY_Controller
 				
 				
 				$data['streams'] = $this->streams_db->getStream();
-				$data['content'] = $this->load->view('stream/index',$data,true);
+				$data['mod'] = "stream";
+				$data['page'] = "index";
+				$data['content'] = $this->load->view('layout/content',$data,true);
 			}
 			
 			$data['elapse'] = $this->benchmark->elapsed_time('code_start', 'code_end');
@@ -52,7 +54,7 @@ class Main extends MY_Controller
 
 			$data['streams'] = $this->streams_db->getStream();
 			$this->load->vars($data);
-			$this->load->view('stream/widget/w_stream',$data);
+			$this->load->view("stream/index",$data);
 		}
 		
 		$this->minify->html();

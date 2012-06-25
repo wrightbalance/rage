@@ -10,12 +10,9 @@
 		<li><a href="#">Action</a></li>
 	</ul>
 	<div class="tpane pactive">
-		
-		<?php if($authorize){?>
-		<table class="characters"></table>
-		<? } else { ?>
+	
 		<table class="characters2"></table>
-		<? } ?>
+	
 		
 	</div>
 	

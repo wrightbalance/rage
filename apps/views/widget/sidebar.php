@@ -13,7 +13,7 @@
 		<ul class="main-nav nav nav-list">
 			<li class="nav-header">Account</li>
 			<li class="<?=$page == "stream" ? 'active' : ''?>"><a href="<?=push_url()?>"><i class="icon-stream"></i>Stream</a></li>
-			<li class="<?=$page == "characters" ? 'active' : ''?>"><a href="<?=push_url('characters')?>"><i class="icon-chars"></i>Characters</a></li>
+			<li class="<?=$page == "characters" ? 'active' : ''?>"><a href="<?=push_url('characters/view')?>"><i class="icon-chars"></i>Characters</a></li>
 			<li class="<?=$page == "settings" ? 'active' : ''?>"><a href="<?=push_url('account/settings')?>"><i class="icon-settings"></i>Settings</a></li>
 			<li class="<?=$page == "vote" ? 'active' : ''?>"><a href="<?=push_url('vote')?>"><i class="icon-settings"></i>Vote</a></li>
 			<li class="<?=$page == "rankings" ? 'active' : ''?>"><a href="<?=push_url('rankings/pvp')?>"><i class="icon-settings"></i>Rankings</a></li>

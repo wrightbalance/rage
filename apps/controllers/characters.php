@@ -292,6 +292,35 @@ class Characters extends MY_Controller
 		$this->load->view('ajax/json',$data);
 	}
 	
+	function view()
+	{
+		$this->benchmark->mark('code_start');
+		
+		$mod 				= $this->uri->segment(1);
+		$page 				= $this->uri->segment(2);
+		
+		$data['cssgroup'] 	= "loggedin";
+		$data['jsgroup'] 	= "loggedin";
+		$data['page'] 		= $page;
+		$data['mod'] 		= $mod;
+		
+		if(!$this->input->is_ajax_request())
+		{
+			$data['content'] = $this->load->view('layout/content',$data,true);
+			
+			$data['elapse'] = $this->benchmark->elapsed_time('code_start', 'code_end');
+			$this->load->vars($data);
+			$this->load->view('default',$data);
+			
+        }
+        else
+        {
+			$this->load->vars($data);
+			$this->load->view("{$data['mod']}/{$data['page']}",$data);
+		}
+		$this->minify->html();
+	}
+	
 	function getList()
 	{
 		$this->benchmark->mark('code_start');
@@ -301,8 +330,6 @@ class Characters extends MY_Controller
 		$data 			= $this->char_db->getList($data['authorize']);
 		$data['elapsed'] = $this->benchmark->elapsed_time('code_start', 'code_end');
 		$this->load->view('characters/table/characters',$data);
-		
-		
 	}
 
 }
