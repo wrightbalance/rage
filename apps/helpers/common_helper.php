@@ -393,4 +393,13 @@ function cropResizeImage($file_type, $max_width, $max_height, $blob, $quality) {
 	{
 		$ci =& get_instance();
 	}
-
+	
+	
+	function itemTypes($type)
+	{
+		$types = config_item('itemTypes');
+		
+		$text = element($type,$types);
+		
+		return $text;
+	}

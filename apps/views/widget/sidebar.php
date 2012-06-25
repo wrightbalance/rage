@@ -17,6 +17,7 @@
 			<li class="<?=$page == "settings" ? 'active' : ''?>"><a href="<?=push_url('account/settings')?>"><i class="icon-settings"></i>Settings</a></li>
 			<li class="<?=$page == "vote" ? 'active' : ''?>"><a href="<?=push_url('vote')?>"><i class="icon-settings"></i>Vote</a></li>
 			<li class="<?=$page == "rankings" ? 'active' : ''?>"><a href="<?=push_url('rankings/pvp')?>"><i class="icon-settings"></i>Rankings</a></li>
+			<li class="<?=$page == "items" ? 'active' : ''?>"><a href="<?=push_url('items')?>"><i class="icon-settings"></i>Items</a></li>
 			<li class="divider"></li>
 			
 			<li class="nav-header">Support</li>

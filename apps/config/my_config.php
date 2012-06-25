@@ -13,3 +13,5 @@ $config['AdminMenus'] 	= array(
 						'News'			=>	'news',
 						'Pages'			=>	'pages'	
 						);
+
+include('itemtypes.php');
