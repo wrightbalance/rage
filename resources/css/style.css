@@ -628,3 +628,19 @@ a:hover
 {
 	clear: both;
 }
+
+.widgetbox
+{
+	width: 260px;
+	height: auto;
+	min-height: 160px;
+	float: left;
+	margin: 0 10px 10px 0;
+	padding: 10px;
+	border: 1px solid #222;
+}
+
+.widgetbox h2
+{
+	font-size: 12px;
+}
