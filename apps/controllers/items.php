@@ -37,6 +37,46 @@ class Items extends MY_Controller
 		$this->minify->html();
 	}
 	
+	function view($item_id="")
+	{
+		$this->benchmark->mark('code_start');
+		
+		$mod 				= $this->uri->rsegment(1);
+		$page 				= $this->uri->rsegment(2);
+		
+		$data['cssgroup'] 	= "loggedin";
+		$data['jsgroup'] 	= "loggedin";
+		$data['page'] 		= $page;
+		$data['mod'] 		= $mod;
+		
+		$items = $this->items_db->getItem(array('id'=>$item_id));
+
+		$data['items'] = $items;
+		
+		if(!$this->input->is_ajax_request())
+		{
+			if(empty($item_id)) redirect();
+			if(!$items) redirect();
+			
+			
+			$data['content'] = $this->load->view('layout/content',$data,true);
+			
+			$data['elapse'] = $this->benchmark->elapsed_time('code_start', 'code_end');
+			$this->load->vars($data);
+			$this->load->view('default',$data);
+			
+        }
+        else
+        {
+			if(empty($item_id)) exit();
+			if(!$items) exit();
+			
+			$this->load->vars($data);
+			$this->load->view("{$data['mod']}/{$data['page']}",$data);
+		}
+		$this->minify->html();
+	}
+	
 	
 	function getList()
 	{

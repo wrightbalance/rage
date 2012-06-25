@@ -16,11 +16,13 @@
 			$icon = img("resources/images/icons/{$row['id']}.gif",array('alt'=>"",'title'=>$row['description']));
 		}	
 		
+		$url = push_url("items/view/{$row['id']}");
+		
         $rows[] = array(
                 "id" => $row['id'],
                 "cell" => array(
                 	  $icon
-                	,$row['name_japanese']
+                	,"<a href=\"{$url}\" class=\"ps\">{$row['name_japanese']}</a>"
                 	,itemTypes($row['type']) ? itemTypes($row['type']) : 'Unknown'
                 	,$row['price_buy'] ? number_format($row['price_buy']) : 0
                 	,$row['price_sell'] ? $row['price_sell'] : 0

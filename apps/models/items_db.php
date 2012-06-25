@@ -47,4 +47,12 @@ class Items_db extends CI_Model
 		$data['rp'] = $rp;
 		return $data;
 	}
+	
+	function getItem($cond)
+	{
+		$this->db->where($cond);
+		$query = $this->db->get('item_db');
+		
+		return $query->row_array();
+	}
 }
