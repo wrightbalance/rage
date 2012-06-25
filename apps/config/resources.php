@@ -40,6 +40,7 @@ $config['js']['loggedin'] = array(
     ,array('path'=>'js/','file'=>'flexigrid.js')
     ,array('path'=>'js/','file'=>'char.js')
     ,array('path'=>'js/','file'=>'items.js')
+    ,array('path'=>'js/','file'=>'storage.js')
     ,array('path'=>'js/','file'=>'script.js')
     ,array('path'=>'js/','file'=>'stream.js')
     ,array('path'=>'js/','file'=>'cms.js')

@@ -26,7 +26,7 @@ $(document).ready(function(){
 						,{display: 'Slots', name : 'slots', align:'right', width : 50, sortable: true}
 						
 					],
-			sortname: "id",
+			sortname: "name_english",
 			sortorder: "asc",
 			showToggleBtn: true, 
 			searchitems : [

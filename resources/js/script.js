@@ -67,12 +67,13 @@ $(document).ready(function(){
 		e.preventDefault();
 		
 		var account_id = $(this).data('aid');
+		var  dt = [{name:'account_id',value: account_id}];
 		
-		$('.characters').livequery(function(){
-			var  dt = [{name:'account_id',value: account_id}];
+		$('.characters2').livequery(function(){
 			$(this).flexOptions({params: dt}).flexReload();
 		})
 		
+		$('.storageFlex').flexOptions({params:dt}).flexReload();
 		
 		$("#view").modal({
 			show: true,

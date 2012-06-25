@@ -21,7 +21,7 @@
                 "cell" => array(
                 	 $icon
                 	,$row['name_japanese']
-             
+                	,$row['amount']
 				)
             );
 

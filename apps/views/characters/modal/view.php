@@ -17,25 +17,7 @@
 	</div>
 	
 	<div class="tpane">
-		<table class="table table-bordered table-striped">
-		  <thead>
-			  <tr>
-				<th>Slot</th>
-				<th>Name</th>
-				<th>Job</th>
-				<th>Level</th>
-			  </tr>
-			</thead>
-			<tbody class="loadchar">
-			  <tr>
-				<td>1</td>
-				<td>Name</td>
-				<td>Sura</td>
-				<td>99/70</td>
-			  </tr>
-		   
-			</tbody>
-		</table>
+		<table class="storageFlex"></table>
 	</div>
 	
 	<div class="tpane">
