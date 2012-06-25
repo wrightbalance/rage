@@ -10,27 +10,14 @@
 		<li><a href="#">Action</a></li>
 	</ul>
 	<div class="tpane pactive">
-		
-		<table class="table table-bordered table-striped">
-		  <thead>
-			  <tr>
-				<th>Char ID</th>
-				<th>Slot</th>
-				<th>Name</th>
-				<th>Job</th>
-				<th>Level</th>
-			  </tr>
-			</thead>
-			<tbody class="loadchar">
-			  
-			</tbody>
-		</table>
+	
+		<table class="characters"></table>
+	
 		
 	</div>
 	
 	<div class="tpane">
-		
-	
+		<table class="storageFlex"></table>
 	</div>
 	
 	<div class="tpane">

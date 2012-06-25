@@ -59,9 +59,7 @@ $(document).ready(function(e){
 	$('a.view_char').live('click',function(e){
 		e.preventDefault();
 		var char_id = $(this).data('char_id');
-		
-		
-		
+	
 		$('#modal_loader').modal({
 			show: true,
 			backdrop: true
