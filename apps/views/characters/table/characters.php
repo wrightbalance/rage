@@ -10,8 +10,7 @@
     foreach ($db as $row)
         {
 			
-			if($authorize){
-				$rows[] = array(
+			$rows[] = array(
 					"id" => $row['char_id'],
 					"cell" => array(
 						 "<a href=\"#\" class=\"view\" data-aid=\"".$row['account_id']."\">".$row['account_id']."</a>"
@@ -23,20 +22,6 @@
 						)
 					
 				);
-			} else { 
-				$rows[] = array(
-					"id" => $row['char_id'],
-					"cell" => array(
-						 "<a href=\"#\" class=\"view_char\" data-char_id=\"".$row['char_id']."\">".$row['name']."</a>"
-						,$row['class']
-						,$row['base_level']
-						,$row['job_level']
-						,$row['zeny'] !== 0 ? number_format($row['zeny']) : 0
-						)
-					
-				);   
-			}
-
         }
 
 	if (isset($elapsed)) $data['elapsed'] = $elapsed;

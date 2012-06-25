@@ -19,8 +19,15 @@
         $rows[] = array(
                 "id" => $row['id'],
                 "cell" => array(
-                	 $icon
+                	  $icon
                 	,$row['name_japanese']
+                	,itemTypes($row['type']) ? itemTypes($row['type']) : 'Unknown'
+                	,$row['price_buy'] ? number_format($row['price_buy']) : 0
+                	,$row['price_sell'] ? $row['price_sell'] : 0
+                	,$row['weight'] ? number_format($row['weight']) : 0
+                	,$row['defence']
+                	,$row['range']
+                	,$row['slots']
              
 				)
             );

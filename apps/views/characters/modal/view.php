@@ -11,7 +11,7 @@
 	</ul>
 	<div class="tpane pactive">
 	
-		<table class="characters2"></table>
+		<table class="characters"></table>
 	
 		
 	</div>

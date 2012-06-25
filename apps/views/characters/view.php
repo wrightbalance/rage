@@ -2,7 +2,7 @@
 	<h3>Characters</h3>
 	<hr>
 	
-	<table class="characters2"></table>
+	<table class="characters"></table>
 
 </div>
 

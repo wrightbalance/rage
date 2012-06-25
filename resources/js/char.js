@@ -189,54 +189,5 @@ $(document).ready(function(e){
 		
 	})
 	
-	$('.characters2').livequery(function(){
-		$(this).flexigrid
-		(
-			{
-			autoload: true,
-			blockOpacity: 0,
-			singleSelect: true,
-			height: 'auto',
-			preProcess: function(data)
-			{
-				return data;
-			},
-			url: root + 'characters/getList',
-			dataType: 'json',
-			colModel : [ 
-						 {display: 'Name', name : 'name', width : 110, sortable: true}
-						,{display: 'Job', name : 'class', width : 60, sortable: true}
-						,{display: 'Base Level', name : 'base_level', width : 60, sortable: true, align: 'center'}
-						,{display: 'Job Level', name : 'job_level', width : 60, sortable: true}
-						,{display: 'Zeny', name : 'zeny', width : 60, sortable: false}
-						
-					],
-			sortname: "account_id",
-			sortorder: "asc",
-			showToggleBtn: true, 
-			searchitems : [
-						{display: 'Character Name', name : 'name'},
-						{display: 'Account ID', name : 'account_id'},
-						],
-			params: [{name:'account_id',value: accountid}],
-			usepager: false,
-			rpOptions: [15, 30, 60, 90],
-			rp: 10,
-			useRp: true,        
-			timeout: 20,
-			height: 290,
-			onTimeout: function()
-			{
-				
-			},
-			onSuccess: function()
-			{
-			
-			},
-			showTableToggleBtn: true,
-			
-		   }
-		);
-		
-	})
+	
 })

@@ -69,9 +69,11 @@ $(document).ready(function(){
 		var account_id = $(this).data('aid');
 		var  dt = [{name:'account_id',value: account_id}];
 		
-		$('.characters2').livequery(function(){
+		$('.modal .characters').livequery(function(){
 			$(this).flexOptions({params: dt}).flexReload();
 		})
+		
+		
 		
 		$('.storageFlex').flexOptions({params:dt}).flexReload();
 		
@@ -80,12 +82,11 @@ $(document).ready(function(){
 			backdrop: true
 		})
 		
-	
-		
-		
 		$('*').addClass('wait');
 		
 		$(".mtitle").empty().html(account_id + ' View account details');
+		
+		$('.modal .characters').flexToggleCol('account_id',0);
 		
 		$.ajax({
 			url: root + 'account/getAccount',
@@ -124,6 +125,7 @@ $(document).ready(function(){
 						})
 						
 						$('*').removeClass('wait');
+						
 					}
 				}
 				catch(e)
