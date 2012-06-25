@@ -14,14 +14,26 @@ class MY_Controller extends CI_Controller
 		$this->load->model('accounts_db');
 		
 		$this->page 		= "page_".$this->uri->rsegment(2);
-		$this->accountid 	= $this->session->userdata('accountid');
+		$this->accountid 	= $this->session->userdata('accountid');	
+		$this->authorize	= false;
 
 		$uri				= $this->uri->ruri_string();
 		$g_user 			= $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
-		$this->authorize	= false;
+		$sessioned_page		= false;
+		
 		
 		// Not sessioned pages
 		$p = array('/main/index','/account/auth','/account/post');
+		
+		if(!in_array($uri,$p))
+		{
+			$sessioned_page	= true;
+		}
+		
+		if($this->uri->segment(1) == "ref")
+		{
+			$sessioned_page = false;
+		}
 		
 		$this->groupid = $this->session->userdata('groupid');
 				
@@ -30,7 +42,7 @@ class MY_Controller extends CI_Controller
 			$this->authorize = true;
 		}
 
-		if(!in_array($uri,$p))
+		if($sessioned_page)
 		{
 			if(!$g_user)
 			{

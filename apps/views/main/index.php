@@ -1,12 +1,7 @@
 <div class="col1 clearfix">
 	
-	<div class="intro">
-		<h1>News and Updates</h1>
-		
-		<div class="icontent">
-			
-		</div>
-		
+	<div id="loadcontent">
+		<?=isset($page_content) ? $page_content : ''?>
 	</div>
 
 </div>

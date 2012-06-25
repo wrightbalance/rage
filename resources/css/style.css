@@ -107,8 +107,8 @@ a:hover
 .logo
 {
 	font-weight: bolder;
-	height: 80px;
-	line-height: 80px;
+	height: 62px;
+	line-height: 62px;
 	float: left;
 }
 
@@ -607,4 +607,24 @@ a:hover
 .flexme
 {
 	display: none;
+}
+
+.main_nav
+{	
+	padding-bottom: 10px;
+	width: 600px;
+	float: left;
+}
+
+.main_nav a
+{
+	margin: 0 5px;
+	color: #fff;
+	font-size: 15px;
+	font-weight: bolder;
+}
+
+.clear
+{
+	clear: both;
 }

@@ -13,7 +13,7 @@
 
 <div class="footer">
 	<div class="tileCenter">
-		RagnaGears &copy; 2012 ~ Brought to you by <a href="">jingcleovil</a>
+		RagnaGears &copy; 2012 ~ Brought to you by <a href="http://www.jingcleovil.com" target="_blank" style="color: #fff;">JingCleoVil</a>
 	</div>
 </div>
 

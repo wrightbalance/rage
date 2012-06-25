@@ -1,4 +1,6 @@
-<a href="">Home</a>
-<a href="">Downloads</a>
-<a href="">Features</a>
-<a href="">Support</a>
+<div class="main_nav">
+	<a href="<?=site_url()?>">Home</a>
+	<a href="<?=push_url('ref/downloads')?>" class="ps">Downloads</a>
+	<a href="<?=push_url('ref/features')?>" class="ps">Features</a>
+	<a href="<?=push_url('ref/support')?>" class="ps">Support</a>
+</div>

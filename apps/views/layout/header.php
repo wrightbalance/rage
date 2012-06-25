@@ -14,13 +14,18 @@
 		
 		<?php $this->load->view('menu/topmenu')?>
 		<?php $this->load->view('widget/toplogin')?>
-		
+		<div class="clear"></div>
+		<?php $this->load->view('menu/nav')?>
 	</div>
+	
+	
 </div>
 
 <div class="body">
 <div class="tileCenter clearfix">
 	<div class="content clearfix">
+		
+		
 		<?php $this->load->view('widget/sidebar')?>
 	
 	

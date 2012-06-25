@@ -88,6 +88,7 @@
 			$data['cssgroup'] = "loggedin";
 			$data['jsgroup'] = "loggedin";
 			$data['page'] 	= 'vote';
+			$data['mod'] 	= 'vote';
 
 			$details = $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
 			$data['details'] = $details;
@@ -105,10 +106,8 @@
 			}
 			else
 			{
-				checkSession();
-
 				$this->load->vars($data);
-				$this->load->view('vote/widget/w_vote',$data);
+				$this->load->view("{$data['mod']}/{$data['page']}",$data);
 			}
 			$this->minify->html();
 		}

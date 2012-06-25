@@ -28,6 +28,7 @@ $config['js']['default'] = array(
      array('path'=>'js/','file'=>'jquery-1.7.2.min.js')
     ,array('path'=>'js/','file'=>'bootstrap.min.js')
     ,array('path'=>'js/','file'=>'script.main.js')
+    ,array('path'=>'js/','file'=>'push.js')
     );
  
     
@@ -44,6 +45,7 @@ $config['js']['loggedin'] = array(
     ,array('path'=>'js/','file'=>'flex.js')
     ,array('path'=>'js/','file'=>'vote.js')
     ,array('path'=>'js/','file'=>'rankings.js')
+    ,array('path'=>'js/','file'=>'push.js')
     );
 
 $config['css3_browsers'] = array(

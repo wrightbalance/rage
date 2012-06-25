@@ -304,19 +304,31 @@ class Cms extends MY_Controller
 		$this->load->model('accounts_db');
 		$this->load->model('char_db');
 		
-		$data['cssgroup'] = "loggedin";
-		$data['jsgroup'] = "loggedin";
-		$data['page'] 	= 'page';
-		$data['showlogin'] = true;
 		
-		$data['page'] = $this->cms_db->getPage(array('friendly_url'=>$page));
+		$data['page'] 		= "page";
+		$data['mod']		= "cms";
 		
-		$details = $this->accounts_db->getAccount(array('account_id'=>$this->accountid));
-		$data['details'] = $details;
+		$data['page_details'] = $this->cms_db->getPage(array('friendly_url'=>$page));
+		
+		//print_r($data['page_details']); exit();
 		
 		if(!$this->input->is_ajax_request())
 		{
-			$data['content'] = $this->load->view('cms/page',$data,true);
+			
+			if($this->accountid)
+			{
+				$data['cssgroup'] 	= "loggedin";
+				$data['jsgroup'] 	= "loggedin";
+				$data['content'] = $this->load->view('layout/content',$data,true);
+			}
+			else
+			{
+				$data['form'] = "frm_register";
+				$data['formtitle'] = "Create your Account";
+				$data['page_content'] = $this->load->view("{$data['mod']}/{$data['page']}",$data,true);
+				$data['content'] = $this->load->view("main/index",$data,true);
+			}
+		
 			
 			$data['elapse'] = $this->benchmark->elapsed_time('code_start', 'code_end');
 			$this->load->vars($data);
@@ -326,7 +338,7 @@ class Cms extends MY_Controller
         else
         {
 			$this->load->vars($data);
-			$this->load->view('cms/widget/w_page',$data);
+			$this->load->view("{$data['mod']}/{$data['page']}",$data);
 		}
 		$this->minify->html();
 	}
