@@ -26,12 +26,11 @@ $(document).ready(function(){
 						,{display: 'Slots', name : 'slots', align:'right', width : 50, sortable: true}
 						
 					],
-			sortname: "name_english",
+			sortname: "id",
 			sortorder: "asc",
 			showToggleBtn: true, 
 			searchitems : [
 						{display: 'Item Name', name : 'name_japanese'},
-
 						],
 			params: [{name:'item',value: 1}],
 			usepager: true,
