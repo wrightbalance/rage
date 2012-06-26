@@ -24,6 +24,7 @@ class Items_db extends CI_Model
 		$start = (($page-1) * $rp);  
 		
 		if($query) $this->db->like($qtype,$query);
+		if($qtype == "id") $this->db->where($qtype,$query);
 		$this->db->from('item_db');
 		$num = $this->db->count_all_results();
 		
@@ -38,6 +39,7 @@ class Items_db extends CI_Model
 		if($query) $this->db->like($qtype,$query);
 
 		$this->db->order_by($sortname,$sortorder);
+		if($qtype == "id") $this->db->where($qtype,$query);
 		$query = $this->db->get('item_db');		
 		$results = $query->result_array();
 
