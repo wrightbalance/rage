@@ -324,12 +324,17 @@ class Characters extends MY_Controller
 	function getList()
 	{
 		$this->benchmark->mark('code_start');
-		
-		$data['authorize'] = $this->authorize;
-		
-		$data 			= $this->char_db->getList($data['authorize']);
+
+		$data 			= $this->char_db->getList($this->authorize);
 		$data['elapsed'] = $this->benchmark->elapsed_time('code_start', 'code_end');
-		$this->load->view('characters/table/characters',$data);
+		$view 			= $this->input->post('view');
+		
+		if(!$view)
+			$this->load->view('characters/table/characters',$data);
+		else
+			$this->load->view('characters/table/view',$data);
+
 	}
+	
 
 }

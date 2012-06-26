@@ -14,11 +14,16 @@
 
 	<div class="tpane pactive">
 			<table class="flexme">
-					
+					<thead>
+			<tr>
+				<th width="100" colspan="2"></th>
+				<th width="300" colspan="2"></th>
+			</tr>
+		</thead>
 				<tbody>
 					<tr>
 						<td width="120"><span style="padding: 0 20px 0 0">Display Name</span></td>
-						<td ><span style="padding: 0 50px 0 0"><?=$user['nickname']?></span></td>
+						<td width="400"><?=$user['nickname']?></td>
 					</tr>
 					<tr>
 						<td width="120">User Name</td>
