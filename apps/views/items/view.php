@@ -10,7 +10,7 @@
 	?>
 	<h3>Item Details of <strong><?php echo $items['name_japanese']?></strong></h3>
 	<br/>
-	<div class="item-image">
+	<div class="item-image <?php echo itemTypes($items['type']) ? itemTypes($items['type']) : 'Unknown'?>">
 		<?=$icon?>
 	</div>
 	<br/>
