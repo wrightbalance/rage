@@ -12,11 +12,12 @@
 	{
 		foreach ($db as $row)
         {
+			$emblem = img("guild/emblem/{$row['guild_id']}");
 			$rows[] = array(
                 "id" => $row['castle_id'],
                 "cell" => array(
 					 $rank
-					,""
+					,$emblem
 					,$row['gname']
 					,$row['master']
 					,$row['guild_count']

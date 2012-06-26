@@ -60,7 +60,7 @@ $(document).ready(function(){
 			dataType: 'json',
 			colModel : [ 
 						 {display: 'Rank', name : 'rank', width : 30, align: 'center', sortable: false}
-						,{display: 'Emblem', name : 'name', width : 60, sortable: true}
+						,{display: '', name : 'name', width : 25, sortable: true}
 						,{display: 'Guild Name', name : 'name', width : 160, sortable: true}
 						,{display: 'Master', name : 'kills', width : 160, sortable: true}	
 						,{display: 'Castles', name : 'kills', width : 60, align: 'center', sortable: true}	
