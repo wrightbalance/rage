@@ -1,5 +1,5 @@
 <div class="maincol wide">
-	<h3>Items</h3>
+	<h3>Storage</h3>
 	
-	<table class="itemsFlex"></table>
+	<table class="storageFlex"></table>
 </div>

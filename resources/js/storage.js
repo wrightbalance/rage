@@ -26,9 +26,9 @@ $(document).ready(function(){
 						{display: 'Item Name', name : 'name_japanese'},
 
 						],
-			params: [{name:'item',value: 1}],
+			params: [{name:'account_id',value: accountid}],
 			usepager: true,
-			rpOptions: [15, 30, 60, 90],
+			rpOptions: [10,20, 30, 40],
 			rp: 15,
 			useRp: true,        
 			timeout: 20,

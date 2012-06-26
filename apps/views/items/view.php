@@ -35,18 +35,24 @@
 				<td width="120"><span>Buy</span></td>
 				<td ><?php echo $items['price_buy'] ? number_format($items['price_buy']) : 0?></td>
 			</tr>
+			
 			<tr>
 				<td width="120"><span>Sell</span></td>
 				<td ><?php echo $items['price_sell'] ? number_format($items['price_sell']) : 0?></td>
 			</tr>
+			
+			<?php if($items['defence']){?>
 			<tr>
 				<td width="120"><span>Defence</span></td>
 				<td ><?php echo $items['defence']?></td>
 			</tr>
+			<? } ?>
+			<?php if($items['defence']){?>
 			<tr>
 				<td width="120"><span>Range</span></td>
 				<td ><?php echo $items['range']?></td>
 			</tr>
+			<? } ?>
 		</tbody>
 	</table>
 
