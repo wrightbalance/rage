@@ -31,6 +31,7 @@ $(document).ready(function(){
 			showToggleBtn: true, 
 			searchitems : [
 						{display: 'Item Name', name : 'name_japanese'},
+						{display: 'Item ID', name : 'id'},
 						],
 			params: [{name:'item',value: 1}],
 			usepager: true,

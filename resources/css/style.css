@@ -123,6 +123,7 @@ a:hover
 .modal
 {
 	display: none;
+	
 }
 
 .menu
@@ -655,4 +656,12 @@ a:hover
 	margin-top: 16px;
 	margin-right: 10px;
 	padding: 15px 0;
+}
+
+
+.Card
+{
+	width: 150px;
+	border: none;
+	padding: 0;
 }

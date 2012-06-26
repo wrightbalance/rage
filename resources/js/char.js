@@ -187,5 +187,50 @@ $(document).ready(function(e){
 		
 	})
 	
+	$('.char_view').livequery(function(){
+		$(this).flexigrid
+		(
+			{
+			autoload: true,
+			blockOpacity: 0,
+			singleSelect: true,
+			preProcess: function(data)
+			{
+				return data;
+			},
+			url: root + 'characters/getList',
+			dataType: 'json',
+			colModel : [ 
+						 {display: 'Name', name : 'name', width : 110, sortable: true}
+						,{display: 'Job', name : 'class', width : 80, sortable: true}
+						,{display: 'Base Level', name : 'base_level', width : 60, sortable: true, align: 'center'}
+						,{display: 'Job Level', name : 'job_level', width : 60, sortable: true}
+						,{display: 'Zeny', name : 'zeny', width : 60, sortable: false}
+						
+					],
+			sortname: "char_id",
+			sortorder: "asc",
+			params: [{name:'account_id',value: accountid,name:'view',value:'view'}],
+			usepager: false,
+			rpOptions: [15, 30, 60, 90],
+			rp: 10,
+			useRp: true,        
+			timeout: 20,
+			height: 390,
+			onTimeout: function()
+			{
+				
+			},
+			onSuccess: function()
+			{
+			
+			},
+			showTableToggleBtn: true,
+			
+		   }
+		);
+		
+	})
+	
 	
 })
