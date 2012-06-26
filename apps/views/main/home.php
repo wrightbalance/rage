@@ -69,6 +69,10 @@
 		</ul>
 		</div>
 		
+		
+	</div>
+	<div class="widgetbox news">
+		<h2>Latest News</h2>
 	</div>
 
 </div>

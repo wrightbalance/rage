@@ -677,6 +677,11 @@ a:hover
 	margin: 0 5px 0 0;
 }
 
+.news
+{
+	width: 580px;
+}
+
 .widgetbox ul
 {
 	margin: 0;
