@@ -9,14 +9,14 @@
 
     foreach ($db as $row)
         {
-		$icon = img("resources/images/icons/12137.gif",array('alt'=>"",'title'=>$row['description']));
+		$icon = img("resources/images/items/thumb/12137.gif",array('alt'=>"",'title'=>$row['description']));
 		
-		if(file_exists('./resources/images/icons/'.$row['id'].'.gif'))
+		if(file_exists('./resources/images/items/thumb/'.$row['id'].'.gif'))
 		{
-			$icon = img("resources/images/icons/{$row['id']}.gif",array('alt'=>"",'title'=>$row['description']));
+			$icon = img("resources/images/items/thumb/{$row['id']}.gif",array('alt'=>"",'title'=>$row['description']));
 		}	
 		
-		$url = push_url("items/view/{$row['id']}");
+		$url = push_url("items/view/{$row['friendly_url']}");
 		
         $rows[] = array(
                 "id" => $row['id'],

@@ -644,3 +644,15 @@ a:hover
 {
 	font-size: 12px;
 }
+
+.item-image
+{
+	float: left;
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	border: 1px solid #ddd;
+	margin-top: 16px;
+	margin-right: 10px;
+	padding: 15px 0;
+}

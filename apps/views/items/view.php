@@ -1,41 +1,51 @@
 <div class="maincol wide">
 	<?php 
-		$icon = img("resources/images/icons/12137.gif",array('alt'=>"",'title'=>$items['description']));
+		$icon = "";
 		
-		if(file_exists('./resources/images/icons/'.$items['id'].'.gif'))
+		if(file_exists('./resources/images/items/large/'.$items['id'].'.gif'))
 		{
-			$icon = img("resources/images/icons/{$items['id']}.gif",array('alt'=>"",'title'=>$items['description']));
+			$icon = img("resources/images/items/large/{$items['id']}.gif",array('alt'=>"",'title'=>$items['description']));
 		}	
 		
 	?>
-	<h3>Item Details of <?php echo $items['name_japanese']?></h3>
+	<h3>Item Details of <strong><?php echo $items['name_japanese']?></strong></h3>
 	<br/>
-	<table class="flexme">	
+	<div class="item-image">
+		<?=$icon?>
+	</div>
+	<br/>
+	<table class="flexme" style="width: 500px;">	
 		<thead>
 			<tr>
-				<th width="120" colspan="2"></th>
-				<th width="120" colspan="2">Attributes</th>
-				<th width="120" colspan="2">Details</th>
+				<th width="70" colspan="2">Attributes</th>
+				<th width="490" colspan="2">Details</th>
 			</tr>
 		</thead>
 		<tbody>
 		
 			<tr>
-				<td width="120">
-					<?php echo $icon?>
-				</td>
 				<td width="120"><span>Descriptions</span></td>
-				<td ><span style="padding: 0 150px 0 0"><?php echo $items['description']?></span></td>
+				<td ><?php echo $items['description']?></td>
 			</tr>
 			<tr>
-				<td width="120"></td>
-				<td width="120"><span>Descriptions</span></td>
-				<td ><span style="padding: 0 150px 0 0"><?php echo $items['description']?></span></td>
-			</tr>
-			<tr>
-				<td width="120"></td>
 				<td width="120"><span>Type</span></td>
-				<td ><span style="padding: 0 50px 0 0"><?php echo itemTypes($items['type']) ? itemTypes($items['type']) : 'Unknown'?></span></td>
+				<td ><?php echo itemTypes($items['type']) ? itemTypes($items['type']) : 'Unknown'?></td>
+			</tr>
+			<tr>
+				<td width="120"><span>Buy</span></td>
+				<td ><?php echo $items['price_buy'] ? number_format($items['price_buy']) : 0?></td>
+			</tr>
+			<tr>
+				<td width="120"><span>Sell</span></td>
+				<td ><?php echo $items['price_sell'] ? number_format($items['price_sell']) : 0?></td>
+			</tr>
+			<tr>
+				<td width="120"><span>Defence</span></td>
+				<td ><?php echo $items['defence']?></td>
+			</tr>
+			<tr>
+				<td width="120"><span>Range</span></td>
+				<td ><?php echo $items['range']?></td>
 			</tr>
 		</tbody>
 	</table>

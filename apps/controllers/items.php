@@ -49,7 +49,7 @@ class Items extends MY_Controller
 		$data['page'] 		= $page;
 		$data['mod'] 		= $mod;
 		
-		$items = $this->items_db->getItem(array('id'=>$item_id));
+		$items = $this->items_db->getItem(array('friendly_url'=>$item_id));
 
 		$data['items'] = $items;
 		

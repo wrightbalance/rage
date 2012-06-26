@@ -11,16 +11,16 @@
         {
 		$icon = img("resources/images/icons/12137.gif",array('alt'=>"",'title'=>$row['description']));
 		
-		if(file_exists('./resources/images/icons/'.$row['id'].'.gif'))
+		if(file_exists('./resources/images/items/thumb/'.$row['id'].'.gif'))
 		{
-			$icon = img("resources/images/icons/{$row['id']}.gif",array('alt'=>"",'title'=>$row['description']));
+			$icon = img("resources/images/items/thumb/{$row['id']}.gif",array('alt'=>"",'title'=>$row['description']));
 		}	
 		
         $rows[] = array(
                 "id" => $row['id'],
                 "cell" => array(
                 	 $icon
-                	,$row['name_japanese']
+                	,anchor("items/view/{$row['friendly_url']}",$row['name_japanese'])
                 	,$row['amount']
 				)
             );
