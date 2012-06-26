@@ -632,18 +632,94 @@ a:hover
 
 .widgetbox
 {
-	width: 260px;
+	width: 287px;
 	height: auto;
 	min-height: 160px;
 	float: left;
 	margin: 0 10px 10px 0;
-	padding: 10px;
+	padding: 5px;
 	border: 1px solid #222;
+	border-radius: 5px;
 }
 
 .widgetbox h2
 {
 	font-size: 12px;
+	padding: 0;
+	margin: 0 0 15px 0;
+	line-height: 13px;
+}
+
+.server_status
+{
+	width: 228px;
+}
+
+.itemshop
+{
+	width: 328px;
+}
+
+.wrapper
+{
+	width: 320px;
+	overflow: hidden;
+	height: 120px;
+	margin: 0 0 0 5px;
+}
+
+.items li
+{
+	width: 75px;
+	height: 120px;
+	float:  left;
+	text-align: center;
+	margin: 0 5px 0 0;
+}
+
+.widgetbox ul
+{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.widgetbox span
+{
+	display: inline-block;
+}	
+
+.widgetbox span.label
+{
+	background: none;
+	font-size: 11px;
+	font-weight: normal;
+	vertical-align: normal;
+	line-height: 11px;
+}
+
+.online
+{
+	color: green;
+}
+
+.offline 
+{
+	color: red;
+}
+
+.status
+{
+	text-align: center;
+}
+
+.onlineplayers
+{
+	background: gray;
+	padding: 3px;
+	border-radius: 5px;
+	display: block;
+	margin-top: 5px;
 }
 
 .item-image

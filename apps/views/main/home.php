@@ -1,25 +1,74 @@
 <div class="maincol">
-	<div class="widgetbox">
-		<h2>News and Updates</h2>
-		<ul>
-			<li><a href="">Server Maintenance</a></li>
-			<li><a href="">Server Maintenance</a></li>
-			<li><a href="">Server Maintenance</a></li>
-		</ul>
-	</div>
-	<div class="widgetbox">
+	<div class="widgetbox server_status">
 		<h2>Server Status</h2>
-		<ul>
-			<li>Login: Online</li>
-			<li>Char: Online</li>
-			<li>Map: Online</li>
-			<li>Online Players: 20</li>
+		<div class="status">
+			<span class="label">LOGIN</span><span class="online"> Online</span>
+			<span class="label">CHAR</span><span class="online"> Online</span>
+			<span class="label">MAP</span><span class="online"> Online</span>
+			<br/>
+			<br/>
+			<span class="label">ONLINE PLAYERS</span>
+			<br/>
+			<span class="onlineplayers"> <strong>87</strong></span>
+			
+		</div>
+		
+	</div>
+	<div class="widgetbox itemshop">
+		<h2>Item Shop</h2>
+		<div class="wrapper clearfix">
+		<ul class="items">
+			<li>
+				<a href="">
+					<img src="<?=resource_url('images/items/large/501.gif')?>" alt=""/>
+				</a>
+				<span>
+					Red Potion
+				</span>
+			</li>
+			<li>
+				<a href="">
+					<img src="<?=resource_url('images/items/large/502.gif')?>" alt=""/>
+				</a>
+				<span>
+					Red Potion
+				</span>
+			</li>
+			<li>
+				<a href="">
+					<img src="<?=resource_url('images/items/large/503.gif')?>" alt=""/>
+				</a>
+				<span>
+					Red Potion
+				</span>
+			</li>
+			<li>
+				<a href="">
+					<img src="<?=resource_url('images/items/large/503.gif')?>" alt=""/>
+				</a>
+				<span>
+					Red Potion
+				</span>
+			</li>
+			<li>
+				<a href="">
+					<img src="<?=resource_url('images/items/large/503.gif')?>" alt=""/>
+				</a>
+				<span>
+					Red Potion
+				</span>
+			</li>
+			<li>
+				<a href="">
+					<img src="<?=resource_url('images/items/large/503.gif')?>" alt=""/>
+				</a>
+				<span>
+					Red Potion
+				</span>
+			</li>
 		</ul>
+		</div>
+		
 	</div>
-	<div class="widgetbox">
 
-	</div>
-	<div class="widgetbox">
-
-	</div>
 </div>
