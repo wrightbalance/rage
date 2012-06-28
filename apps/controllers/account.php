@@ -782,7 +782,7 @@ class Account extends MY_Controller
 		$db['confirmed_on'] = date('Y-m-d H:i:s');
 		$this->accounts_db->saveConfirmation($db,$code);
 		
-		if(isset($config_code['account_id'] && $config_code['account_id']))
+		if(isset($config_code['account_id']) && $config_code['account_id'])
 		{
 			$adb['state'] = 0;
 			$this->accounts_db->save($adb,$confirm_code['account_id']);
