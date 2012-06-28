@@ -23,8 +23,8 @@
                 "id" => $row['account_id'],
                 "cell" => array(
                 	 "<a href=\"javascript:;\" class=\"view\" data-aid=\"".$row['account_id']."\">".$row['account_id']."</a>"
-                	,'--- DEMO DOESNT ALLOWED TO SHOW THIS ---'//$row['userid']
-                	,'--- DEMO DOESNT ALLOWED TO SHOW THIS ---'//$row['email']
+                	,$row['userid']
+                	,$row['email']
                 	,$group_id
                 	,$row['last_ip']
                 	,$row['lastlogin'] != "0000-00-00 00:00:00" ? date('M d, Y',strtotime($row['lastlogin'])) : 'Never'

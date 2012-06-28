@@ -30,6 +30,7 @@ class Account extends MY_Controller
 			{
 				$account = $this->accounts_db->getAccount(array('userid'=>$username,'user_pass'=>$password),false,true);
 				$this->session->set_userdata('accountid',$account['account_id']);
+				$this->session->set_userdata('demo',$username);
 				
 				if(config_item('UsingGroupID')) 
 					$adminLevel = $account['group_id'];

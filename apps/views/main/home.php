@@ -9,7 +9,7 @@
 			<br/>
 			<span class="label">ONLINE PLAYERS</span>
 			<br/>
-			<span class="onlineplayers"> <strong>87</strong></span>
+			<span class="onlineplayers"> <strong><?=$online?></strong></span>
 			
 		</div>
 		

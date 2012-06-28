@@ -102,7 +102,14 @@ $(document).ready(function(){
 							if($('.'+i).length)
 							{
 								$('.'+i).html(n);
-								console.log(i);
+								$('input[name='+i+']').val(n);
+					
+								if(i == "sex")
+								{
+									var s = (n == "M" ? "Male" : "Female");
+									
+									$('.'+i).html(s);
+								}
 							}
 						})
 						

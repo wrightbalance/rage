@@ -32,6 +32,16 @@ class Char_db extends CI_Model
 		return $result;
 	}
 	
+	function countOnline()
+	{
+		$this->db->where('online',1);
+		$this->db->from('char');
+		$count = $this->db->count_all_results();
+		
+		return $count;
+		
+	}
+	
 	function getChar($cond,$single=false,$server=false)
 	{
 		if(config_item('server_count') >= 2)

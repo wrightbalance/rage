@@ -12,6 +12,7 @@ class MY_Controller extends CI_Controller
 		parent::__construct();
 		$this->load->driver('cache',array('adapter'=>'file'));
 		$this->load->model('accounts_db');
+		$this->load->model('char_db');
 		
 		$this->page 		= "page_".$this->uri->rsegment(2);
 		$this->accountid 	= $this->session->userdata('accountid');	
@@ -27,7 +28,7 @@ class MY_Controller extends CI_Controller
 			if($this->uri->segment(1) != "maintenance")
 				redirect('maintenance');
 		}
-		// Not sessioned pages
+		
 		$p = array(
 				'/main/index',
 				'/account/auth',
@@ -79,8 +80,12 @@ class MY_Controller extends CI_Controller
 			}
 		} 
 		
-		$data['authorize'] = $this->authorize;
-		$data['user'] = $g_user;
+		$onlineCharacters =  $this->char_db->countOnline();
+
+		$data['authorize'] 	= $this->authorize;
+		$data['user'] 		= $g_user;
+		$data['online'] 	= $onlineCharacters;
+		
 		$this->load->vars($data);
 	}
 }

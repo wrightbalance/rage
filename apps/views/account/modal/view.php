@@ -8,7 +8,7 @@
 		<li class="active"><a href="#">Account</a></li>
 		<li><a href="#">Characters</a></li>
 		<li><a href="#">Account Storage</a></li>
-		<li><a href="#">Action</a></li>
+		<li><a href="#">Modify</a></li>
 	</ul>
 	<div class="tpane pactive">
 		<table class="flexme">
@@ -50,7 +50,6 @@
 	</div>
 	
 	<div class="tpane">
-	
 		<table class="characters"></table>
 	</div>
 	
@@ -59,6 +58,8 @@
 	</div>
 	
 	<div class="tpane">
+		
+		<?php $this->load->view('account/modify')?>
 		
 	</div>
     
