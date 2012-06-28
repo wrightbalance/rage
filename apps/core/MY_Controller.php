@@ -33,7 +33,10 @@ class MY_Controller extends CI_Controller
 				'/account/auth',
 				'/account/post',
 				'/account/forgot',
-				'/account/forgotpassword');
+				'/account/forgotpassword',
+				'/account/signin',
+				'/account/setPassword'
+				);
 		
 		if(!in_array($uri,$p))
 		{
@@ -44,7 +47,7 @@ class MY_Controller extends CI_Controller
 			$sessioned_page = false;
 		
 		
-		if($this->uri->segment(2) == "confirmation")
+		if($this->uri->segment(2) == "confirmation" || $this->uri->segment(2) == "newpassword")
 			$sessioned_page = false;
 		
 		$this->groupid = $this->session->userdata('adminlevel');

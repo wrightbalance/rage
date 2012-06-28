@@ -55,7 +55,7 @@ class Account extends MY_Controller
 	
 				$data['message']  = "";
 				$data['message'] .= "<div class=\"res_message res_alert clearfix\">";
-				$data['message'] .= "Your username or password.";
+				$data['message'] .= "Login failed!";
 				$data['message'] .= "<button class=\"btn retryform\" style=\"float:right\" type=\"button\">Retry</button>";
 				$data['message'] .="</div>";
 
@@ -633,8 +633,7 @@ class Account extends MY_Controller
 	function forgot()
 	{
 		$this->benchmark->mark('code_start');
-	
-		
+
 		$data['page'] 		= "forgot";
 		$data['mod']		= "account";
 
@@ -642,6 +641,31 @@ class Account extends MY_Controller
 		{
 			$data['page_content'] = $this->load->view("{$data['mod']}/{$data['page']}",$data,true);
 			$data['content'] = $this->load->view("account/forgot",$data,true);
+			
+			$data['elapse'] = $this->benchmark->elapsed_time('code_start', 'code_end');
+			$this->load->vars($data);
+			$this->load->view('default',$data);
+			
+        }
+        else
+        {
+			$this->load->vars($data);
+			$this->load->view("{$data['mod']}/{$data['page']}",$data);
+		}
+		$this->minify->html();
+	}
+	
+	function signin()
+	{
+		$this->benchmark->mark('code_start');
+
+		$data['page'] 		= "signin";
+		$data['mod']		= "account";
+
+		if(!$this->input->is_ajax_request())
+		{
+			$data['page_content'] = $this->load->view("{$data['mod']}/{$data['page']}",$data,true);
+			$data['content'] = $this->load->view("account/signin",$data,true);
 			
 			$data['elapse'] = $this->benchmark->elapsed_time('code_start', 'code_end');
 			$this->load->vars($data);
@@ -772,5 +796,84 @@ class Account extends MY_Controller
 		redirect();
 	}
 	
+	
+	function newpassword($code)
+	{
+		$confirm_code = $this->accounts_db->getCode(array('confirm_code'=>$code,'confirmed'=>0));
+		
+		if(!$code) show_404();
+		if(!$confirm_code) show_404();
+		
+		$this->benchmark->mark('code_start');
+
+		$data['page'] 		= "forgot";
+		$data['mod']		= "account";
+		
+		$data['details'] = $this->accounts_db->getAccount(array('account_id'=>$confirm_code['account_id']));
+		$data['code'] = $code;
+		
+		if(!$this->input->is_ajax_request())
+		{
+			$data['page_content'] = $this->load->view("{$data['mod']}/{$data['page']}",$data,true);
+			$data['content'] = $this->load->view("account/newpassword",$data,true);
+			
+			$data['elapse'] = $this->benchmark->elapsed_time('code_start', 'code_end');
+			$this->load->vars($data);
+			$this->load->view('default',$data);
+			
+        }
+        else
+        {
+			$this->load->vars($data);
+			$this->load->view("{$data['mod']}/{$data['page']}",$data);
+		}
+		$this->minify->html();
+	}
+	
+	function setPassword()
+	{
+		if(!$this->input->is_ajax_request()) exit();
+		
+		$this->form_validation->set_rules('new_password','New Password','required');
+		$this->form_validation->set_rules('confirm_password','Confirm Password','required|matches[new_password]');
+		
+		if($this->form_validation->run() == FALSE)
+		{
+			$data['error'] = $this->form_validation->_error_array;
+			$this->form_validation->set_error_delimiters('<li>','</li>');
+
+			$data['message']  = "";
+			$data['message'] .= "<div class=\"res_message res_alert\">";
+			$data['message'] .= "<ul>".validation_errors()."</ul>";
+			$data['message'] .="</div>";
+			$data['message'] .= "<button class=\"btn retryform\" type=\"button\">Retry</button>";
+			$data['action'] = "retry";
+
+		}
+		else
+		{
+			$code 			= trim($this->input->post('code'));
+			$newpassword 	= trim($this->input->post('new_password'));
+			$accountid 		= $this->input->post('account_id');
+			
+			if(config_item('UsingMD5'))
+				$newpassword = md5($newpassword);
+			
+			$db['confirmed'] = 1;
+			$db['confirmed_on'] = date('Y-m-d H:i:s');
+			$this->accounts_db->saveConfirmation($db,$code);
+			
+			$adb['user_pass'] = $newpassword;
+			$this->accounts_db->save($adb,$accountid );
+			
+			$data['url'] = site_url('account/signin');
+			$data['action'] = "forward";
+			$data['message'] = "Redirecting...";
+			
+		}
+		
+		$data['json'] = $data;
+		$this->load->view('ajax/json',$data);
+	}
 
 }

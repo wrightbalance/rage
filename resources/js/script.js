@@ -147,6 +147,11 @@ var jsonPROC = {
 	reload: function(data,form)
 	{
 		location.reload();
+	},
+	forward: function(data,form)
+	{
+		console.log(data);
+		//location.href=data.url;
 	}
 }
 
