@@ -28,7 +28,12 @@ class MY_Controller extends CI_Controller
 				redirect('maintenance');
 		}
 		// Not sessioned pages
-		$p = array('/main/index','/account/auth','/account/post','/account/forgot');
+		$p = array(
+				'/main/index',
+				'/account/auth',
+				'/account/post',
+				'/account/forgot',
+				'/account/forgotpassword');
 		
 		if(!in_array($uri,$p))
 		{

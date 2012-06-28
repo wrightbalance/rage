@@ -202,16 +202,14 @@ class Account extends MY_Controller
 				
 			}
 			
-			
+			$ndb['nickname'] = trim($this->input->post('nickname'));
+			$ndb['created'] = date('Y-m-d H:i:s');
+			$ndb['accountid'] = $accountid;
+			$this->accounts_db->set_nickname($ndb);
+	
 			if($forward)
-			{
-				$ndb['nickname'] = trim($this->input->post('nickname'));
-				$ndb['created'] = date('Y-m-d H:i:s');
-				$ndb['accountid'] = $accountid;
-				
-				$this->accounts_db->set_nickname($ndb);
+			{		
 				$this->session->set_userdata('accountid',$accountid);
-
 				$data['action'] = "forward";
 				$data['url'] = site_url();
 				$data['message'] = "Redirecting...";
@@ -502,6 +500,9 @@ class Account extends MY_Controller
 			return true;
 		}	
 	}
+	
+	
+	
 	function _check_email_exists($email)
 	{
 		$user = $this->accounts_db->getAccount(array('email'=>$email));
@@ -514,6 +515,22 @@ class Account extends MY_Controller
 		else
 		{
 			return true;
+		}	
+	}
+	
+	function _check_email_exists2($email)
+	{
+		$user = $this->accounts_db->getAccount(array('email'=>$email));
+
+		if(count($user) > 0)
+		{
+			
+			return true;
+		}
+		else
+		{
+			$this->form_validation->set_message('_check_email_exists2','%s does not exists.');
+			return false;
 		}	
 	}
 	
@@ -611,11 +628,6 @@ class Account extends MY_Controller
 		echo $this->email->print_debugger();
 		exit();
 	}
-	
-	function token($token)
-	{
-		if(empty($token)) redirect();
-	}
 
 	
 	function forgot()
@@ -628,21 +640,8 @@ class Account extends MY_Controller
 
 		if(!$this->input->is_ajax_request())
 		{
-			
-			if($this->accountid)
-			{
-				$data['cssgroup'] 	= "loggedin";
-				$data['jsgroup'] 	= "loggedin";
-				$data['content'] = $this->load->view('layout/content',$data,true);
-			}
-			else
-			{
-				$data['form'] = "frm_register";
-				$data['formtitle'] = "Create your Account";
-				$data['page_content'] = $this->load->view("{$data['mod']}/{$data['page']}",$data,true);
-				$data['content'] = $this->load->view("main/index",$data,true);
-			}
-		
+			$data['page_content'] = $this->load->view("{$data['mod']}/{$data['page']}",$data,true);
+			$data['content'] = $this->load->view("account/forgot",$data,true);
 			
 			$data['elapse'] = $this->benchmark->elapsed_time('code_start', 'code_end');
 			$this->load->vars($data);
@@ -655,6 +654,97 @@ class Account extends MY_Controller
 			$this->load->view("{$data['mod']}/{$data['page']}",$data);
 		}
 		$this->minify->html();
+	}
+	
+	function forgotpassword()
+	{
+		if(!$this->input->is_ajax_request()) exit();
+		
+		$this->form_validation->set_rules('email','E-mail Address','required|valid_email|callback__check_email_exists2');
+		
+		if($this->form_validation->run() == FALSE)
+		{
+			$data['error'] = $this->form_validation->_error_array;
+			$this->form_validation->set_error_delimiters('<li>','</li>');
+
+			$data['message']  = "";
+			$data['message'] .= "<div class=\"res_message res_alert\">";
+			$data['message'] .= "<ul>".validation_errors()."</ul>";
+			$data['message'] .="</div>";
+			$data['message'] .= "<button class=\"btn retryform\" type=\"button\">Okay</button>";
+			$data['action'] = "retry";
+
+		}
+		else
+		{
+			$this->load->library('email');
+			$code = md5(rand());
+			
+			$email = trim($this->input->post('email'));
+			
+			$account = $this->accounts_db->getAccount(array('email'=>$email));
+			
+			if(!$expire = config_item('ConfirmationExpire'))
+			{
+				$expire = 24; 
+			}
+			
+			$tdb['confirm_code'] 	= $code;
+			$tdb['confirmed'] 		= 0;
+			$tdb['confirm_created'] = date('Y-m-d H:i:s');
+			$tdb['confirm_expire'] 	= date('Y-m-d H:i:s', time() + (60 * 60 * $expire));
+			$tdb['account_id']		= $account['account_id'];
+			
+			$this->accounts_db->saveConfirmation($tdb);
+			
+			if(config_item('UseSMTP'))
+			{
+				$config['protocol']  	= 'smtp';
+				$config['smtp_host'] 	= config_item('MailerHost');
+				$config['smtp_port'] 	= config_item('MailerPort');
+				$config['smtp_timeout'] = '30';
+				$config['smtp_user'] 	= config_item('MailerSMTPUsername');
+				$config['smtp_pass'] 	= config_item('MailerSMTPPassword');	
+				
+			}
+			else
+			{
+				$config['protocol'] = 'sendmail';
+				$config['mailpath'] = '/usr/sbin/sendmail';	
+			}
+			
+			$config['charset']  	= 'utf-8';
+			$config['newline']  	= "\r\n"; 
+			$config['mailtype']  	= 'html'; 
+			$config['wordwrap'] 	= TRUE;
+			$this->email->initialize($config);
+	
+			$data['url'] = site_url('account/newpassword/'.$code);
+			
+			$data['content'] = $this->load->view('account/email/forgot',$data,true);
+			$message 		 = $this->load->view('layout/email',$data,true);
+			
+			$this->email->from(config_item('MailerFrom'), 'Forgot Password');
+			$this->email->to($email); 
+			$this->email->subject(config_item('ServerName'));
+			$this->email->message($message);	
+
+			$this->email->send();
+			
+			
+			$data['message']  = "";
+			$data['message'] .= "<div class=\"res_message\">";
+			$data['message'] .= "<p>An e-mail has been sent containing reset password instruction, please check your e-mail and change your password.</p>";
+			$data['message'] .="</div>";
+			$data['message'] .= "<button class=\"btn retryform\" type=\"button\">Retry</button>";
+			$data['action'] = "retry";
+
+		}
+		
+		$data['json'] = $data;
+		$this->load->view('ajax/json',$data);
+		
+	
 	}
 	
 	function confirmation($code)
@@ -681,5 +771,6 @@ class Account extends MY_Controller
 		
 		redirect();
 	}
+	
 
 }

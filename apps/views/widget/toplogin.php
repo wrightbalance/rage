@@ -7,7 +7,7 @@
 		<input type="text" class="input-small" placeholder="Username" name="username">
 		<input type="password" class="input-small" placeholder="Password" name="password">
 		<button type="submit" class="btn">Sign in</button>
-		<a href="">Forgot Password?</a>
+		<a href="<?=site_url('account/forgot')?>">Forgot Password?</a>
 	</div>
 </form>
 </div>

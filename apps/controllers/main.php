@@ -30,9 +30,9 @@ class Main extends MY_Controller
 			if(!$this->accountid)
 			{
 				if(!$page = $this->cache->get($page))
-			{
-				
-			}
+				{
+					
+				}
 				$data['form'] = "frm_register";
 				$data['formtitle'] = "Create your Account";
 				$data['page_content'] = $this->load->view('main/home',$data,true);

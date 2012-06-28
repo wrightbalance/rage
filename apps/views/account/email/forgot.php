@@ -5,5 +5,5 @@
 	
 	<br/>
 	<br/>
-	<a href="<?=site_url('account/forgot/token/'.$token)?>"><?=site_url('account/forgot/token/'.$token)?></a>
+	<a href="<?=$url?>"><?=$url?></a>
 </p>
