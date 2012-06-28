@@ -19,7 +19,7 @@ class Account extends MY_Controller
 			$password = trim($this->input->post('password'));
 			$action = $this->input->post('action');
 		
-			if(config_item('md5'))
+			if(config_item('UsingMD5'))
 			{
 				$password = md5($password);
 			}
@@ -30,7 +30,13 @@ class Account extends MY_Controller
 			{
 				$account = $this->accounts_db->getAccount(array('userid'=>$username,'user_pass'=>$password),false,true);
 				$this->session->set_userdata('accountid',$account['account_id']);
-				$this->session->set_userdata('groupid',$account['group_id']);
+				
+				if(config_item('UsingGroupID')) 
+					$adminLevel = $account['group_id'];
+				else
+					$adminLevel = $account['level'];
+					
+				$this->session->set_userdata('adminlevel',$adminLevel);
 
 				$data['message'] = "Redirecting...";
 				$data['action'] = "forward";
@@ -92,9 +98,13 @@ class Account extends MY_Controller
 		$this->form_validation->set_rules('password','Password','required');
 		$this->form_validation->set_rules('email','E-mail Address','required|valid_email|callback_emailIsExists');
 		$this->form_validation->set_rules('gender','Gender','required');
-		$this->form_validation->set_rules('month','Birthdate','required');
-		$this->form_validation->set_rules('day','Birthdate','required');
-		$this->form_validation->set_rules('year','Birthdate','required');
+		
+		if(config_item('AddBirthday'))
+		{
+			$this->form_validation->set_rules('month','Birthdate','required');
+			$this->form_validation->set_rules('day','Birthdate','required');
+			$this->form_validation->set_rules('year','Birthdate','required');
+		}
 
 		if($this->form_validation->run() === FALSE)
 		{

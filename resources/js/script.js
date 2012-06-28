@@ -72,8 +72,7 @@ $(document).ready(function(){
 		$('.modal .characters').livequery(function(){
 			$(this).flexOptions({params: dt}).flexReload();
 		})
-		
-	
+
 		$('.storageFlex').flexOptions({params:dt}).flexReload();
 		
 		$("#view").modal({
@@ -102,7 +101,7 @@ $(document).ready(function(){
 							
 							if($('.'+i).length)
 							{
-								$('.'+i).val(n);
+								$('.'+i).html(n);
 								console.log(i);
 							}
 						})

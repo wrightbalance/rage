@@ -35,9 +35,9 @@ class MY_Controller extends CI_Controller
 			$sessioned_page = false;
 		}
 		
-		$this->groupid = $this->session->userdata('groupid');
+		$this->groupid = $this->session->userdata('adminlevel');
 				
-		if($this->groupid >= config_item('GroupID'))
+		if($this->groupid >= config_item('AdminLevel'))
 		{
 			$this->authorize = true;
 		}

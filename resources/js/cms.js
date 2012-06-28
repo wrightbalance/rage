@@ -66,17 +66,17 @@ $(document).ready(function(){
 
 	})
 	
-	$('a.deletenews').live('click',function(e){
+	$('a.deleteItem').live('click',function(e){
 		e.preventDefault();
-		
-		var newsid = $(this).data('aid');
-		
+	
+		var aid = $(this).data('aid');
+		var source = $(this).data('source');
 		var ans = confirm('Are you sure to delete this item?');
 		
 		if(ans)
 		{
-			$.post(root+'cms/newsdelete',{newsid:newsid},function(){
-				$('.newsFlex').livequery(function(){
+			$.post(root+'cms/deleteItem',{item:aid,source:source},function(){
+				$('.'+source+'Flex').livequery(function(){
 					$(this).flexReload();
 				})
 			},'json')

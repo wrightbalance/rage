@@ -17,7 +17,7 @@
                 	,date('M d, Y',strtotime($row['created_on']))
                 	,$row['status'] == 0 ? 'No' : 'Yes'
                 	,"<a href=\"/cms/page/edit/".$row['id']."\" class=\"viewpage\" data-aid=\"".$row['id']."\"><i class=\"icon-pencil\"></i>  Edit</a>"
-                	,"<a href=\"#\" class=\"deletenews\" data-aid=\"".$row['id']."\"><i class=\" icon-remove\"></i>  Delete</a>"
+                	,"<a href=\"#\" class=\"deleteItem\" data-source=\"pages\" data-aid=\"".$row['id']."\"><i class=\" icon-remove\"></i>  Delete</a>"
 				)
             );
 

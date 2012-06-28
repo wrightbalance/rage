@@ -254,13 +254,17 @@ class Cms extends MY_Controller
 	}
 	
 	
-	function newsdelete()
+	function deleteItem()
 	{
-		$admin = $this->session->userdata('groupid');
-		if($admin < config_item('group_level')) exit();
+		if(!$this->input->is_ajax_request()) exit();
 		
-		$cond = array('_id'=>$this->mongo_db->mongoID($this->input->post('newsid')));
-		$this->cms_db->deleteNews($cond);
+		if($this->authorize)
+		{
+			$item = $this->input->post('item');
+			$source = $this->input->post('source');
+			
+			$this->cms_db->deleteItem($item,$source);
+		}
 		
 		$data['msg'] = "deleted";
 		$data['json'] = $data;

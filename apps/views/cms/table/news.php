@@ -19,7 +19,7 @@
                 	,date('M d, Y',strtotime($row['created_on']))
                 	,$row['author']
                 	,"<a href=\"/cms/news/edit/".$row['id']."\" class=\"viewnews\" data-aid=\"".$row['id']."\"><i class=\"icon-pencil\"></i>  Edit</a>"
-                	,"<a href=\"#\" class=\"deletenews\" data-aid=\"".$row['id']."\"><i class=\" icon-remove\"></i>  Delete</a>"
+                	,"<a href=\"#\" class=\"deleteItem\" data-source=\"news\" data-aid=\"".$row['id']."\"><i class=\" icon-remove\"></i>  Delete</a>"
 				)
             );
 

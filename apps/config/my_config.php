@@ -4,14 +4,11 @@
 
 $config['SiteTitle'] 	= "Geared Control Panel &reg;";
 $config['BaseURI']		= "";
-$config['GroupID'] 		= 99;
+$config['AdminLevel'] 	= 99;
+$config['UsingGroupID'] = true; // If false it uses level field
+$config['AddBirthday']  = true; // Add birthday in registration
+$config['UsingMD5']		= false;
 
-// Menus
-$config['AdminMenus'] 	= array(
-						'Account'		=>	'account',
-						'Characters'	=>	'characters',
-						'News'			=>	'news',
-						'Pages'			=>	'pages'	
-						);
 
+// Include Arrays
 include('itemtypes.php');

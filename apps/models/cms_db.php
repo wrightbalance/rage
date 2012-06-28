@@ -194,6 +194,11 @@ class Cms_db extends CI_Model
 		$this->mongo_db->where($cond)->delete('gcp_news');
 	}
 	
+	function deleteItem($id,$source)
+	{
+		$this->db->where('id',$id)->delete('cp_'.$source);
+	}
+	
 	
 	
 }

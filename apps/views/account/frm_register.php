@@ -29,6 +29,7 @@
 			<div class="error_message"></div>
 		</div>
 		
+		<?php if(config_item('AddBirthday')){?>
 		<div class="frow month day year">
 			<label>Birthdate</label>
 			<select name="month" class="wsmall">
@@ -60,6 +61,8 @@
 			</select>
 			<div class="error_message"></div>
 		</div>
+		
+		<? } ?>
 		
 		<div class="frow nickname">
 			<label>Nick Name</label>
