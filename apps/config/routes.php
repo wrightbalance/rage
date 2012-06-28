@@ -41,15 +41,16 @@
 $route['default_controller'] = "main";
 $route['404_override'] = '';
 
-$route['mini/(.+)'] = "mini/index/$1";
-$route['signout'] = "auth/signout";
-$route['disconnect'] = "auth/signout";
-$route['demo'] = "main/demo";
-$route['demo/(.+)'] = "main/demo/$1";
-$route['login']	= "main/login";
-$route['register']	= "main";
-$route['help-guide'] = "main/help";
-$route['ref/(.+)'] = "cms/page/$1";
+$route['mini/(.+)'] 	= "mini/index/$1";
+$route['signout'] 		= "auth/signout";
+$route['disconnect'] 	= "auth/signout";
+$route['demo'] 			= "main/demo";
+$route['demo/(.+)'] 	= "main/demo/$1";
+$route['login']			= "main/login";
+$route['register']		= "main";
+$route['help-guide'] 	= "main/help";
+$route['ref/(.+)'] 		= "cms/page/$1";
+$route['maintenance'] 	= "main/maintenance";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

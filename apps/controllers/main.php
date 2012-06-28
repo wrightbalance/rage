@@ -23,8 +23,16 @@ class Main extends MY_Controller
 		{
 			$this->benchmark->mark('code_start');
 			
+			$page = "main";
+			
+			
+			
 			if(!$this->accountid)
 			{
+				if(!$page = $this->cache->get($page))
+			{
+				
+			}
 				$data['form'] = "frm_register";
 				$data['formtitle'] = "Create your Account";
 				$data['page_content'] = $this->load->view('main/home',$data,true);
@@ -91,6 +99,13 @@ class Main extends MY_Controller
 			$this->load->view('main/widget/w_help',$data);
 		}
 		$this->minify->html();
+	}
+	
+	function maintenance()
+	{
+		if(config_item('EnableSite')) redirect();
+		
+		echo 'Website Maintenance'; exit();
 	}
 	
 

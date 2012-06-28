@@ -90,7 +90,7 @@ class Accounts_db extends CI_Model
 		       
 		$this->db->where('account_id > ',1);
 		$this->db->like($qtype,$query,'both');
-		$this->db->from('login_demo');
+		$this->db->from('login');
 		$num = $this->db->count_all_results();
 		
 		if ($start>$num) 	
@@ -104,7 +104,7 @@ class Accounts_db extends CI_Model
 		$this->db->like($qtype,$query,'both');
 		$this->db->where('account_id >',1);
 		$this->db->order_by($sortname,$sortorder);
-		$query = $this->db->get('login_demo');		
+		$query = $this->db->get('login');		
 		$results = $query->result_array();
 
 			
@@ -122,7 +122,24 @@ class Accounts_db extends CI_Model
 		return $query->row_array();
 	}
 	
+	function saveConfirmation($db,$code = "")
+	{
+		if(empty($code))
+		{
+			$this->db->insert('cp_confirmation',$db);
+		}
+		else
+		{
+			$this->db->where('confirm_code',$code);
+			$this->db->update('cp_confirmation',$db);
+		}
+	}
 	
-	
+	function getCode($cond)
+	{
+		$query = $this->db->get_where('cp_confirmation',$cond);
+		
+		return $query->row_array();
+	}
 
 }

@@ -11,7 +11,7 @@ if(isset($user)) {
 	}
 }
 ?>
-<?php if(!isset($title)) $title = config_item('SiteTitle')?>
+<?php if(!isset($title)) $title = config_item('ServerName')?>
 <?php if(!isset($description)) $description = "";?>
 <?php if(!isset($keyword)) $keyword = "";?>
 <?php if(!isset($author)) $author = "";?>

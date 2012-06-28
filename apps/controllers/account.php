@@ -99,7 +99,7 @@ class Account extends MY_Controller
 		$this->form_validation->set_rules('email','E-mail Address','required|valid_email|callback_emailIsExists');
 		$this->form_validation->set_rules('gender','Gender','required');
 		
-		if(config_item('AddBirthday'))
+		if(config_item('Birthday'))
 		{
 			$this->form_validation->set_rules('month','Birthdate','required');
 			$this->form_validation->set_rules('day','Birthdate','required');
@@ -120,37 +120,110 @@ class Account extends MY_Controller
 		}
 		else
 		{
+			$forward			= true;
 			$db['userid'] 		= trim($this->input->post('username'));
-			
-			if(config_item('md5'))
-				$db['user_pass'] 	= trim(md5($this->input->post('password')));
-			else
-				$db['user_pass'] 	= trim($this->input->post('password'));
-				
+			$db['user_pass'] 	= trim($this->input->post('password'));				
 			$db['email'] 		= trim($this->input->post('email'));
 			$db['sex'] 			= $this->input->post('gender');
 			
-
-			$month 				= $this->input->post('month');
-			$day 				= $this->input->post('day');
-			$year 				= $this->input->post('year');
-
-			$db['birthdate'] 	= "{$year}-{$month}-{$day}";
-
+			if(config_item('Birthday'))
+			{
+				$month 				= $this->input->post('month');
+				$day 				= $this->input->post('day');
+				$year 				= $this->input->post('year');
+				$db['birthdate'] 	= "{$year}-{$month}-{$day}";
+			}
+			if(config_item('UsingMD5'))
+				$db['user_pass'] 	= trim(md5($this->input->post('password')));
+			
+			if(config_item('EmailConfirmation'))
+			{
+				$db['state'] = 5;
+			}
+			
 			$accountid = $this->accounts_db->save($db);
 			
-			$ndb['nickname'] = trim($this->input->post('nickname'));
-			$ndb['created'] = date('Y-m-d H:i:s');
-			$ndb['accountid'] = $accountid;
+			if(config_item('EmailConfirmation'))
+			{
+				$this->load->library('email');
+				
+				$code = md5(rand());
+				$forward = false;
+				
+				// If expires is blank default to 24 hours
+				if(!$expire = config_item('ConfirmationExpire'))
+				{
+					$expire = 24; 
+				}
+				
+				$tdb['confirm_code'] 	= $code;
+				$tdb['confirmed'] 		= 0;
+				$tdb['confirm_created'] = date('Y-m-d H:i:s');
+				$tdb['confirm_expire'] 	= date('Y-m-d H:i:s', time() + (60 * 60 * $expire));
+				$tdb['account_id']		= $accountid;
+				
+				$this->accounts_db->saveConfirmation($tdb);
 			
-			$this->accounts_db->set_nickname($ndb);
-			
+				if(config_item('UseSMTP'))
+				{
+					$config['protocol']  	= 'smtp';
+					$config['smtp_host'] 	= config_item('MailerHost');
+					$config['smtp_port'] 	= config_item('MailerPort');
+					$config['smtp_timeout'] = '30';
+					$config['smtp_user'] 	= config_item('MailerSMTPUsername');
+					$config['smtp_pass'] 	= config_item('MailerSMTPPassword');	
+					
+				}
+				else
+				{
+					$config['protocol'] = 'sendmail';
+					$config['mailpath'] = '/usr/sbin/sendmail';	
+				}
+				
+				$config['charset']  	= 'utf-8';
+				$config['newline']  	= "\r\n"; 
+				$config['mailtype']  	= 'html'; 
+				$config['wordwrap'] 	= TRUE;
+				$this->email->initialize($config);
 		
-			$this->session->set_userdata('accountid',$accountid);
+				$data['url'] = site_url('account/confirmation/'.$code);
+				
+				$data['content'] = $this->load->view('account/email/confirm',$data,true);
+				$message 		 = $this->load->view('layout/email',$data,true);
+				
+				$this->email->from(config_item('MailerFrom'), 'Email Confirmation');
+				$this->email->to($db['email']); 
+				$this->email->subject(config_item('ServerName'));
+				$this->email->message($message);	
 
-			$data['action'] = "forward";
-			$data['url'] = site_url();
-			$data['message'] = "Redirecting...";
+				$this->email->send();
+
+				//echo $this->email->print_debugger();
+				
+			}
+			
+			
+			if($forward)
+			{
+				$ndb['nickname'] = trim($this->input->post('nickname'));
+				$ndb['created'] = date('Y-m-d H:i:s');
+				$ndb['accountid'] = $accountid;
+				
+				$this->accounts_db->set_nickname($ndb);
+				$this->session->set_userdata('accountid',$accountid);
+
+				$data['action'] = "forward";
+				$data['url'] = site_url();
+				$data['message'] = "Redirecting...";
+			}
+			else
+			{
+				$data['message']  = "";
+				$data['message'] .= "<div class=\"res_message\">";
+				$data['message'] .= "<p>An e-mail has been sent containing account activation details, please check your e-mail and activate your account to log-in.</p>";
+				$data['message'] .="</div>";
+				$data['action'] = "retry";
+			}
 		}
 
 		$data['json'] = $data;
@@ -503,6 +576,110 @@ class Account extends MY_Controller
 		$data['chars'] = $chars;
 		$data['json'] = $data;
 		$this->load->view('ajax/json',$data);
+	}
+	
+	
+	function sendPasswordLink()
+	{
+		$this->load->library('email');
+		
+		$config['protocol']  	= 'smtp';
+		$config['smtp_host'] 	= 'ssl://smtp.googlemail.com';
+		$config['smtp_port'] 	= '465';
+		$config['smtp_timeout'] = '30';
+		$config['smtp_user'] 	= 'jingcleovil@gmail.com';
+		$config['smtp_pass'] 	= 'pancit1983';	
+		$config['charset']  	= 'utf-8';
+		$config['newline']  	= "\r\n"; 
+		$config['mailtype']  	= 'html'; 
+		
+		
+		$this->email->initialize($config);
+		
+		$data['token'] = time();
+		
+		$data['content'] = $this->load->view('account/email/forgot',$data,true);
+		$message = $this->load->view('layout/email',$data,true);
+		
+		$this->email->from('no-reply@gmail.com', 'Forgot Password');
+		$this->email->to('jinggo.villamor@gmail.com'); 
+		$this->email->subject(config_item('ServerName'));
+		$this->email->message($message);	
+
+		$this->email->send();
+
+		echo $this->email->print_debugger();
+		exit();
+	}
+	
+	function token($token)
+	{
+		if(empty($token)) redirect();
+	}
+
+	
+	function forgot()
+	{
+		$this->benchmark->mark('code_start');
+	
+		
+		$data['page'] 		= "forgot";
+		$data['mod']		= "account";
+
+		if(!$this->input->is_ajax_request())
+		{
+			
+			if($this->accountid)
+			{
+				$data['cssgroup'] 	= "loggedin";
+				$data['jsgroup'] 	= "loggedin";
+				$data['content'] = $this->load->view('layout/content',$data,true);
+			}
+			else
+			{
+				$data['form'] = "frm_register";
+				$data['formtitle'] = "Create your Account";
+				$data['page_content'] = $this->load->view("{$data['mod']}/{$data['page']}",$data,true);
+				$data['content'] = $this->load->view("main/index",$data,true);
+			}
+		
+			
+			$data['elapse'] = $this->benchmark->elapsed_time('code_start', 'code_end');
+			$this->load->vars($data);
+			$this->load->view('default',$data);
+			
+        }
+        else
+        {
+			$this->load->vars($data);
+			$this->load->view("{$data['mod']}/{$data['page']}",$data);
+		}
+		$this->minify->html();
+	}
+	
+	function confirmation($code)
+	{
+		$confirm_code = $this->accounts_db->getCode(array('confirm_code'=>$code,'confirmed'=>0));
+		
+		if(!$code) show_404();
+		if(!$confirm_code) show_404();
+		
+		$db['confirmed'] = 1;
+		$db['confirmed_on'] = date('Y-m-d H:i:s');
+		$this->accounts_db->saveConfirmation($db,$code);
+		
+		$adb['state'] = 0;
+		$this->accounts_db->save($adb,$confirm_code['account_id']);
+
+		if(config_item('UsingGroupID')) 
+			$adminLevel = $confirm_code['group_id'];
+		else
+			$adminLevel = $confirm_code['level'];
+		
+		$this->session->set_userdata('accountid',$confirm_code['account_id']);
+		$this->session->set_userdata('adminlevel',$adminLevel);
+		
+		redirect();
 	}
 
 }

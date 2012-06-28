@@ -23,7 +23,12 @@ class Streams_db extends CI_Model
 		$this->db->where('s_status',1);
 		$this->db->join('cp_login','cp_login.accountid = cp_stream.account_id');
 		$this->db->join('login','login.account_id = cp_stream.account_id');
-		$this->db->select('sid,content,nickname,cp_stream.created as screated,sex,group_id,login.account_id');
+		
+		if(config_item('UsingGroupID'))
+			$this->db->select('sid,content,nickname,cp_stream.created as screated,sex,group_id,login.account_id');
+		else
+			$this->db->select('sid,content,nickname,cp_stream.created as screated,sex,level,login.account_id');
+			
 		$this->db->order_by('updated','desc');
 		$squery = $this->db->get('cp_stream');
 		
@@ -33,7 +38,10 @@ class Streams_db extends CI_Model
 		
 		foreach($sresults as $result)
 		{
-			$abadge = $result['group_id'] >= config_item('GroupID')  ? 'admin' : '';
+			if(config_item('UsingGroupID'))
+				$abadge = $result['group_id'] >= config_item('GroupID')  ? 'admin' : '';
+			else
+				$abadge = $result['level'] >= config_item('GroupID')  ? 'admin' : '';
 			
 			$stream[] = array(
 				'account_id' 		=> $result['account_id'],
@@ -43,8 +51,7 @@ class Streams_db extends CI_Model
 				'created' 			=> ago($result['screated']),
 				'sex' 				=> $result['sex'],
 				'comments'			=> $this->_comments($result['sid']),
-				'abadge' 			=> $abadge,
-				'group_id'			=> $result['group_id']
+				'abadge' 			=> $abadge
 			);
 		}
 	
@@ -58,7 +65,12 @@ class Streams_db extends CI_Model
 		$this->db->where('c_status',1);
 		$this->db->join('cp_login','cp_login.accountid = cp_stream_comment.account_id');
 		$this->db->join('login','login.account_id = cp_stream_comment.account_id');
-		$this->db->select('csid,sex,nickname,comment,c_created,group_id');
+		
+		if(config_item('UsingGroupID'))
+			$this->db->select('csid,sex,nickname,comment,c_created,group_id');
+		else
+			$this->db->select('csid,sex,nickname,comment,c_created,level');
+		
 		$this->db->order_by('csid','asc');
 		$query = $this->db->get('cp_stream_comment');
 		$comments = array();
@@ -69,9 +81,20 @@ class Streams_db extends CI_Model
 		{
 			$abadge = "user";
 			
-			if($row['group_id'] >= config_item('GroupID'))
+			if(config_item('UsingGroupID'))
 			{
-				$abadge = "admin";
+				if($row['group_id'] >= config_item('GroupID'))
+				{
+					$abadge = "admin";
+				}
+			}
+			else
+			{
+				if($row['level'] >= config_item('GroupID'))
+				{
+					$abadge = "admin";
+				}
+	
 			}
 			
 			

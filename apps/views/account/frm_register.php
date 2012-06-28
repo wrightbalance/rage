@@ -29,7 +29,7 @@
 			<div class="error_message"></div>
 		</div>
 		
-		<?php if(config_item('AddBirthday')){?>
+		<?php if(config_item('Birthday')){?>
 		<div class="frow month day year">
 			<label>Birthdate</label>
 			<select name="month" class="wsmall">

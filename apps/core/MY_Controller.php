@@ -22,8 +22,13 @@ class MY_Controller extends CI_Controller
 		$sessioned_page		= false;
 		
 		
+		if(config_item('EnableSite') === false)
+		{
+			if($this->uri->segment(1) != "maintenance")
+				redirect('maintenance');
+		}
 		// Not sessioned pages
-		$p = array('/main/index','/account/auth','/account/post');
+		$p = array('/main/index','/account/auth','/account/post','/account/forgot');
 		
 		if(!in_array($uri,$p))
 		{
@@ -31,9 +36,11 @@ class MY_Controller extends CI_Controller
 		}
 		
 		if($this->uri->segment(1) == "ref")
-		{
 			$sessioned_page = false;
-		}
+		
+		
+		if($this->uri->segment(2) == "confirmation")
+			$sessioned_page = false;
 		
 		$this->groupid = $this->session->userdata('adminlevel');
 				
