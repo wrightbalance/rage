@@ -866,7 +866,7 @@ class Account extends MY_Controller
 			$this->accounts_db->saveConfirmation($db,$code);
 			
 			$adb['user_pass'] = $newpassword;
-			if($account_id)
+			if($accountid)
 				$this->accounts_db->save($adb,$accountid);
 			
 			$data['url'] = site_url('account/signin');
