@@ -782,9 +782,11 @@ class Account extends MY_Controller
 		$db['confirmed_on'] = date('Y-m-d H:i:s');
 		$this->accounts_db->saveConfirmation($db,$code);
 		
-		$adb['state'] = 0;
-		$this->accounts_db->save($adb,$confirm_code['account_id']);
-
+		if(isset($config_code['account_id'] && $config_code['account_id']))
+		{
+			$adb['state'] = 0;
+			$this->accounts_db->save($adb,$confirm_code['account_id']);
+		}
 		if(config_item('UsingGroupID')) 
 			$adminLevel = $confirm_code['group_id'];
 		else
@@ -864,7 +866,8 @@ class Account extends MY_Controller
 			$this->accounts_db->saveConfirmation($db,$code);
 			
 			$adb['user_pass'] = $newpassword;
-			$this->accounts_db->save($adb,$accountid );
+			if($account_id)
+				$this->accounts_db->save($adb,$accountid);
 			
 			$data['url'] = site_url('account/signin');
 			$data['action'] = "forward";
