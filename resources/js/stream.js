@@ -219,7 +219,7 @@ $(document).ready(function(){
 						html += 	'				</div>';
 						html +=		'				<div class="comments_details">';
 						html +=		'					<a href="" class="'+n.abadge+'">'+n.nickname+'</a> '+n.comment;
-						html += 	'					<span style="display: block; font-size: 10px; margin-top: 3px; color: #333;">Just now</span>';
+						html += 	'					<span style="display: block; font-size: 10px; margin-top: 3px; color: #333;">'+n.created+'</span>';
 						html +=		'				</div>';
 						html +=		'			</div>';
 						
