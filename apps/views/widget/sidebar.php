@@ -24,12 +24,14 @@
 			<li class="<?=$page == "items" ? 'active' : ''?>"><a href="<?=push_url('items')?>"><i class="icon-list-alt"></i>Items</a></li>
 			<li class="divider"></li>
 			
+			<!--
 			<li class="nav-header">Support</li>
 			
 			<li class="<?=$page == "help-guide" ? 'active' : ''?>"><a href="<?=push_url('ticket')?>"><i class="icon-tags"></i> Ticket</a></li>
 			<li class="<?=$page == "help-guide" ? 'active' : ''?>"><a href="/help-guide"><i class="icon-guide"></i> Help Guide</a></li>
 	
 			<li class="divider"></li>
+			-->
 
         </ul>
 	</div>

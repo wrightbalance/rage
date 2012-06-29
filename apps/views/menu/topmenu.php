@@ -20,11 +20,12 @@
 		</div>
 		<? } ?>
 		
+		<!--
 		<div class="btn-group">
 		  <button class="btn"><i class="icon-envelope"></i> Messages</button>
 		  <button class="btn"><i class="icon-check"></i> Notifications</button>
 		</div>
-
+		-->
 		
 		<div class="btn-group">
 		  <button class="btn" onclick="location.href='<?=site_url()?>'"><i class="icon-home"></i> Home</button>

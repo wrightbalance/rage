@@ -80,11 +80,14 @@ class MY_Controller extends CI_Controller
 			}
 		} 
 		
-		$onlineCharacters =  $this->char_db->countOnline();
+		$onlineCount =  $this->char_db->countOnline();
+		$charOnline = $this->char_db->getOnline();
 
 		$data['authorize'] 	= $this->authorize;
 		$data['user'] 		= $g_user;
-		$data['online'] 	= $onlineCharacters;
+		$data['online'] 	= $onlineCount;
+		$data['charOnline'] = $charOnline;
+		
 		
 		$this->load->vars($data);
 	}

@@ -1,14 +1,17 @@
 <div class="rightcol">
 	
+	<!--
 	<ul class="nav nav-list">
 		<li><a href="#"><i class=" icon-calendar"></i> Create Event</a></li>
 	</ul>
+	
 	<hr>
-	<?php if(isset($onlines) && $onlines){ ?>
+	-->
+	<?php if(isset($charOnline) && $charOnline){ ?>
 	<div class="widget">
 		<h4>Online Players</h4>
 		<ul class="nav nav-list onlinechars">
-			<?php foreach($onlines as $online){?>
+			<?php foreach($charOnline as $online){?>
 				<li><a href="#"><i class="icon-ok"></i> <?=$online['name']?></a></li>
 			<? } ?>
 		</ul>
