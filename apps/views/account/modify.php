@@ -9,7 +9,7 @@
               <input class="input-mini" type="text" placeholder=".input-mini">
               <input class="input-small" type="text" placeholder=".input-small">
               -->
-              <input class="input-medium" type="text">
+              <input class="input-medium" name="userid"type="text">
             </div>
           </div>
           
@@ -20,7 +20,7 @@
               <input class="input-mini" type="text" placeholder=".input-mini">
               <input class="input-small" type="text" placeholder=".input-small">
               -->
-              <input class="input-medium" type="text">
+              <input class="input-medium" type="text" name="">
             </div>
           </div>
           
@@ -28,7 +28,7 @@
             <label class="control-label" for="prependedInput">E-mail Address</label>
             <div class="controls">
               <div class="input-prepend">
-                <span class="add-on">@</span><input class="span2" id="prependedInput" size="16" type="text">
+                <span class="add-on">@</span><input class="span2" id="prependedInput" size="16" type="text" name="email	">
               </div>
             </div>
           </div>

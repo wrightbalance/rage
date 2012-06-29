@@ -53,20 +53,20 @@
 						<div class="loadcomment">
 							<?php //echo "<pre>"; print_r($stream['comments'])?>
 							<?php if($stream['comments']){?>
-								
-								
-								
+								<div class="comments clearfix">
+									<a href="" class="comment_state">View all <?=$stream['comment_count']?> Comments</a>
+								</div>
+
 								<?php foreach($stream['comments'] as $comment){?>
-								
-								
 								<div class="comments clearfix" id="commentHolder-<?=$comment['csid']?>">
 									<div class="avatar32">
 										<img src="<?=resource_url('images/photo_'.strtolower($comment['sex']).'.jpg')?>" width="32" height="32"/>
 									</div>
 									<div class="comments_details">
 										<a href="#" class="<?=$comment['abadge']?>"><?=$comment['nickname']?></a> <?=$comment['comment']?>
+										<span style="display: block; font-size: 10px; margin-top: 3px; color: #333;"><?=$comment['created']?></span>
 									</div>
-									<?php if(isset($isAdmin) && $isAdmin){ ?>
+									<?php if($authorize || $comment['account_id'] == $user['account_id']){ ?>
 									<a href="#" data-id="<?=$comment['csid']?>" data-comment_id="<?=$comment['csid']?>" class="close deleteStream" data-kind="comment">×</a>
 									<? } ?>
 								</div>

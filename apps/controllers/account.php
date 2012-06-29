@@ -318,6 +318,7 @@ class Account extends MY_Controller
 		$data['jsgroup'] 	= "loggedin";
 		$data['page'] 		= "settings";
 		$data['mod'] 		= "account";
+		$data['title']		= "Settings | ".config_item('ServerName');
 
 		if(!$this->input->is_ajax_request())
 		{
@@ -597,38 +598,7 @@ class Account extends MY_Controller
 	}
 	
 	
-	function sendPasswordLink()
-	{
-		$this->load->library('email');
-		
-		$config['protocol']  	= 'smtp';
-		$config['smtp_host'] 	= 'ssl://smtp.googlemail.com';
-		$config['smtp_port'] 	= '465';
-		$config['smtp_timeout'] = '30';
-		$config['smtp_user'] 	= 'jingcleovil@gmail.com';
-		$config['smtp_pass'] 	= 'pancit1983';	
-		$config['charset']  	= 'utf-8';
-		$config['newline']  	= "\r\n"; 
-		$config['mailtype']  	= 'html'; 
-		
-		
-		$this->email->initialize($config);
-		
-		$data['token'] = time();
-		
-		$data['content'] = $this->load->view('account/email/forgot',$data,true);
-		$message = $this->load->view('layout/email',$data,true);
-		
-		$this->email->from('no-reply@gmail.com', 'Forgot Password');
-		$this->email->to('jinggo.villamor@gmail.com'); 
-		$this->email->subject(config_item('ServerName'));
-		$this->email->message($message);	
-
-		$this->email->send();
-
-		echo $this->email->print_debugger();
-		exit();
-	}
+	
 
 	
 	function forgot()
@@ -776,6 +746,8 @@ class Account extends MY_Controller
 	{
 		$confirm_code = $this->accounts_db->getCode(array('confirm_code'=>$code,'confirmed'=>0));
 		
+		//print_r($confirm_code); exit();
+		
 		if(!$code) show_404();
 		if(!$confirm_code) show_404();
 		
@@ -783,18 +755,16 @@ class Account extends MY_Controller
 		$db['confirmed_on'] = date('Y-m-d H:i:s');
 		$this->accounts_db->saveConfirmation($db,$code);
 		
-		if(isset($config_code['account_id']) && $config_code['account_id'])
+		
+		if(isset($confirm_code['account_id']) && $confirm_code['account_id'])
 		{
 			$adb['state'] = 0;
 			$this->accounts_db->save($adb,$confirm_code['account_id']);
 		}
-		if(config_item('UsingGroupID')) 
-			$adminLevel = $confirm_code['group_id'];
-		else
-			$adminLevel = $confirm_code['level'];
 		
+
 		$this->session->set_userdata('accountid',$confirm_code['account_id']);
-		$this->session->set_userdata('adminlevel',$adminLevel);
+		$this->session->set_userdata('adminlevel',0);
 		
 		redirect();
 	}

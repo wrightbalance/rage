@@ -101,6 +101,7 @@ $(document).ready(function(){
 						html += 	'				</div>';
 						html +=		'				<div class="comments_details">';
 						html +=		'					<a href="" class="'+db.abadge+'">'+nickname+'</a> '+db.comment;
+						html += 	'					<span style="display: block; font-size: 10px; margin-top: 3px; color: #333;">Just now</span>';
 						html +=		'				</div>';
 						html +=		'			</div>';
 						

@@ -40,7 +40,7 @@ class Main extends MY_Controller
 			}
 			else
 			{
-				$data['title'] = "Home Page | ".config_item('SiteTitle');	
+				$data['title'] = "Home Page | ".config_item('ServerName');	
 				$data['cssgroup'] = "loggedin";
 				$data['jsgroup'] = "loggedin";
 				$data['page'] = 'stream';

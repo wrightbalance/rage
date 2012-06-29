@@ -23,6 +23,8 @@ class Characters extends MY_Controller
 		$data['page'] 		= "index";
 		$data['mod']		= "characters";
 		$data['authorize']	= $this->authorize;
+		
+		$data['title']		= "Settings | ".config_item('ServerName');
 
 		if(!$this->input->is_ajax_request())
 		{
@@ -303,6 +305,8 @@ class Characters extends MY_Controller
 		$data['jsgroup'] 	= "loggedin";
 		$data['page'] 		= $page;
 		$data['mod'] 		= $mod;
+		
+		$data['title']		= "Characters | ".config_item('ServerName');
 		
 		if(!$this->input->is_ajax_request())
 		{

@@ -43,6 +43,8 @@ class Streams_db extends CI_Model
 			else
 				$abadge = $result['level'] >= config_item('GroupID')  ? 'admin' : '';
 			
+			$comments_count = $this->comment_count($result['sid']);
+			
 			$stream[] = array(
 				'account_id' 		=> $result['account_id'],
 				'sid' 				=> $result['sid'],
@@ -51,7 +53,8 @@ class Streams_db extends CI_Model
 				'created' 			=> ago($result['screated']),
 				'sex' 				=> $result['sex'],
 				'comments'			=> $this->_comments($result['sid']),
-				'abadge' 			=> $abadge
+				'abadge' 			=> $abadge,
+				'comment_count'		=> $comments_count
 			);
 		}
 	
@@ -59,8 +62,19 @@ class Streams_db extends CI_Model
 		return $stream;
 	}
 	
+	function comment_count($sid)
+	{
+		$this->db->where('sid',$sid);
+		$this->db->from('cp_stream_comment');
+		$count = $this->db->count_all_results();
+		
+		return $count;
+	}
+	
+	
 	function _comments($sid)
 	{
+		$this->db->limit(3);
 		$this->db->where('sid',$sid);
 		$this->db->where('c_status',1);
 		$this->db->join('cp_login','cp_login.accountid = cp_stream_comment.account_id');
@@ -71,7 +85,7 @@ class Streams_db extends CI_Model
 		else
 			$this->db->select('csid,sex,nickname,comment,c_created,level');
 		
-		$this->db->order_by('csid','asc');
+		$this->db->order_by('csid','desc');
 		$query = $this->db->get('cp_stream_comment');
 		$comments = array();
 		
@@ -80,6 +94,7 @@ class Streams_db extends CI_Model
 		foreach($results as $row)
 		{
 			$abadge = "user";
+			
 			
 			if(config_item('UsingGroupID'))
 			{
@@ -107,6 +122,8 @@ class Streams_db extends CI_Model
 				'abadge' 	=> $abadge
 			);
 		}
+		
+		if($comments) $comments = array_reverse($comments);
 		
 		return $comments;
 	}

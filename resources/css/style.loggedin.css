@@ -442,3 +442,9 @@ select.reset
 {
 	display: block;
 }
+
+
+.comment_state
+{
+	font-size: 10px;
+}

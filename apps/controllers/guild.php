@@ -46,6 +46,17 @@ class Guild extends MY_Controller
 		exit();
 	}
 	
+	function getList()
+	{
+		$this->benchmark->mark('code_start');
+		$mod = $this->uri->rsegment(1);
+		$page = $this->uri->rsegment(2);
+
+		$data 			= $this->guild_db->getList();
+		$data['elapsed'] = $this->benchmark->elapsed_time('code_start', 'code_end');
+		$this->load->view("{$mod}/table/{$mod}",$data);
+	}
+	
 }
 
 

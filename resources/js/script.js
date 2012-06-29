@@ -102,6 +102,7 @@ $(document).ready(function(){
 							if($('.'+i).length)
 							{
 								$('.'+i).html(n);
+								
 								$('input[name='+i+']').val(n);
 					
 								if(i == "sex")
