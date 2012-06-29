@@ -128,6 +128,58 @@ class Streams_db extends CI_Model
 		return $comments;
 	}
 	
+	function getComments($cond)
+	{
+		$this->db->where($cond);
+		$this->db->join('cp_login','cp_login.accountid = cp_stream_comment.account_id');
+		$this->db->join('login','login.account_id = cp_stream_comment.account_id');
+		if(config_item('UsingGroupID'))
+			$this->db->select('csid,sex,nickname,comment,c_created,group_id');
+		else
+			$this->db->select('csid,sex,nickname,comment,c_created,level');
+		
+		$query = $this->db->get('cp_stream_comment');
+		$results = $query->result_array();
+		
+		$comments = array();
+		
+		foreach($results as $row)
+		{
+			$abadge = "user";
+			
+			
+			if(config_item('UsingGroupID'))
+			{
+				if($row['group_id'] >= config_item('GroupID'))
+				{
+					$abadge = "admin";
+				}
+			}
+			else
+			{
+				if($row['level'] >= config_item('GroupID'))
+				{
+					$abadge = "admin";
+				}
+	
+			}
+			
+			$photopath = resource_url('images/photo_'.strtolower($row['sex']).'.jpg');
+			
+			$comments[] = array(
+				'csid' 		=> $row['csid'],
+				'nickname' 	=> $row['nickname'],
+				'sex' 		=> $row['sex'],
+				'comment' 	=> $row['comment'],
+				'created' 	=> ago($row['c_created']),
+				'abadge' 	=> $abadge,
+				'photopath' 	=> $photopath
+			);
+		}
+		
+		return $comments;
+	}
+	
 	
 	function save($db,$sid=false)
 	{

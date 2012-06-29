@@ -189,4 +189,51 @@ $(document).ready(function(){
 			})
 		}
 	})
+	
+	$('.showComments').click(function(e){
+		e.preventDefault();
+		
+		var sid = $(this).data('sid');
+		$(this).text('Loading...');
+		
+		$.ajax({
+			url: root + 'stream/getComments',
+			dataType: 'json',
+			type: 'POST',
+			data: {sid:sid},
+			success: function(data)
+			{
+				try
+				{
+					var db = data.db;
+					var html = "";
+					$('#c2-'+sid+' .loadcomment').html('');
+					
+					$.each(db,function(i,n){
+						
+						
+						html  = 	'											';
+						html +=		'			<div class="comments clearfix" id="comment-"'+n.cid+'"">';
+						html +=		'				<div class="avatar32">';
+						html +=		'				<img src="'+n.photopath+'" width="32" height="32"/>';
+						html += 	'				</div>';
+						html +=		'				<div class="comments_details">';
+						html +=		'					<a href="" class="'+n.abadge+'">'+n.nickname+'</a> '+n.comment;
+						html += 	'					<span style="display: block; font-size: 10px; margin-top: 3px; color: #333;">Just now</span>';
+						html +=		'				</div>';
+						html +=		'			</div>';
+						
+						//console.log(n);
+						
+						$('#c2-'+sid+' .loadcomment').prepend(html);
+					})
+					
+				}
+				catch(e)
+				{
+					
+				}
+			}
+		})
+	})
 })

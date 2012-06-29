@@ -39,7 +39,15 @@ class Stream extends MY_Controller
 	
 	function comment()
 	{
-		$db['comment'] = trim($this->input->post('comment'));
+		
+		$disallowed = config_item('disallowedWords');
+		
+		$message = trim($this->input->post('comment'));
+		
+		$db['comment'] = $message;
+		
+		
+		
 		$db['sid'] = $this->input->post('sid');
 		$db['c_created'] = date('Y-m-d H:i:s');
 		$db['account_id'] = $this->accountid;
@@ -90,6 +98,17 @@ class Stream extends MY_Controller
 
 		$data['json'] = $data;
 		$this->load->view('ajax/json',$data);
+	}
+	
+	function getComments()
+	{
+		$sid = $this->input->post('sid');
+		
+		$data['db'] = $this->streams_db->getComments(array('sid'=>$sid));
+		
+		$data['json'] = $data;
+		$this->load->view('ajax/json',$data);
+
 	}
 	
 	

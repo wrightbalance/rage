@@ -7,5 +7,6 @@ $config['disallowedWords']  = array(
 	'putang ina',
 	'tangina',
 	'kupal',
-	'shet'
+	'shet',
+	'http://rogamers.net'
 );
