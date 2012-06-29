@@ -13,8 +13,12 @@ class Stream extends MY_Controller
 	
 	function post()
 	{
+		$disallowed = config_item('disallowedWords');
+		
+		$message = trim($this->input->post('message'));
+		
 		$db['account_id'] = $this->accountid;
-		$db['content'] = trim($this->input->post('message'));
+		$db['content'] = word_censor($message,$disallowed,'***');
 		$db['created'] = date('Y-m-d H:i:s');
 		$db['updated'] = date('Y-m-d H:i:s');
 		

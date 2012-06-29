@@ -26,3 +26,4 @@ $config['MailerSMTPPassword'] = 'pancit1983';
 
 // Include Arrays
 include('itemtypes.php');
+include('word_censor.php');
