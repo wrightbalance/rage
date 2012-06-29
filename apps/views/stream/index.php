@@ -53,9 +53,12 @@
 						<div class="loadcomment">
 							<?php //echo "<pre>"; print_r($stream['comments'])?>
 							<?php if($stream['comments']){?>
+								
+								<?php if($stream['comment_count'] > 3){?>
 								<div class="comments clearfix">
 									<a href="" class="comment_state showComments" data-sid="<?=$stream['sid']?>">View all <?=$stream['comment_count']?> Comments</a>
 								</div>
+								<? } ?>
 
 								<?php foreach($stream['comments'] as $comment){?>
 								<div class="comments clearfix" id="commentHolder-<?=$comment['csid']?>">

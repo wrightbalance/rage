@@ -9,7 +9,7 @@ if($action == "changepass")
 		array(
 				'field' => 'old_password',
 				'label' => 'Old Password',
-				'rules' => 'trim|required|md5|callback__check_password'
+				'rules' => 'trim|required|callback__check_password'
 			 ),
 		array(
 				'field' => 'new_password',

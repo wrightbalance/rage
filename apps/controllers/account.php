@@ -436,7 +436,7 @@ class Account extends MY_Controller
 			switch($action)
 			{
 				case 'changepass':
-					if(config_item('md5'))
+					if(config_item('UsingMD5'))
 						$db['user_pass'] = trim(md5($this->input->post('new_password')));
 					else
 						$db['user_pass'] = trim($this->input->post('new_password'));
@@ -469,9 +469,13 @@ class Account extends MY_Controller
 
 	function _check_password($password)
 	{
-		if(config_item('md5'))
+		if(config_item('UsingMD5'))
 		{
 			$password = md5($password);
+		}
+		else
+		{
+			$password = $password;
 		}
 		$user = $this->accounts_db->getAccount(array('user_pass'=>$password,'account_id'=>$this->accountid));
 
