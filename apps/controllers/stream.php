@@ -44,10 +44,10 @@ class Stream extends MY_Controller
 		
 		$message = trim($this->input->post('comment'));
 		
-		$db['comment'] = $message;
+		$content = word_censor($message,$disallowed,'***');
 		
-		
-		
+		$db['comment'] = $content;
+
 		$db['sid'] = $this->input->post('sid');
 		$db['c_created'] = date('Y-m-d H:i:s');
 		$db['account_id'] = $this->accountid;
