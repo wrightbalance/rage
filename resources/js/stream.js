@@ -82,6 +82,7 @@ $(document).ready(function(){
 			var dt = {comment:v,account_id:accountid,nickname:nickname,sid:id,gender:gender};
 			
 			if(v == "") return false;
+			$(p).val('');
 			
 			$.ajax({
 				url : root + 'stream/comment',
@@ -107,7 +108,7 @@ $(document).ready(function(){
 						
 						$('#c2-'+id+' .loadcomment').append(html);
 						
-						$(p).val('');
+						
 					}
 					catch(e)
 					{}

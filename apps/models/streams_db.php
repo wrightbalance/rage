@@ -225,4 +225,16 @@ class Streams_db extends CI_Model
 		}
 	}
 	
+	function allowPost($cond)
+	{
+		$this->db->where($cond);
+		$this->db->select('created');
+		$this->db->order_by('cid','desc');
+		$query = $this->db->get('comments');
+		
+		$row = $query->row_array();
+		
+		return $row;
+	}
+	
 }
