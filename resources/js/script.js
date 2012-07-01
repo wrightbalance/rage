@@ -99,11 +99,29 @@ $(document).ready(function(){
 			
 						$.each(data.account,function(i,n){
 							
+							$('input[name='+i+']').val(n);
+							$('select[name='+i+']').val(n);
+							
+							if(i == "email")
+							{
+								$('input[name=old_email]').val(n);
+							}
+							
+							
+							if(i == "userid")
+							{
+								$('input[name=old_userid]').val(n);
+							}
+							
+							if(i == "nickname")
+							{
+								$('input[name=old_nickname]').val(n);
+							}
+						
 							if($('.'+i).length)
 							{
 								$('.'+i).html(n);
-								
-								$('input[name='+i+']').val(n);
+
 					
 								if(i == "sex")
 								{
@@ -138,6 +156,11 @@ var jsonPROC = {
 	,retry2: function(data,form)
 	{
 		$('.response',form).html(data.message);
+		
+		if($('.accounts').length)
+		{
+			$('.accounts').flexReload();
+		}
 	}
 	,reset: function(data,form)
 	{

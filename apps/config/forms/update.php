@@ -45,3 +45,24 @@ else if($action == "changeemail")
 			 
 		);
 }
+else if($action == "update_account")
+{
+	$config['account/update'] = array(
+		array(
+				'field' => 'nickname',
+				'label' => 'Nickname',
+				'rules' => 'trim|required|callback_checkNickname'
+			 ),
+		array(
+				'field' => 'email',
+				'label' => 'E-mail Address',
+				'rules' => 'trim|required|valid_email|callback__check_email_exists'
+			 ),
+		array(
+			'field' => 'group_id',
+			'label' => 'Account Level',
+			'rules' => 'trim|required|integer'
+		 )
+			 
+		);
+}

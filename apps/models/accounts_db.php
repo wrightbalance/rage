@@ -2,7 +2,6 @@
 
 class Accounts_db extends CI_Model
 {
-	private $nosql;
 	
 	function __construct()
 	{
@@ -27,9 +26,18 @@ class Accounts_db extends CI_Model
 		return $id;
 	}
 	
-	function set_nickname($db)
+	function set_nickname($db,$id = "")
 	{
-		$this->db->insert('cp_login',$db);
+		if(empty($id))
+		{
+			$this->db->insert('cp_login',$db);
+			$id = $this->db->insert_id();
+		}
+		else
+		{
+			$this->db->where('accountid',$id);
+			$this->db->update('cp_login',$db);
+		}
 	}
 	
 	

@@ -298,15 +298,19 @@ class Account extends MY_Controller
 	function checkNickname($nickname)
 	{
 		$account = $this->accounts_db->getNickname(array('nickname'=>$nickname));
+		$old_nickname = $this->input->post('old_nickname');
 
-		if(count($account) > 0)
+		if($old_nickname != $nickname)
 		{
-			$this->form_validation->set_message('checkNickname','%s is already taken');
-			return false;
-		}
-		else
-		{
-			return true;
+			if(count($account) > 0)
+			{
+				$this->form_validation->set_message('checkNickname','%s is already taken');
+				return false;
+			}
+			else
+			{
+				return true;
+			}
 		}
 	}
 
@@ -415,7 +419,8 @@ class Account extends MY_Controller
 	{
 
 		if(!$this->input->is_ajax_request()) exit();
-
+		$action = $this->input->post('action');
+		
 		if($this->form_validation->run() == FALSE)
 		{
 			$data['error'] = $this->form_validation->_error_array;
@@ -427,42 +432,85 @@ class Account extends MY_Controller
 			$data['message'] .="</div>";
 			$data['message'] .= "<button class=\"btn retryform\" type=\"button\">Retry</button>";
 			$data['action'] = "retry";
+			
+			if($action == "update_account")
+			{
+				$data['action'] = "retry2";
+			}
 
 		}
 		else
 		{
-			$action = $this->input->post('action');
-
-			switch($action)
+			
+			$data['dt'] = $this->udt['userid'];
+			
+			if($this->udt['userid'] == "demo")
 			{
-				case 'changepass':
-					if(config_item('UsingMD5'))
-						$db['user_pass'] = trim(md5($this->input->post('new_password')));
-					else
-						$db['user_pass'] = trim($this->input->post('new_password'));
-						
-					$this->accounts_db->save($db,$this->accountid);
-
-					$data['message']  = "";
-					$data['message'] .= "<div class=\"res_message\">";
-					$data['message'] .= "Password successfully updated.";
-					$data['message'] .="</div>";
-					$data['message'] .= "<button class=\"btn retryform\" type=\"button\">Okay</button>";
-					break;
-				case 'changeemail':
-					$db['email'] = trim($this->input->post('new_email'));
-					$this->accounts_db->save($db,$this->accountid);
-
-					$data['message']  = "";
-					$data['message'] .= "<div class=\"res_message\">";
-					$data['message'] .= "E-mail Address successfully updated.";
-					$data['message'] .="</div>";
-					$data['message'] .= "<button class=\"btn retryform\" type=\"button\">Okay</button>";
-					break;
+				$data['message']  = "";
+				$data['message'] .= "<div class=\"res_message res_alert\">";
+				$data['message'] .= "Demo user does not allowed to modify accounts.";
+				$data['message'] .="</div>";
+				$data['message'] .= "<button class=\"btn retryform\" type=\"button\">Okay Fine</button>";
+				$data['action'] = "retry2";	
 			}
-			$data['action'] = "retry";
-		}
+			else
+			{
+				switch($action)
+				{
+					case 'changepass':
+						if(config_item('UsingMD5'))
+							$db['user_pass'] = trim(md5($this->input->post('new_password')));
+						else
+							$db['user_pass'] = trim($this->input->post('new_password'));
+							
+						$this->accounts_db->save($db,$this->accountid);
 
+						$data['message']  = "";
+						$data['message'] .= "<div class=\"res_message\">";
+						$data['message'] .= "Password successfully updated.";
+						$data['message'] .="</div>";
+						$data['message'] .= "<button class=\"btn retryform\" type=\"button\">Okay</button>";
+						$data['action'] = "retry2";
+						break;
+					case 'changeemail':
+						$db['email'] = trim($this->input->post('new_email'));
+						$this->accounts_db->save($db,$this->accountid);
+
+						$data['message']  = "";
+						$data['message'] .= "<div class=\"res_message\">";
+						$data['message'] .= "E-mail Address successfully updated.";
+						$data['message'] .="</div>";
+						$data['message'] .= "<button class=\"btn retryform\" type=\"button\">Okay</button>";
+						$data['action'] = "retry2";
+						break;
+					case 'update_account':
+						$account_id = $this->input->post('account_id');
+						
+						$db['email'] 	= trim($this->input->post('email'));
+						$db['userid'] 	= trim($this->input->post('userid'));
+						
+						if(config_item('UsingGroupID'))
+							$db['group_id'] = trim($this->input->post('group_id'));
+						else
+							$db['level'] = trim($this->input->post('group_id'));
+						
+						$this->accounts_db->save($db,$account_id);
+
+						$ndb['nickname'] = trim($this->input->post('nickname'));
+						
+						$this->accounts_db->set_nickname($ndb,$account_id);
+						
+						$data['message']  = "";
+						$data['message'] .= "<div class=\"res_message\">";
+						$data['message'] .= "Account successfully updated.";
+						$data['message'] .="</div>";
+						$data['message'] .= "<button class=\"btn retryform\" type=\"button\">Okay</button>";
+						$data['action'] = "retry2";
+						break;
+				}
+			
+			}
+		}
 		$data['json'] = $data;
 		$this->load->view('ajax/json',$data);
 	}
@@ -494,8 +542,8 @@ class Account extends MY_Controller
 
 	function _check_email($email)
 	{
-		$user = $this->accounts_db->getAccount(array('email'=>$email,'account_id'=>$this->accountid));
-
+		$user 		= $this->accounts_db->getAccount(array('email'=>$email,'account_id'=>$this->accountid));
+		
 		if(count($user) == 0)
 		{
 			$this->form_validation->set_message('_check_email','The email you have entered is wrong.');
@@ -505,6 +553,7 @@ class Account extends MY_Controller
 		{
 			return true;
 		}	
+		
 	}
 	
 	
@@ -512,16 +561,21 @@ class Account extends MY_Controller
 	function _check_email_exists($email)
 	{
 		$user = $this->accounts_db->getAccount(array('email'=>$email));
-
-		if(count($user) > 0)
+		
+		$old_email 	= $this->input->post('old_email');
+		
+		if($old_email != $email)
 		{
-			$this->form_validation->set_message('_check_email_exists','%s already taken.');
-			return false;
+			if(count($user) > 0)
+			{
+				$this->form_validation->set_message('_check_email_exists','%s already taken.');
+				return false;
+			}
+			else
+			{
+				return true;
+			}	
 		}
-		else
-		{
-			return true;
-		}	
 	}
 	
 	function _check_email_exists2($email)

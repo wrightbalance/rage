@@ -25,6 +25,7 @@
 	var nickname = "<?=$user['nickname']?>";
 	var photo_path = "<?=resource_url('images/photo_'.strtolower($user['sex']).'.jpg')?>";
 	var gender = "<?=$user['sex']?>";
+	var group = "<?=$group?>";
 	<? } ?>
 	
 </script>

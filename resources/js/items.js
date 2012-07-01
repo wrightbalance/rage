@@ -1,5 +1,33 @@
 $(document).ready(function(){
 	
+	var model = [ 
+					 {display: '', name : '', width : 24, sortable: false}
+					,{display: 'Name', name : 'name_english', width : 200, sortable: true}
+					,{display: 'Type', name : 'type', width : 70, sortable: true}
+					,{display: 'Buy', name : 'price_buy', align:'right', width : 50, sortable: true}
+					,{display: 'Sell', name : 'price_sell', align:'right', width : 50, sortable: true}
+					,{display: 'Weight', name : 'weight', align:'right', width : 50, sortable: true}
+					,{display: 'Defence', name : 'defence', align:'right', width : 50, sortable: true}
+					,{display: 'Range', name : 'range', align:'right', width : 50, sortable: true}
+					,{display: 'Slots', name : 'slots', align:'right', width : 50, sortable: true}
+					
+				];
+	if(typeof group != "undefined")
+	{
+		var model = [ 
+					 {display: '', name : '', width : 24, sortable: false}
+					,{display: 'Name', name : 'name_english', width : 180, sortable: true}
+					,{display: 'Type', name : 'type', width : 70, sortable: true}
+					,{display: 'Buy', name : 'price_buy', align:'right', width : 50, sortable: true}
+					,{display: 'Sell', name : 'price_sell', align:'right', width : 50, sortable: true}
+					,{display: 'Weight', name : 'weight', align:'right', width : 50, sortable: true}
+					,{display: 'Defence', name : 'defence', align:'right', width : 50, sortable: true}
+					,{display: 'Range', name : 'range', align:'right', width : 50, sortable: true}
+					,{display: 'Slots', name : 'slots', align:'right', width : 50, sortable: true}
+					,{display: 'Edit', name : '', align:'center', width : 50, sortable: false}
+				];
+	}
+	
 	$('.itemsFlex').livequery(function(){
 		$(this).flexigrid
 		(
@@ -14,18 +42,7 @@ $(document).ready(function(){
 			},
 			url: root + 'items/getList',
 			dataType: 'json',
-			colModel : [ 
-						 {display: '', name : '', width : 24, sortable: false}
-						,{display: 'Name', name : 'name_english', width : 200, sortable: true}
-						,{display: 'Type', name : 'type', width : 70, sortable: true}
-						,{display: 'Buy', name : 'price_buy', align:'right', width : 50, sortable: true}
-						,{display: 'Sell', name : 'price_sell', align:'right', width : 50, sortable: true}
-						,{display: 'Weight', name : 'weight', align:'right', width : 50, sortable: true}
-						,{display: 'Defence', name : 'defence', align:'right', width : 50, sortable: true}
-						,{display: 'Range', name : 'range', align:'right', width : 50, sortable: true}
-						,{display: 'Slots', name : 'slots', align:'right', width : 50, sortable: true}
-						
-					],
+			colModel : model,
 			sortname: "id",
 			sortorder: "asc",
 			showToggleBtn: true, 
