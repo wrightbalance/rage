@@ -1,10 +1,10 @@
 <form class="form-horizontal form" action="<?=site_url('account/update')?>" method="post">
-<input type="hidden" name="old_userid"/>
-<input type="hidden" name="old_email"/>
-<input type="hidden" name="old_nickname"/>
-<input type="hidden" name="account_id"/>
-<input type="hidden" name="action" value="update_account"/>
-<div class="response"></div>
+		<input type="hidden" name="old_userid"/>
+		<input type="hidden" name="old_email"/>
+		<input type="hidden" name="old_nickname"/>
+		<input type="hidden" name="account_id"/>
+		<input type="hidden" name="action" value="update_account"/>
+		<div class="response"></div>
         <fieldset class="fields">
        
           <div class="control-group">
@@ -61,8 +61,16 @@
             </div>
           </div>
            
-          <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Save changes</button>
+          <div class="control-group">
+            <label class="control-label" for="inlineCheckboxes"></label>
+            <div class="controls">
+              <label class="checkbox inline">
+                <input type="checkbox" id="inlineCheckbox1" value="1" name="banned"> <span class="banned_level">Permanently Banned?</span>
+              </label>
+         
+            </div>
           </div>
+           <button type="submit" class="btn btn-primary updateAccount" style="display: none">Save changes</button>
+       
         </fieldset>
       </form>

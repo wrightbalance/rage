@@ -61,6 +61,14 @@ class MY_Controller extends CI_Controller
 			$group 			= "admin";
 		}
 		
+		$timezone = config_item('timezone');
+		
+		if(!empty($timezone))
+		{
+			if(function_exists('date_default_timezone_set')) 
+				date_default_timezone_set($timezone);
+		}
+		
 		$onlineCount =  $this->char_db->countOnline();
 		$charOnline = $this->char_db->getOnline();
 

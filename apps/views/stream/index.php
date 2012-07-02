@@ -1,21 +1,14 @@
 <div class="maincol">
 	
+	<!--
 	<ul class="tab black nav nav-tabs nomargin">
 		<li class="active"><a href="#">Stream Feed</a></li>
-		<li><a href="#">Online Trade</a></li>
-		<!--
-		<li><a href="#" class="get_news" data-kind="news">News
-			<?php if(isset($news_count) && $news_count > 0) { ?> 
-				<span class="nbadge news"><?=$news_count?></span>
-			<? } ?>
-			</a>
-		</li>
-		-->
-	</ul>
 	
+	</ul>
+	-->
 	<br/>
 	<div class="tpane pactive">
-	
+		<div class="streamResponse"></div>
 		<div class="stream_box">
 			<form class="sform" method="post" action="<?=site_url('stream/post')?>">
 			<input type="hidden" value="<?=$user['account_id']?>" name="account_id"/>
@@ -25,11 +18,11 @@
 			<input type="hidden" value="<?=$user['sex']?>" name="gender"/>
 			<textarea class="message" name="message" placeholder="What is in your mind?"></textarea>
 			<div class="stream_box_action clearfix">
-				<button type="submit" class="btn btn-primary floatright">Post</button>
+				<button type="submit" class="btn btn-primary floatright"><i class="icon-share icon-white"></i> Share</button>
 			</div>
 			</form>
 		</div>
-
+		<hr/>
 		<div class="streams">
 			<?php if(isset($streams) && $streams){ ?>
 				<?php foreach($streams as $stream){?>
@@ -102,6 +95,7 @@
 		
 	</div>
 	
+	<!--
 	<div class="tpane news_loader">
 		
 		
@@ -113,6 +107,7 @@
 	<div class="tpane news_loader">
 		
 	</div>
+	-->
 
 </div>
 

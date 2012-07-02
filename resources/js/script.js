@@ -49,19 +49,7 @@ $(document).ready(function(){
 		$('.tpane').eq(idx).addClass('pactive');
 	})
 	
-	$('textarea.message').live('focus',function(){
-		if($(this).val() == "")
-		{
-			$('.stream_box_action').slideDown('fast');
-			$(this).css('height',50);
-		}
-	}).live('blur',function(){
-		if($(this).val() == "")
-		{
-			$('.stream_box_action').slideUp('fast');	
-			$(this).css('height',20);
-		}
-	})
+	
 	
 	$('.view').live('click',function(e){
 		e.preventDefault();
@@ -96,6 +84,7 @@ $(document).ready(function(){
 					if(data)
 					{
 						var html = "";
+						$('input[name=banned]').removeAttr('checked');
 			
 						$.each(data.account,function(i,n){
 							
@@ -107,6 +96,13 @@ $(document).ready(function(){
 								$('input[name=old_email]').val(n);
 							}
 							
+							if(i == "state")
+							{
+								if(n == 5)
+								{
+									$('input[name=banned]').attr('checked','checked');
+								}
+							}
 							
 							if(i == "userid")
 							{

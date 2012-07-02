@@ -217,20 +217,21 @@ class Streams_db extends CI_Model
 	{
 		if($kind == "comment")
 		{
-			$this->mongo_db->pull('comments',$cond)->update('streams');
+			$this->mongo_db->pull('cp_stream_comment',$cond)->update('streams');
 		}
 		else
 		{
-			$this->mongo_db->where($cond)->set(array('status'=>0))->update('streams');
+			$this->mongo_db->where($cond)->set(array('status'=>0))->update('cp_stream_comment');
 		}
 	}
 	
-	function allowPost($cond)
+	function lastPost($cond)
 	{
 		$this->db->where($cond);
+		$this->db->limit(1);
 		$this->db->select('created');
-		$this->db->order_by('cid','desc');
-		$query = $this->db->get('comments');
+		$this->db->order_by('sid','desc');
+		$query = $this->db->get('cp_stream');
 		
 		$row = $query->row_array();
 		

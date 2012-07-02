@@ -485,6 +485,7 @@ class Account extends MY_Controller
 						break;
 					case 'update_account':
 						$account_id = $this->input->post('account_id');
+						$banned = $this->input->post('banned');
 						
 						$db['email'] 	= trim($this->input->post('email'));
 						$db['userid'] 	= trim($this->input->post('userid'));
@@ -493,6 +494,8 @@ class Account extends MY_Controller
 							$db['group_id'] = trim($this->input->post('group_id'));
 						else
 							$db['level'] = trim($this->input->post('group_id'));
+						
+						if($banned) $db['state'] = 5;
 						
 						$this->accounts_db->save($db,$account_id);
 

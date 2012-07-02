@@ -14,27 +14,56 @@ class Stream extends MY_Controller
 	function post()
 	{
 		$disallowed = config_item('disallowedWords');
+		$lastPost 	= $this->streams_db->lastPost(array('account_id'=>$this->accountid));
+		$allowed	= true;
 		
-		$message = trim($this->input->post('message'));
+		$delayed 	= (int)config_item('StreamPostDelay');
 		
-		$db['account_id'] = $this->accountid;
-		$db['content'] = word_censor($message,$disallowed,'***');
-		$db['created'] = date('Y-m-d H:i:s');
-		$db['updated'] = date('Y-m-d H:i:s');
+		if($lastPost)
+		{
+			$last 		= strtotime($lastPost['created']);
+			$now 		= strtotime(date('Y-m-d H:i:s'));
+			$minAgo 	= round(abs($now - $last) / 60);
+			$data['minago'] = $minAgo;
+			
+			//0 <= 2
+			if($minAgo <= $delayed)
+			{
+				$allowed = false;
+			}
+		}
 		
-		$sid = $this->streams_db->save($db);
+		if($allowed)
+		{
+			$message = trim($this->input->post('message'));
+			$db['account_id'] = $this->accountid;
+			$db['content'] = word_censor($message,$disallowed,'***');
+			$db['created'] = date('Y-m-d H:i:s');
+			$db['updated'] = date('Y-m-d H:i:s');
+			
+			$sid = $this->streams_db->save($db);
+			
+			$db['sid'] = $sid;
+			$db['abadge'] = "user";
+			
+			
+			if($this->authorize)
+				$db['abadge'] = "admin";
+			
+			$data['db'] = $db;
+			$data['action'] = "true";
+		}
+		else
+		{
+			$data['msg'] = "";
+			$data['msg'] .= "<div class=\"alert alert-error\">";
+			$data['msg'] .= "	<strong>Oh snap!</strong> you can submit your post after {$delayed} minute/s.";
+			$data['msg'] .= "</div>";
+			$data['action'] = "false";
+		}
 		
-		$db['sid'] = $sid;
-		$db['abadge'] = "user";
-		
-		
-		if($this->authorize)
-			$db['abadge'] = "admin";
-		
-		$data['db'] = $db;
 		$data['json'] = $data;
 		$this->load->view('ajax/json',$data);
-
 	}
 	
 	function comment()

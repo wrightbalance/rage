@@ -1,5 +1,13 @@
 $(document).ready(function(){
 	
+	$('textarea.message').live('focus',function(){
+		if($(this).val() == "")
+		{
+			$('.stream_box_action').slideDown('fast');
+			$(this).css('height',50);
+		}
+	})
+	
 	$('.sform').live('submit',function(e){
 	e.preventDefault();
 	
@@ -12,6 +20,8 @@ $(document).ready(function(){
 
 	$('.message').css('height',20);
 	$(form).trigger('reset');
+	
+	$('.streamResponse').empty();
 
 	$.ajax({
 		url: action,
@@ -23,33 +33,40 @@ $(document).ready(function(){
 			try
 			{
 				var html = "";
-				var db = data.db;
-		
-				html  = '';
-				html += '<div class="srow clearfix" style="display: none" id="streamholder-'+db.sid+'">';
-				html += '<a href="#" data-id="'+db.sid+'" class="close deleteStream close_extend" data-kind="stream">×</a>';
-				html +=		'<div class="avatar50">';
-				html +=		'<img src="'+photo_path+'"/>';
-				html +=		'		</div>';
-				html +=		'		<div class="srow_details">';
-				html +=		'			<a href="" class="'+db.abadge+'">'+nickname+'</a> ' + db.content;
-				html +=		'		</div>';
-				html +=		'		<div class="srow_actions">';
-				html +=		'			<a href="#" id="docomment" data-id="'+db.sid+'">Comment</a> - <span>Just now</span>';
-				html +=		'		</div>';
-				html +=		'		<div class="srow_comments" id="c2-'+db.sid+'">';
-				html +=		'			<div class="loadcomment"></div>';
-				html +=		'			<div class="comment_box">';
-				html +=		'				<input type="text" name="comment" data-id="'+db.sid+'" id="postcomment-"'+db.sid+'"" class="reset" placeholder="Write a comment..."/>';
-				html +=		'			</div>';		
-				html +=		'		</div>';
-				html +=		'	</div>';
-				html +=		'	<hr>';
-				
-				
-				$('.streams').prepend(html);
-				$('.stream_box_action').slideUp('fast');
-				$('.srow').slideDown('fast');
+				if(data.action == "true")
+				{
+					var db = data.db;
+
+					html  = '';
+					html += '<div class="srow clearfix" style="display: none" id="streamholder-'+db.sid+'">';
+					html += '<a href="#" data-id="'+db.sid+'" class="close deleteStream close_extend" data-kind="stream">×</a>';
+					html +=		'<div class="avatar50">';
+					html +=		'<img src="'+photo_path+'"/>';
+					html +=		'		</div>';
+					html +=		'		<div class="srow_details">';
+					html +=		'			<a href="" class="'+db.abadge+'">'+nickname+'</a> ' + db.content;
+					html +=		'		</div>';
+					html +=		'		<div class="srow_actions">';
+					html +=		'			<a href="#" id="docomment" data-id="'+db.sid+'">Comment</a> - <span>Just now</span>';
+					html +=		'		</div>';
+					html +=		'		<div class="srow_comments" id="c2-'+db.sid+'">';
+					html +=		'			<div class="loadcomment"></div>';
+					html +=		'			<div class="comment_box">';
+					html +=		'				<input type="text" name="comment" data-id="'+db.sid+'" id="postcomment-"'+db.sid+'"" class="reset" placeholder="Write a comment..."/>';
+					html +=		'			</div>';		
+					html +=		'		</div>';
+					html +=		'	</div>';
+					html +=		'	<hr>';
+					
+					
+					$('.streams').prepend(html);
+					//	$('.stream_box_action').slideUp('fast');
+					$('.srow').slideDown('fast');
+				}
+				else
+				{
+					$('.streamResponse').html(data.msg);
+				}
 			}
 			catch(e){
 				console.log(e);

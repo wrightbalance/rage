@@ -5,10 +5,10 @@
   </div>
   <div class="modal-body">
     <ul class="tab nav nav-tabs">
-		<li class="active"><a href="#">Account</a></li>
-		<li><a href="#">Characters</a></li>
-		<li><a href="#">Account Storage</a></li>
-		<li><a href="#">Modify</a></li>
+		<li class="active" onclick="$('.btnSave').hide();"><a href="#">Account</a></li>
+		<li><a href="#" onclick="$('.btnSave').hide();">Characters</a></li>
+		<li><a href="#" onclick="$('.btnSave').hide();">Account Storage</a></li>
+		<li><a href="#" onclick="$('.btnSave').show();">Modify</a></li>
 	</ul>
 	<div class="tpane pactive">
 		<table class="flexme">
@@ -66,6 +66,7 @@
     
   </div>
   <div class="modal-footer">
+	<button class="btn btn-primary btnSave" style="display: none;" onclick="$('.updateAccount').trigger('click');">Save Changes</button>
     <a href="#" class="btn" onclick="$('#view').modal('hide');">Close</a>
   </div>
 </div>
