@@ -10,6 +10,7 @@ $config['Birthday']  		= true; // Add birthday in registration
 $config['UsingMD5']			= false;
 $config['EmailConfirmation'] = true;
 $config['ConfirmationExpire'] = 48; // Email confirmatione expires houres
+$config['UseCashpoints'] 		= true;
 
 // Site Settings
 $config['EnableSite']		= true; // Disabled site

@@ -131,7 +131,7 @@ class Vote_db extends CI_Model
 		$this->db->insert('cp_votes',$db);
 		
 		// Save Cashpoints
-		if(config_item('use_cashpoints'))
+		if(config_item('UseCashpoints'))
 		{
 			$cashpoint 	= (int)$db['credits'];
 			$insert 	= true;
