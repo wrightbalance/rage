@@ -18,6 +18,7 @@ class Account extends MY_Controller
 			$username = trim($this->input->post('username'));
 			$password = trim($this->input->post('password'));
 			$action = $this->input->post('action');
+			$login = false;
 		
 			if(config_item('UsingMD5'))
 			{

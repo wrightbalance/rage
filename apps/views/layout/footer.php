@@ -13,8 +13,12 @@
 
 <div class="footer">
 	<div class="tileCenter">
-		RagnaGears &copy; 2012 ~ Brought to you by <a href="http://www.jingcleovil.com" target="_blank" style="color: #fff;">JingCleoVil</a>
+		<span style="float: right;">Geared Control Panel &copy; 2012 <br/></span>
+		<a href="http://www.jingcleovil.com" target="_blank" style="color: #fff;">
+			<img src="<?=resource_url('images/logo_author.png')?>"/>
+		</a>
 	</div>
+
 </div>
 
 <script type="text/javascript">
