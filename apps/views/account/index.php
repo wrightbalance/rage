@@ -8,11 +8,10 @@
 		<div class="btn-group">
 		  <button class="btn btn-primary">Views</button>
 		  <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-		  <ul class="dropdown-menu">
-			<li><a href="#">Show Banned Accounts</a></li>
-			<li><a href="#">Show Admin Accounts</a></li>
-			<li><a href="#">Show In-active Accounts</a></li>
-
+		  <ul class="dropdown-menu views">
+			<li><a href="#" data-views="all">Show All</a></li>
+			<li><a href="#" data-views="banned">Show Banned Accounts</a></li>
+			<li><a href="#" data-views="admin">Show Admin Accounts</a></li>
 		  </ul>
 		</div>
 	</div>

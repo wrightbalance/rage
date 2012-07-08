@@ -12,7 +12,7 @@
 		<h4>Online Players</h4>
 		<ul class="nav nav-list onlinechars">
 			<?php foreach($charOnline as $online){?>
-				<li><a href="#"><i class="icon-ok"></i> <?=$online['name']?></a></li>
+				<li><a href="#"><?=$online['name']?></a></li>
 			<? } ?>
 		</ul>
 	</div>

@@ -11,6 +11,19 @@
 	<div class="profileMenu">
 	
 		<ul class="main-nav nav nav-list">
+			
+			<?php if(isset($pages) && $pages){?>
+				
+				
+				<li class="nav-header">Navigation</li>
+				<li><a href="<?=push_url()?>" class="ps">Home</a></li>
+				<?php foreach($pages as $p){?>
+				<li><a href="<?=push_url("ref/{$p['friendly_url']}")?>" class="ps"><?php echo $p['title']?></a></li>
+				<?php } ?>
+				
+			
+			<?php } ?>
+			<li class="divider"></li>
 			<li class="nav-header">Account</li>
 			<li class="<?=$page == "main" ? 'active' : ''?>"><a href="<?=push_url()?>"><i class="icon-road <?=$page == "main" ? 'icon-white' : ''?>"></i>Stream</a></li>
 			<li class="<?=$page == "characters" ? 'active' : ''?>"><a href="<?=push_url('characters/view')?>"><i class="icon-user"></i>Characters</a></li>
@@ -24,14 +37,7 @@
 			<li class="<?=$page == "items" ? 'active' : ''?>"><a href="<?=push_url('items')?>"><i class="icon-list-alt"></i>Items</a></li>
 			<li class="divider"></li>
 			
-			<!--
-			<li class="nav-header">Support</li>
-			
-			<li class="<?=$page == "help-guide" ? 'active' : ''?>"><a href="<?=push_url('ticket')?>"><i class="icon-tags"></i> Ticket</a></li>
-			<li class="<?=$page == "help-guide" ? 'active' : ''?>"><a href="/help-guide"><i class="icon-guide"></i> Help Guide</a></li>
-	
-			<li class="divider"></li>
-			-->
+		
 
         </ul>
 	</div>

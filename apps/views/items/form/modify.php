@@ -15,9 +15,9 @@
 			<div class="controls">
 			  <select id="category" name="category">
 					<option value="">-Category-</option>
-					<option value="news">News</option>
-					<option value="changelog">Change Log</option>
-					<option value="Events">Events</option>
+					<?php foreach($item_category as $k=>$i){?>
+					<option value="<?=$k?>"><?=$i?></option>
+					<? } ?>
 			  </select>
 			</div>
 		</div>

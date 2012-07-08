@@ -62,6 +62,7 @@
 										<a href="#" class="<?=$comment['abadge']?>"><?=$comment['nickname']?></a> <?=$comment['comment']?>
 										<span style="display: block; font-size: 10px; margin-top: 3px; color: #333;"><?=$comment['created']?></span>
 									</div>
+
 									<?php if($authorize || $comment['account_id'] == $user['account_id']){ ?>
 									<a href="#" data-id="<?=$comment['csid']?>" data-comment_id="<?=$comment['csid']?>" class="close deleteStream" data-kind="comment">×</a>
 									<? } ?>

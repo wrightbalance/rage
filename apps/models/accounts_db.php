@@ -81,6 +81,11 @@ class Accounts_db extends CI_Model
         $item = $this->input->post('item');
 		$page = $this->input->post('page');
 		$rp = $this->input->post('rp');
+		$views = $this->input->post('views');
+		if($views == "all")
+		{
+			$views = "";
+		}
 		
 		$sortname = $this->input->post('sortname');
 		$sortorder = $this->input->post('sortorder');
@@ -95,7 +100,19 @@ class Accounts_db extends CI_Model
 		if (!$rp) $rp = 10;        
 				
 		$start = (($page-1) * $rp);  
-		       
+		
+		
+		if($views == "banned")
+		{
+			$this->db->where('state',5);
+		}
+		if($views == "admin")
+		{
+			if(config_item('UsingGroupID'))
+				$this->db->where('group_id >',1);
+			else
+				$this->db->where('level >',1);
+		}
 		$this->db->where('account_id > ',1);
 		$this->db->like($qtype,$query,'both');
 		$this->db->from('login');
@@ -107,7 +124,17 @@ class Accounts_db extends CI_Model
 			$page = 1;
 			}    
 		
-
+		if($views == "banned")
+		{
+			$this->db->where('state',5);
+		}
+		if($views == "admin")
+		{
+			if(config_item('UsingGroupID'))
+				$this->db->where('group_id >',1);
+			else
+				$this->db->where('level >',1);
+		}
 		$this->db->limit($rp,$start);
 		$this->db->like($qtype,$query,'both');
 		$this->db->where('account_id >',1);

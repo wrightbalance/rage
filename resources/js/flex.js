@@ -16,7 +16,16 @@ $(document).ready(function(){
 			}
 	);
 	})
-
+	
+	$('.views a').click(function(e){
+		var data = $(this).data('views');
+		
+		$('.accounts').livequery(function(){
+			var dt = [{name:'views',value:data}];
+			$(this).flexOptions({params:dt}).flexReload();
+		})
+	})
+	
 })
 
 function accountFlex()

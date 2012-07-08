@@ -48,6 +48,7 @@ $config['js']['loggedin'] = array(
     ,array('path'=>'js/','file'=>'vote.js')
     ,array('path'=>'js/','file'=>'rankings.js')
     ,array('path'=>'js/','file'=>'push.js')
+    ,array('path'=>'js/','file'=>'controllers.js')
     );
 
 $config['css3_browsers'] = array(

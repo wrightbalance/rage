@@ -14,6 +14,7 @@ class MY_Controller extends CI_Controller
 		$this->load->driver('cache',array('adapter'=>'file'));
 		$this->load->model('accounts_db');
 		$this->load->model('char_db');
+		$this->load->model('cms_db');
 		
 		$this->page 		= "page_".$this->uri->rsegment(2);
 		$this->accountid 	= $this->session->userdata('accountid');	
@@ -77,6 +78,7 @@ class MY_Controller extends CI_Controller
 		$data['online'] 	= $onlineCount;
 		$data['charOnline'] = $charOnline;
 		$data['group']		= $group;
+		$data['pages']		= $this->cms_db->getPages();
 		
 		
 		$this->load->vars($data);

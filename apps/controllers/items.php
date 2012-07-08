@@ -20,6 +20,8 @@ class Items extends MY_Controller
 		$data['page'] 		= $page;
 		$data['mod'] 		= $mod;
 		
+		$data['item_category'] = config_item('itemTypes');
+		
 		if(!$this->input->is_ajax_request())
 		{
 			$data['content'] = $this->load->view('layout/content',$data,true);

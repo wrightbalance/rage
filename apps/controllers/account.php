@@ -29,21 +29,33 @@ class Account extends MY_Controller
 			if($authorize > 0)
 			{
 				$account = $this->accounts_db->getAccount(array('userid'=>$username,'user_pass'=>$password),false,true);
-				$this->session->set_userdata('accountid',$account['account_id']);
-				$this->session->set_userdata('demo',$username);
 				
-				if(config_item('UsingGroupID')) 
-					$adminLevel = $account['group_id'];
+				if($account['state'] == 5)
+				{ 
+					$login = false;
+				}
 				else
-					$adminLevel = $account['level'];
+				{
+					$this->session->set_userdata('accountid',$account['account_id']);
+					$this->session->set_userdata('demo',$username);
 					
-				$this->session->set_userdata('adminlevel',$adminLevel);
+					if(config_item('UsingGroupID')) 
+						$adminLevel = $account['group_id'];
+					else
+						$adminLevel = $account['level'];
+						
+					$this->session->set_userdata('adminlevel',$adminLevel);
 
-				$data['message'] = "Redirecting...";
-				$data['action'] = "forward";
-				$data['url'] = site_url();
+					$data['message'] = "Redirecting...";
+					$data['action'] = "forward";
+					$data['url'] = site_url();
+					$login = true;
+				}
+				
 			}
-			else
+			
+			
+			if($login == false)
 			{
 				$button = "<a class=\"close\" data-dismiss=\"alert\">×</a>";
 				$margin = "";

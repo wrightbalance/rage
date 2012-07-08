@@ -149,6 +149,23 @@ class Cms_db extends CI_Model
 		}
 	}
 	
+	function getPages()
+	{
+		$this->db->where('status',1);
+		$page = $this->db->get('cp_pages');
+		
+		$row = $page->result_array();
+		
+		if($row)
+		{
+			return $row;
+		}
+		else
+		{
+			return array();
+		}
+	}
+	
 	function getNewsList($cond)
 	{
 		$news = $this->db->where($cond)->get('cp_news');

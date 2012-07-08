@@ -46,7 +46,7 @@ class Main extends MY_Controller
 				$data['page'] = 'stream';
 				
 				
-				$data['streams'] = $this->streams_db->getStream();
+				$data['streams'] = $this->streams_db->getStream(10);
 				$data['mod'] = "stream";
 				$data['page'] = "index";
 				$data['content'] = $this->load->view('layout/content',$data,true);
@@ -60,7 +60,7 @@ class Main extends MY_Controller
         else
         {
 
-			$data['streams'] = $this->streams_db->getStream();
+			$data['streams'] = $this->streams_db->getStream(10);
 			$this->load->vars($data);
 			$this->load->view("stream/index",$data);
 		}

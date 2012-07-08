@@ -18,6 +18,8 @@
 		
 		$url = push_url("items/view/{$row['friendly_url']}");
 		
+		$dt = json_encode(array('id'=>$row['id']));
+		
         $rows[] = array(
                 "id" => $row['id'],
                 "cell" => array(
@@ -30,7 +32,7 @@
                 	,$row['defence'] ? $row['defence']  : 'n/a' 
                 	,$row['range'] ? $row['range'] : 'n/a'
                 	,$row['slots'] ? $row['slots'] : 'n/a'
-                	,"<button class=\"btn btn-mini\"><i class=\"icon-edit\"></i> Edit</button>"
+                	,"<button class=\"btn btn-mini module\" data-mod=\"modify\" data-dt='".$dt."'><i class=\"icon-edit\"></i> Edit</button>"
              
 				)
             );

@@ -18,9 +18,12 @@ class Streams_db extends CI_Model
 		
 	}
 	
-	function getStream()
+	function getStream($limit = NULL)
 	{
+		if($limit) $this->db->limit($limit);
+		
 		$this->db->where('s_status',1);
+		
 		$this->db->join('cp_login','cp_login.accountid = cp_stream.account_id');
 		$this->db->join('login','login.account_id = cp_stream.account_id');
 		
@@ -81,9 +84,9 @@ class Streams_db extends CI_Model
 		$this->db->join('login','login.account_id = cp_stream_comment.account_id');
 		
 		if(config_item('UsingGroupID'))
-			$this->db->select('csid,sex,nickname,comment,c_created,group_id');
+			$this->db->select('csid,sex,nickname,comment,c_created,group_id,cp_stream_comment.account_id as aid');
 		else
-			$this->db->select('csid,sex,nickname,comment,c_created,level');
+			$this->db->select('csid,sex,nickname,comment,c_created,level,cp_stream_comment.account_id as aid');
 		
 		$this->db->order_by('csid','desc');
 		$query = $this->db->get('cp_stream_comment');
@@ -119,7 +122,8 @@ class Streams_db extends CI_Model
 				'sex' 		=> $row['sex'],
 				'comment' 	=> $row['comment'],
 				'created' 	=> ago($row['c_created']),
-				'abadge' 	=> $abadge
+				'abadge' 	=> $abadge,
+				'account_id' => $row['aid']
 			);
 		}
 		
