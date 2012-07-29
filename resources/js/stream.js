@@ -36,6 +36,11 @@ $(document).ready(function(){
 				if(data.action == "true")
 				{
 					var db = data.db;
+					
+					if(hasAvatar)
+					{
+						photo_path = root + 'resources/images/avatar/'+accountid+'_50.jpg';
+					}
 
 					html  = '';
 					html += '<div class="srow clearfix" style="display: none" id="streamholder-'+db.sid+'">';
@@ -111,6 +116,12 @@ $(document).ready(function(){
 					try
 					{
 						var db = data.db;
+						
+						if(hasAvatar)
+						{
+							photo_path = root + 'resources/images/avatar/'+accountid+'_32.jpg';
+						}
+
 						
 						html  = 	'											';
 						html +=		'			<div class="comments clearfix" id="comment-"'+db.cid+'"">';

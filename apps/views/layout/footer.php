@@ -30,6 +30,15 @@
 	var photo_path = "<?=resource_url('images/photo_'.strtolower($user['sex']).'.jpg')?>";
 	var gender = "<?=$user['sex']?>";
 	var group = "<?=$group?>";
+	var hasAvatar = false;
+	
+	
+	<?php if(isset($user['avatar'])){?>
+		<?php if(file_exists('./resources/images/avatar/'.$user['avatar'])){?>
+			hasAvatar = true;
+		<? } ?>
+	<? } ?>
+	
 	<? } ?>
 	
 </script>

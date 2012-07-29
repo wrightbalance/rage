@@ -41,6 +41,7 @@
 
 </div>
 <div class="modal-footer">
+	
 	<a href="#" class="btn btn-danger delete_char" data-delstate="showform">Delete Character</a>
 	<a href="#" class="btn" data-dismiss="modal">Close</a>
 </div>

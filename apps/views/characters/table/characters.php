@@ -9,6 +9,10 @@
 	
     foreach ($db as $row)
         {
+			$reset  = "<a href=\"#map\" class=\"btn btn-mini\">Location</a>";
+			$reset .= "<a href=\"#equipment\" class=\"btn btn-mini\">Equipment</a>";
+			$reset .= "<a href=\"#hair\" class=\"btn btn-mini\">Equipment</a>";
+			$reset .= "<a href=\"#map equiment hair\" class=\"btn btn-mini\">All</a>";
 			
 			$rows[] = array(
 					"id" => $row['char_id'],
@@ -18,8 +22,9 @@
 						,$row['class']
 						,$row['base_level']
 						,$row['job_level']
-						,$row['zeny'] !== 0 ? number_format($row['zeny']) : 0
-						)
+						,$row['zeny'] !== 0 ? number_format($row['zeny']) : 0,
+						,$reset
+												)
 					
 				);
         }

@@ -2,7 +2,16 @@
 <div class="leftcol">
 	<div class="profileAvatar clearfix">
 		<div class="photo">
-			<img src="<?=resource_url('images/photo_'.strtolower($user['sex']).'.jpg')?>" width="40" height="40"/>
+			<?php 
+				$photo = resource_url('images/photo_'.strtolower($user['sex']).'.jpg');
+				
+				if(file_exists('./resources/images/avatar/'.$this->accountid.'.jpg')){
+					$photo = resource_url('images/avatar/'.$this->accountid.'.jpg');
+				}
+					
+			?>
+			
+			<img src="<?=$photo?>" width="40" height="40"/>
 		</div>
 		<?php if(isset($user['nickname'])){?>
 		<div class="name"><a href="<?=push_url('account/settings')?>" class="ps"><?=$user['nickname']?></a></div>

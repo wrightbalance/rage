@@ -33,7 +33,14 @@
 						<a href="#" data-id="<?=$stream['sid']?>" class="close deleteStream close_extend" data-kind="stream">×</a>
 					<? } ?>
 					<div class="avatar50">
-						<img src="<?=resource_url('images/photo_'.strtolower($stream['sex']).'.jpg')?>" />
+						<?php 
+							$photo = resource_url('images/photo_'.strtolower($stream['sex']).'.jpg');
+							
+							if(file_exists('./resources/images/avatar/'.$stream['account_id'].'.jpg')){
+								$photo = resource_url('images/avatar/'.$stream['account_id'].'.jpg');
+							}
+						?>
+						<img src="<?=$photo?>" height="50" width="50"/>
 					</div>
 					<div class="srow_details">
 						<a href="#" class="<?=$stream['abadge']?>"><?=ucwords($stream['nickname'])?></a>
@@ -56,7 +63,15 @@
 								<?php foreach($stream['comments'] as $comment){?>
 								<div class="comments clearfix" id="commentHolder-<?=$comment['csid']?>">
 									<div class="avatar32">
-										<img src="<?=resource_url('images/photo_'.strtolower($comment['sex']).'.jpg')?>" width="32" height="32"/>
+										<?php 
+											$photo2 = resource_url('images/photo_'.strtolower($comment['sex']).'.jpg');
+							
+											if(file_exists('./resources/images/avatar/'.$comment['account_id'].'.jpg')){
+												$photo2 = resource_url('images/avatar/'.$comment['account_id'].'.jpg');
+											}
+										?>
+										
+										<img src="<?=$photo2?>" width="32" height="32"/>
 									</div>
 									<div class="comments_details">
 										<a href="#" class="<?=$comment['abadge']?>"><?=$comment['nickname']?></a> <?=$comment['comment']?>

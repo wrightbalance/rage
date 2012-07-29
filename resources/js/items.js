@@ -12,7 +12,7 @@ $(document).ready(function(){
 					,{display: 'Slots', name : 'slots', align:'right', width : 50, sortable: true}
 					
 				];
-	if(typeof group != "undefined")
+	if(group == "admin")
 	{
 		var model = [ 
 					 {display: '', name : '', width : 24, sortable: false}

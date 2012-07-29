@@ -1,7 +1,7 @@
 $(document).ready(function(e){
 
 	
-	$('.char_reset a').live('click',function(e){
+	$('a.reset').live('click',function(e){
 		e.preventDefault();
 		var action = $(this).data('act');
 		var char_id = $(this).data('charid');
@@ -135,7 +135,7 @@ $(document).ready(function(e){
 		}
 		
 	})
-	
+	/*
 	$('.characters').livequery(function(){
 		$(this).flexigrid
 		(
@@ -156,6 +156,7 @@ $(document).ready(function(e){
 						,{display: 'Base Level', name : 'base_level', width : 60, sortable: true, align: 'center'}
 						,{display: 'Job Level', name : 'job_level', width : 60, sortable: true}
 						,{display: 'Zeny', name : 'zeny', width : 60, sortable: false}
+						,{display: 'Reset', name : 'reset', width : 60, sortable: false}
 						
 					],
 			sortname: "account_id",
@@ -185,7 +186,7 @@ $(document).ready(function(e){
 		   }
 		);
 		
-	})
+	})*/
 	
 	$('.char_view').livequery(function(){
 		$(this).flexigrid
@@ -206,7 +207,7 @@ $(document).ready(function(e){
 						,{display: 'Base Level', name : 'base_level', width : 60, sortable: true, align: 'center'}
 						,{display: 'Job Level', name : 'job_level', width : 60, sortable: true}
 						,{display: 'Zeny', name : 'zeny', width : 60, sortable: false}
-						
+						,{display: 'Reset', name : 'reset', width : 203, sortable: false}
 					],
 			sortname: "char_id",
 			sortorder: "asc",
