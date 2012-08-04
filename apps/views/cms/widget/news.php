@@ -16,5 +16,6 @@
 		<?php echo date('M d, Y',strtotime($n['created_on']))?>
 	</div>
 	<div class="clear"></div>
+	<hr class="nLine"/>
 </div>
 <? } ?>

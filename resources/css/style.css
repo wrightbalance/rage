@@ -87,6 +87,14 @@ hr.blackLine
 	border-bottom: 1px solid #373737;
 }
 
+
+hr.nLine
+{
+	height: 0px;
+	border-top: 1px solid transparent;
+	border-bottom: 1px solid #333333;
+}
+
 .boxIngrave .image
 {
 	text-align: center;
