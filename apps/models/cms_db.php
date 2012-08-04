@@ -127,7 +127,7 @@ class Cms_db extends CI_Model
 	
 	function getNews($cond,$list=false,$limit=999)
 	{
-		$news = $this->db->limit($limit)->join('cp_login','cp_login.accountid = cp_news.author','left')->where($cond)->get('cp_news');
+		$news = $this->db->limit($limit)->join('cp_login','cp_login.accountid = cp_news.author','left')->where($cond)->order_by('id','desc')->get('cp_news');
 		
 		if($list) $results = $news->result_array();
 		else $results = $news->row_array();
