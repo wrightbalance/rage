@@ -3,7 +3,7 @@
 <div class="topBar">
 	<div class="tileCenter clearfix">
 		<div class="logo"><a href="<?=site_url()?>">
-			GEARED CONTROL PANEL
+			<img src="<?=resource_url('images/logo.jpg')?>"/>
 		</a></div>
 	
 		

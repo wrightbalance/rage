@@ -8,3 +8,4 @@
 </div>
 
 <?php $this->load->view('characters/modal/view')?>
+<?php $this->load->view('characters/modal/reset')?>

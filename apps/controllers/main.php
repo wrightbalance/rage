@@ -17,7 +17,7 @@ class Main extends MY_Controller
 	
 	function index()
 	{		
-		$data['news'] = $this->cms_db->getNews(array('category'=>'news'),false);
+		$data['news'] = $this->cms_db->getNews(array('status'=>1),true);
 
 		if(!$this->input->is_ajax_request())
 		{

@@ -98,7 +98,10 @@ $(document).ready(function(){
 
 	})
 	
-
+	$('.main_nav a').click(function(e){
+		$(this).siblings().removeClass('active');
+		$(this).addClass('active');
+	})
 	
 })
 

@@ -22,7 +22,7 @@
 						,$row['class']
 						,$row['base_level']
 						,$row['job_level']
-						,$row['zeny'] !== 0 ? number_format($row['zeny']) : 0,
+						,$row['zeny'] !== 0 ? number_format($row['zeny']) : 0
 						,$reset
 												)
 					

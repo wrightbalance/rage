@@ -135,7 +135,7 @@ $(document).ready(function(e){
 		}
 		
 	})
-	/*
+
 	$('.characters').livequery(function(){
 		$(this).flexigrid
 		(
@@ -156,7 +156,7 @@ $(document).ready(function(e){
 						,{display: 'Base Level', name : 'base_level', width : 60, sortable: true, align: 'center'}
 						,{display: 'Job Level', name : 'job_level', width : 60, sortable: true}
 						,{display: 'Zeny', name : 'zeny', width : 60, sortable: false}
-						,{display: 'Reset', name : 'reset', width : 60, sortable: false}
+						,{display: 'Reset', name : 'reset', width : 230, sortable: false}
 						
 					],
 			sortname: "account_id",
@@ -186,7 +186,7 @@ $(document).ready(function(e){
 		   }
 		);
 		
-	})*/
+	})
 	
 	$('.char_view').livequery(function(){
 		$(this).flexigrid
