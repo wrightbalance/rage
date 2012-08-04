@@ -3,17 +3,18 @@
 
 <div class="wBox">
 	<div class="boxIngrave bStatus">
-		<span>LOGIN</span>  <button class="btn btn-success">Online</button>
+		<span>LOGIN</span>  <span class="onlineStatus">Online</span>
 	</div>
 	<div class="boxIngrave bStatus">
-		<span>CHAR</span> <button class="btn btn-success">Online</button>
-	</div>
-	
-	<div class="boxIngrave bStatus">
-		<span>MAP</span> <button class="btn btn-success">Online</button>
+		<span>CHAR</span> <span class="onlineStatus">Online</span>
 	</div>
 	
 	<div class="boxIngrave bStatus">
-		<span>ONLINE PLAYERS</span> <button class="btn btn-warning"><?=$online?></button>
+		<span>MAP</span> <span class="onlineStatus">Online</span>
+	</div>
+	
+	<div class="boxIngrave bStatus">
+		<span>ONLINE PLAYERS</span>
+		<span class="onlineStatus onlinePlayers"><?=$online?></span>
 	</div>
 </div>
