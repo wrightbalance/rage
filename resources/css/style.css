@@ -201,6 +201,8 @@ hr.nLine
 
 .topBar
 {
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
 	height: 100px;
 	background: #0194d7; /* Old browsers */
 	background: -moz-linear-gradient(top, #0194d7 0%, #006dc4 29%, #006dc4 87%, #0194d7 100%); /* FF3.6+ */
@@ -604,6 +606,14 @@ hr.nLine
 	color: #fff;
 	padding: 20px 0;
 	font-size: 11px;
+	background: #0194d7; /* Old browsers */
+	background: -moz-linear-gradient(top, #0194d7 0%, #006dc4 29%, #006dc4 87%, #0194d7 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#0194d7), color-stop(29%,#006dc4), color-stop(87%,#006dc4), color-stop(100%,#0194d7)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #0194d7 0%,#006dc4 29%,#006dc4 87%,#0194d7 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #0194d7 0%,#006dc4 29%,#006dc4 87%,#0194d7 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #0194d7 0%,#006dc4 29%,#006dc4 87%,#0194d7 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #0194d7 0%,#006dc4 29%,#006dc4 87%,#0194d7 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0194d7', endColorstr='#0194d7',GradientType=0 ); /* IE6-9 */
 }
 
 .floatleft
