@@ -71,7 +71,9 @@
 		</div>
 		
 		<div class="frow_btn preloader clearfix">
-			<button class="btn btn-primary floatleft">Create Account</button><div class="loaders"></div>
+			<div class="boxIngrave">
+				<button class="btn btn-primary btn-large" style="width: 265px">Create Account</button><div class="loaders"></div>
+			</div>
 		</div>
 
 	</div>

@@ -278,15 +278,15 @@ hr.nLine
 
 .regform
 {
-	padding: 5px 15px;
+	padding: 5px 14px 50px 13px;
 	background: #808080; /* Old browsers */
-	background: -moz-linear-gradient(top, #808080 0%, #434343 23%, #434343 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#808080), color-stop(23%,#434343), color-stop(100%,#434343)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, #808080 0%,#434343 23%,#434343 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, #808080 0%,#434343 23%,#434343 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top, #808080 0%,#434343 23%,#434343 100%); /* IE10+ */
-	background: linear-gradient(to bottom, #808080 0%,#434343 23%,#434343 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#808080', endColorstr='#434343',GradientType=0 ); /* IE6-9 */
+background: -moz-linear-gradient(top, #808080 0%, #434343 13%, #434343 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#808080), color-stop(13%,#434343), color-stop(100%,#434343)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #808080 0%,#434343 13%,#434343 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #808080 0%,#434343 13%,#434343 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #808080 0%,#434343 13%,#434343 100%); /* IE10+ */
+background: linear-gradient(to bottom, #808080 0%,#434343 13%,#434343 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#808080', endColorstr='#434343',GradientType=0 ); /* IE6-9 */
 	border-radius: 5px;
 	box-shadow: -1px 2px 6px #1A1A1A;
 	color: #fff;
@@ -323,6 +323,25 @@ hr.nLine
 	font-size: 13px;
 	font-weight: bolder;
 	letter-spacing: 1px;
+}
+
+.regform input,
+.regform select
+{
+	background: #141414;
+	box-shadow: inset 0 2px 2px #060606;
+	border-bottom: 1px solid #333;
+	border-radius: 5px;
+	border: 0;
+	padding: 5px !Important;
+	border-radius: 3px !Important;
+	border-color: none !Important;
+}
+
+.regform input:focus
+{
+	border-color: none !Important;
+	box-shadow: none !Important;
 }
 
 .frow
