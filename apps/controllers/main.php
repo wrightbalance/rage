@@ -34,7 +34,7 @@ class Main extends MY_Controller
 					
 				}
 				$data['form'] = "frm_register";
-				$data['formtitle'] = "Create your Account";
+				$data['formtitle'] = "Create your Account to Geared CP";
 				$data['page_content'] = $this->load->view('main/home',$data,true);
 				$data['content'] = $this->load->view("main/index",$data,true);
 			}

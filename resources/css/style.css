@@ -87,6 +87,14 @@ hr.blackLine
 	border-bottom: 1px solid #373737;
 }
 
+hr.regHr
+{
+	height: 0px;
+	margin: 5px 0;
+	border-top: 1px solid #353535;
+	border-bottom: 1px solid #6e6e6e;
+}
+
 
 hr.nLine
 {
@@ -257,6 +265,7 @@ hr.nLine
 	width: 100%;
 	padding-bottom: 10px;
 	margin-bottom: 15px;
+	
 }
 
 .content h3
@@ -269,14 +278,28 @@ hr.nLine
 
 .regform
 {
-	border: 4px solid #454545;
-	padding: 10px 10px 0 10px;
-	background: #fff;
+	padding: 5px 15px;
+	background: #808080; /* Old browsers */
+	background: -moz-linear-gradient(top, #808080 0%, #434343 23%, #434343 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#808080), color-stop(23%,#434343), color-stop(100%,#434343)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #808080 0%,#434343 23%,#434343 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #808080 0%,#434343 23%,#434343 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #808080 0%,#434343 23%,#434343 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #808080 0%,#434343 23%,#434343 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#808080', endColorstr='#434343',GradientType=0 ); /* IE6-9 */
+	border-radius: 5px;
+	box-shadow: -1px 2px 6px #1A1A1A;
+	color: #fff;
 }
 
 .regform form
 {
 	margin-bottom: 0;
+}
+
+.regform label
+{
+	color: #cacaca !important;
 }
 
 .frow_btn
@@ -290,6 +313,16 @@ hr.nLine
 	font-size: 14px;
 	margin-bottom: 20px;
 	display: inline-block;
+}
+
+.regform h3
+{
+	text-align: center;
+	color: #fff !Important;
+	font-style: italic;
+	font-size: 13px;
+	font-weight: bolder;
+	letter-spacing: 1px;
 }
 
 .frow

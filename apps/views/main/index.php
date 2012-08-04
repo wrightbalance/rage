@@ -9,6 +9,7 @@
 	
 	<div class="regform" <?=isset($margindown) ? $margindown : ''?>>
 		<h3><?=$formtitle?></h3>
+		<hr class="regHr"/>
 		<?php $this->load->view("account/{$form}")?>
 		
 	</div>
