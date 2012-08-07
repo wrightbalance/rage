@@ -23,7 +23,7 @@ $db['demo']['stricton'] = FALSE;
 
 $db['server']['hostname'] = 'localhost';
 $db['server']['username'] = 'root';
-$db['server']['password'] = '1234';
+$db['server']['password'] = '';
 $db['server']['database'] = 'ragnagear';
 $db['server']['dbdriver'] = 'mysql';
 $db['server']['dbprefix'] = '';
